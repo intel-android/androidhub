@@ -7,10 +7,15 @@ html
     meta(name='description', content='description of your site')
     meta(name='author', content= "author of the site")
     meta(name="viewport" content="width=device-width, initial-scale=1")
+    include includes/_open-graph
+    include includes/_twitter
+
     title= _path
     != css('/')
 
   body
+    include includes/nav
+    
     block content
 
     != js('/')

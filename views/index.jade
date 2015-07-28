@@ -5,4 +5,8 @@ block content
 
   ul
     for post in site.posts.all()
-      li: a(href=post._url)= post.title
+      li
+        div: a(href=post._url)= post.title
+        //- each cat in post.categories
+        //-   span= cat
+        span= post.categories

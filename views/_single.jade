@@ -7,12 +7,19 @@ html
     meta(name='description', content='description of your site')
     meta(name='author', content= "author of the site")
     meta(name="viewport" content="width=device-width, initial-scale=1")
+    include includes/_open-graph
+    include includes/_twitter
+
     title= post.title
     != css('/')
 
   body
+    include includes/nav
+    
     h1= post.title
     h4 by #{post.author}
+
     block content
 
+    a(href='/') &laquo; back to index
     != js('/')

@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h3 Authors
+
+  ul
+    for post in site.posts.all()
+      li= post.author
