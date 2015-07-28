@@ -9,9 +9,9 @@ module.exports =
   ignores: ['readme.md', '**/layout.*', '**/_*', '.gitignore', 'ship.*conf']
 
   extensions: [
-    js_pipeline(files: 'assets/js/*.coffee'),
-    css_pipeline(files: 'assets/css/*.styl'),
-    dynamic()
+    js_pipeline(files: 'assets/js/*.coffee')
+    css_pipeline(files: 'assets/css/*.styl')
+    dynamic(write: 'content.json')
   ]
 
   stylus:
