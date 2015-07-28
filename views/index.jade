@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h3 My Simple Blog
+
+  ul
+    for post in site.posts.all()
+      li: a(href=post._url)= post.title

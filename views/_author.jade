@@ -1,0 +1,19 @@
+-post = site.posts.argyleink[0]
+doctype html
+html
+
+  head
+    meta(charset='utf8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
+    meta(name='description', content='description of your site')
+    meta(name='author', content= "author of the site")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title= post.author
+    != css('/')
+
+  body
+    h1= post.title
+    h4 by #{post.author}
+    block content
+
+    != js('/')

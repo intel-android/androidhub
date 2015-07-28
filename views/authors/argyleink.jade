@@ -1,0 +1,8 @@
+extends ../_author
+
+block content
+  h3= post.author
+
+  ul
+    for post in site.posts.argyleink
+      li: a(href=post._url)= post.title
