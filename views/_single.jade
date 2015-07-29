@@ -21,11 +21,11 @@ html
     include includes/nav
     
     article
-        h1= post.title
-        h4 by #{post.author}
+      h1= post.title
+      h4 by #{post.author}
 
-        block content
+      block content
 
-        a.btn(href='/') &laquo; back to index
+      a.btn(href='/') &laquo; back to index
         
     != js('/')
