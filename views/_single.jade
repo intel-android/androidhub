@@ -20,10 +20,12 @@ html
   body
     include includes/nav
     
-    h1= post.title
-    h4 by #{post.author}
+    article
+        h1= post.title
+        h4 by #{post.author}
 
-    block content
+        block content
 
-    a(href='/') &laquo; back to index
+        a.btn(href='/') &laquo; back to index
+        
     != js('/')

@@ -1,0 +1,23 @@
+// http://axis.netlify.com/#buttons
+@require _settings
+
+.btn
+  button(default-color)
+  
+  &.dark
+    button: #333
+    
+  &.light
+    button: #eee
+    
+  &.glossy
+    glossy-button()
+    
+  &.large
+    button: default-color 'large'
+    
+  &.small
+    button: default-color 'small'
+
+  &.disabled
+    button-disabled()
