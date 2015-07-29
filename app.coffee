@@ -1,9 +1,9 @@
-axis         = require 'axis'
-rupture      = require 'rupture'
-autoprefixer = require 'autoprefixer-stylus'
-js_pipeline  = require 'js-pipeline'
-css_pipeline = require 'css-pipeline'
-dynamic      = require 'dynamic-content'
+axis          = require 'axis'
+rupture       = require 'rupture'
+autoprefixer  = require 'autoprefixer-stylus'
+js_pipeline   = require 'js-pipeline'
+css_pipeline  = require 'css-pipeline'
+dynamic       = require 'dynamic-content'
 
 module.exports =
   ignores: ['readme.md', '**/layout.*', '**/_*', '.gitignore', 'ship.*conf']
@@ -23,3 +23,9 @@ module.exports =
 
   jade:
     pretty: true
+
+  locals:
+    dev: true
+  #   _: require 'lodash'
+
+  debug: true

@@ -16,3 +16,7 @@ module.exports =
 
   stylus:
     use: [axis(), rupture(), autoprefixer()]
+
+  locals:
+    dev: false
+    base: '/sites/android-hub/'
