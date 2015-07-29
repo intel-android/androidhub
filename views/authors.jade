@@ -4,5 +4,7 @@ block content
   h3 Authors
 
   ul
-    for post in site.posts.all()
+    - var authorsAlphabetical = _.sortByAll(site.posts.all(), 'author')
+    - var authorsUnique = _.uniq(authorsAlphabetical, true, function(post){ return post.author })
+    for post in authorsUnique
       li= post.author

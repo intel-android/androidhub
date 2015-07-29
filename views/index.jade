@@ -4,9 +4,13 @@ block content
   h3 My Simple Blog
 
   ul
-    for post in site.posts.all()
+    - var postsByDate = _.sortByAll(site.posts.all(), 'date')
+    for post in postsByDate
       li
-        div: a(href=post._url)= post.title
+        div
+          a(href=post._url) "#{post.title}" 
+          small by #{post.author}
         //- each cat in post.categories
         //-   span= cat
-        span= post.categories
+        small= post.categories
+          

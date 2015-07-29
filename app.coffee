@@ -26,6 +26,6 @@ module.exports =
 
   locals:
     dev: true
-  #   _: require 'lodash'
+    _: require 'lodash'
 
   debug: true
