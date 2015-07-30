@@ -6,11 +6,12 @@ block content
   ul
     - var postsByDate = _.sortByAll(site.posts.all(), 'date')
     for post in postsByDate
-      li
-        div
-          a(href=post._url) "#{post.title}" 
-          small by #{post.author}
-        //- each cat in post.categories
-        //-   span= cat
-        small= post.categories
+      unless post._ignore
+        li
+          div
+            a(href=post._url) "#{post.title}" 
+            small by #{post.author}
+          //- each cat in post.categories
+          //-   span= cat
+          small= post.categories
           

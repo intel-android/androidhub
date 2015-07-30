@@ -7,4 +7,5 @@ block content
     - var authorsAlphabetical = _.sortByAll(site.posts.all(), 'author')
     - var authorsUnique = _.uniq(authorsAlphabetical, true, function(post){ return post.author })
     for post in authorsUnique
-      li= post.author
+      unless post._ignore
+        li= post.author
