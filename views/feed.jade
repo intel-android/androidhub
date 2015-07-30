@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h3 Feed
+
+  ul
+    - var postsByDate = _.sortByAll(site.posts.all(), 'date')
+    for post in postsByDate
+      unless post._ignore
+        li
+          div
+            a(href=post._url) "#{post.title}" 
+            small by #{post.author}
+          //- each cat in post.categories
+          //-   span= cat
+          small= post.categories
+          

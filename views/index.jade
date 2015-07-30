@@ -1,17 +1,7 @@
 extends layout
 
 block content
-  h3 Simple Blog
+  h3 Welcome
 
-  ul
-    - var postsByDate = _.sortByAll(site.posts.all(), 'date')
-    for post in postsByDate
-      unless post._ignore
-        li
-          div
-            a(href=post._url) "#{post.title}" 
-            small by #{post.author}
-          //- each cat in post.categories
-          //-   span= cat
-          small= post.categories
+  h3 Featured Post
           
