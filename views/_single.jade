@@ -18,12 +18,16 @@ html
 
   body
     include includes/nav
-    
-    article
-      h1= post.title
-      h4 by #{post.author}
 
-      block content
+    header.reflex-container.reflex-wrap(style='background-image:url(http://placehold.it/1400x577&text=_)')
+      .reflex-align-self-center.centered-title.reflex-direction-column.reflex-col-8
+        h1.header-title.normal-type= post.title
+        h4.thin-type by #{post.author} | #{post.date}
+    
+    section
+      article
+        //- h4 by #{post.author}
+        block content
 
       a.btn(href='') &laquo; back to index
         

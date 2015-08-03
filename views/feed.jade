@@ -1,17 +1,16 @@
+include mixins/post-item
 extends layout
 
 block content
   h3 Feed
 
-  ul
+  ul.feed-grid.reflex-container.reflex-wrap
     - var postsByDate = _.sortByAll(site.posts.all(), 'date')
+
     for post in postsByDate
       unless post._ignore
-        li
-          div
-            a(href=post._url) "#{post.title}" 
-            small by #{post.author}
-          //- each cat in post.categories
-          //-   span= cat
-          small= post.categories
-          
+        +post-item(post)
+
+block scripts
+  script(src='bower_components/isotope/dist/isotope.pkgd.min.js')
+  script(src='js/feed.js')
