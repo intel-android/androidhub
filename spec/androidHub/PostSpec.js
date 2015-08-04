@@ -55,8 +55,8 @@ function test_post(filename) {
         expect(data.title).toEqual(jasmine.any(String));
       });
 
-      it('title is not too long (50 characters)', function () {
-        expect(data.title.length).toBeLessThan(50);
+      it('title is not too long (100 characters)', function () {
+        expect(data.title.length).toBeLessThan(100);
       });
 
       it('has an author key', function () {
