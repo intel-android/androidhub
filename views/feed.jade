@@ -15,12 +15,12 @@ block content
 
   //- Authors
   .authors-horizontal-list
-    ul.reflex-container
+    ul.reflex-container.reverse-margin-sm
       for author in data.authors
         +author(author)
 
   //- Articles
-  ul#feed-grid.reflex-container.reflex-wrap
+  ul#feed-grid.reflex-container.reflex-wrap.reverse-margin-md
     - var postsByDate = _.sortByAll(site.posts.all(), 'date')
 
     for post in postsByDate
