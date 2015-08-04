@@ -2,7 +2,6 @@ var _      = require("lodash");
 var fs     = require("fs");
 var jade   = require("jade");
 var yaml   = require("js-yaml");
-var moment = require("moment");
 
 describe("Posts", function() {
   var glob = require("glob");
@@ -73,7 +72,7 @@ function test_post(filename) {
 
       // moment(date) throws a deprecation warning: https://github.com/moment/moment/issues/1407 for more info
       it('date parses by moment.js to a valid date', function () {
-        expect(moment(new Date(data.date)).isValid()).toBeTruthy();
+        expect(data.date).toBeValidDate();
       });
     });
 
