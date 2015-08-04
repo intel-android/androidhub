@@ -24,6 +24,7 @@
     "jasmine": "^2.3.2",
     "jasmine-expect": "^2.0.0-beta1",
     "jasmine-node": "^1.14.5",
-    "js-yaml": "^3.3.1"
+    "js-yaml": "^3.3.1",
+    "request": "^2.60.0"
   }
 }
