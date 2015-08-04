@@ -5,14 +5,6 @@ block content
   article
     h3 Authors
 
-    //- ul
-    //-   - var authorsAlphabetical = _.sortByAll(site.posts.all(), 'author')
-    //-   - var authorsUnique = _.uniq(authorsAlphabetical, true, function(post){ return post.author })
-    //-   for post in authorsUnique
-    //-     unless post._ignore
-    //-       li= post.author
-
-
     ul.reflex-container.reflex-wrap
       for author in data.authors
         +author(author)

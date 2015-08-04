@@ -1,6 +1,6 @@
 mixin author(author)
   li.author.reflex-col-xs-6.reflex-col-sm-4.reflex-col-md-3.reflex-col-lg-2(class=post.categories)
-    div.reflex-item.reflex-item-margin-sm
+    .reflex-item.reflex-item-margin-sm
       - var image = author.gravatar ? author.gravatar : 'http://placehold.it/200x200?text=#{author.displayname}'
 
       img.reflex-img(src=image)

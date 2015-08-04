@@ -4,20 +4,22 @@ extends layout
 
 block content
   h1 Feed
-  .filters
+  ul.filters
     - var allCats = _.map(site.posts.all(), function(post){ return post.categories })
     - var flatCats = _.flatten(allCats)
     - var uniqCats = _.uniq(flatCats, function(cat){ return cat })
 
+    li All
     for cat in uniqCats
-      a= cat
+      li= cat
 
-  h3 Authors
-  ul.reflex-container
-    for author in data.authors
-      +author(author)
+  //- Authors
+  .authors-horizontal-list
+    ul.reflex-container
+      for author in data.authors
+        +author(author)
 
-  h3 Articles
+  //- Articles
   ul#feed-grid.reflex-container.reflex-wrap
     - var postsByDate = _.sortByAll(site.posts.all(), 'date')
 
