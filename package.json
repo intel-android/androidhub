@@ -1,6 +1,9 @@
 {
   "name": "-intel-android",
   "description": "",
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine"
+  },
   "dependencies": {
     "autoprefixer-stylus": "0.5.x",
     "axis": "0.3.x",
@@ -11,7 +14,15 @@
     "js-pipeline": "0.2.x",
     "lodash": "^3.10.0",
     "marked": "0.3.x",
+    "moment": "^2.10.6",
     "rupture": "0.6.x",
     "stylus": "0.49.x"
+  },
+  "devDependencies": {
+    "glob": "^5.0.14",
+    "jasmine": "^2.3.2",
+    "jasmine-expect": "^2.0.0-beta1",
+    "jasmine-node": "^1.14.5",
+    "js-yaml": "^3.3.1"
   }
 }
