@@ -17,9 +17,10 @@ html
     != css('')
 
   body
-    include includes/nav
+    include includes/_nav
+    - var hero = post.heroimage ? post.heroimage : 'http://placehold.it/1400x577&text=_'
 
-    header.reflex-container.reflex-wrap(style='background-image:url(http://placehold.it/1400x577&text=_)')
+    header.reflex-container.reflex-wrap(style='background-image:url(#{hero})')
       .reflex-align-self-center.centered-title.reflex-direction-column.reflex-col-8
         h1.header-title.normal-type= post.title
         h4.thin-type by #{post.author} | #{post.date}
