@@ -1,17 +1,26 @@
+include mixins/_feed-item
+include mixins/_author
 extends layout
 
 block content
-  h3 Feed
+  h1 Feed
+  .filters
+    - var allCats = _.map(site.posts.all(), function(post){ return post.categories })
+    - var flatCats = _.flatten(allCats)
+    - var uniqCats = _.uniq(flatCats, function(cat){ return cat })
 
-  ul
+    for cat in uniqCats
+      a= cat
+
+  h3 Authors
+  ul.reflex-container
+    for author in data.authors
+      +author(author)
+
+  h3 Articles
+  ul#feed-grid.reflex-container.reflex-wrap
     - var postsByDate = _.sortByAll(site.posts.all(), 'date')
+
     for post in postsByDate
       unless post._ignore
-        li
-          div
-            a(href=post._url) "#{post.title}" 
-            small by #{post.author}
-          //- each cat in post.categories
-          //-   span= cat
-          small= post.categories
-          
+        +feed-item(post)
