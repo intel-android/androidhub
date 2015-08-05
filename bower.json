@@ -1,0 +1,19 @@
+{
+  "name": "intel-android",
+  "version": "0.0.0",
+  "authors": [
+    "Adam Argyle <atom@argyleink.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "reflex": "leejordan/reflex",
+    "isotope": "~2.2.1"
+  }
+}

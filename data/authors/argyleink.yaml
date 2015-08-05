@@ -1,0 +1,13 @@
+# Personal Info
+displayname:  'Adam Argyle'
+nickname:     'Adrock'
+website:      'http://argyleink.com'
+gravatar:     'https://s.gravatar.com/avatar/4146f0a7de7dbfd047abe6e7fda1b407'
+
+# Social Networks
+github:       'argyleink'
+twitter:      'argyleink'
+codepen:      'argyleink'
+
+# About
+excerpt: 'This is where you can write a short blurb about yourself. There is another opportunity to write a longer bio, but that is too much for YAML. Create or copy the #{your_name}.jade file and go nuts in there about yourself!'
