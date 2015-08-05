@@ -16,6 +16,8 @@ module.exports =
   ]
 
   extensions: [
+    roots_yaml()
+    dynamic(write: 'content.json')
     js_pipeline(files: [
       'bower_components/isotope/dist/isotope.pkgd.min.js'
       'assets/js/*.coffee'
@@ -24,8 +26,6 @@ module.exports =
       'assets/css/*.styl'
       'bower_components/reflex/css/reflex.css'
     ])
-    dynamic(write: 'content.json')
-    roots_yaml()
   ]
 
   stylus:

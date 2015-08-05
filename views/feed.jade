@@ -3,26 +3,27 @@ include mixins/_author
 extends layout
 
 block content
-  h1 Feed
-  ul.filters
-    - var allCats = _.map(site.posts.all(), function(post){ return post.categories })
-    - var flatCats = _.flatten(allCats)
-    - var uniqCats = _.uniq(flatCats, function(cat){ return cat })
+  article
+    h1 Feed
+    ul.filters
+      - var allCats = _.map(site.posts.all(), function(post){ return post.categories })
+      - var flatCats = _.flatten(allCats)
+      - var uniqCats = _.uniq(flatCats, function(cat){ return cat })
 
-    li All
-    for cat in uniqCats
-      li= cat
+      li All
+      for cat in uniqCats
+        li= cat
 
-  //- Authors
-  .authors-horizontal-list
-    ul.reflex-container.reverse-margin-sm
-      for author in data.authors
-        +author(author)
+    //- Authors
+    .authors-horizontal-list
+      ul.reflex-container.reverse-margin-sm
+        for author in data.authors
+          +author(author)
 
-  //- Articles
-  ul#feed-grid.reflex-container.reflex-wrap.reverse-margin-md
-    - var postsByDate = _.sortByAll(site.posts.all(), 'date')
+    //- Articles
+    ul#feed-grid.reflex-container.reflex-wrap.reverse-margin-md
+      - var postsByDate = _.sortByAll(site.posts.all(), 'date')
 
-    for post in postsByDate
-      unless post._ignore
-        +feed-item(post)
+      for post in postsByDate
+        unless post._ignore
+          +feed-item(post)
