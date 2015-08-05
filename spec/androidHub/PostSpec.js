@@ -1,3 +1,5 @@
+require('jasmine-expect');
+
 var _      = require("lodash");
 var fs     = require("fs");
 var jade   = require("jade");
@@ -22,17 +24,17 @@ describe("Posts", function() {
 
 function test_post(filename) {
   it("filename is a string", function () {
-    expect(filename).toEqual(jasmine.any(String));
+    expect(filename).toBeString();
   });
 
   var fileInput = fs.readFileSync(filename, "utf8");
   var post = filename.split('/')[-1];
 
   it(post + " read the file in as a string", function() {
-    expect(fileInput).toEqual(jasmine.any(String));
+    expect(fileInput).toBeString();
   });
 
-  describe(post + " is a combination of yaml and jade", function () {
+  describe(post + " is a jade file with yaml frontmatter", function () {
     var parts     = fileInput.split('---');
     var yamlInput = parts[1];
     var jadeInput = parts[2];
@@ -43,15 +45,47 @@ function test_post(filename) {
       template = jade.compile(jadeInput, {filename: filename});
     });
 
+    describe("author", function () {
+      // author comes from the path
+      var author = filename.split('/')[1];
+
+      it('is required', function () {
+        expect(author).toBeString();
+      });
+
+      it('is not too long (20 characters)', function () {
+        expect(author.length).toBeLessThan(20);
+      });
+
+      describe('has matching author.yaml', function () {
+        var yamlPath = "data/authors/" + author + ".yaml";
+
+        it("file exists", function (done) {
+          fs.exists(yamlPath, function(exists) {
+            if (!exists) {
+              done(yamlPath + ' does not exist. Please create it.');
+            } else {
+              done();
+            }
+          });
+        });
+
+        it("yaml parses into object", function() {
+          var authorYaml = yaml.safeLoad(fs.readFileSync(yamlPath, "utf8"));
+          expect(authorYaml).toBeObject();
+        });
+      });
+    });
+
     describe('yaml data', function () {
-      it('yaml parses into an object', function() {
+      it('yaml parses into object', function() {
         // TODO parse into yaml and inspect object for required vars
-        expect(data).toEqual(jasmine.any(Object));
+        expect(data).toBeObject();
       });
 
       describe("title field", function () {
         it('is required', function () {
-          expect(data.title).toEqual(jasmine.any(String));
+          expect(data.title).toBeString();
         });
 
         it('is not too long (100 characters)', function () {
@@ -59,19 +93,9 @@ function test_post(filename) {
         });
       });
 
-      describe("author key", function () {
-        it('is required', function () {
-          expect(data.author).toEqual(jasmine.any(String));
-        });
-
-        it('is not too long (20 characters)', function () {
-          expect(data.author.length).toBeLessThan(20);
-        });
-      });
-
       describe("date key", function () {
         it('is required', function () {
-          expect(data.date).toEqual(jasmine.any(String));
+          expect(data.date).toBeString();
         });
 
         // moment(date) throws a deprecation warning
@@ -80,11 +104,33 @@ function test_post(filename) {
           expect(data.date).toBeValidDate();
         });
       });
+
+      describe("categories key", function() {
+        it('is an array of strings', function () {
+          expect(data.categories).toBeArrayOfStrings();
+        });
+
+        it('at least 1 category', function () {
+          expect(data.categories.length).toBeGreaterThan(0);
+        });
+
+        it('but not too many (3 max)', function () {
+          expect(data.categories.length).toBeLessThan(4);
+        });
+
+        it('contains valid categories', function () {
+          var validCategories = ['ideate', 'design', 'build', 'launch'];
+
+          for(var i; i<data.categories.length; i++) {
+            expect(validCategories).toContain(data.categories[i]);
+          }
+        });
+      });
     });
 
 
     it('jade parses into a function', function() {
-      expect(template).toEqual(jasmine.any(Function));
+      expect(template).toBeFunction();
     });
 
   });
