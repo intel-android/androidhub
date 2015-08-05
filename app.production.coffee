@@ -10,10 +10,10 @@ module.exports =
   ignores: ['readme.md', '**/layout.*', '**/_*', '.gitignore', 'ship.*conf']
 
   extensions: [
+    roots_yaml()
+    dynamic()
     js_pipeline(files: 'assets/js/*.coffee', out: 'js/app.js', minify: false, hash: true),
     css_pipeline(files: 'assets/css/*.styl', out: 'css/app.css', minify: false, hash: true),
-    dynamic()
-    roots_yaml()
   ]
 
   stylus:
@@ -21,5 +21,4 @@ module.exports =
 
   locals:
     dev:  false
-    base: '/sites/android-hub/'
     _:    require 'lodash'

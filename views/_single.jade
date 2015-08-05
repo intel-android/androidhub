@@ -8,19 +8,17 @@ html
     meta(name='author', content= "author of the site")
     meta(name="viewport" content="width=device-width, initial-scale=1")
 
-    base(href=base)
-
     include includes/_open-graph
     include includes/_twitter
 
     title= post.title
-    != css('')
+    != css('/')
 
   body
     include includes/_nav
     - var hero = post.heroimage ? post.heroimage : 'http://placehold.it/1400x577&text=_'
-    - var author_handle = post._categories[1]
-    - var author = data.authors[author_handle] ? data.authors[author_handle] : 'unknown'
+    - var author_handle = post._categories[1] ? post._categories[1] : 'admin'
+    - var author = data.authors[author_handle]
 
     header.reflex-container.reflex-wrap(style='background-image:url(#{hero})')
       .reflex-align-self-center.centered-title.reflex-direction-column.reflex-col-10
@@ -34,5 +32,5 @@ html
       a.btn(href='') &laquo; back to index
        
     include includes/_footer 
-    != js('')
+    != js('/')
     //- != JSON.stringify(post)

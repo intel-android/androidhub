@@ -44,7 +44,6 @@ module.exports =
 
   locals:
     dev: true
-    base: '/'
     _: require 'lodash'
 
   debug: true

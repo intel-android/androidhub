@@ -50,23 +50,15 @@ function test_author(filename) {
         });
       });
 
-      describe("gravatar key", function () {
+      describe("twitter key", function () {
         it('is required', function () {
-          expect(data.gravatar).toEqual(jasmine.any(String));
-          expect(data.gravatar).not.toEqual('');
+          expect(data.twitter).toEqual(jasmine.any(String));
+          expect(data.twitter).not.toBeEmptyString();
         });
 
-        it('is not too long (200 characters)', function () {
-          expect(data.gravatar.length).toBeLessThan(200);
-        });
-
-        it('is a valid url', function(done) {
-          request(data.gravatar, function(err, res, body) {
-            if (err) done(err);
-
-            expect(res.statusCode).toEqual(200);
-            done();
-          });
+        // according to https://support.twitter.com/articles/14609
+        it('is not too long (15 characters)', function () {
+          expect(data.twitter.length).toBeLessThan(16);
         });
       });
     });
