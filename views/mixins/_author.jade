@@ -1,7 +1,7 @@
 mixin author(author)
   li.author.reflex-col-3.reflex-col-md-2(class=post.categories)
     .reflex-item.reflex-item-margin-sm
-      - var image = author.gravatar ? author.gravatar : 'http://placehold.it/200x200?text=#{author.displayname}'
+      - var image = author.twitter ? 'https://twitter.com/'+ author.twitter +'/profile_image?size=original' : 'http://placehold.it/200x200?text=' + author.displayname
 
       img.reflex-img(src=image)
       small= author.displayname
