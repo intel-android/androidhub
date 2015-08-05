@@ -9,10 +9,14 @@ roots_yaml    = require 'roots-yaml'
 module.exports =
   ignores: [
     'readme.md'
+    'ship.*conf'
     '**/layout.*'
     '**/_*'
     '.gitignore'
-    'ship.*conf'
+    'bower.json'
+    'app.sublime-project'
+    'spec/**'
+    # 'data/**' 
   ]
 
   extensions: [
@@ -23,8 +27,8 @@ module.exports =
       'assets/js/*.coffee'
     ])
     css_pipeline(files: [
-      'assets/css/*.styl'
       'bower_components/reflex/css/reflex.css'
+      'assets/css/*.styl'
     ])
   ]
 

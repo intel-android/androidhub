@@ -1,15 +1,10 @@
-//- nav
-//-   a(href='/') Home
-//-   a(href='/about') About
-//-   a(href='/contribute') Contribute
-//-   a(href='/authors') Authors
-
-nav: section
-  h1: a(href='') Intel Android Hub
-  ul
-    //- li: a(href='') Home
-    li: a(href='/feed.html') Feed
-    li: a(href='/authors.html') Authors
-    li: a(href='/about.html') About
-    li: a(href='/commit.html') Commit
-    li: a(href='/android-field-guide') Android Field Guide
+nav: section.no-responsive-padding: .reflex-container
+  .link-nav-set.text-center.reflex-col-9.reflex-align-center.reflex-justify-space-between
+    a.flex-child-image-fix(href=''): img.logo(src='http://placehold.it/60x25&text=LOGO')
+    a(href='/feed.html') Feed
+    a(href='/authors.html') Authors
+    a(href='/about.html') About
+    a(href='/commit.html') Commit
+    a.flex-child-image-fix(href='field-guide.html'): img.field-guide(src='http://placehold.it/120x40&text=FieldGuide')
+  .reflex-col-3.reflex-align-center.reflex-justify-end
+    include _social-icons
