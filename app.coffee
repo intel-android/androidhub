@@ -9,10 +9,14 @@ roots_yaml    = require 'roots-yaml'
 module.exports =
   ignores: [
     'readme.md'
+    'ship.*conf'
     '**/layout.*'
     '**/_*'
     '.gitignore'
-    'ship.*conf'
+    'bower.json'
+    'app.sublime-project'
+    'spec/**'
+    # 'data/**' 
   ]
 
   extensions: [
