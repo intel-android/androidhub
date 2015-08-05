@@ -4,12 +4,23 @@ header
   background-position:center center
   color:white
   text-shadow:1px 1px 0 hsla(0,0%,0%,0.2)
-  // background-attachment:fixed
+  background-attachment:fixed
   +above(900px)
     height:60vh
+    
+  &:before
+    content: " "
+    position: absolute
+    top:0
+    bottom:0
+    left:0
+    right:0
+    background-color:hsla(0,0%,0%,0.3)
   
 .centered-title
-  margin:auto
+  margin:20vh auto auto
+  +above(900px)
+    margin-top:30vh
   
 .header-title
   margin-bottom:0

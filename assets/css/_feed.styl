@@ -1,10 +1,41 @@
-.feed-item img
-  height:200px
-  object-fit:cover
-  
-  +above(768px)
-    height:300px
-  +above(992px)
+.feed-item 
+  border-radius:0.5em
+  &:hover
+    img
+      transform:scale(1.1)
+
+  > a
+    text-decoration:none
+    color:initial
+    
+  img
     height:200px
-  +above(1200px)
-    height:150px
+    object-fit:cover
+    overflow:hidden
+    
+    +above(768px)
+      height:300px
+    +above(992px)
+      height:200px
+    +above(1200px)
+      height:150px
+    
+.post-title
+  color:hsl(0,0%,50%)
+  margin:0.5rem 0 0.25rem
+  
+.post-meta
+  color:hsl(0,0%,70%)
+  margin:0.25rem 0
+  > span
+    margin:0 4px
+    color:hsl(0,0%,50%)
+  
+.post-excerpt
+  color:hsl(0,0%,20%)
+  
+.post-meta, .post-excerpt
+  font-size:0.6rem
+  
+.filters
+  inline-list(1rem)

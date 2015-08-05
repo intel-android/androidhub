@@ -18,18 +18,21 @@ html
 
   body
     include includes/_nav
-    - var hero = post.heroimage ? post.heroimage : 'http://placehold.it/1400x577&text=_'
+    //- - var hero = post.heroimage ? post.heroimage : 'http://placehold.it/1400x577&text=_'
+    //- - var author_handle = post._categories[1]
+    //- - var author = data.authors[author_handle]
 
     header.reflex-container.reflex-wrap(style='background-image:url(#{hero})')
-      .reflex-align-self-center.centered-title.reflex-direction-column.reflex-col-8
+      .reflex-align-self-center.centered-title.reflex-direction-column.reflex-col-10
         h1.header-title.normal-type= post.title
-        h4.thin-type by #{post.author} | #{post.date}
+        //- h4.thin-type #{author.displayname} | #{post.date}
     
     section
       article
-        //- h4 by #{post.author}
         block content
 
       a.btn(href='') &laquo; back to index
-        
+       
+    include includes/_footer 
     != js('')
+    //- != JSON.stringify(post)

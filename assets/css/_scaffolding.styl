@@ -1,9 +1,15 @@
+html, body
+  background-color:#eee
+
 nav
-  nav()
-  & > h1
+  nav(1, #fff, #444)
+  a
+    text-decoration:none
+  h1
     margin:0
+    padding-left:0
     & > a
-      color:white
+      color:#444
       text-decoration:none
   
 // nav
@@ -11,6 +17,12 @@ nav
 //   text-align:center
 //   & > a
 //     flex:1
+
+.reflex-container.reverse-margin-sm
+  margin:0 -5px
+  
+.reflex-container.reverse-margin-md
+  margin:0 -10px
 
 section
   margin:0 auto
@@ -20,6 +32,6 @@ section
     max-width:100%
 
 article
-  padding:2rem 0
+  padding:0 0 2rem 0
   +below(940px)
     padding:1rem
