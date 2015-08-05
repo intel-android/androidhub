@@ -3,7 +3,7 @@ mixin feed-item(post)
 
   li.feed-item.reflex-col-xs-6.reflex-col-sm-4.reflex-col-md-4.reflex-col-lg-3(class=[post.categories, post.author])
     a.reflex-item.reflex-item-margin-md(href=post._url)
-      img.reflex-img(src=image)
+      img.reflex-img.cover(src=image)
       h4.post-title= post.title
       small.post-meta #{post.author} <span>|</span> #{post.date}
       small.post-excerpt= post.excerpt

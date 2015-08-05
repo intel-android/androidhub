@@ -23,8 +23,8 @@ module.exports =
       'assets/js/*.coffee'
     ])
     css_pipeline(files: [
-      'assets/css/*.styl'
       'bower_components/reflex/css/reflex.css'
+      'assets/css/*.styl'
     ])
   ]
 
