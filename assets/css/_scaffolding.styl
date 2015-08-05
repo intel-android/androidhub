@@ -2,7 +2,6 @@ html, body
   background-color:#eee
 
 nav
-  // nav(1, #fff, #444)
   a
     text-decoration:none
     color:#444
@@ -20,10 +19,13 @@ section
   margin:0 auto
   max-width:992px
   
+  +below(992px)
+    padding:0 1rem
+    &.no-responsive-padding
+      padding:0
+  
   img
     max-width:100%
 
 article
   padding:0 0 2rem 0
-  +below(992px)
-    padding:1rem
