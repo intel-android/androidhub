@@ -2,7 +2,6 @@ var _      = require("lodash");
 var fs     = require("fs");
 var jade   = require("jade");
 var yaml   = require("js-yaml");
-var moment = require("moment");
 
 describe("Posts", function() {
   var glob = require("glob");
@@ -37,7 +36,6 @@ function test_post(filename) {
     var parts     = fileInput.split('---');
     var yamlInput = parts[1];
     var jadeInput = parts[2];
-
     var data,template;
 
     beforeEach(function () {
@@ -51,29 +49,36 @@ function test_post(filename) {
         expect(data).toEqual(jasmine.any(Object));
       });
 
-      it('has a title key', function () {
-        expect(data.title).toEqual(jasmine.any(String));
+      describe("title field", function () {
+        it('is required', function () {
+          expect(data.title).toEqual(jasmine.any(String));
+        });
+
+        it('is not too long (100 characters)', function () {
+          expect(data.title.length).toBeLessThan(100);
+        });
       });
 
-      it('title is not too long (50 characters)', function () {
-        expect(data.title.length).toBeLessThan(50);
+      describe("author key", function () {
+        it('is required', function () {
+          expect(data.author).toEqual(jasmine.any(String));
+        });
+
+        it('is not too long (20 characters)', function () {
+          expect(data.author.length).toBeLessThan(20);
+        });
       });
 
-      it('has an author key', function () {
-        expect(data.author).toEqual(jasmine.any(String));
-      });
+      describe("date key", function () {
+        it('is required', function () {
+          expect(data.date).toEqual(jasmine.any(String));
+        });
 
-      it('author is not too long (20 characters)', function () {
-        expect(data.author.length).toBeLessThan(20);
-      });
-
-      it('has a date key', function () {
-        expect(data.date).toEqual(jasmine.any(String));
-      });
-
-      // moment(date) throws a deprecation warning: https://github.com/moment/moment/issues/1407 for more info
-      it('date parses by moment.js to a valid date', function () {
-        expect(moment(new Date(data.date)).isValid()).toBeTruthy();
+        // moment(date) throws a deprecation warning
+        // see https://github.com/moment/moment/issues/1407 for more info
+        it('date parses by moment.js to a valid date', function () {
+          expect(data.date).toBeValidDate();
+        });
       });
     });
 
