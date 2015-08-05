@@ -1,4 +1,3 @@
-return
 return unless document.getElementById 'feed-grid'
 
 feedgrid = new Isotope '#feed-grid',
