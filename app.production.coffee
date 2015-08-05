@@ -21,5 +21,4 @@ module.exports =
 
   locals:
     dev:  false
-    base: '/sites/android-hub/'
     _:    require 'lodash'
