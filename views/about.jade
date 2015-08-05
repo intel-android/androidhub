@@ -1,6 +1,20 @@
 extends layout
+include mixins/_author
 
 block content
-  h3 About
+  h1 About
 
-  
+  section
+    .card
+      h3.marginless So what's this all about anyway...
+      p Lorem ipsum dolor sit amet, pro partem soluta ea. Sonet dicunt percipitur et has, cum pericula democritum ad. Elitr recusabo ei duo, hinc invenire vituperatoribus qui ei. Vidisse graecis mei at, est te equidem efficiendi omittantur, quem prompta gloriatur ius ea.
+
+    .spacer.sm
+
+    h2 Our Authors
+    ul.reflex-container.reflex-wrap.reverse-margin-sm
+      for author in _.sortBy(data.authors, 'displayname')
+        +author(author)
+
+    .text-right
+      a(href='authors.html') See all our authors ->
