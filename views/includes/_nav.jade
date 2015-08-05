@@ -1,14 +1,12 @@
-//- nav
-//-   a(href='/') Home
-//-   a(href='/about') About
-//-   a(href='/contribute') Contribute
-//-   a(href='/authors') Authors
-
-nav: section
-  h1: a(href='') Intel Hub
-  ul
-    //- li: a(href='') Home
-    li: a(href='feed.html') Feed
-    li: a(href='authors.html') Authors
-    li: a(href='about.html') About
-    li: a(href='commit.html') Commit
+nav: section: .reflex-container
+  .reflex-col-8
+    a(href=''): img(src='http://placehold.it/100x50&text=LOGO')
+    a.reflex-item.reflex-align-self-center(href='feed.html') Feed
+    a.reflex-item.reflex-align-self-center(href='authors.html') Authors
+    a.reflex-item.reflex-align-self-center(href='about.html') About
+    a.reflex-item.reflex-align-self-center(href='commit.html') Commit
+  .reflex-col-4
+    a.reflex-item.reflex-align-self-center(href='field-guide.html'): img(src='http://placehold.it/150x50&text=FieldGuide')
+    a.reflex-item.reflex-align-self-center(href=''): img(src='http://placehold.it/50x50&text=Tw')
+    a.reflex-item.reflex-align-self-center(href=''): img(src='http://placehold.it/50x50&text=Fb')
+    a.reflex-item.reflex-align-self-center(href=''): img(src='http://placehold.it/50x50&text=G+')
