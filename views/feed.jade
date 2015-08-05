@@ -17,7 +17,7 @@ block content
     //- Authors
     .authors-horizontal-list
       ul.reflex-container.reverse-margin-sm
-        for author in data.authors
+        for author in _.sortBy(data.authors, 'displayname')
           +author(author)
 
     //- Articles
