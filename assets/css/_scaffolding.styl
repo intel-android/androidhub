@@ -2,36 +2,28 @@ html, body
   background-color:#eee
 
 nav
-  nav(1, #fff, #444)
+  // nav(1, #fff, #444)
   a
     text-decoration:none
-  h1
-    margin:0
-    padding-left:0
-    & > a
-      color:#444
-      text-decoration:none
-  
-// nav
-//   display:flex
-//   text-align:center
-//   & > a
-//     flex:1
+    color:#444
+    text-align:center
 
 .reflex-container.reverse-margin-sm
   margin:0 -5px
+  width:calc(100% + 10px)
   
 .reflex-container.reverse-margin-md
   margin:0 -10px
+  width:calc(100% + 20px)
 
 section
   margin:0 auto
-  max-width:940px
+  max-width:992px
   
   img
     max-width:100%
 
 article
   padding:0 0 2rem 0
-  +below(940px)
+  +below(992px)
     padding:1rem
