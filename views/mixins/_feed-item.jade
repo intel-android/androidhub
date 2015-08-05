@@ -1,7 +1,7 @@
 mixin feed-item(post)
   - var image = post.heroimage ? post.heroimage : 'http://placehold.it/350x150?text=#{post.author}'
 
-  li.feed-item.reflex-col-xs-12.reflex-col-sm-6.reflex-col-md-4.reflex-col-lg-3(class=[post.categories, post.author])
+  li.feed-item.reflex-col-xs-6.reflex-col-sm-4.reflex-col-md-4.reflex-col-lg-3(class=[post.categories, post.author])
     a.reflex-item.reflex-item-margin-md(href=post._url)
       img.reflex-img(src=image)
       h4.post-title= post.title
