@@ -5,6 +5,9 @@ paths:
   authors:      '/authors.html'
   about:        '/about.html'
   commit:       '/commit.html'
+  terms:        ''
+  privacy:      ''
+  cookies:      ''
 
 twitter:
   account:      'intelsoftware'
