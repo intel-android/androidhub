@@ -7,13 +7,22 @@ dynamic         = require 'dynamic-content'
 roots_yaml      = require 'roots-yaml'
 
 module.exports =
-  ignores: ['readme.md', '**/layout.*', '**/_*', '.gitignore', 'ship.*conf']
+  ignores: [
+    'readme.md'
+    'ship.*conf'
+    '**/layout.*'
+    '**/_*'
+    '.gitignore'
+    'bower.json'
+    'app.sublime-project'
+    'spec/**'
+    # 'data/**' 
+  ]
 
   extensions: [
     roots_yaml()
     dynamic()
-
-    js_pipeline(
+    js_pipeline
       files: [
         'bower_components/isotope/dist/isotope.pkgd.min.js'
         'assets/js/*.coffee'
@@ -21,8 +30,7 @@ module.exports =
       out:    'js/app.js'
       minify: true
       hash:   true
-    )
-    css_pipeline(
+    css_pipeline
       files: [
         'bower_components/reflex/css/reflex.css'
         'assets/css/*.styl'
@@ -30,11 +38,14 @@ module.exports =
       out:    'css/app.css'
       minify: false # minify is not working right now for some reason with roots
       hash:   true
-    )
   ]
 
   stylus:
-    use: [axis(), rupture(), autoprefixer()]
+    use: [
+      axis()
+      rupture()
+      autoprefixer()
+    ]
 
   locals:
     dev:  false

@@ -1,19 +1,26 @@
-site:
-  - title: ''
-  - description: ''
-  - author: ''
+paths:
+  field_guide:  'http://intel-android.ddhive.com/android-field-guide/'
+  home:         '/'
+  feed:         '/feed.html'
+  authors:      '/authors.html'
+  about:        '/about.html'
+  commit:       '/commit.html'
+  terms:        ''
+  privacy:      ''
+  cookies:      ''
 
 twitter:
-  - account: ''
-  - site: ''
-  - title: ''
-  - description: ''
-  - creator: ''
-  - image: ''
+  account:      'intelsoftware'
+  site:         'http://intel-android.ddhive.com'
+  title:        'Intel Android Developer Hub'
+  description:  'Engage with Intel for all things software and join a worldwide community of software developers on the Intel Developer Zone.'
+  creator:      'intelsoftware'
+  image:        'https://pbs.twimg.com/profile_images/451797078142767104/LjIk-xW-.png'
 
-og:
-  - title: ''
-  - url: ''
-  - image: ''
-  - description: ''
-  - site: ''
+opengraph:
+  title:        'Intel Android Developer Hub'
+  url:          'http://intel-android.ddhive.com'
+  image:        'https://pbs.twimg.com/profile_images/451797078142767104/LjIk-xW-.png'
+  site:         'Intel Android Developer Hub'
+  description:  'please update the description for this site in meta.yaml'
+  author:       'Deloitte Digital'
