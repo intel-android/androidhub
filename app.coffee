@@ -44,6 +44,7 @@ module.exports =
 
   'coffee-script':
     sourcemap: true
+    bare: true
 
   jade:
     pretty: true

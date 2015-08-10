@@ -47,6 +47,9 @@ module.exports =
       autoprefixer()
     ]
 
+  'coffee-script':
+    bare: true
+
   locals:
     dev:  false
     _:    require 'lodash'
