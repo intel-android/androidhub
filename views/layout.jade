@@ -2,19 +2,16 @@ doctype html
 html
 
   head
-    meta(charset='utf8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
-    meta(name='description', content='description of your site')
-    meta(name='author', content= "author of the site")
-    meta(name="viewport" content="width=device-width, initial-scale=1")
+    include includes/_site-meta
 
-    base(href=base)
+    include mixins/_og-meta
+    +og-meta(data.meta.opengraph)
 
-    include includes/_open-graph
-    include includes/_twitter
+    include mixins/_twitter-meta
+    +twitter-meta(data.meta.twitter)
 
-    title= _path
-    != css('')
+    title= data.meta.opengraph.title
+    != css('/')
 
   body
     include includes/_nav
@@ -22,4 +19,4 @@ html
     section: block content
 
     include includes/_footer
-    != js('')
+    != js('/')

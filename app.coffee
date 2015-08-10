@@ -10,11 +10,15 @@ records       = require 'roots-records'
 module.exports =
   ignores: [
     'readme.md'
+    'ship.*conf'
     '**/layout.*'
     '**/_*'
     '.gitignore'
-    'ship.*conf'
     'scripts/**'
+    'bower.json'
+    'app.sublime-project'
+    'spec/**'
+    # 'data/**' 
   ]
 
   extensions: [
@@ -50,7 +54,6 @@ module.exports =
 
   locals:
     dev: true
-    base: '/'
     _: require 'lodash'
 
   debug: true

@@ -2,7 +2,8 @@
   border-radius:0.5em
   &:hover
     img
-      transform:scale(1.1)
+      // transform:scale(1.1)
+      box-shadow:0 0 1rem hsla(0,0%,0%,0.2)
 
   > a
     text-decoration:none
@@ -10,13 +11,8 @@
     
   img
     height:200px
-    object-fit:cover
     overflow:hidden
     
-    +above(768px)
-      height:300px
-    +above(992px)
-      height:200px
     +above(1200px)
       height:150px
     
@@ -39,3 +35,4 @@
   
 .filters
   inline-list(1rem)
+  text-transform:capitalize

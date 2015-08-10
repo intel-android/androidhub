@@ -7,19 +7,46 @@ dynamic         = require 'dynamic-content'
 roots_yaml      = require 'roots-yaml'
 
 module.exports =
-  ignores: ['readme.md', '**/layout.*', '**/_*', '.gitignore', 'ship.*conf']
+  ignores: [
+    'readme.md'
+    'ship.*conf'
+    '**/layout.*'
+    '**/_*'
+    '.gitignore'
+    'bower.json'
+    'app.sublime-project'
+    'spec/**'
+    # 'data/**' 
+  ]
 
   extensions: [
-    js_pipeline(files: 'assets/js/*.coffee', out: 'js/app.js', minify: false, hash: true),
-    css_pipeline(files: 'assets/css/*.styl', out: 'css/app.css', minify: false, hash: true),
-    dynamic()
     roots_yaml()
+    dynamic()
+    js_pipeline
+      files: [
+        'bower_components/isotope/dist/isotope.pkgd.min.js'
+        'assets/js/*.coffee'
+      ]
+      out:    'js/app.js'
+      minify: true
+      hash:   true
+    css_pipeline
+      files: [
+        'bower_components/reflex/css/reflex.css'
+        'assets/css/*.styl'
+      ]
+      out:    'css/app.css'
+      minify: false # minify is not working right now for some reason with roots
+      hash:   true
   ]
 
   stylus:
-    use: [axis(), rupture(), autoprefixer()]
+    use: [
+      axis()
+      rupture()
+      autoprefixer()
+    ]
 
   locals:
     dev:  false
-    base: '/sites/android-hub/'
     _:    require 'lodash'

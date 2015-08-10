@@ -1,31 +1,49 @@
 doctype html
 html
+  //- grab the post hero image or set a fallback
+  - var hero = post.heroimage ? post.heroimage : 'http://placehold.it/1400x577&text=_'
+  
+  //- dig up author yaml data
+  - var author_handle = post._categories[1] ? post._categories[1] : 'admin'
+  - var author = data.authors[author_handle]
+  - var authorImage = author.twitter ? 'https://twitter.com/'+ author.twitter +'/profile_image?size=original' : 'http://placehold.it/200x200?text=' + author.displayname
+
+  //- grab git commit history for this post
+  - var url = post._url.substr(1, post._url.length - 6) + '.jade'
+  - var git = records.git[url] ? records.git[url] : records.git['posts/argyleink/first.jade']
 
   head
-    meta(charset='utf8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
-    meta(name='description', content='description of your site')
-    meta(name='author', content= "author of the site")
-    meta(name="viewport" content="width=device-width, initial-scale=1")
+    include includes/_site-meta
 
-    base(href=base)
+    include mixins/_og-meta
+    +og-meta({
+      url:          data.meta.opengraph.url,
+      title:        post.title,
+      description:  post.excerpt,
+      site_name:    data.meta.opengraph.site,
+      image:        hero | authorImage
+    })
 
-    include includes/_open-graph
-    include includes/_twitter
+    include mixins/_twitter-meta
+    +twitter-meta({
+      account:      author.twitter,
+      site:         author.website,
+      title:        post.title,
+      description:  post.excerpt,
+      creator:      author.displayname,
+      image:        hero | authorImage
+    })
 
     title= post.title
-    != css('')
+    != css('/')
 
   body
     include includes/_nav
-    //- - var hero = post.heroimage ? post.heroimage : 'http://placehold.it/1400x577&text=_'
-    //- - var author_handle = post._categories[1]
-    //- - var author = data.authors[author_handle]
 
     header.reflex-container.reflex-wrap(style='background-image:url(#{hero})')
       .reflex-align-self-center.centered-title.reflex-direction-column.reflex-col-10
         h1.header-title.normal-type= post.title
-        //- h4.thin-type #{author.displayname} | #{post.date}
+        h4.thin-type #{author.displayname} | #{git.date}
     
     section
       article
@@ -34,7 +52,5 @@ html
       a.btn(href='') &laquo; back to index
        
     include includes/_footer 
-    - var url = post._url.substr(1,post._url.length - 6) + '.jade'
-    //- != JSON.stringify(url)
-    != js('')
-    != JSON.stringify(records.git[url])
+    != js('/')
+    //- != JSON.stringify(post)

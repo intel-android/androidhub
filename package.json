@@ -10,7 +10,7 @@
     "axis": "0.3.x",
     "coffee-script": "1.8.x",
     "css-pipeline": "0.2.x",
-    "dynamic-content": "0.2.x",
+    "dynamic-content": "^0.2.1",
     "jade": "1.x",
     "js-pipeline": "0.2.x",
     "lodash": "^3.10.0",
