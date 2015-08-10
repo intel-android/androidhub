@@ -4,8 +4,9 @@
 
 #!/bin/bash
 FILES=$@
-arrFILES=(${FILES// / })
-last=${arrFILES[-1]}
+arrFILES=(${FILES[@]})
+length=${#arrFILES[@]}
+last=${arrFILES[$length-1]}
 
 echo "{"
 for f in $FILES
