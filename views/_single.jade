@@ -34,5 +34,7 @@ html
       a.btn(href='') &laquo; back to index
        
     include includes/_footer 
+    - var url = post._url.substr(1,post._url.length - 6) + '.jade'
+    //- != JSON.stringify(url)
     != js('')
-    //- != JSON.stringify(post)
+    != JSON.stringify(records.git[url])
