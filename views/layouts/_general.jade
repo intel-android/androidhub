@@ -2,21 +2,21 @@ doctype html
 html
 
   head
-    include includes/_site-meta
+    include ../includes/_site-meta
 
-    include mixins/_og-meta
+    include ../mixins/_og-meta
     +og-meta(data.meta.opengraph)
 
-    include mixins/_twitter-meta
+    include ../mixins/_twitter-meta
     +twitter-meta(data.meta.twitter)
 
     title= data.meta.opengraph.title
     != css('/')
 
   body
-    include includes/_nav
+    include ../includes/_nav
     
     section: block content
 
-    include includes/_footer
+    include ../includes/_footer
     != js('/')

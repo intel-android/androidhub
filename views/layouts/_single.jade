@@ -6,9 +6,9 @@ html
   - var authorImage = author.twitter ? 'https://twitter.com/'+ author.twitter +'/profile_image?size=original' : 'http://placehold.it/200x200?text=' + author.displayname
 
   head
-    include includes/_site-meta
+    include ../includes/_site-meta
 
-    include mixins/_og-meta
+    include ../mixins/_og-meta
     +og-meta({
       url:          data.meta.opengraph.url,
       title:        post.title,
@@ -17,7 +17,7 @@ html
       image:        hero | authorImage
     })
 
-    include mixins/_twitter-meta
+    include ../mixins/_twitter-meta
     +twitter-meta({
       account:      author.twitter,
       site:         author.website,
@@ -31,7 +31,7 @@ html
     != css('/')
 
   body
-    include includes/_nav
+    include ../includes/_nav
 
     header.reflex-container.reflex-wrap(style='background-image:url(#{hero})')
       .reflex-align-self-center.centered-title.reflex-direction-column.reflex-col-10
@@ -44,6 +44,6 @@ html
 
       a.btn(href='') &laquo; back to index
        
-    include includes/_footer 
+    include ../includes/_footer 
     != js('/')
     //- != JSON.stringify(post)
