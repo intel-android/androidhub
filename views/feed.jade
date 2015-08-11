@@ -4,18 +4,19 @@ extends layouts/_general
 
 block content
   section
-    h1 Feed
-    ul.filters
-      - var allCats = _.map(site.posts.all(), function(post){ return post.categories })
-      - var flatCats = _.flatten(allCats)
-      - var uniqCats = _.uniq(flatCats, function(cat){ return cat })
+    .reflex-container.reflex-align-center
+      .reflex-col-2: h1 Feed
+      .reflex-col-4: ul.filters
+        - var allCats = _.map(site.posts.all(), function(post){ return post.categories })
+        - var flatCats = _.flatten(allCats)
+        - var uniqCats = _.uniq(flatCats, function(cat){ return cat })
 
-      li All
-      for cat in uniqCats
-        li= cat
+        li All
+        for cat in uniqCats
+          li= cat
 
-    .search
-      input#search(type='search', results=5, autocomplete, placeholder='Search')
+      .reflex-col-6.reflex-justify-end: .search
+        input#search(type='search', results=5, autocomplete, placeholder='Search', x-webkit-speech)
 
     //- Authors
     //- .authors-horizontal-list
@@ -24,7 +25,7 @@ block content
     //-       +author(author)
 
     //- Articles
-    ul#feed-grid.reflex-container.reflex-wrap
+    ul#feed-grid.reflex-container.reflex-wrap.reverse-margin-md
       - var postsByDate = _.sortByAll(site.posts.all(), 'date')
 
       for post in postsByDate

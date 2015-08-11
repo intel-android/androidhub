@@ -13,7 +13,7 @@ block content
 
   .recent: section
     h5 Recent Commits
-    ul.reflex-container
+    ul.reflex-container.reverse-margin-md
       - var postsByDate = _.sortByAll(site.posts.all(), 'date')
       - var postsReduced = postsByDate.slice(0,5)
 
