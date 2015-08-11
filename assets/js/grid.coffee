@@ -2,6 +2,7 @@ class App.Grid
   constructor: (options) ->
     # todo: restore filter state if hash is in the url
     @initGrid(options)
+    @restoreState()
     @listen()
 
   filter: (q) ->
@@ -12,21 +13,28 @@ class App.Grid
       itemSelector: options.item
       layoutMode:   'fitRows'
 
-  listen: ->
-    # hash events
-    window.
-      addEventListener 'popstate', (e) =>
-        state = e.state
-        console.log state
+  restoreState: ->
+    hash = location.hash
+    if hash then @filter hash.replace('#', '.')
 
+  setState: (filter) ->
+    if filter == 'all' then filter = ''
+    location.hash = filter
+
+  listen: ->
     # filter click event
     document
       .querySelector '.filters'
       .addEventListener 'click', (e) =>
         return unless e.target.nodeName == 'LI'
-        filter = '.' + e.target.textContent.toLowerCase()
-        filter = '*' if filter == '.all'
-        # set hash state
-        # history.pushState null, null, filter
-        @.filter filter
+        
+        filter = e.target.textContent.toLowerCase()
+        @setState filter
+
+        if filter == 'all'
+          filter = '*'
+        else
+          filter = '.' + filter
+        
+        @filter filter
         
