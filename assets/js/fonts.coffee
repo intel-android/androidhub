@@ -13,8 +13,8 @@ class App.Fonts
     ])
     .then(
       () ->
-        console.info 'font available'
+        # console.info 'font available'
         document.documentElement.className += ' fonts-loaded'
       () ->
-        console.error 'font NOT available'
+        # console.error 'font NOT available'
     )
