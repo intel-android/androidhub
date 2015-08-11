@@ -24,10 +24,15 @@ module.exports =
     dynamic write: 'content.json'
     js_pipeline
       files: [
+        'bower_components/es6-promise/promise.min.js'
+        'bower_components/fontfaceobserver/fontfaceobserver.js'
         'bower_components/isotope/dist/isotope.pkgd.min.js'
+        # simple no deps
+        'assets/js/app.coffee'
+        'assets/js/fonts.coffee'
+        'assets/js/nav.coffee'
         # classes
         'assets/js/grid.coffee'
-        'assets/js/nav.coffee'
         'assets/js/search.coffee'
         # view controllers
         'assets/js/feed.coffee'
