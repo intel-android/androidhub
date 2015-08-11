@@ -3,5 +3,5 @@ mixin author(author)
     .reflex-item.reflex-item-margin-sm
       - var image = author.twitter ? 'https://twitter.com/'+ author.twitter +'/profile_image?size=original' : 'http://placehold.it/200x200?text=' + author.displayname
 
-      img.reflex-img(src=image)
+      img.reflex-img.lazyload(data-src=image)
       small= author.displayname

@@ -27,6 +27,7 @@ module.exports =
         'bower_components/es6-promise/promise.min.js'
         'bower_components/fontfaceobserver/fontfaceobserver.js'
         'bower_components/isotope/dist/isotope.pkgd.min.js'
+        'bower_components/lazysizes/lazysizes.min.js'
         # simple no deps
         'assets/js/app.coffee'
         'assets/js/fonts.coffee'
