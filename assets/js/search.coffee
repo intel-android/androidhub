@@ -1,12 +1,11 @@
 class Search
-  constructor: ->
+  constructor: (FeedGrid) ->
+    @Grid = FeedGrid
     @listen()
 
   listen: ->
     document
       .querySelector '#search'
-      .addEventListener 'change', (e) ->
+      .addEventListener 'change', (e) =>
         console.log e
-        FeedGrid.filter '.' + e.target.value
-
-new Search()
+        @Grid.filter '.' + e.target.value

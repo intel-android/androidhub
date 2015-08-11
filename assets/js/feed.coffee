@@ -1,26 +1,15 @@
 class Feed
   constructor: ->
+    # dont do anything unless we're on the feed grid page
     return unless document.getElementById 'feed-grid'
-    # todo: restore filter state if hash is in the url
-    @initGrid()
-    @listen()
 
-  filter: (q) ->
-    @feedgrid.arrange filter: q
+    # init grid from Grid class
+    @FeedGrid = new Grid
+      id:   'feed-grid'
+      item: '.feed-item'
 
-  initGrid: ->
-    @feedgrid = new Isotope '#feed-grid',
-      itemSelector: '.feed-item'
-      layoutMode: 'fitRows'
+    # init search class and pass grid class
+    new Search(@FeedGrid)
 
-  listen: ->
-    document
-      .querySelector '.filters'
-      .addEventListener 'click', (e) =>
-        return unless e.target.nodeName == 'LI'
-        filter = '.' + e.target.textContent.toLowerCase()
-        filter = '*' if filter == '.all'
-        # set hash state
-        @.filter filter
-
-FeedGrid = new Feed()
+# init self
+new Feed()
