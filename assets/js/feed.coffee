@@ -1,16 +1,26 @@
-return unless document.getElementById 'feed-grid'
+class Feed
+  constructor: ->
+    return unless document.getElementById 'feed-grid'
+    # todo: restore filter state if hash is in the url
+    @initGrid()
+    @listen()
 
-feedgrid = new Isotope '#feed-grid',
-  itemSelector: '.feed-item'
-  layoutMode: 'fitRows'
+  filter: (q) ->
+    @feedgrid.arrange filter: q
 
-# todo: restore filter state if hash is in the url
+  initGrid: ->
+    @feedgrid = new Isotope '#feed-grid',
+      itemSelector: '.feed-item'
+      layoutMode: 'fitRows'
 
-document
-  .querySelector '.filters'
-  .addEventListener 'click', (e) ->
-    filter = '.' + e.target.textContent
-    filter = '*' if filter == '.All'
-    console.log filter
-    # add hash state
-    feedgrid.arrange filter: filter
+  listen: ->
+    document
+      .querySelector '.filters'
+      .addEventListener 'click', (e) =>
+        return unless e.target.nodeName == 'LI'
+        filter = '.' + e.target.textContent.toLowerCase()
+        filter = '*' if filter == '.all'
+        # set hash state
+        @.filter filter
+
+FeedGrid = new Feed()

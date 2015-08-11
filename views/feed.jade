@@ -13,11 +13,14 @@ block content
     for cat in uniqCats
       li= cat
 
+  .search
+    input#search(type='search', results=5, autocomplete, placeholder='Search')
+
   //- Authors
-  .authors-horizontal-list
-    ul.reflex-container.reverse-margin-sm
-      for author in _.sortBy(data.authors, 'displayname')
-        +author(author)
+  //- .authors-horizontal-list
+  //-   ul.reflex-container.reverse-margin-sm
+  //-     for author in _.sortBy(data.authors, 'displayname')
+  //-       +author(author)
 
   //- Articles
   ul#feed-grid.reflex-container.reflex-wrap.reverse-margin-md
