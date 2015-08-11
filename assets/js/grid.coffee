@@ -1,4 +1,4 @@
-class Grid
+class App.Grid
   constructor: (options) ->
     # todo: restore filter state if hash is in the url
     @initGrid(options)
@@ -13,6 +13,13 @@ class Grid
       layoutMode:   'fitRows'
 
   listen: ->
+    # hash events
+    window.
+      addEventListener 'popstate', (e) =>
+        state = e.state
+        console.log state
+
+    # filter click event
     document
       .querySelector '.filters'
       .addEventListener 'click', (e) =>
@@ -20,5 +27,6 @@ class Grid
         filter = '.' + e.target.textContent.toLowerCase()
         filter = '*' if filter == '.all'
         # set hash state
+        # history.pushState null, null, filter
         @.filter filter
         
