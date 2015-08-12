@@ -2,7 +2,7 @@ extends layouts/_general
 include mixins/_feed-item
 
 block content
-  .intro: section: .reflex-container.reflex-justify-center
+  .intro: section: .grid.grid--justify-center
       img.contain.lazyload(data-src='http://placehold.it/450x150&text=AndroidOnIntel', height='150px')
 
   .hero: section
@@ -13,7 +13,7 @@ block content
 
   .recent: section
     h5 Recent Commits
-    ul.reflex-container.reverse-margin-md
+    ul.grid.reverse-margin-md
       - var postsByDate = _.sortByAll(site.posts.all(), 'date')
       - var postsReduced = postsByDate.slice(0,5)
 
@@ -21,7 +21,7 @@ block content
         unless post._ignore
           +feed-item(post)
 
-  .testimonial: section: .reflex-container.reflex-justify-center: .reflex-col-9.reflex-direction-column
+  .testimonial: section: .grid.grid--justify-center: .grid__col-9.grid--direction-column
     h6 Jason Mark | @jasondesign
     h2 Art is subjective. You like it or you don't like it. But design is the science of art. it's art with purpose. Design is about intent.
     a(href=data.paths.field_guide) Learn more in our Developer Field Guide

@@ -5,6 +5,6 @@ block content
   section
     h1 Authors
 
-    ul.reflex-container.reflex-wrap.reverse-margin-sm
+    ul.grid.grid--wrap.reverse-margin-md
       for author in _.sortBy(data.authors, 'displayname')
         +author(author)
