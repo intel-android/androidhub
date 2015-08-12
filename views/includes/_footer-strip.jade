@@ -1,13 +1,13 @@
 .grey-bg: section
-  .reflex-container.reflex-wrap
-    .reflex-col-xs-5.reflex-align-center: .reflex-item
+  .grid.grid--bleed.grid--justify-space-between.grid--align-center
+    .grid__col-xs-5
       h3.marginless Lovin' the hub?
       h5.marginless Share the Hub on the Interwebz!
       
-    .reflex-col-xs-7.reflex-align-center
-      a.inline-social(href='')
-        img(src='http://placehold.it/50x50&text=Tw') 
+    .grid__col-xs-4.grid--direction-row
+      a#tweet.inline-social(href='')
+        img.lazyload(data-src='http://placehold.it/50x50&text=Tw') 
         span.social-text Tweet
-      a.inline-social(href='')
-        img(src='http://placehold.it/50x50&text=Fb')
+      a#post.inline-social(href='')
+        img.lazyload(data-src='http://placehold.it/50x50&text=Fb')
         span.social-text Post  

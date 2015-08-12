@@ -1,28 +1,34 @@
 include mixins/_feed-item
 include mixins/_author
-extends layout
+extends layouts/_general
 
 block content
-  h1 Feed
-  ul.filters
-    - var allCats = _.map(site.posts.all(), function(post){ return post.categories })
-    - var flatCats = _.flatten(allCats)
-    - var uniqCats = _.uniq(flatCats, function(cat){ return cat })
+  section
+    .grid.grid--align-center.grid--bleed
+      .grid__col-2: h1 Feed
+      .grid__col-7: ul.filters
+        - var allCats = _.map(site.posts.all(), function(post){ return post.categories })
+        - var flatCats = _.flatten(allCats)
+        - var uniqCats = _.uniq(flatCats, function(cat){ return cat })
 
-    li All
-    for cat in uniqCats
-      li= cat
+        li All
+        for cat in uniqCats
+          li= cat
 
-  //- Authors
-  .authors-horizontal-list
-    ul.reflex-container.reverse-margin-sm
-      for author in _.sortBy(data.authors, 'displayname')
-        +author(author)
+      .grid__col-3.grid--justify-end: .search
+        include includes/svg/_search
+        input#search(type='search', results=5, autocomplete, placeholder='Search', x-webkit-speech)
 
-  //- Articles
-  ul#feed-grid.reflex-container.reflex-wrap.reverse-margin-md
-    - var postsByDate = _.sortByAll(site.posts.all(), 'date')
+    //- Authors
+    //- .authors-horizontal-list
+    //-   ul.grid.reverse-margin-sm
+    //-     for author in _.sortBy(data.authors, 'displayname')
+    //-       +author(author)
 
-    for post in postsByDate
-      unless post._ignore
-        +feed-item(post)
+    //- Articles
+    ul#feed-grid.grid.reverse-margin-md
+      - var postsByDate = _.sortByAll(site.posts.all(), 'date')
+
+      for post in postsByDate
+        unless post._ignore
+          +feed-item(post)

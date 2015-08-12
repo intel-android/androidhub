@@ -2,13 +2,9 @@
 displayname:  'Intel Android Hub'
 nickname:     'admin'
 website:      'http://intelandroidhub.com'
-gravatar:     ''
+title:        'Running the show here on Android Hub'
 
 # Social Networks
 twitter:      'intelsoftware'
 github:       'intel-android'
-
-# About
-excerpt: 'The Intel Android hub is the best place to publish and discuss using Intel tools to build and deploy Android apps'
-
-compile: false
+codepen:      ''

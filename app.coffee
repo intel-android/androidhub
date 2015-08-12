@@ -23,19 +23,33 @@ module.exports =
 
   extensions: [
     roots_yaml()
-    dynamic(write: 'content.json')
+    dynamic write: 'content.json'
     records(
       git: 
         file: 'public/posts-git.json'
     )
-    js_pipeline(files: [
-      'bower_components/isotope/dist/isotope.pkgd.min.js'
-      'assets/js/*.coffee'
-    ])
-    css_pipeline(files: [
-      'assets/css/*.styl'
-      'bower_components/reflex/css/reflex.css'
-    ])
+    js_pipeline
+      files: [
+        'bower_components/es6-promise/promise.min.js'
+        'bower_components/fontfaceobserver/fontfaceobserver.js'
+        'bower_components/isotope/dist/isotope.pkgd.min.js'
+        'bower_components/lazysizes/lazysizes.min.js'
+        # simple no deps
+        'assets/js/app.coffee'
+        'assets/js/fonts.coffee'
+        'assets/js/nav.coffee'
+        'assets/js/share.coffee'
+        # classes
+        'assets/js/grid.coffee'
+        'assets/js/search.coffee'
+        # view controllers
+        'assets/js/feed.coffee'
+      ]
+    css_pipeline 
+      files: [
+        'bower_components/reflex/css/reflex.css'
+        'assets/css/*.styl'
+      ]
   ]
 
   stylus:
@@ -48,6 +62,7 @@ module.exports =
 
   'coffee-script':
     sourcemap: true
+    bare: true
 
   jade:
     pretty: true

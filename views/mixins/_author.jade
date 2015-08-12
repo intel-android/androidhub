@@ -1,7 +1,7 @@
 mixin author(author)
-  li.author.reflex-col-3.reflex-col-md-2(class=post.categories)
-    .reflex-item.reflex-item-margin-sm
+  li.author.grid__col-xs-6.grid__col-sm-4.grid__col-md-3.grid__col-lg-3(class=post.categories)
+    .grid__cell
       - var image = author.twitter ? 'https://twitter.com/'+ author.twitter +'/profile_image?size=original' : 'http://placehold.it/200x200?text=' + author.displayname
 
-      img.reflex-img(src=image)
+      img.grid__cell-img.lazyload(data-src=image)
       small= author.displayname

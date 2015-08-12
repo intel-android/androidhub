@@ -4,7 +4,7 @@ nav
   background-color:hsl(0,0%,98%)
 
 .link-nav-set  
-  > a, > .reflex-item > a
+  > a
     text-decoration:none
     color:hsl(0,0%,50%)
     font-size:0.8rem
@@ -20,9 +20,12 @@ nav
       margin-right:0
     
 .social-icon 
+  @extend .flex-child-image-fix
   margin:0 2px
   height:25px
   width:25px
+  &:last-child
+    margin-right:0
     
 .logo
   margin-right:2rem

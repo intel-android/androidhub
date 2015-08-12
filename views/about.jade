@@ -1,4 +1,4 @@
-extends layout
+extends layouts/_general
 include mixins/_author
 
 block content
@@ -12,9 +12,9 @@ block content
     .spacer.sm
 
     h2 Our Authors
-    ul.reflex-container.reflex-wrap.reverse-margin-sm
+    ul.grid.reverse-margin-md
       for author in _.sortBy(data.authors, 'displayname')
         +author(author)
 
     .text-right
-      a(href=data.meta.paths.authors) See all our authors ->
+      a(href=data.paths.authors) See all our authors ->

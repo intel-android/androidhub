@@ -1,8 +1,27 @@
-extends layout
+extends layouts/_general
+include mixins/_feed-item
 
 block content
-  h3 Welcome prompt
-  h3 Featured Post
-  p followed by 4 more posts
-  h3 testimonial to field guide
-  p social
+  .intro: section: .grid.grid--justify-center
+      img.contain.lazyload(data-src='http://placehold.it/450x150&text=AndroidOnIntel', height='150px')
+
+  .hero: section
+    h5 Latest Commit
+    h1 This would be the most recent post committed
+    h4 by Author
+    small @twitterhandle
+
+  .recent: section
+    h5 Recent Commits
+    ul.grid.reverse-margin-md
+      - var postsByDate = _.sortByAll(site.posts.all(), 'date')
+      - var postsReduced = postsByDate.slice(0,5)
+
+      for post in postsReduced
+        unless post._ignore
+          +feed-item(post)
+
+  .testimonial: section: .grid.grid--justify-center: .grid__col-9.grid--direction-column
+    h6 Jason Mark | @jasondesign
+    h2 Art is subjective. You like it or you don't like it. But design is the science of art. it's art with purpose. Design is about intent.
+    a(href=data.paths.field_guide) Learn more in our Developer Field Guide

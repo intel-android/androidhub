@@ -25,7 +25,12 @@ module.exports =
     js_pipeline
       files: [
         'bower_components/isotope/dist/isotope.pkgd.min.js'
-        'assets/js/*.coffee'
+        # classes
+        'assets/js/grid.coffee'
+        'assets/js/nav.coffee'
+        'assets/js/search.coffee'
+        # view controllers
+        'assets/js/feed.coffee'
       ]
       out:    'js/app.js'
       minify: true
@@ -46,6 +51,9 @@ module.exports =
       rupture()
       autoprefixer()
     ]
+
+  'coffee-script':
+    bare: true
 
   locals:
     dev:  false

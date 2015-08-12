@@ -2,13 +2,9 @@
 displayname:  'Aaron Egaas'
 nickname:     'aegaas'
 website:      'http://aegaas.com'
+title:        'Web Services Engineer'
 
 # Social Networks
 twitter:      'aegaas'
 github:       'aegaas'
 codepen:      'aegaas'
-
-# About
-excerpt: 'This is where you can write a short blurb about yourself. There is another opportunity to write a longer bio, but that is too much for YAML. Create or copy the #{your_name}.jade file and go nuts in there about yourself!'
-
-compile: false
