@@ -32,6 +32,7 @@ module.exports =
         'assets/js/app.coffee'
         'assets/js/fonts.coffee'
         'assets/js/nav.coffee'
+        'assets/js/share.coffee'
         # classes
         'assets/js/grid.coffee'
         'assets/js/search.coffee'
