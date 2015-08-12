@@ -1,6 +1,5 @@
 class App.Grid
   constructor: (options) ->
-    # todo: restore filter state if hash is in the url
     @initGrid(options)
     @restoreState()
     @listen()
@@ -27,7 +26,7 @@ class App.Grid
       .querySelector '.filters'
       .addEventListener 'click', (e) =>
         return unless e.target.nodeName == 'LI'
-        
+
         filter = e.target.textContent.toLowerCase()
         @setState filter
 
