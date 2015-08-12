@@ -1,22 +1,22 @@
-section.site-map: .reflex-container.reflex-wrap.reflex-justify-space-between
-  .reflex-col-xs-6.reflex-direction-column
+section.site-map: .grid.grid--wrap.grid--bleed.grid--justify-space-between
+  .grid__col-xs-6.grid--direction-column
     p: a(href=data.paths.commit) Commit something to the Android Intel Hub
-    .reflex-container
-      .link-nav-set.reflex-col-12.reflex-align-center.reflex-justify-space-between
+    .grid.grid--bleed
+      .link-nav-set.grid__col-12.grid--align-center.grid--justify-space-between.grid--direction-row
         a(href=data.paths.feed) Feed
         a(href=data.paths.field_guide) Field Guide
         a(href=data.paths.authors) Authors
         a(href=data.paths.about) About
         a(href=data.paths.commit) Commit
 
-  .reflex-col-xs-4.reflex-justify-end.reflex-direction-column
-    .reflex-container.reflex-justify-space-between
+  .grid__col-xs-4.grid--justify-end.grid--direction-column
+    .grid.grid--justify-space-between
       include _social-icons
 
-    .reflex-container.push-top
-      .reflex-col-6.push-right
-        img.reflex-img.reflex-align-self-start.contain.lazyload(data-src='http://placehold.it/60x50&text=intel')
-      .link-nav-set.reflex-col-6.reflex-direction-column.reflex-justify-end
-        .reflex-item: a(href=data.paths.terms) Terms of use
-        .reflex-item: a(href=data.paths.privacy) Privacy
-        .reflex-item: a(href=data.paths.cookies) Cookies
+    .grid.push-top.grid--bleed
+      .grid__col-6
+        img.grid--align-self-start.contain.lazyload(data-src='http://placehold.it/60x50&text=intel')
+      .link-nav-set.grid__col-6.grid--direction-column.grid--justify-end
+        a(href=data.paths.terms) Terms of use
+        a(href=data.paths.privacy) Privacy
+        a(href=data.paths.cookies) Cookies
