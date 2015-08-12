@@ -33,7 +33,7 @@ html
   body
     include ../includes/_nav
 
-    header.grid.grid--wrap(style='background-image:url(#{hero})')
+    header.grid(style='background-image:url(#{hero})')
       .grid__col-10.grid--align-self-center.centered-title.grid--direction-column
         h1.header-title.normal-type= post.title
         h4.thin-type #{author.displayname} | #{post.date}

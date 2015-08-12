@@ -12,7 +12,7 @@ block content
     .spacer.sm
 
     h2 Our Authors
-    ul.grid.grid--wrap.reverse-margin-md
+    ul.grid.reverse-margin-md
       for author in _.sortBy(data.authors, 'displayname')
         +author(author)
 
