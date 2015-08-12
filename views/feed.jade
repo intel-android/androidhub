@@ -6,7 +6,7 @@ block content
   section
     .reflex-container.reflex-align-center
       .reflex-col-2: h1 Feed
-      .reflex-col-4: ul.filters
+      .reflex-col-7: ul.filters
         - var allCats = _.map(site.posts.all(), function(post){ return post.categories })
         - var flatCats = _.flatten(allCats)
         - var uniqCats = _.uniq(flatCats, function(cat){ return cat })
@@ -15,7 +15,7 @@ block content
         for cat in uniqCats
           li= cat
 
-      .reflex-col-6.reflex-justify-end: .search
+      .reflex-col-3.reflex-justify-end: .search
         input#search(type='search', results=5, autocomplete, placeholder='Search', x-webkit-speech)
 
     //- Authors
