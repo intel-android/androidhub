@@ -40,7 +40,7 @@ module.exports =
       ]
     css_pipeline 
       files: [
-        'bower_components/reflex/css/reflex.css'
+        'assets/css/lib/reflex.css'
         'assets/css/*.styl'
       ]
   ]
