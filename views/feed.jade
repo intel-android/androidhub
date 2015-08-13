@@ -19,16 +19,15 @@ block content
         include includes/svg/_search
         input#search(type='search', results=5, autocomplete, placeholder='Search', x-webkit-speech)
 
-    //- Authors
-    //- .authors-horizontal-list
-    //-   ul.grid.reverse-margin-sm
-    //-     for author in _.sortBy(data.authors, 'displayname')
-    //-       +author(author)
-
     //- Articles
     ul#feed-grid.grid.reverse-margin-md
-      - var postsByDate = _.sortByAll(site.posts.all(), 'date')
+      //- rename all post urls to jade names, to match the git keys
+      - var renamedPostUrls = _.forEach(site.posts.all(), function(post){ post.git_url = post._url.substr(1, post._url.length - 6) + '.jade' })
+      //- merge posts and git objects based on new key created
+      - var mergedObjects = _.forEach(renamedPostUrls, function(post){ post.git = records.git[post.git_url] ? records.git[post.git_url] : records.git['posts/argyleink/first.jade'] })
+      //- sort by date
+      - var postsSortedByDate = _.sortBy(mergedObjects, function(post){ return post.git.date }).reverse()
 
-      for post in postsByDate
+      for post in postsSortedByDate
         unless post._ignore
           +feed-item(post)

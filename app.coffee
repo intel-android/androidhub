@@ -5,6 +5,7 @@ js_pipeline   = require 'js-pipeline'
 css_pipeline  = require 'css-pipeline'
 dynamic       = require 'dynamic-content'
 roots_yaml    = require 'roots-yaml'
+records       = require 'roots-records'
 
 module.exports =
   ignores: [
@@ -13,6 +14,7 @@ module.exports =
     '**/layout.*'
     '**/_*'
     '.gitignore'
+    'scripts/**'
     'bower.json'
     'app.sublime-project'
     'spec/**'
@@ -22,6 +24,10 @@ module.exports =
   extensions: [
     roots_yaml()
     dynamic write: 'content.json'
+    records(
+      git: 
+        file: 'public/posts-git.json'
+    )
     js_pipeline
       files: [
         'bower_components/es6-promise/promise.min.js'

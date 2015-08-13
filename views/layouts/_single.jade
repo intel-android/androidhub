@@ -1,9 +1,16 @@
 doctype html
 html
+  //- grab the post hero image or set a fallback
   - var hero = post.heroimage ? post.heroimage : 'http://placehold.it/1400x577&text=_'
+  
+  //- dig up author yaml data
   - var author_handle = post._categories[1] ? post._categories[1] : 'admin'
   - var author = data.authors[author_handle]
   - var authorImage = author.twitter ? 'https://twitter.com/'+ author.twitter +'/profile_image?size=original' : 'http://placehold.it/200x200?text=' + author.displayname
+
+  //- grab git commit history for this post
+  - var url = post._url.substr(1, post._url.length - 6) + '.jade'
+  - var git = records.git[url] ? records.git[url] : records.git['posts/argyleink/first.jade']
 
   head
     include ../includes/_site-meta
@@ -36,7 +43,7 @@ html
     header.grid(style='background-image:url(#{hero})')
       .grid__col-10.grid--align-self-center.centered-title.grid--direction-column
         h1.header-title.normal-type= post.title
-        h4.thin-type #{author.displayname} | #{post.date}
+        h4.thin-type #{author.displayname} | #{git.date}
     
     section
       article
