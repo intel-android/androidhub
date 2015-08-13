@@ -83,9 +83,7 @@ It also creates a folder for you in `posts/{{your_handle}}/` which will hold ont
 ## Write
 If you're familiar with blog engines like [Ghost](https://ghost.org/) or [Jekyll](http://jekyllrb.com/), then you'll be right at home with the Intel Android Hub's blog architecture. What's awesome about this architecture though, you're not limited to just Markdown, you can write [Jade](http://jade-lang.com/), [Coffeescript](http://coffeescript.org/), [etc](http://jade-lang.com/reference/filters/)! We felt that most authors would prefer markdown, so that's the style we'll talk about here. Plus, if you know Jade, then you're likely already familiar with it's ability to do markdown.
 
-##### Example Post:
-
-```coffeescript
+```jade
 ---
 title:      'My First Post!'
 tags:       [android]
@@ -99,6 +97,7 @@ extends ../views/layouts/_single
 block content
   :markdown
     Here's my first post. **How exciting!**
+    
 ```
 
 First thing you'll notice is the "front matter." This is yaml style data that get consumed by the architecture and becomes the article meta data. Nothing too strange about the front matter right? It is worth noting, that there is no `url` front matter key, and that's because the post url will be generated based off the file name of your post. So the pretty url and post title are separate.
