@@ -1,13 +1,15 @@
 html, body
   background-color:#eee
 
-.reflex-container.reverse-margin-sm
-  margin:0 -5px
-  width:calc(100% + 10px)
-  
-.reflex-container.reverse-margin-md
-  margin:0 -10px
-  width:calc(100% + 20px)
+.grid
+  &.reverse-margin-sm
+    margin:0 -0.5em
+    width:calc(100% + 1em)
+    max-width:calc(100% + 1em)
+  &.reverse-margin-md
+    margin:0 -1em
+    width:calc(100% + 2em)
+    max-width:calc(100% + 2em)
 
 section
   margin:0 auto
@@ -23,3 +25,10 @@ section
 
 article
   padding:0 0 2rem 0
+
+input[type='search']
+  border:none
+  background:none
+  outline:none
+  box-shadow:none
+  border-bottom:1px solid default-color

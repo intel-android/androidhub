@@ -5,6 +5,8 @@ js_pipeline   = require 'js-pipeline'
 css_pipeline  = require 'css-pipeline'
 dynamic       = require 'dynamic-content'
 roots_yaml    = require 'roots-yaml'
+records       = require 'roots-records'
+shell         = require 'shelljs'
 
 module.exports =
   ignores: [
@@ -13,6 +15,7 @@ module.exports =
     '**/layout.*'
     '**/_*'
     '.gitignore'
+    'scripts/**'
     'bower.json'
     'app.sublime-project'
     'spec/**'
@@ -22,10 +25,23 @@ module.exports =
   extensions: [
     roots_yaml()
     dynamic write: 'content.json'
+    records git: file: 'public/posts-git.json'
     js_pipeline
       files: [
+        'bower_components/es6-promise/promise.min.js'
+        'bower_components/fontfaceobserver/fontfaceobserver.js'
         'bower_components/isotope/dist/isotope.pkgd.min.js'
-        'assets/js/*.coffee'
+        'bower_components/lazysizes/lazysizes.min.js'
+        # simple no deps
+        'assets/js/app.coffee'
+        'assets/js/fonts.coffee'
+        'assets/js/nav.coffee'
+        'assets/js/share.coffee'
+        # classes
+        'assets/js/grid.coffee'
+        'assets/js/search.coffee'
+        # view controllers
+        'assets/js/feed.coffee'
       ]
     css_pipeline 
       files: [
@@ -44,6 +60,7 @@ module.exports =
 
   'coffee-script':
     sourcemap: true
+    bare: true
 
   jade:
     pretty: true
@@ -51,5 +68,14 @@ module.exports =
   locals:
     dev: true
     _: require 'lodash'
+    helpers:
+      getAuthor:      require './scripts/get-author'
+      getCategories:  require './scripts/get-categories'
+      getMergedPosts: require './scripts/get-merged-posts'
+      getPostGitData: require './scripts/get-post-git-data'
+
+  before: ->
+    shell.exec 'npm run posts-git-log'
+    return true
 
   debug: true

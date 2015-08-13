@@ -1,5 +1,7 @@
-paths     = location.pathname.split("/")
-page      = paths[1]
-curNode   = document.querySelector "nav a[href^='/#{page}']"
+App.Nav = (->
+  paths     = location.pathname.split("/")
+  page      = paths[1]
+  curNode   = document.querySelector "nav a[href^='/#{page}']"
 
-if curNode then curNode.classList.add 'active'
+  if curNode then curNode.classList.add 'active'
+)()

@@ -2,7 +2,8 @@
   "name": "-intel-android",
   "description": "",
   "scripts": {
-    "test": "./node_modules/.bin/jasmine"
+    "test": "./node_modules/.bin/jasmine",
+    "posts-git-log": "./scripts/git-json.sh posts/*/*.jade > public/posts-git.json"
   },
   "dependencies": {
     "autoprefixer-stylus": "0.5.x",
@@ -15,8 +16,10 @@
     "lodash": "^3.10.0",
     "marked": "0.3.x",
     "moment": "^2.10.6",
+    "roots-records": "^0.5.0",
     "roots-yaml": "0.0.4",
     "rupture": "0.6.x",
+    "shelljs": "^0.5.3",
     "stylus": "0.49.x"
   },
   "devDependencies": {

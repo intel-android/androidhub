@@ -1,0 +1,49 @@
+doctype html
+html
+  //- grab the post hero image or set a fallback
+  - var hero = post.heroimage ? post.heroimage : 'http://placehold.it/1400x577&text=_'
+  - var author = helpers.getAuthor(post, data)
+  - var git = helpers.getPostGitData(post, records)
+
+  head
+    include ../includes/_site-meta
+
+    include ../mixins/_og-meta
+    +og-meta({
+      url:          data.meta.opengraph.url,
+      title:        post.title,
+      description:  post.excerpt,
+      site_name:    data.meta.opengraph.site,
+      image:        hero | author.image
+    })
+
+    include ../mixins/_twitter-meta
+    +twitter-meta({
+      account:      author.twitter,
+      site:         author.website,
+      title:        post.title,
+      description:  post.excerpt,
+      creator:      author.displayname,
+      image:        hero | author.image
+    })
+
+    title= post.title
+    != css('/')
+
+  body
+    include ../includes/_nav
+
+    header.grid(style='background-image:url(#{hero})')
+      .grid__col-10.grid--align-self-center.centered-title.grid--direction-column
+        h1.header-title.normal-type= post.title
+        h4.thin-type #{author.displayname} | #{git.date}
+    
+    section
+      article
+        block content
+
+      //- a.btn(href='') &laquo; back to index
+       
+    include ../includes/_footer 
+    != js('/')
+    //- != JSON.stringify(post)

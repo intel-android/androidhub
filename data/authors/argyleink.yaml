@@ -2,11 +2,9 @@
 displayname:  'Adam Argyle'
 nickname:     'Adrock'
 website:      'http://argyleink.com'
+title:        'Web Engineer'
 
 # Social Networks
-github:       'argyleink'
 twitter:      'argyleink'
+github:       'argyleink'
 codepen:      'argyleink'
-
-# About
-excerpt: 'This is where you can write a short blurb about yourself. There is another opportunity to write a longer bio, but that is too much for YAML. Create or copy the #{your_name}.jade file and go nuts in there about yourself!'
