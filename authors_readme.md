@@ -1,6 +1,9 @@
 ## Contributing to the Intel Android Hub!
 Hello authors! Ready to contribute to a website and skip Wordpress or whatever other CMS people are making you use? We've got a completely open source environment ready for you to write your articles in markdown, jade, or HTML. 
 
+&nbsp;
+&nbsp;
+
 
 ##### Required Tools
 > These tools need to be installed on your machine, hopefully they're already there. We also expect you to have a Github account, and have used CLI tools a bit
@@ -11,13 +14,16 @@ Hello authors! Ready to contribute to a website and skip Wordpress or whatever o
 - Git
 
 
-
+&nbsp;
+&nbsp;
 
 
 ## Setup
 1. Fork
 2. Clone your fork
 3. Install project dependencies `npm i && bower i`
+
+&nbsp;
 
 #### Overview
 There's lot o stuff in the project folder, how about I point you to what's relevant for you? =)
@@ -41,6 +47,8 @@ this_project/
 Not too bad right? Tell us about yourself as an author, then go write posts. 
 
 
+&nbsp;
+&nbsp;
 
 
 ## Init
@@ -68,7 +76,8 @@ codepen:      ''
 It also creates a folder for you in `posts/{{your_handle}}/` which will hold onto your posts. We'll talk about that next.
 
 
-
+&nbsp;
+&nbsp;
 
 
 ## Write
@@ -76,7 +85,7 @@ If you're familiar with blog engines like [Ghost](https://ghost.org/) or [Jekyll
 
 ##### Example Post:
 
-```jade
+```coffeescript
 ---
 title:      'My First Post!'
 tags:       [android]
@@ -99,6 +108,9 @@ But, then we get into some Jade with the `extends` statement, and if you don't k
 Go markdown crazy. With just markdown alone you can make a very interesting and dynamic article. For the Jade fans or adventurous, you can write your whole post in Jade, include scripts, and basically make your post like you would an HTML page. So in terms of blog post capabilities, this is about as unfettered as it gets!
 
 
+&nbsp;
+&nbsp;
+
 
 ## Preview
 `roots watch`
@@ -108,6 +120,8 @@ Run that awesome command from your terminal, and a live reload web server will f
 Just to remind ya, every time you save your post, the server will compile and update. Why work any other way right?
 
 
+&nbsp;
+&nbsp;
 
 
 ## Tests
@@ -116,7 +130,8 @@ Just to remind ya, every time you save your post, the server will compile and up
 This project is equipped with a test suite to verify and validate your post entries. There are certain required fields, etc, and before you submit your pull request, it would behoove you to run the test suite on your work. This test will be run as a first step by the pull request approver. It's a really easy way to know if you've covered all your bases too.
 
 
-
+&nbsp;
+&nbsp;
 
 
 ## Pull Request
