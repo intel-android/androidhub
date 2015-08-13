@@ -93,17 +93,17 @@ function test_post(filename) {
         });
       });
 
-      describe("date key", function () {
-        it('is required', function () {
-          expect(data.date).toBeString();
-        });
+      // describe("date key", function () {
+      //   it('is required', function () {
+      //     expect(data.date).toBeString();
+      //   });
 
-        // moment(date) throws a deprecation warning
-        // see https://github.com/moment/moment/issues/1407 for more info
-        it('date parses by moment.js to a valid date', function () {
-          expect(data.date).toBeValidDate();
-        });
-      });
+      //   // moment(date) throws a deprecation warning
+      //   // see https://github.com/moment/moment/issues/1407 for more info
+      //   it('date parses by moment.js to a valid date', function () {
+      //     expect(data.date).toBeValidDate();
+      //   });
+      // });
 
       describe("categories key", function() {
         it('is an array of strings', function () {
@@ -121,7 +121,7 @@ function test_post(filename) {
         it('contains valid categories', function () {
           var validCategories = ['ideate', 'design', 'build', 'launch'];
 
-          for(var i; i<data.categories.length; i++) {
+          for (var i = 0; i < data.categories.length; i++) {
             expect(validCategories).toContain(data.categories[i]);
           }
         });
