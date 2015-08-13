@@ -6,6 +6,7 @@ css_pipeline  = require 'css-pipeline'
 dynamic       = require 'dynamic-content'
 roots_yaml    = require 'roots-yaml'
 records       = require 'roots-records'
+shell         = require 'shelljs'
 
 module.exports =
   ignores: [
@@ -24,10 +25,7 @@ module.exports =
   extensions: [
     roots_yaml()
     dynamic write: 'content.json'
-    records(
-      git: 
-        file: 'public/posts-git.json'
-    )
+    records git: file: 'public/posts-git.json'
     js_pipeline
       files: [
         'bower_components/es6-promise/promise.min.js'
@@ -70,5 +68,9 @@ module.exports =
   locals:
     dev: true
     _: require 'lodash'
+
+  before: ->
+    shell.exec 'npm run posts-git-log'
+    return true
 
   debug: true

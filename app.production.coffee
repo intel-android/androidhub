@@ -6,6 +6,7 @@ css_pipeline    = require 'css-pipeline'
 dynamic         = require 'dynamic-content'
 roots_yaml      = require 'roots-yaml'
 records         = require 'roots-records'
+shell           = require 'shelljs'
 
 module.exports =
   ignores: [
@@ -68,3 +69,7 @@ module.exports =
   locals:
     dev:  false
     _:    require 'lodash'
+
+  before: ->
+    shell.exec 'npm run posts-git-log'
+    return true
