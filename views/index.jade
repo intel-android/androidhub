@@ -14,12 +14,9 @@ block content
   .recent: section
     h5 Recent Commits
     ul.grid.reverse-margin-md
-      //- rename all post urls to jade names, to match the git keys
-      - var renamedPostUrls = _.forEach(site.posts.all(), function(post){ post.git_url = post._url.substr(1, post._url.length - 6) + '.jade' })
-      //- merge posts and git objects based on new key created
-      - var mergedObjects = _.forEach(renamedPostUrls, function(post){ post.git = records.git[post.git_url] ? records.git[post.git_url] : records.git['posts/argyleink/first.jade'] })
+      - var mergedPosts = helpers.getMergedPosts(site, records)
       //- sort by date
-      - var postsSortedByDate = _.sortBy(mergedObjects, function(post){ return post.git.date }).reverse()
+      - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return post.git.date })
       - var postsReduced = postsSortedByDate.slice(0,4)
 
       for post in postsReduced

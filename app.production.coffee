@@ -69,6 +69,11 @@ module.exports =
   locals:
     dev:  false
     _:    require 'lodash'
+    helpers:
+      getAuthor:      require './scripts/get-author'
+      getCategories:  require './scripts/get-categories'
+      getMergedPosts: require './scripts/get-merged-posts'
+      getPostGitData: require './scripts/get-post-git-data'
 
   before: ->
     shell.exec 'npm run posts-git-log'

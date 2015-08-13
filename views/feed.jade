@@ -7,12 +7,8 @@ block content
     .grid.grid--align-center.grid--bleed
       .grid__col-2: h1 Feed
       .grid__col-7: ul.filters
-        - var allCats = _.map(site.posts.all(), function(post){ return post.categories })
-        - var flatCats = _.flatten(allCats)
-        - var uniqCats = _.uniq(flatCats, function(cat){ return cat })
-
         li All
-        for cat in uniqCats
+        for cat in helpers.getCategories(site)
           li= cat
 
       .grid__col-3.grid--justify-end: .search
@@ -21,12 +17,9 @@ block content
 
     //- Articles
     ul#feed-grid.grid.reverse-margin-md
-      //- rename all post urls to jade names, to match the git keys
-      - var renamedPostUrls = _.forEach(site.posts.all(), function(post){ post.git_url = post._url.substr(1, post._url.length - 6) + '.jade' })
-      //- merge posts and git objects based on new key created
-      - var mergedObjects = _.forEach(renamedPostUrls, function(post){ post.git = records.git[post.git_url] ? records.git[post.git_url] : records.git['posts/argyleink/first.jade'] })
+      - var mergedPosts = helpers.getMergedPosts(site, records)
       //- sort by date
-      - var postsSortedByDate = _.sortBy(mergedObjects, function(post){ return post.git.date }).reverse()
+      - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return post.git.date })
 
       for post in postsSortedByDate
         unless post._ignore

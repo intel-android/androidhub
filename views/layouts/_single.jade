@@ -2,15 +2,8 @@ doctype html
 html
   //- grab the post hero image or set a fallback
   - var hero = post.heroimage ? post.heroimage : 'http://placehold.it/1400x577&text=_'
-  
-  //- dig up author yaml data
-  - var author_handle = post._categories[1] ? post._categories[1] : 'admin'
-  - var author = data.authors[author_handle]
-  - var authorImage = author.twitter ? 'https://twitter.com/'+ author.twitter +'/profile_image?size=original' : 'http://placehold.it/200x200?text=' + author.displayname
-
-  //- grab git commit history for this post
-  - var url = post._url.substr(1, post._url.length - 6) + '.jade'
-  - var git = records.git[url] ? records.git[url] : records.git['posts/argyleink/first.jade']
+  - var author = helpers.getAuthor(post, data)
+  - var git = helpers.getPostGitData(post, records)
 
   head
     include ../includes/_site-meta
@@ -21,7 +14,7 @@ html
       title:        post.title,
       description:  post.excerpt,
       site_name:    data.meta.opengraph.site,
-      image:        hero | authorImage
+      image:        hero | author.image
     })
 
     include ../mixins/_twitter-meta
@@ -31,7 +24,7 @@ html
       title:        post.title,
       description:  post.excerpt,
       creator:      author.displayname,
-      image:        hero | authorImage
+      image:        hero | author.image
     })
 
     title= post.title
