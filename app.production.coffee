@@ -74,6 +74,7 @@ module.exports =
       getCategories:  require './scripts/get-categories'
       getMergedPosts: require './scripts/get-merged-posts'
       getPostGitData: require './scripts/get-post-git-data'
+      getFeatured:    require './scripts/get-featured'
 
   before: ->
     shell.exec 'npm run posts-git-log'

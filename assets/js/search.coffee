@@ -10,12 +10,14 @@ class App.Search
       .addEventListener 'change', (e) =>
         query = e.target.value.toLowerCase()
         results = []
+
         # query posts object
         for key, author of @posts when key isnt 'items'
-          for post in author.items when post.title.toLowerCase().indexOf(query) > -1
+          for post in author.items when post.title.toLowerCase().indexOf(query) > -1 | post.content.indexOf(query) > -1
             results.push post.title
         
         # filter grid items by matching titles
+        # @Grid.setState query
         @Grid.filter (el) ->
           title = el.querySelector('.post-title').innerText
           results.indexOf(title) > -1
