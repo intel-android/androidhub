@@ -5,11 +5,13 @@ block content
   .intro: section: .grid.grid--justify-center
       img.contain.lazyload(data-src='http://placehold.it/450x150&text=AndroidOnIntel', height='150px')
 
-  .hero: section
+  - var feature = helpers.getFeatured(site)[0]
+  - var author = helpers.getAuthor(feature, data)
+  .hero: a(href=feature._url): section
     h5 Latest Commit
-    h1 This would be the most recent post committed
-    h4 by Author
-    small @twitterhandle
+    h1= feature.title
+    h4= author.displayname
+    small @#{author.twitter}
 
   .recent: section
     h5 Recent Commits
