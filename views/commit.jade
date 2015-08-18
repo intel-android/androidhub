@@ -3,5 +3,54 @@ extends layouts/_general
 block content
   section
     h3 Commit
-    p Header with submit form
-  
+
+    .card: form#nl-form.nl-form
+      | I am 
+      input(type='text', value='', placeholder='your name', data-subline='Tell us your name')
+      |  and I would love to be part of the Android on Intel Hub. You can contact me at 
+      input(type='text', value='', placeholder='my email', data-subline='For example: <em>foo@bar.com</em>')
+      | . My expertise is in  
+      select
+        option(value='1', selected) native app development
+        option(value='1') hybrid app development
+        option(value='2') web apps
+        option(value='3') app design
+      | . Learn more about me at my website/github here 
+      input(type='text', value='', placeholder='https://github.com/handle', data-subline='For example: <em>www.yoursite.com</em> or <em>https://github.com/your_handle</em>').
+      |  I also wanted to mention this 
+      br
+      textarea.push-top
+
+      .nl-submit-wrap
+        button.nl-submit(type='submit') Submit
+      .nl-overlay 
+    
+    //- form#nl-form.nl-form
+    //-   | I am 
+    //-   select
+    //-     option(value='1', selected) any food
+    //-     option(value='2') Indian
+    //-     option(value='3') French
+    //-     option(value='4') Japanese
+    //-     option(value='2') Italian
+    //-   br
+    //-   | in a
+    //-   select
+    //-     option(value='1', selected) standard
+    //-     option(value='2') fancy
+    //-     option(value='3') hip
+    //-     option(value='4') traditional
+    //-     option(value='2') romantic
+    //-   |           restaurant
+    //-   br
+    //-   | at 
+    //-   select
+    //-     option(value='1', selected) anytime
+    //-     option(value='1') 7 p.m.
+    //-     option(value='2') 8 p.m.
+    //-     option(value='3') 9 p.m.
+    //-   |           in 
+    //-   input(type='text', value='', placeholder='any city', data-subline='For example: <em>Los Angeles</em> or <em>New York</em>')
+    //-   .nl-submit-wrap
+    //-     button.nl-submit(type='submit') Find a restaurant
+    //-   .nl-overlay 

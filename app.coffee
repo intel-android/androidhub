@@ -37,11 +37,13 @@ module.exports =
         'assets/js/fonts.coffee'
         'assets/js/nav.coffee'
         'assets/js/share.coffee'
+        'assets/js/natural-language-form.coffee'
         # classes
         'assets/js/grid.coffee'
         'assets/js/search.coffee'
         # view controllers
         'assets/js/feed.coffee'
+        'assets/js/commit.coffee'
       ]
     css_pipeline 
       files: [
