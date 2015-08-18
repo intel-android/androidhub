@@ -7,9 +7,9 @@ block content
     .grid.grid--align-center.grid--bleed
       .grid__col-2: h1 Feed
       .grid__col-7: ul.filters
-        li All
+        li(id='all') All
         for cat in helpers.getCategories(site)
-          li= cat
+          li(id=cat)= cat
 
       .grid__col-3.grid--justify-end: .search
         include includes/svg/_search
