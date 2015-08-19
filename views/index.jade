@@ -3,7 +3,7 @@ include mixins/_feed-item
 
 block content
   .intro: section: .grid.grid--justify-center
-      img.contain.lazyload(data-src='http://placehold.it/450x150&text=AndroidOnIntel', height='150px')
+      img.cover.lazyload(data-src='http://placehold.it/450x150&text=AndroidOnIntel', height='150px')
 
   - var feature = helpers.getFeatured(site)[0]
   - var author = helpers.getAuthor(feature, data)

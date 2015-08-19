@@ -13,8 +13,10 @@
     width:100%
     z-index:1
     filter: grayscale(100%)
-    // &:hover
-    //   filter: grayscale(0%)
+    
+    +below(480px)
+      width:auto
+      height:100%
 
   section
     position:relative

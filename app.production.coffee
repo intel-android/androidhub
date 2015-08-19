@@ -24,7 +24,7 @@ module.exports =
 
   extensions: [
     roots_yaml()
-    dynamic()
+    dynamic write: 'content.json'
     records git: file: 'public/posts-git.json'
     js_pipeline
       files: [

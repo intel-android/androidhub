@@ -43,10 +43,19 @@
 .post-meta, .post-excerpt
   font-size:0.6rem
   display:block
+
+.feed-manipulators .grid
+  +below(480px)
+    h3
+      display:none
+    .grid--justify-end,
+    .grid__col-sm-7
+      align-items:center
   
 .filters
   inline-list(1rem)
   text-transform:capitalize
+  
   > li
     cursor:pointer
     &.active
