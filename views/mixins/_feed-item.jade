@@ -1,9 +1,9 @@
-mixin feed-item(post)
+mixin feed-item(post, grid)
   - var image = post.heroimage ? post.heroimage : 'http://placehold.it/350x150?text=#{post.author}'
-  - var author_handle = post._url.split('/')[2]
-  - var author = data.authors[author_handle] ? data.authors[author_handle] : 'unknown'
+  - var author = helpers.getAuthor(post, data)
+  - var columns = grid || 'grid__col-xs-6 grid__col-sm-4 grid__col-md-4 grid__col-lg-3'
 
-  li.feed-item.grid__col-xs-6.grid__col-sm-4.grid__col-md-4.grid__col-lg-3(class=[post.categories, post.author])
+  li.feed-item(class=[post.categories, post.author, columns])
     a(href=post._url, title="Git commit ID: #{post.git.commit}")
       img.grid__cell-img.cover.lazyload(data-src=image)
       h4.post-title= post.title

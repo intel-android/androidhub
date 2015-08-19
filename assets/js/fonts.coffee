@@ -1,8 +1,10 @@
 App.Fonts = (->
-  return unless document.documentElement.className.indexOf('fonts-loaded') == -1
+  # dont load the fonts if we've already loaded them on the first page visit
+  # see includes/_font-strategy.jade
+  return if !!localStorage['fonts-loaded']
 
   reg     = new FontFaceObserver 'clearsans-regular', weight: 300
-  light   = new FontFaceObserver 'clearsans-light', weight: 100
+  light   = new FontFaceObserver 'clearsans-thin', weight: 100
   bold    = new FontFaceObserver 'clearsans-bold', weight: 600
 
   window.Promise
@@ -13,9 +15,9 @@ App.Fonts = (->
     ])
     .then(
       () ->
-        # console.info 'font available'
         document.documentElement.className += 'fonts-loaded'
+        localStorage['fonts-loaded'] = true
       () ->
-        # console.error 'font NOT available'
+        console.error 'error loading font'
     )
 )()

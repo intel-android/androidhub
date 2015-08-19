@@ -6,12 +6,9 @@
 .feed-item 
   border-radius:2px
   will-change:top, left
-  &:hover
-    background:white
-    box-shadow:0 1px 2px hsla(0,0%,0%,0.2)
-    // img
-    //   transform:scale(1.1)
-    //   box-shadow:0 0 1rem hsla(0,0%,0%,0.2)
+  // &:hover
+  //   background:white
+  //   box-shadow:0 1px 2px hsla(0,0%,0%,0.2)
 
   > a
     text-decoration:none
@@ -50,3 +47,7 @@
 .filters
   inline-list(1rem)
   text-transform:capitalize
+  > li
+    cursor:pointer
+    &.active
+      color:darken(default-color, 40%)

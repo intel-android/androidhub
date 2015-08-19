@@ -37,11 +37,13 @@ module.exports =
         'assets/js/fonts.coffee'
         'assets/js/nav.coffee'
         'assets/js/share.coffee'
+        'assets/js/natural-language-form.coffee'
         # classes
         'assets/js/grid.coffee'
         'assets/js/search.coffee'
         # view controllers
         'assets/js/feed.coffee'
+        'assets/js/commit.coffee'
       ]
     css_pipeline 
       files: [
@@ -70,6 +72,7 @@ module.exports =
     _: require 'lodash'
     helpers:
       getAuthor:      require './scripts/get-author'
+      getAuthorImage: require './scripts/get-author-image'
       getCategories:  require './scripts/get-categories'
       getMergedPosts: require './scripts/get-merged-posts'
       getPostGitData: require './scripts/get-post-git-data'

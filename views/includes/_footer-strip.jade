@@ -1,13 +1,21 @@
 .grey-bg: section
-  .grid.grid--bleed.grid--justify-space-between.grid--align-center
-    .grid__col-xs-5
-      h3.marginless Lovin' the hub?
-      h5.marginless Share the Hub on the Interwebz!
-      
-    .grid__col-xs-4.grid--direction-row
+  //- h3.marginless.clearsans-bold Lovin' the hub?
+  h3.marginless.text-center Share the Hub on the Interwebz!
+
+  .grid.grid--justify-space-around
+    .grid__col-xs-10.grid__col-sm-4.grid__col-md-3
       a#tweet.inline-social(href='')
-        img.lazyload(data-src='http://placehold.it/50x50&text=Tw') 
-        span.social-text Tweet
+        //- img.lazyload(data-src='http://placehold.it/50x50&text=Tw', height='50px') 
+        include svg/_twitter
+        span.social-text Post to Twitter
+
+    .grid__col-xs-10.grid__col-sm-4.grid__col-md-3
       a#post.inline-social(href='')
-        img.lazyload(data-src='http://placehold.it/50x50&text=Fb')
-        span.social-text Post  
+        include svg/_facebook
+        //- img.lazyload(data-src='http://placehold.it/50x50&text=Fb', height='50px')
+        span.social-text Post to Facebook
+
+    .grid__col-xs-10.grid__col-sm-4.grid__col-md-3
+      a#plus.inline-social(href='')
+        include svg/_googleplus
+        span.social-text Post to Google +

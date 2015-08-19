@@ -7,25 +7,29 @@ block content
 
   - var feature = helpers.getFeatured(site)[0]
   - var author = helpers.getAuthor(feature, data)
-  .hero: a(href=feature._url): section
-    h5 Latest Commit
-    h1= feature.title
-    h4= author.displayname
-    small @#{author.twitter}
+  .hero: a(href=feature._url)
+    img.heroimage.cover.lazyload(src=feature.heroimage)
+    section
+      h5.marginless.clearsans-thin Latest Commit
+      h1.hero-title= feature.title
+      .author-nameplate
+        img.avatar.circle.contain.lazyload(src=helpers.getAuthorImage(author))
+        h4.marginless by #{author.displayname}
+        small @#{author.twitter}
 
-  .recent: section
+  .recent: section: .card
     h5 Recent Commits
     ul.grid.reverse-margin-md
       - var mergedPosts = helpers.getMergedPosts(site, records)
-      //- sort by date
       - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return post.git.date })
-      - var postsReduced = postsSortedByDate.slice(0,4)
 
-      for post in postsReduced
-        unless post._ignore
-          +feed-item(post)
+      for post in postsSortedByDate.slice(0,4)
+        +feed-item(post, 'grid__col-md-3 grid__col-sm-3 grid__col-xs-6')
 
   .testimonial: section: .grid.grid--justify-center: .grid__col-9.grid--direction-column
-    h6 Jason Mark | @jasondesign
+    img.avatar.circle.contain.lazyload.pop-out(src=helpers.getAuthorImage({}))
+    h6.marginless Jason Mark | @jasondesign
     h2 Art is subjective. You like it or you don't like it. But design is the science of art. it's art with purpose. Design is about intent.
-    a(href=data.paths.field_guide) Learn more in our Developer Field Guide
+    a.btn.clear(href=data.paths.field_guide) 
+      | Learn more in our Developer Field Guide
+      include includes/svg/_arrow

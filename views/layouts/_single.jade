@@ -6,6 +6,7 @@ html
   - var git = helpers.getPostGitData(post, records)
 
   head
+    include ../includes/_font-strategy
     include ../includes/_site-meta
 
     include ../mixins/_og-meta
@@ -34,7 +35,7 @@ html
     include ../includes/_nav
 
     header.grid(style='background-image:url(#{hero})')
-      .grid__col-10.grid--align-self-center.centered-title.grid--direction-column
+      .grid__col-xs-10.grid__col-lg-8.grid--align-self-center.centered-title.grid--direction-column
         h1.header-title.normal-type= post.title
         h4.thin-type #{author.displayname} | #{git.date}
     

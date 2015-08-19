@@ -1,7 +1,14 @@
 nav
   box-shadow:0 2px 5px hsla(0,0%,0%,0.13)
-  padding:0.5rem 1rem
+  padding:1rem 0
   background-color:hsl(0,0%,98%)
+  
+  .link-nav-set > a
+    color:hsl(0,0%,20%)
+    &:first-child
+      margin-left:0
+    &:last-child
+      margin-right:0
 
 .link-nav-set  
   > a
@@ -13,11 +20,6 @@ nav
     
     &:hover, &.active
       color:default-color
-
-    &:first-child
-      margin-left:0
-    &:last-child
-      margin-right:0
     
 .social-icon 
   @extend .flex-child-image-fix
@@ -26,6 +28,11 @@ nav
   width:25px
   &:last-child
     margin-right:0
+  &:hover > svg 
+    > path
+      fill:#222
+    ellipse
+      fill:default-color
     
 .logo
   margin-right:2rem

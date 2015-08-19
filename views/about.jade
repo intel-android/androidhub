@@ -2,18 +2,19 @@ extends layouts/_general
 include mixins/_author
 
 block content
-  section
-    h1 About
-    
-    .card
+  .section-title: section
+    h3.marginless About
+
+  section: .card
+    .grid.grid--justify-center: .grid__col-9
       h3.marginless So what's this all about anyway...
       p Lorem ipsum dolor sit amet, pro partem soluta ea. Sonet dicunt percipitur et has, cum pericula democritum ad. Elitr recusabo ei duo, hinc invenire vituperatoribus qui ei. Vidisse graecis mei at, est te equidem efficiendi omittantur, quem prompta gloriatur ius ea.
 
     .spacer.sm
 
-    h2 Our Authors
+    h2 Founding Contributors
     ul.grid.reverse-margin-md
-      for author in _.sortBy(data.authors, 'displayname')
+      for author in _.sortBy(data.authors, 'displayname').slice(0,4)
         +author(author)
 
     .text-right
