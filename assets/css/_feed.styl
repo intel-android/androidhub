@@ -47,5 +47,7 @@
 .filters
   inline-list(1rem)
   text-transform:capitalize
-  > li.active
-    color:default-color
+  > li
+    cursor:pointer
+    &.active
+      color:darken(default-color, 40%)
