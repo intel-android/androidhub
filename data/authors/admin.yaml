@@ -2,7 +2,8 @@
 displayname:  'Intel Android Hub'
 nickname:     'admin'
 website:      'http://intelandroidhub.com'
-title:        'Running the show here on Android Hub'
+title:        'Admin'
+company:      'Intel'
 
 # Social Networks
 twitter:      'intelsoftware'

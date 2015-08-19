@@ -1,9 +1,9 @@
 extends layouts/_general
 
 block content
+  .section-title: section
+    h3.marginless Commit
   section
-    h3 Commit
-
     .card: form#nl-form.nl-form
       | I am 
       input(type='text', value='', placeholder='your name', data-subline='Tell us your name')
@@ -19,7 +19,7 @@ block content
       input(type='text', value='', placeholder='https://github.com/handle', data-subline='For example: <em>www.yoursite.com</em> or <em>https://github.com/your_handle</em>').
       |  I also wanted to mention this 
       br
-      textarea.push-top
+      textarea
 
       .nl-submit-wrap
         button.nl-submit(type='submit') Submit

@@ -3,5 +3,6 @@ mixin author(author)
     .grid__cell
       - var image = author.twitter ? 'https://twitter.com/'+ author.twitter +'/profile_image?size=original' : 'http://placehold.it/200x200?text=' + author.displayname
 
-      img.grid__cell-img.lazyload(data-src=image)
-      small= author.displayname
+      img.grid__cell-img.lazyload.cover(data-src=image)
+      .name.clearsans-bold= author.displayname
+      small #{author.title}, #{author.company}

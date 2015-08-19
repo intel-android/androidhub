@@ -4,7 +4,7 @@ App.Fonts = (->
   return if !!localStorage['fonts-loaded']
 
   reg     = new FontFaceObserver 'clearsans-regular', weight: 300
-  light   = new FontFaceObserver 'clearsans-light', weight: 100
+  light   = new FontFaceObserver 'clearsans-thin', weight: 100
   bold    = new FontFaceObserver 'clearsans-bold', weight: 600
 
   window.Promise
