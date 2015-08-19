@@ -72,6 +72,7 @@ module.exports =
     _: require 'lodash'
     helpers:
       getAuthor:      require './scripts/get-author'
+      getAuthorImage: require './scripts/get-author-image'
       getCategories:  require './scripts/get-categories'
       getMergedPosts: require './scripts/get-merged-posts'
       getPostGitData: require './scripts/get-post-git-data'
