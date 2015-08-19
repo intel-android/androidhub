@@ -1,28 +1,72 @@
 .hero
-  background:default-color
-  hover-darken()
-  padding:4rem 0
-  a
+  padding:5rem 0
+  padding:10vh 0
+  position:relative
+  overflow:hidden
+  text-shadow:1px 1px 0 hsla(0,0%,0%,0.15)
+  // backdrop-filter: grayscale(100%)
+  
+  .heroimage
+    position:absolute
+    top:0
+    left:0
+    width:100%
+    z-index:1
+    filter: grayscale(100%)
+    // &:hover
+    //   filter: grayscale(0%)
+
+  section
+    position:relative
+    z-index:2
+  > a
     color:white
     text-decoration:none
+    
     &:hover, &:active
       color:white
+    
+    &:after
+      content:" "
+      display:block
+      position:absolute
+      top:0
+      left:0
+      right:0
+      bottom:0
+      background-color:hsla(0,0%,0%,0.4)
+      z-index:1
 
 .hero-title
   margin:0.25rem 0 2rem
+  text-transform:capitalize
 
 .author-nameplate
   .avatar
     float:left
     margin-right:1rem
-    width:40px
-    box-shadow:1px 1px 3px hsla(0,0%,0%,0.4)
+  small
+    display:inherit
+    margin-top:-0.25em
+
+.avatar
+  width:40px
+  height:40px
+  box-shadow:1px 1px 3px hsla(0,0%,0%,0.4)
+  transition:box-shadow 0.3s ease, transform 0.3s ease
+  &:hover
+    transform:scale(1.1)
+    box-shadow:2px 2px 4px hsla(0,0%,0%,0.4)
 
 .recent
   padding:1rem 0 3rem
 
 .testimonial
   background:blue
-  hover-darken()
   color:white
   padding:1rem 0 3rem
+  
+  .pop-out
+    position:absolute
+    top:0
+    left:-40px

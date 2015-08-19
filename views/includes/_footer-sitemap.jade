@@ -1,6 +1,6 @@
 section.site-map: .grid.grid--bleed.grid--justify-space-between
   .grid__col-xs-6.grid--direction-column
-    p: a(href=data.paths.commit) Commit something to the Android Intel Hub
+    p: a.btn.blue.small(href=data.paths.commit) Commit something to the Hub
     .grid.grid--bleed
       .link-nav-set.grid__col-xs-12.grid__col-sm-10.grid--align-center.grid--justify-space-between.grid--direction-row
         a(href=data.paths.feed) Feed
@@ -16,7 +16,7 @@ section.site-map: .grid.grid--bleed.grid--justify-space-between
     .grid.push-top.grid--bleed
       .grid__col-2
         img.grid--align-self-start.contain.lazyload(data-src='img/intel_logo.png', height='50px')
-      .link-nav-set.grid__col-6.grid--direction-column.grid--justify-end
+      .link-nav-set.grid__col-6.grid--direction-column.grid--justify-start.push-left.clearsans-thin
         a(href=data.paths.terms) Terms of use
         a(href=data.paths.privacy) Privacy
         a(href=data.paths.cookies) Cookies
