@@ -17,7 +17,7 @@ block content
         h4.marginless by #{author.displayname}
         small @#{author.twitter}
 
-  .recent: section
+  .recent: section: .card
     h5 Recent Commits
     ul.grid.reverse-margin-md
       - var mergedPosts = helpers.getMergedPosts(site, records)
