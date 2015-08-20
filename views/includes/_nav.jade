@@ -1,4 +1,4 @@
-nav: section.no-responsive-padding: .grid.grid--bleed
+nav: section.no-responsive-padding: .grid.grid--bleed.grid--justify-space-between
   .grid__col-sm-3
     a.flex-child-image-fix(href=data.paths.home)
       include svg/_hub-logo
@@ -11,5 +11,5 @@ nav: section.no-responsive-padding: .grid.grid--bleed
     a(href=data.paths.commit) Commit
     a(href=data.paths.field_guide) Field Guide
 
-  .grid__col-sm-3.grid--justify-end.grid--direction-row.grid--align-center
+  .auto-width.grid__col-sm-3.grid--justify-end.grid--direction-row.grid--align-center
     include _social-icons

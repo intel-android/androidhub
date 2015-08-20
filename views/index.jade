@@ -3,7 +3,8 @@ include mixins/_feed-item
 
 block content
   .intro: section: .grid.grid--justify-center
-      img.cover.lazyload(data-src='http://placehold.it/450x150&text=AndroidOnIntel', height='150px')
+    include includes/svg/_droid
+    //- img.cover.lazyload(data-src='http://placehold.it/450x150&text=AndroidOnIntel', height='150px')
 
   - var feature = helpers.getFeatured(site)[0]
   - var author = helpers.getAuthor(feature, data)
@@ -17,8 +18,8 @@ block content
         h4.marginless by #{author.displayname}
         small @#{author.twitter}
 
-  .recent: section: .card
-    h5 Recent Commits
+  .recent: section
+    h5.recent-title Recent Commits
     ul.grid.reverse-margin-md
       - var mergedPosts = helpers.getMergedPosts(site, records)
       - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return post.git.date })
