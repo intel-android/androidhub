@@ -7,7 +7,7 @@ module.exports = function(post, data) {
     author_handle = post._categories[1] ? post._categories[1] : 'admin'
   else
     // sometimes post._categories isnt present, we should fallback by extracting it from the url
-    author_handle = author_handle ? author_handle : "/posts/argyleink/sample.html".split('/')[2]
+    author_handle = post._url && post._url.split('/')[2]
   
   author = data.authors[author_handle]
   author['image'] = author.twitter ? 'https://twitter.com/'+ author.twitter +'/profile_image?size=original' : 'http://placehold.it/200x200?text=' + author.displayname
