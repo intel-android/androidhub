@@ -11,6 +11,12 @@ class App.Grid
     @feedgrid = new Isotope '#' + options.id,
       itemSelector: options.item
       layoutMode:   'fitRows'
+    # set min height on the grid container for tall browsers
+    footer      = document.querySelector 'footer'
+    grid        = document.querySelector '#feed-grid'
+    docHeight   = footer.offsetTop + footer.offsetHeight
+    winHeight   = window.innerHeight
+    grid.style.minHeight = grid.offsetHeight + (winHeight - docHeight) + 10 + 'px'
 
   restoreState: ->
     hash = location.hash
