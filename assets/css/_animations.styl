@@ -7,3 +7,14 @@
   opacity:1
   transform:translateY(0)
   transition:all 0.3s ease
+  
+#droid-hero > path:first-child
+  transform-origin:center center
+  animation:rotateForever 10s linear infinite
+  will-change:transform
+  
+@keyframes rotateForever
+  from
+    transform:rotateZ(0)
+  to
+    transform:rotateZ(360deg)
