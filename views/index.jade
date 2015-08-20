@@ -13,7 +13,7 @@ block content
       h5.marginless.clearsans-thin Latest Commit
       h1.hero-title= feature.title
       .author-nameplate
-        img.avatar.circle.contain.lazyload(src=helpers.getAuthorImage(author))
+        img.avatar.circle.contain.lazyload.lazyanimate(src=helpers.getAuthorImage(author))
         h4.marginless by #{author.displayname}
         small @#{author.twitter}
 
@@ -27,7 +27,7 @@ block content
         +feed-item(post, 'grid__col-md-3 grid__col-sm-3 grid__col-xs-6')
 
   .testimonial: section: .grid.grid--justify-center: .grid__col-9.grid--direction-column
-    img.avatar.circle.contain.lazyload.pop-out(src=helpers.getAuthorImage({}))
+    img.avatar.circle.contain.lazyload.lazyanimate.pop-out(src=helpers.getAuthorImage({}))
     h6.marginless Jason Mark | @jasondesign
     h2 Art is subjective. You like it or you don't like it. But design is the science of art. it's art with purpose. Design is about intent.
     a.btn.clear(href=data.paths.field_guide) 
