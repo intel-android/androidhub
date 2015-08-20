@@ -5,7 +5,7 @@ block content
   .section-title: section
     h3.marginless Authors
 
-  section
+  main: section
     .card: ul.grid.reverse-margin-md
       for author in _.sortBy(data.authors, 'displayname')
         +author(author)
