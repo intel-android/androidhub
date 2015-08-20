@@ -12,15 +12,26 @@
 #plus > #icon-googleplus
   width:65px
   height:65px
+  filter: drop-shadow(1px 1px 3px hsla(0,0%,0%,0.4))
   ellipse
     fill:white
   > path
     fill:#0FAAF5
     
+  &:hover
+    > path
+      fill:lighten(#0FAAF5,20%)
+    
 #post > #icon-facebook
   > path
     fill:#39569E
+  &:hover
+    > path
+      fill:lighten(#39569E,20%)
     
 #plus > #icon-googleplus
   > path
     fill:#D75B5B
+  &:hover
+    > path
+      fill:lighten(#D75B5B,20%)
