@@ -1,7 +1,9 @@
 nav
   box-shadow:0 2px 5px hsla(0,0%,0%,0.13)
   padding:1rem 0
-  background-color:hsl(0,0%,98%)
+  background-color:white
+  position:relative
+  z-index:2
   
   .link-nav-set > a
     color:hsl(0,0%,20%)
@@ -11,10 +13,10 @@ nav
       margin-right:0
   
   +below(480px)  
-    .link-nav-set
-      margin:0.5rem 0
+    .link-nav-set > a
+      padding:0.5rem 0.25em
         
-    .grid > div
+    .grid > div:not(.link-nav-set)
       justify-content:center
       > a
         text-align:center

@@ -34,10 +34,10 @@ html
   body
     include ../includes/_nav
 
-    header.grid(style='background-image:url(#{hero})')
+    header.grid.lazyload(data-bg=hero)
       .grid__col-xs-10.grid__col-lg-8.grid--align-self-center.centered-title.grid--direction-column
-        h1.header-title.normal-type= post.title
-        h4.thin-type #{author.displayname} | #{git.date}
+        h1.header-title= post.title
+        h4.header-subtitle.thin-type #{author.displayname} | #{git.date}
     
     section
       article

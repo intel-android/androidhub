@@ -16,7 +16,7 @@ block content
         input#search(type='search', results=5, autocomplete, placeholder='Search', x-webkit-speech)
   
   //- Articles
-  section: .card: ul#feed-grid.grid.reverse-margin-md
+  main: section: .card: ul#feed-grid.grid.reverse-margin-md
     - var mergedPosts = helpers.getMergedPosts(site, records)
     - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return post.git.date })
 

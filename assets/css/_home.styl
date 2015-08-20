@@ -42,6 +42,8 @@
 .hero-title
   margin:0.25rem 0 2rem
   text-transform:capitalize
+  +below(480px)
+    font-size:1.5em
 
 .author-nameplate
   .avatar
@@ -60,13 +62,34 @@
     transform:scale(1.1)
     box-shadow:2px 2px 4px hsla(0,0%,0%,0.4)
 
-// .recent
-//   padding:1rem 0 3rem
+.intro
+  background-color:#eee
+
+.recent
+  background-color:white
+  padding-top:2rem
+
+.recent-title
+  margin-top:0
 
 .testimonial
   background:blue
   color:white
-  padding:1rem 0 3rem
+  padding:4rem 0 3rem
+  position:relative
+  overflow:hidden
+  
+  &:before
+    // content:url(/img/tear.svg)
+    content:" "
+    background-image:url(/img/tear.svg)
+    background-size:cover
+    position:absolute
+    top:-3px
+    left:-8px
+    width:102%
+    height:39px
+    filter: drop-shadow(0 1px 2px hsla(0,0%,0%,0.3))
   
   .pop-out
     position:absolute
