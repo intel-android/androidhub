@@ -4,12 +4,11 @@ include mixins/_feed-item
 block content
   .intro: section: .grid.grid--justify-center
     include includes/svg/_droid
-    //- img.cover.lazyload(data-src='http://placehold.it/450x150&text=AndroidOnIntel', height='150px')
 
   - var feature = helpers.getFeatured(site)[0]
   - var author = helpers.getAuthor(feature, data)
   .hero: a(href=feature._url)
-    img.heroimage.cover.lazyload(src=feature.heroimage)
+    img.heroimage.cover.lazyload(data-src=feature.heroimage)
     section
       h5.marginless.clearsans-thin Latest Commit
       h1.hero-title= feature.title
