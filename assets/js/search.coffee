@@ -1,6 +1,7 @@
 class App.Search
   constructor: (FeedGrid) ->
     @Grid = FeedGrid
+    @gridNode = document.querySelector('#feed-grid')
     @listen()
     @loadPostsJSON (posts) => @posts = posts.posts
 
@@ -21,6 +22,12 @@ class App.Search
         @Grid.filter (el) ->
           title = el.querySelector('.post-title').innerText
           results.indexOf(title) > -1
+
+        # show empty results message
+        if !results.length
+          @gridNode.setAttribute 'data-empty', true
+        else 
+          @gridNode.removeAttribute 'data-empty'
 
   loadPostsJSON: (cb) ->
     xobj = new XMLHttpRequest()
