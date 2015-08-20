@@ -60,13 +60,27 @@
     transform:scale(1.1)
     box-shadow:2px 2px 4px hsla(0,0%,0%,0.4)
 
-// .recent
-//   padding:1rem 0 3rem
+.recent
+  background-color:white
+  padding-top:2rem
+
+.recent-title
+  margin-top:0
 
 .testimonial
   background:blue
   color:white
-  padding:1rem 0 3rem
+  padding:4rem 0 3rem
+  position:relative
+  overflow:hidden
+  
+  &:before
+    content:url(/img/tear.svg)
+    position:absolute
+    top:-1px
+    left:0
+    width:100%
+    filter: drop-shadow(0 1px 2px hsla(0,0%,0%,0.2))
   
   .pop-out
     position:absolute
