@@ -37,7 +37,7 @@ html
     header.grid.lazyload(data-bg=hero)
       .grid__col-xs-10.grid__col-lg-8.grid--align-self-center.centered-title.grid--direction-column
         h1.header-title= post.title
-        h4.header-subtitle.thin-type #{author.displayname} | #{moment(git.date).format("MMM Do YYYY")}
+        h4.header-subtitle.thin-type #{author.displayname} | #{moment(new Date(git.date)).format("MMM Do YYYY")}
     
     section
       article
