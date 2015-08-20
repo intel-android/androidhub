@@ -69,8 +69,9 @@ module.exports =
     bare: true
 
   locals:
-    dev:  false
-    _:    require 'lodash'
+    dev:    false
+    _:      require 'lodash'
+    moment: require 'moment'
     helpers:
       getAuthor:      require './scripts/get-author'
       getAuthorImage: require './scripts/get-author-image'
