@@ -68,8 +68,9 @@ module.exports =
     pretty: true
 
   locals:
-    dev: true
-    _: require 'lodash'
+    dev:    true
+    _:      require 'lodash'
+    moment: require 'moment'
     helpers:
       getAuthor:      require './scripts/get-author'
       getAuthorImage: require './scripts/get-author-image'

@@ -7,5 +7,5 @@ mixin feed-item(post, grid)
     a(href=post._url, title="Git commit ID: #{post.git.commit}")
       img.grid__cell-img.cover.lazyload(data-src=image)
       h4.post-title.thin-type= post.title
-      small.post-meta #{author.displayname} <span>|</span> #{post.git.date}
+      small.post-meta #{author.displayname} <span>|</span> #{moment(post.git.date).format("MMM Do YYYY")}
       small.post-excerpt= post.excerpt
