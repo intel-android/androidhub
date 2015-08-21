@@ -4,6 +4,7 @@ var _      = require("lodash");
 var fs     = require("fs");
 var jade   = require("jade");
 var yaml   = require("js-yaml");
+var request = require("request");
 
 describe("Posts", function() {
   var glob = require("glob");
@@ -28,7 +29,7 @@ function test_post(filename) {
   });
 
   var fileInput = fs.readFileSync(filename, "utf8");
-  var post = filename.split('/')[-1];
+  var post = filename.match(/\/.*\/(.*)$/)[1];
 
   it(post + " read the file in as a string", function() {
     expect(fileInput).toBeString();
@@ -88,8 +89,8 @@ function test_post(filename) {
           expect(data.title).toBeString();
         });
 
-        it('is not too long (100 characters)', function () {
-          expect(data.title.length).toBeLessThan(100);
+        it('is not too long (200 characters)', function () {
+          expect(data.title.length).toBeLessThan(200);
         });
       });
 
@@ -124,6 +125,40 @@ function test_post(filename) {
           for (var i = 0; i < data.categories.length; i++) {
             expect(validCategories).toContain(data.categories[i]);
           }
+        });
+      });
+    });
+
+    describe("heroimage key", function() {
+      it('is a url', function() {
+        expect(data.heroimage).toBeString();
+      });
+
+      describe("remote image", function() {
+        var response = null;
+
+        beforeAll(function(done) {
+          // jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
+          request.head(data.heroimage, function(err, res, body) {
+            if (err) {
+              done.fail(err);
+            } else {
+              response = res;
+              done();
+            }
+          });
+        });
+
+        it('resolves to 200', function() {
+          expect(response.statusCode).toBe(200);
+        });
+
+        it('has an image content-type', function() {
+          expect(['image/jpeg', 'image/png']).toContain(response.headers['content-type']);
+        });
+
+        it('is smaller than 2M bytes', function() {
+          expect(parseInt(response.headers['content-length'])).toBeLessThan(2000000);
         });
       });
     });
