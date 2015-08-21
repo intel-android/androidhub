@@ -83,9 +83,9 @@ module.exports =
 
   before: ->
     shell.exec 'npm run posts-git-log'
+    # shell.exec 'npm test'
     return true
 
   after: ->
-    shell.exec 'node_modules/purify-css/bin/purifycss public/css/app.css public/index.html public/feed.html public/about.html public/authors.html public/commit.html public/posts/template.html public/js/app.js --out public/css/app.css'
+    # shell.exec 'node_modules/purify-css/bin/purifycss public/css/app.css public/index.html public/feed.html public/about.html public/authors.html public/commit.html public/posts/template.html public/js/app.js --out public/css/app.css'
     shell.exec 'node_modules/csso/bin/csso public/css/app.css public/css/app.css'
-    return true
