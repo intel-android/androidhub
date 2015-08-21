@@ -3,4 +3,4 @@ mixin author(author)
     .grid__cell
       img.grid__cell-img.lazyload.lazyanimate.cover(data-src=helpers.getAuthorImage(author))
       .name.clearsans-bold= author.displayname
-      small #{author.title}, #{author.company}
+      small #{author.title} at #{author.company}
