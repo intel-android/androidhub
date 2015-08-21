@@ -79,6 +79,7 @@ module.exports =
       getMergedPosts: require './scripts/get-merged-posts'
       getPostGitData: require './scripts/get-post-git-data'
       getFeatured:    require './scripts/get-featured'
+      socialLink:     require './scripts/social-link'
 
   before: ->
     shell.exec 'npm run posts-git-log'
