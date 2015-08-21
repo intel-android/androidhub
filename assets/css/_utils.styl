@@ -6,10 +6,22 @@
   margin:0 -4rem
   border-radius:2px
   
-  +below(480px)
+  +below(mobile)
     margin:0
     padding:1rem
     width:100%
+
+.hidden-ss
+  +below(mobile)
+    display:none
+    
+.hidden-sm
+  +below(tablet)
+    display:none
+    
+.hidden-lg
+  +below(desktop)
+    display:none
 
 .spacer
   &.xs
@@ -54,6 +66,6 @@
 .circle
   border-radius:50%
 
-.auto-width
-  +above(480px)
+.auto-width-ss
+  +above(mobile)
     width:auto
