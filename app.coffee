@@ -11,6 +11,7 @@ shell         = require 'shelljs'
 module.exports =
   ignores: [
     'readme.md'
+    'authors_readme.md'
     'ship.*conf'
     '**/layout.*'
     '**/_*'

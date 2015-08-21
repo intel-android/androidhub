@@ -11,6 +11,7 @@ shell           = require 'shelljs'
 module.exports =
   ignores: [
     'readme.md'
+    'authors_readme.md'
     'ship.*conf'
     '**/layout.*'
     '**/_*'
@@ -47,7 +48,7 @@ module.exports =
       ]
       out:    'js/app.js'
       minify: true
-      hash:   true
+      hash:   false
     css_pipeline
       files: [
         'bower_components/reflex/css/reflex.css'
@@ -55,7 +56,7 @@ module.exports =
       ]
       out:    'css/app.css'
       minify: false # minify is not working right now for some reason with roots
-      hash:   true
+      hash:   false
   ]
 
   stylus:
@@ -82,4 +83,9 @@ module.exports =
 
   before: ->
     shell.exec 'npm run posts-git-log'
+    return true
+
+  after: ->
+    shell.exec 'node_modules/purify-css/bin/purifycss public/css/app.css public/index.html public/feed.html public/about.html public/authors.html public/commit.html public/posts/template.html public/js/app.js --out public/css/app.css'
+    shell.exec 'node_modules/csso/bin/csso public/css/app.css public/css/app.css'
     return true
