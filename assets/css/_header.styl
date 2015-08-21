@@ -19,15 +19,38 @@ header
     margin:15vh auto 5vh
   
 .header-title
-  margin-bottom:0
+  margin-top:0
+  margin-bottom:2rem
   +below(mobile)
     font-size:1.5em
 
 .header-subtitle
+  font-size:0.8rem
+  margin-bottom:0.5rem
   +below(mobile)
     font-size:0.7rem
+
+.header-author
+  margin-bottom:0
+  
+.header-nameplate
+  > a > .avatar
+    float:left
+    width:80px
+    height:80px
+  > .meta svg
+    filter: drop-shadow(1px 1px 0 hsla(0,0%,0%,0.2))
+    &:hover
+      path
+        fill:default-color
+
+.header-social
+  > a
+    text-decoration:none
 
 .section-title
   padding:1rem 0
   background:default-color
   color:white
+  h3
+    text-shadow:1px 1px 0 hsla(0,0%,0%,0.2)

@@ -36,15 +36,25 @@ html
 
     header.grid.lazyload(data-bg=hero)
       .grid__col-xs-10.grid__col-lg-8.grid--align-self-center.centered-title.grid--direction-column
+        small.header-date(title=git.date)= moment(new Date(git.date)).format("MMM Do YYYY")
         h1.header-title= post.title
-        h4.header-subtitle.thin-type #{author.displayname} | #{moment(new Date(git.date)).format("MMM Do YYYY")}
-    
-    section
-      article
-        block content
 
-      //- a.btn(href='') &laquo; back to index
+        .header-nameplate
+          a(href=author.website)
+            img.avatar.circle.contain.push-right.lazyload.lazyanimate(src=helpers.getAuthorImage(author))
+          .meta
+            h3.header-author.thin-type.marginless= author.displayname
+            h4.header-subtitle.thin-type.marginless #{author.title} at #{author.company}
+            .header-social
+              a(href=helpers.socialLink('twitter', author.twitter), target='_blank')
+                include ../includes/svg/_twitter-bird
+              a(href=helpers.socialLink('github', author.github), target='_blank')
+                include ../includes/svg/_github
+              a(href=helpers.socialLink('codepen', author.codepen), target='_blank')
+                include ../includes/svg/_codepen
+    
+    main: section: .card: article
+      block content
        
     include ../includes/_footer 
     != js('/')
-    //- != JSON.stringify(post)
