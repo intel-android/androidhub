@@ -4,6 +4,8 @@ nav
   background-color:white
   position:relative
   z-index:2
+  +below(tablet)
+    padding-bottom:0
   
   .link-nav-set > a
     color:hsl(0,0%,20%)
@@ -12,7 +14,7 @@ nav
     &:last-child
       margin-right:0
   
-  +below(480px)  
+  +below(tablet)  
     .link-nav-set > a
       padding:0.5rem 0.25em
         
@@ -30,6 +32,7 @@ nav
     font-size:0.8rem
     margin:0 0.25em
     cursor:pointer
+    position:relative
     
     &:hover, &.active
       color:default-color

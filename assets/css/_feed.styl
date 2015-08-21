@@ -2,6 +2,9 @@
   margin-bottom:2rem
   will-change:height
   
+  +below(mobile)
+    margin-bottom:0
+  
   &[data-empty]:after
     content:"No results"
     width:100%
@@ -21,7 +24,7 @@
     height:200px
     overflow:hidden
     
-    +above(1200px)
+    +above(desktop)
       height:150px
     
 .post-title
@@ -29,7 +32,7 @@
   margin:0.5rem 0 0.25rem
   color:blue
   // font-size:2vw
-  // +below(480px)
+  // +below(mobile)
   //   font-size:4vw
   // +above(1024px)
   //   font-size:1.5vw
@@ -49,11 +52,11 @@
   display:block
 
 .feed-manipulators .grid
-  +below(480px)
+  +below(tablet)
     h3
       display:none
-    .grid--justify-end,
-    .grid__col-sm-7
+  +below(mobile)
+    .grid__col-sm-6
       align-items:center
   
 .filters

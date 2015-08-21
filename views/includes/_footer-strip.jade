@@ -3,19 +3,19 @@
   h2.marginless.text-center Share the Hub on the Interwebz!
 
   .grid.grid--justify-space-around
-    .grid__col-xs-10.grid__col-sm-4.grid__col-md-3
+    .grid__col-4.grid__col-md-3
       a#tweet.inline-social(href='')
         //- img.lazyload(data-src='http://placehold.it/50x50&text=Tw', height='50px') 
         include svg/_twitter
-        span.social-text Post to Twitter
+        span.social-text.hidden-sm Post to Twitter
 
-    .grid__col-xs-10.grid__col-sm-4.grid__col-md-3
+    .grid__col-4.grid__col-md-3
       a#post.inline-social(href='')
         include svg/_facebook
         //- img.lazyload(data-src='http://placehold.it/50x50&text=Fb', height='50px')
-        span.social-text Post to Facebook
+        span.social-text.hidden-sm Post to Facebook
 
-    .grid__col-xs-10.grid__col-sm-4.grid__col-md-3
+    .grid__col-4.grid__col-md-3
       a#plus.inline-social(href='')
         include svg/_googleplus
-        span.social-text Post to Google +
+        span.social-text.hidden-sm Post to Google +
