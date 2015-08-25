@@ -4,7 +4,16 @@
   position:relative
   overflow:hidden
   text-shadow:0 2px 4px hsla(0,0%,0%,0.15)
+  color:white
   // backdrop-filter: grayscale(100%)
+  
+  a
+    text-decoration:none
+    color:white
+    
+    &:hover, &:active
+      color:white
+      text-decoration:underline
   
   .heroimage
     position:absolute
@@ -22,12 +31,6 @@
     position:relative
     z-index:2
   > a
-    color:white
-    text-decoration:none
-    
-    &:hover, &:active
-      color:white
-    
     &:after
       content:" "
       display:block
@@ -132,6 +135,10 @@
     position:absolute
     top:0
     left:-40px
+    +below(mobile)
+      position:relative
+      top:-1rem
+      left:0
     
   .btn.clear:hover
     color:white
