@@ -53,8 +53,12 @@ html
               a(href=helpers.socialLink('codepen', author.codepen), target='_blank')
                 include ../includes/svg/_codepen
     
-    main: section: .card: article
-      block content
+    main.post: section
+      .card: article
+        block content
+
+      aside.card
+        h4 Related Articles
        
     include ../includes/_footer 
     != js('/')
