@@ -1,5 +1,5 @@
 extends layouts/_general
-include mixins/_feed-item
+include mixins/_feed-home-item
 
 block content
   .intro: section: .grid.grid--justify-center
@@ -29,7 +29,7 @@ block content
       - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return post.git.date })
 
       for post in postsSortedByDate.slice(0,4)
-        +feed-item(post, 'grid__col-md-3 grid__col-sm-3 grid__col-xs-6')
+        +feed-home-item(post)
 
   .testimonial: section: .grid.grid--justify-center: .grid__col-9.grid--direction-column
     img.avatar.circle.contain.lazyload.lazyanimate.pop-out(src=helpers.getAuthorImage({}))

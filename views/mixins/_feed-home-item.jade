@@ -1,0 +1,11 @@
+mixin feed-home-item(post)
+  - var image = post.heroimage ? post.heroimage : 'http://placehold.it/350x150?text=#{post.author}'
+  - var author = helpers.getAuthor(post, data)
+
+  li.feed-item.grid__col-md-3.grid__col-sm-3.grid__col-xs-6
+    h6.marginless= post.categories[0]
+    a(href=post._url, title="Git commit ID: #{post.git.commit}")
+      img.grid__cell-img.cover.lazyload(data-src=image)
+      h4.post-title.thin-type= post.title
+      small.post-meta(title=post.git.date) 
+        | by #{author.displayname}
