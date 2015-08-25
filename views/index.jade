@@ -13,7 +13,7 @@ block content
   .hero
     img.heroimage.cover.lazyload(data-src=feature.heroimage)
     section
-      .icon-commit.hidden-ss: include includes/svg/_commit
+      .icon-commit.hidden-sm: include includes/svg/_commit
       h5.marginless.clearsans-thin Latest Commit
       a(href=feature._url)
         h1.hero-title= feature.title
@@ -24,7 +24,7 @@ block content
           small @#{author.twitter}
 
   .recent: section
-    .recent-icon-commit.hidden-ss: include includes/svg/_commit
+    .recent-icon-commit.hidden-sm: include includes/svg/_commit
     h5.recent-title Recent Commits
     ul.grid.reverse-margin-md
       - var mergedPosts = helpers.getMergedPosts(site, records)
