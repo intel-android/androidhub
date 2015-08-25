@@ -20,14 +20,12 @@ class App.Grid
     grid.style.minHeight  = grid.offsetHeight + (winHeight - docHeight) + 10 + 'px'
 
   restoreState: ->
-    hash        = location.hash
-    hashClass   = hash.replace('#', '.')
+    hash = location.hash.replace('#', '.')
     
-    if hash then @filter 
+    if hash then @filter hash
     if !@activeItem
-      if hash == '' then hash = '#all'
-      @setActiveItem @filters.querySelector hashClass
-
+      if hash == '' then hash = '.all'
+      @setActiveItem @filters.querySelector hash
 
   setState: (filter) ->
     if filter == 'all' then filter = ''
