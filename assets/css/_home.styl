@@ -5,7 +5,6 @@
   overflow:hidden
   text-shadow:0 2px 4px hsla(0,0%,0%,0.15)
   color:white
-  // backdrop-filter: grayscale(100%)
   
   a
     text-decoration:none
@@ -19,17 +18,17 @@
     position:absolute
     top:0
     left:0
-    width:100%
     z-index:1
     filter: grayscale(100%)
     
-    +below(mobile)
+    +below(tablet)
       width:auto
       height:100%
 
   section
     position:relative
     z-index:2
+    
   > a
     &:after
       content:" "
@@ -76,41 +75,40 @@
     margin:0 auto
 
 .recent
-  position:relative
   overflow:hidden
   background-color:white
   padding-top:2rem
+  > section
+    position:relative
 
 .recent-title
   margin-top:0
+
+.icon-commit,
+.recent-icon-commit
+  position:absolute
+  top:3px
+  left:-2rem
   
-// .commit-line, .recent-commit-line
-//   position:absolute
-//   top:3px
-//   left:0
-//   z-index:2
+  &:before
+    content:" "
+    position:absolute
+    top:15px
+    left:8px
+    width:2px
+    height:400px
+    background:white
 
-// .recent-commit-line
-//   top:-108px
+.icon-commit
+  path
+    fill:white
 
-// // enable 'use' svg's to be styled by css
-// .allow-css-control path
-//   fill:inherit
-//   stroke:inherit
-
-// .commit-line svg path
-//   fill:white
-//   stroke:white
-//   &.end-cap
-//     stroke:none
-
-// .recent-commit-line svg
-//   transform:rotateX(180deg)
-//   path
-//     fill:black
-//     stroke:black
-//     &.end-cap
-//       stroke:none
+.recent-icon-commit
+  &:before
+    background:black
+    bottom:25px
+    top:auto
+    height:40px
 
 .testimonial
   background:blue
@@ -120,7 +118,6 @@
   overflow:hidden
   
   &:before
-    // content:url(/img/tear.svg)
     content:" "
     background-image:url(/img/tear.svg)
     background-size:cover
@@ -135,7 +132,7 @@
     position:absolute
     top:0
     left:-40px
-    +below(mobile)
+    +below(tablet)
       position:relative
       top:-1rem
       left:0
