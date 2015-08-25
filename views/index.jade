@@ -4,12 +4,16 @@ include mixins/_feed-item
 block content
   .intro: section: .grid.grid--justify-center
     include includes/svg/_droid
+    .text-overlay
+      include includes/svg/_droid-hub
+      h6.fix-reflex-type.marginless Android tips, tuts and tricks from one developer to another.
 
   - var feature = helpers.getFeatured(site)[0]
   - var author = helpers.getAuthor(feature, data)
   .hero: a(href=feature._url)
     img.heroimage.cover.lazyload(data-src=feature.heroimage)
     section
+      //- .commit-line: include includes/svg/_commit-line
       h5.marginless.clearsans-thin Latest Commit
       h1.hero-title= feature.title
       .author-nameplate
@@ -18,6 +22,7 @@ block content
         small @#{author.twitter}
 
   .recent: section
+    //- .recent-commit-line: svg: use#recent-commit-line.allow-css-control(xlink:href='#commit-line')
     h5.recent-title Recent Commits
     ul.grid.reverse-margin-md
       - var mergedPosts = helpers.getMergedPosts(site, records)

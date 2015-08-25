@@ -3,7 +3,7 @@
   padding:10vh 0
   position:relative
   overflow:hidden
-  text-shadow:1px 1px 0 hsla(0,0%,0%,0.15)
+  text-shadow:0 2px 4px hsla(0,0%,0%,0.15)
   // backdrop-filter: grayscale(100%)
   
   .heroimage
@@ -56,21 +56,58 @@
 .avatar
   width:40px
   height:40px
-  box-shadow:1px 1px 3px hsla(0,0%,0%,0.4)
+  box-shadow:0 2px 4px hsla(0,0%,0%,0.4)
   transition:box-shadow 0.3s ease, transform 0.3s ease
   &:hover
     transform:scale(1.1)
-    box-shadow:2px 2px 4px hsla(0,0%,0%,0.4)
+    box-shadow:0 3px 6px hsla(0,0%,0%,0.4)
 
 .intro
   background-color:#eee
+  
+  .text-overlay
+    position:absolute
+    top:3rem
+    left:0
+    width:100%
+    margin:0 auto
 
 .recent
+  position:relative
+  overflow:hidden
   background-color:white
   padding-top:2rem
 
 .recent-title
   margin-top:0
+  
+// .commit-line, .recent-commit-line
+//   position:absolute
+//   top:3px
+//   left:0
+//   z-index:2
+
+// .recent-commit-line
+//   top:-108px
+
+// // enable 'use' svg's to be styled by css
+// .allow-css-control path
+//   fill:inherit
+//   stroke:inherit
+
+// .commit-line svg path
+//   fill:white
+//   stroke:white
+//   &.end-cap
+//     stroke:none
+
+// .recent-commit-line svg
+//   transform:rotateX(180deg)
+//   path
+//     fill:black
+//     stroke:black
+//     &.end-cap
+//       stroke:none
 
 .testimonial
   background:blue
