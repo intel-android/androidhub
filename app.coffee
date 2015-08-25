@@ -29,6 +29,7 @@ module.exports =
     records git: file: 'public/posts-git.json'
     js_pipeline
       files: [
+        'bower_components/fastclick/lib/fastclick.js'
         'bower_components/es6-promise/promise.min.js'
         'bower_components/fontfaceobserver/fontfaceobserver.js'
         'bower_components/isotope/dist/isotope.pkgd.min.js'
