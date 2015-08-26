@@ -1,10 +1,14 @@
 .hero
-  padding:5rem 0
-  padding:10vh 0
+  padding:2.5rem 0
+  padding:5vh 0
   position:relative
   overflow:hidden
   text-shadow:0 2px 4px hsla(0,0%,0%,0.15)
   color:white
+  
+  +above(laptop)
+    padding:5rem 0
+    padding:10vh 0
   
   a
     text-decoration:none
@@ -19,11 +23,13 @@
     top:0
     left:0
     z-index:1
+    width:auto
+    height:100%
     filter: grayscale(100%)
     
-    +below(tablet)
-      width:auto
-      height:100%
+    +above(tablet)
+      width:100%
+      height:auto
 
   section
     position:relative
