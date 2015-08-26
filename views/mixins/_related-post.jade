@@ -2,9 +2,9 @@ mixin related-post(post)
   - var image = post.heroimage ? post.heroimage : 'http://placehold.it/350x150?text=#{post.author}'
   - var author = helpers.getAuthor(post, data)
 
-  a.related-post.grid.grid--bleed(href=post._url)
+  .related-post.grid.grid--bleed
     .grid__col-md-4
       img(src=image)
     .grid__col-md-8
-      p.marginless= post.excerpt
+      a(href=post._url): p.marginless= post.title
       small by #{author.displayname}

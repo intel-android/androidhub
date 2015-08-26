@@ -54,15 +54,20 @@ html
                 include ../includes/svg/_codepen
     
     main.post: section
+      //- main article content
       .card: article
         block content
 
-      aside.card: article
-        h4 Related Articles
-        .related-posts
-          include ../mixins/_related-post
-          +related-post(site.posts.all()[0])
-          +related-post(site.posts.all()[0])
+      //- related posts
+      - var relatedPosts = helpers.getRelatedPosts(post, site.posts.all())
+      if relatedPosts.length
+        include ../mixins/_related-post
+
+        aside.card: article
+          h4 Related Articles
+          .related-posts
+            each post in relatedPosts
+              +related-post(post)
        
     include ../includes/_footer 
     != js('/')
