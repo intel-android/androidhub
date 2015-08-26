@@ -6,13 +6,13 @@ mixin author(author)
       small #{author.title} at #{author.company}
 
       .author-social
-        if author.twitter
-          a(href=helpers.socialLink('twitter', author.twitter), target='_blank')
-            include ../includes/svg/_twitter-bird
-
         if author.github
           a(href=helpers.socialLink('github', author.github), target='_blank')
             include ../includes/svg/_github
+
+        if author.twitter
+          a(href=helpers.socialLink('twitter', author.twitter), target='_blank')
+            include ../includes/svg/_twitter-bird
 
         if author.codepen
           a(href=helpers.socialLink('codepen', author.codepen), target='_blank')
