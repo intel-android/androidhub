@@ -2,7 +2,7 @@
   "name": "-intel-android",
   "description": "",
   "scripts": {
-    "test": "./node_modules/.bin/jasmine",
+    "test": "node jasmine-runner.js",
     "posts-git-log": "./scripts/git-json.sh posts/*/*.jade > public/posts-git.json"
   },
   "dependencies": {
@@ -29,6 +29,7 @@
     "jasmine": "^2.3.2",
     "jasmine-expect": "^2.0.0-beta1",
     "jasmine-node": "^1.14.5",
+    "jasmine-spec-reporter": "^2.4.0",
     "js-yaml": "^3.3.1",
     "request": "^2.60.0"
   }

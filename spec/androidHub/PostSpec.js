@@ -164,7 +164,7 @@ function test_post(filename) {
         });
 
         it('is smaller than 5MB', function() {
-          expect(parseInt(response.headers['content-length'])).toBeLessThan(5000000);
+          expect(parseInt(response.headers['content-length'])).toBeLessThan(5*1024*1024);
         });
 
         describe('heroimage dimensions', function() {
