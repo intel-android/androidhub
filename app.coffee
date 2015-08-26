@@ -74,13 +74,14 @@ module.exports =
     _:      require 'lodash'
     moment: require 'moment'
     helpers:
-      getAuthor:      require './scripts/get-author'
-      getAuthorImage: require './scripts/get-author-image'
-      getCategories:  require './scripts/get-categories'
-      getMergedPosts: require './scripts/get-merged-posts'
-      getPostGitData: require './scripts/get-post-git-data'
-      getFeatured:    require './scripts/get-featured'
-      socialLink:     require './scripts/social-link'
+      getAuthor:        require './scripts/get-author'
+      getAuthorImage:   require './scripts/get-author-image'
+      getCategories:    require './scripts/get-categories'
+      getMergedPosts:   require './scripts/get-merged-posts'
+      getPostGitData:   require './scripts/get-post-git-data'
+      getFeatured:      require './scripts/get-featured'
+      getRelatedPosts:  require './scripts/get-related-posts'
+      socialLink:       require './scripts/social-link'
 
   before: ->
     shell.exec 'npm run posts-git-log'
