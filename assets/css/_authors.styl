@@ -16,6 +16,9 @@
   > a
     text-decoration:none
   path
-    fill:#bbb
-  svg:hover path
-    fill:#555
+    fill:lighten(desaturate(blue, 100%), 50%)
+  svg
+    path
+      @extend .animate-fill
+    &:hover path
+      fill:blue
