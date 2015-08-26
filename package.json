@@ -4,7 +4,8 @@
   "scripts": {
     "test": "./node_modules/.bin/jasmine",
     "posts-git-log": "./scripts/git-json.sh posts/*/*.jade > public/posts-git.json",
-    "new": "node ./scripts/new-author.js"
+    "new": "node ./scripts/new-author.js",
+    "post": "node ./scripts/new-post.js"
   },
   "dependencies": {
     "autoprefixer-stylus": "0.5.x",
