@@ -1,5 +1,6 @@
 class App.Grid
   constructor: (options) ->
+    @filters = document.getElementById 'feed-filter'
     @initGrid(options)
     @restoreState()
     @listen()
@@ -12,45 +13,34 @@ class App.Grid
       itemSelector: options.item
       layoutMode:   'fitRows'
     # set min height on the grid container for tall browsers
-    footer      = document.querySelector 'footer'
-    grid        = document.querySelector '#feed-grid'
-    docHeight   = footer.offsetTop + footer.offsetHeight
-    winHeight   = window.innerHeight
-    grid.style.minHeight = grid.offsetHeight + (winHeight - docHeight) + 10 + 'px'
+    footer                = document.querySelector 'footer'
+    grid                  = document.querySelector '#feed-grid'
+    docHeight             = footer.offsetTop + footer.offsetHeight
+    winHeight             = window.innerHeight
+    grid.style.minHeight  = grid.offsetHeight + (winHeight - docHeight) + 10 + 'px'
 
   restoreState: ->
-    hash = location.hash
-    if hash then @filter hash.replace('#', '.')
-    if !@activeItem
-      if hash == '' then hash = '#all'
-      @setActiveItem document.querySelector(hash)
-
+    hash = location.hash.replace '#', '.'
+    
+    if hash
+      @filter hash
+      if hash == '' then hash = 'all' else hash = hash.replace '.', ''
+      @setActiveItem hash
 
   setState: (filter) ->
     if filter == 'all' then filter = ''
     location.hash = filter
 
-  setActiveItem: (el) ->
-    return unless el
-    if @activeItem then @activeItem.className = ''
-    @activeItem = el
-    @activeItem.className = 'active'
+  setActiveItem: (val) ->
+    @filters.value = val
 
   listen: ->
-    # filter click event
-    document
-      .querySelector '.filters'
-      .addEventListener 'click', (e) =>
-        return unless e.target.nodeName == 'LI'
+    # selectbox change event
+    @filters.addEventListener 'change', (e) =>
+      filter = e.target.value
+      @setState filter
 
-        filter = e.target.textContent.toLowerCase()
-        @setActiveItem e.target
-        @setState filter
-
-        if filter == 'all'
-          filter = '*'
-        else
-          filter = '.' + filter
-        
-        @filter filter
+      # convert select value to filter that isotope wants
+      filter = if filter == 'all' then '*' else '.' + filter
+      @filter filter
         

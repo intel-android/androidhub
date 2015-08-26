@@ -1,35 +1,43 @@
 extends layouts/_general
-include mixins/_feed-item
+include mixins/_feed-home-item
 
 block content
   .intro: section: .grid.grid--justify-center
     include includes/svg/_droid
+    .text-overlay
+      include includes/svg/_droid-hub
+      h6.fix-reflex-type.marginless Android tips, tuts and tricks from one developer to another.
 
   - var feature = helpers.getFeatured(site)[0]
   - var author = helpers.getAuthor(feature, data)
-  .hero: a(href=feature._url)
+  .hero
     img.heroimage.cover.lazyload(data-src=feature.heroimage)
     section
+      .icon-commit.hidden-sm: include includes/svg/_commit
       h5.marginless.clearsans-thin Latest Commit
-      h1.hero-title= feature.title
+      a(href=feature._url)
+        h1.hero-title= feature.title
       .author-nameplate
         img.avatar.circle.contain.lazyload.lazyanimate(src=helpers.getAuthorImage(author))
         h4.marginless by #{author.displayname}
-        small @#{author.twitter}
+        a(href=helpers.socialLink('github', author.github))
+          small @#{author.twitter}
 
   .recent: section
+    .recent-icon-commit.hidden-sm: include includes/svg/_commit
     h5.recent-title Recent Commits
     ul.grid.reverse-margin-md
       - var mergedPosts = helpers.getMergedPosts(site, records)
       - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return post.git.date })
 
       for post in postsSortedByDate.slice(0,4)
-        +feed-item(post, 'grid__col-md-3 grid__col-sm-3 grid__col-xs-6')
+        +feed-home-item(post)
 
-  .testimonial: section: .grid.grid--justify-center: .grid__col-9.grid--direction-column
-    img.avatar.circle.contain.lazyload.lazyanimate.pop-out(src=helpers.getAuthorImage({}))
-    h6.marginless Jason Mark | @jasondesign
-    h2 Art is subjective. You like it or you don't like it. But design is the science of art. it's art with purpose. Design is about intent.
-    a.btn.clear(href=data.paths.field_guide) 
-      | Learn more in our Developer Field Guide
-      include includes/svg/_arrow
+  .testimonial.lazyload(data-bg='/img/fractal-blue.png')
+    section: .grid.grid--justify-center: .grid__col-xs-12.grid__col-md-7.grid--direction-column
+      img.avatar.circle.contain.lazyload.lazyanimate.pop-out(src=helpers.getAuthorImage({}))
+      h6.marginless Jason Mark | @jasondesign
+      h2 Art is subjective. You like it or you don't like it. But design is the science of art. it's art with purpose. Design is about intent.
+      a.btn.clear(href=data.paths.field_guide) 
+        | Learn more in our Developer Field Guide
+        include includes/svg/_arrow

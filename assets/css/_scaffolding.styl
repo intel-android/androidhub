@@ -13,6 +13,9 @@ html, body
 
 main
   background-color:#eee
+  &.post
+    padding-bottom:1rem
+    overflow:hidden
 
 section
   margin:0 auto
@@ -23,7 +26,7 @@ section
     &.no-responsive-padding
       padding:0
 
-  img
+  img, svg
     max-width:100%
 
 a[href]
@@ -35,6 +38,10 @@ article
   max-width:768px
   margin:0 auto
   padding:0 0 2rem 0
+  overflow:hidden
+  
+aside
+  border-top:1px solid #ddd
 
 input[type='search']
   appearance:none

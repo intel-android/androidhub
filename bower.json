@@ -17,6 +17,7 @@
     "isotope": "~2.2.1",
     "fontfaceobserver": "~1.5.1",
     "lazysizes": "~1.1.5",
-    "es6-promise": "~3.0.2"
+    "es6-promise": "~3.0.2",
+    "fastclick": "~1.0.6"
   }
 }

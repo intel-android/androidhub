@@ -1,33 +1,41 @@
 .hero
-  padding:5rem 0
-  padding:10vh 0
+  padding:2.5rem 0
+  padding:5vh 0
   position:relative
   overflow:hidden
-  text-shadow:1px 1px 0 hsla(0,0%,0%,0.15)
-  // backdrop-filter: grayscale(100%)
+  text-shadow:0 2px 4px hsla(0,0%,0%,0.15)
+  color:white
+  
+  +above(laptop)
+    padding:5rem 0
+    padding:10vh 0
+  
+  a
+    text-decoration:none
+    color:white
+    
+    &:hover, &:active
+      color:white
+      text-decoration:underline
   
   .heroimage
     position:absolute
     top:0
     left:0
-    width:100%
     z-index:1
+    width:auto
+    height:100%
     filter: grayscale(100%)
     
-    +below(mobile)
-      width:auto
-      height:100%
+    +above(tablet)
+      width:100%
+      height:auto
 
   section
     position:relative
     z-index:2
+    
   > a
-    color:white
-    text-decoration:none
-    
-    &:hover, &:active
-      color:white
-    
     &:after
       content:" "
       display:block
@@ -56,34 +64,70 @@
 .avatar
   width:40px
   height:40px
-  box-shadow:1px 1px 3px hsla(0,0%,0%,0.4)
+  box-shadow:0 2px 4px hsla(0,0%,0%,0.4)
   transition:box-shadow 0.3s ease, transform 0.3s ease
   &:hover
     transform:scale(1.1)
-    box-shadow:2px 2px 4px hsla(0,0%,0%,0.4)
+    box-shadow:0 3px 6px hsla(0,0%,0%,0.4)
 
 .intro
   background-color:#eee
+  
+  .text-overlay
+    position:absolute
+    top:3rem
+    left:0
+    width:100%
+    margin:0 auto
 
 .recent
+  overflow:hidden
   background-color:white
   padding-top:2rem
+  > section
+    position:relative
 
 .recent-title
   margin-top:0
 
+.icon-commit,
+.recent-icon-commit
+  position:absolute
+  top:3px
+  left:-2rem
+  
+  &:before
+    content:" "
+    position:absolute
+    top:15px
+    left:8px
+    width:2px
+    height:400px
+    background:white
+
+.icon-commit
+  path
+    fill:white
+
+.recent-icon-commit
+  &:before
+    background:black
+    bottom:25px
+    top:auto
+    height:40px
+
 .testimonial
   background:blue
+  background-size:cover
   color:white
   padding:4rem 0 3rem
   position:relative
   overflow:hidden
   
   &:before
-    // content:url(/img/tear.svg)
     content:" "
     background-image:url(/img/tear.svg)
-    background-size:cover
+    background-size:auto 100%
     position:absolute
     top:-3px
     left:-8px
@@ -95,6 +139,10 @@
     position:absolute
     top:0
     left:-40px
+    +below(tablet)
+      position:relative
+      top:-1rem
+      left:0
     
   .btn.clear:hover
     color:white

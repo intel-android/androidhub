@@ -4,17 +4,14 @@
   text-decoration:none
   color:default-color
   padding:0.25rem 0.5rem
-  border:1px solid default-color
   border-radius:2px
+  display:inline-block
     
   &.clear
     color:white
     border:none
     padding:0
-    > svg
-      transition:transform 0.3s ease
-      position:relative
-      top:0.3em
+    
     &:hover 
       text-decoration:underline
       > svg
@@ -22,10 +19,20 @@
       
   &.blue
     color:blue
-    border-color:blue
+    
+    g
+      stroke:blue
+    
     &:hover
       background:blue
       color:white
+      g
+        stroke:white
+      > svg
+        transform:translateX(10px)
+        
+    &.bordered
+      border:1px solid blue
     
   &.small
     font-size:0.8rem
@@ -35,3 +42,9 @@
 
   &.disabled
     button-disabled()
+    
+  > svg
+    transition:transform 0.3s ease
+    position:relative
+    top:0.3em
+  

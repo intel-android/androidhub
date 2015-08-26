@@ -20,6 +20,11 @@
     text-decoration:none
     color:initial
     
+  h6
+    text-transform:capitalize
+    color:hsl(0,0%,40%)
+    margin-bottom:0.5rem
+    
   img
     height:200px
     overflow:hidden
@@ -28,7 +33,6 @@
       height:150px
     
 .post-title
-  color:hsl(0,0%,50%)
   margin:0.5rem 0 0.25rem
   color:blue
   // font-size:2vw
@@ -42,7 +46,10 @@
   margin:0.25rem 0
   > span
     margin:0 4px
-    color:hsl(0,0%,50%)
+  > address
+    color:hsl(0,0%,40%)
+    display:inline
+    font-style:normal
   
 .post-excerpt
   color:hsl(0,0%,20%)
@@ -58,12 +65,22 @@
   +below(mobile)
     .grid__col-sm-6
       align-items:center
+
+#feed-filter
+  color:#333
+  border:none
+      
+.related-posts
+  > .related-post
+    &:first-child
+      border-top:none
+      padding-top:0
+      margin-top:0
+
+.related-post
+  border-top:1px solid #eee
+  margin-top:2rem
+  padding-top:2rem
   
-.filters
-  inline-list(1rem)
-  text-transform:capitalize
-  
-  > li
-    cursor:pointer
-    &.active
-      color:darken(default-color, 40%)
+  img
+    padding-right:1rem

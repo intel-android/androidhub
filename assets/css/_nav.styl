@@ -5,14 +5,18 @@ nav
   position:relative
   z-index:2
   +below(tablet)
-    padding-bottom:0
+    padding-bottom:0.5rem
   
-  .link-nav-set > a
-    color:hsl(0,0%,20%)
-    &:first-child
-      margin-left:0
-    &:last-child
-      margin-right:0
+  .link-nav-set 
+    +below(mobile)
+      padding:0 1rem !important
+    > a
+      color:hsl(0,0%,20%)
+
+      &:first-child
+        margin-left:0
+      &:last-child
+        margin-right:0
   
   +below(tablet)  
     .link-nav-set > a
@@ -35,7 +39,7 @@ nav
     position:relative
     
     &:hover, &.active
-      color:default-color
+      color:blue
     
 .social-icon 
   @extend .flex-child-image-fix
@@ -45,8 +49,6 @@ nav
   &:last-child
     margin-right:0
   &:hover > svg 
-    > path
-      fill:#222
     ellipse
       fill:default-color
     

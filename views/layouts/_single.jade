@@ -53,8 +53,21 @@ html
               a(href=helpers.socialLink('codepen', author.codepen), target='_blank')
                 include ../includes/svg/_codepen
     
-    main: section: .card: article
-      block content
+    main.post: section
+      //- main article content
+      .card: article
+        block content
+
+      //- related posts
+      - var relatedPosts = helpers.getRelatedPosts(post, site.posts.all())
+      if relatedPosts.length
+        include ../mixins/_related-post
+
+        aside.card: article
+          h4 Related Articles
+          .related-posts
+            each post in relatedPosts
+              +related-post(post)
        
     include ../includes/_footer 
     != js('/')
