@@ -57,8 +57,12 @@ html
       .card: article
         block content
 
-      aside.card
+      aside.card: article
         h4 Related Articles
+        .related-posts
+          include ../mixins/_related-post
+          +related-post(site.posts.all()[0])
+          +related-post(site.posts.all()[0])
        
     include ../includes/_footer 
     != js('/')

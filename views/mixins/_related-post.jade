@@ -1,0 +1,10 @@
+mixin related-post(post)
+  - var image = post.heroimage ? post.heroimage : 'http://placehold.it/350x150?text=#{post.author}'
+  - var author = helpers.getAuthor(post, data)
+
+  a.related-post.grid.grid--bleed(href=post._url)
+    .grid__col-md-4
+      img(src=image)
+    .grid__col-md-8
+      p.marginless= post.excerpt
+      small by #{author.displayname}
