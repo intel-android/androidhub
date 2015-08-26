@@ -1,6 +1,6 @@
 class App.Grid
   constructor: (options) ->
-    @filters = document.querySelector '.filters'
+    @filters = document.getElementById 'feed-filter'
     @initGrid(options)
     @restoreState()
     @listen()
@@ -20,36 +20,27 @@ class App.Grid
     grid.style.minHeight  = grid.offsetHeight + (winHeight - docHeight) + 10 + 'px'
 
   restoreState: ->
-    hash = location.hash.replace('#', '.')
+    hash = location.hash.replace '#', '.'
     
-    if hash then @filter hash
-    if !@activeItem
-      if hash == '' then hash = '.all'
-      @setActiveItem @filters.querySelector hash
+    if hash
+      @filter hash
+      if hash == '' then hash = 'all' else hash = hash.replace '.', ''
+      @setActiveItem hash
 
   setState: (filter) ->
     if filter == 'all' then filter = ''
     location.hash = filter
 
-  setActiveItem: (el) ->
-    return unless el
-    if @activeItem then @activeItem.className = ''
-    @activeItem = el
-    @activeItem.className = 'active'
+  setActiveItem: (val) ->
+    @filters.value = val
 
   listen: ->
-    # filter click event
-    @filters.addEventListener 'click', (e) =>
-      return unless e.target.nodeName == 'LI'
-
-      filter = e.target.textContent.toLowerCase()
-      @setActiveItem e.target
+    # selectbox change event
+    @filters.addEventListener 'change', (e) =>
+      filter = e.target.value
       @setState filter
 
-      if filter == 'all'
-        filter = '*'
-      else
-        filter = '.' + filter
-      
+      # convert select value to filter that isotope wants
+      filter = if filter == 'all' then '*' else '.' + filter
       @filter filter
         
