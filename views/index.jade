@@ -29,9 +29,12 @@ block content
     ul.grid.reverse-margin-md
       - var mergedPosts = helpers.getMergedPosts(site, records)
       - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return post.git.date })
-
-      for post in postsSortedByDate.slice(0,4)
-        +feed-home-item(post)
+      - var count = 0
+      
+      for post in postsSortedByDate
+        if count < 4 && !post.featured
+          +feed-home-item(post)
+          - count++
 
   .testimonial.lazyload(data-bg='/img/fractal-blue.png')
     section: .grid.grid--justify-center: .grid__col-xs-12.grid__col-md-7.grid--direction-column
