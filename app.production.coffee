@@ -34,6 +34,7 @@ module.exports =
         'bower_components/fontfaceobserver/fontfaceobserver.js'
         'bower_components/isotope/dist/isotope.pkgd.min.js'
         'bower_components/lazysizes/lazysizes.min.js'
+        'bower_components/sweetalert/dist/sweetalert-dev.js'
         # simple no deps
         'assets/js/app.coffee'
         'assets/js/fonts.coffee'
@@ -53,6 +54,7 @@ module.exports =
     css_pipeline
       files: [
         'bower_components/reflex/css/reflex.css'
+        'bower_components/sweetalert/dist/sweetalert.css'
         'assets/css/*.styl'
       ]
       out:    'css/app.css'
