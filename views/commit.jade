@@ -6,20 +6,21 @@ block content
   main: section
     .card: form#nl-form.nl-form
       | I'm 
-      input(type='text', value='', placeholder='your name', data-subline='Tell us your name')
+      input#author-name(required, type='text', value='', placeholder='${name}', data-subline='Tell us your name')
       |  and I would love to be part of the Android on Intel Hub. You can contact me at 
-      input(type='text', value='', placeholder='your email', data-subline='For example: <em>foo@bar.com</em>')
+      input#author-email(required, type='email', value='', placeholder='${email}', data-subline='For example: <em>foo@bar.com</em>')
       | . My expertise is in  
-      select
-        option(value='1', selected) native app development
-        option(value='1') hybrid app development
-        option(value='2') web apps
-        option(value='3') app design
+      select#author-expertise(required)
+        option(value, default, selected) ${expertise}
+        option(value='native app development') native app development
+        option(value='hybrid app development') hybrid app development
+        option(value='web apps') web apps
+        option(value='app design') app design
       | . Learn more about me at my website/github here 
-      input(type='text', value='', placeholder='www.yoursite.com', data-subline='Example: <em>https://github.com/your_handle</em>').
-      |  I also wanted to mention this 
+      input#author-site(required, type='url', value='', placeholder='${site}', data-subline='Example: <em>https://github.com/your_handle</em>').
+      | . I also wanted to mention this.. 
       br
-      textarea
+      textarea#author-message
 
       .nl-submit-wrap
         button.nl-submit(type='submit') Submit

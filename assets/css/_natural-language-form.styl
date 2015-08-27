@@ -60,6 +60,14 @@
   display inline-block
   position relative
   
+  &.error > a
+    color:red
+    border-bottom-color:red
+    
+  &.complete > a
+    color:default-color
+    border-bottom-color:transparent
+  
   &.nl-field-open
     z-index 100
     

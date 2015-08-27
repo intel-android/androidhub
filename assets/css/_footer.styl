@@ -4,11 +4,15 @@ footer
   h2
     +below(mobile)
       font-size:1rem
+      
+  .link-nav-set
+    +below(mobile)
+      margin:1rem 0
 
 .site-map
-  padding:1rem 0 2rem
+  padding:2rem 0
   +below(laptop)
-    padding:1rem 1rem 2rem
+    padding:2rem
   +below(mobile)
     padding:1rem
     .grid--direction-column
@@ -22,6 +26,8 @@ footer
   text-align:center
   &:hover
     cursor:pointer
+    > .social-text
+      text-decoration:underline
   +below(tablet)
     margin:0 0.5rem
     

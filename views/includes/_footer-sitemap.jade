@@ -1,6 +1,7 @@
 section.site-map: .grid.grid--bleed.grid--justify-space-between
   .grid__col-xs-6.grid--direction-column
-    p.margin-xs: a.btn.blue.small.bordered(href=data.paths.commit) Commit something to the Hub
+    p.marginless.push-bottom-sm 
+      a.btn.blue.small.bordered(href=data.paths.commit) Commit something to the Hub
     .grid.grid--bleed
       .link-nav-set.grid__col-xs-12.grid__col-sm-10.grid--align-center.grid--justify-space-between.grid--direction-row
         a(href=data.paths.feed) Feed
@@ -9,11 +10,10 @@ section.site-map: .grid.grid--bleed.grid--justify-space-between
         a(href=data.paths.about) About
         a(href=data.paths.commit) Commit
 
-  .grid__col-xs-4.grid--justify-end
-    .grid.push-top.grid--bleed.grid--justify-end
-      .grid__col-4
-        img.grid--align-self-end.contain.lazyload(data-src='/img/intel_logo.png', height='50px')
-      .link-nav-set.grid__col-6.grid--direction-column.push-left.clearsans-thin
-        a(href=data.paths.terms) Terms of use
-        a(href=data.paths.privacy) Privacy
-        a(href=data.paths.cookies) Cookies
+  .grid__col-xs-4.grid--justify-end: .grid.grid--bleed.grid--justify-end.grid--align-center
+    .grid__col-4
+      img.grid--align-self-end.contain.lazyload(data-src='/img/intel_logo.png', height='50px')
+    .link-nav-set.grid__col-6.grid--direction-column.push-left.clearsans-thin
+      a(href=data.paths.terms) Terms of use
+      a(href=data.paths.privacy) Privacy
+      a(href=data.paths.cookies) Cookies

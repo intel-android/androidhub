@@ -15,12 +15,12 @@ block content
     section
       .icon-commit.hidden-sm: include includes/svg/_commit
       h5.marginless.clearsans-thin Latest Commit
-      a(href=feature._url)
+      a.light(href=feature._url)
         h1.hero-title= feature.title
       .author-nameplate
         img.avatar.circle.contain.lazyload.lazyanimate(src=helpers.getAuthorImage(author))
         h4.marginless by #{author.displayname}
-        a(href=helpers.socialLink('github', author.github))
+        a.light(href=helpers.socialLink('twitter', author.twitter), target='_blank')
           small @#{author.twitter}
 
   .recent: section
@@ -29,14 +29,22 @@ block content
     ul.grid.reverse-margin-md
       - var mergedPosts = helpers.getMergedPosts(site, records)
       - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return post.git.date })
-
-      for post in postsSortedByDate.slice(0,4)
-        +feed-home-item(post)
+      - var count = 0
+      
+      for post in postsSortedByDate
+        if count < 4 && !post.featured
+          +feed-home-item(post)
+          - count++
 
   .testimonial.lazyload(data-bg='/img/fractal-blue.png')
     section: .grid.grid--justify-center: .grid__col-xs-12.grid__col-md-7.grid--direction-column
-      img.avatar.circle.contain.lazyload.lazyanimate.pop-out(src=helpers.getAuthorImage({}))
-      h6.marginless Jason Mark | @jasondesign
+      img.avatar.circle.contain.lazyload.lazyanimate.pop-out(src=helpers.getAuthorImage({
+        twitter: 'deloittedigital',
+        displayname: 'Deloitte Digital'
+      }))
+      h6.marginless 
+        | Deloitte Digital | 
+        a.light(href=helpers.socialLink('twitter', 'deloittedigital'), target='_blank') @deloittedigital
       h2 Art is subjective. You like it or you don't like it. But design is the science of art. it's art with purpose. Design is about intent.
       a.btn.clear(href=data.paths.field_guide) 
         | Learn more in our Developer Field Guide
