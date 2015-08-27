@@ -7,4 +7,5 @@ mixin related-post(post)
       a(href=post._url): img.grid__cell-img.cover.lazyload(data-src=image)
     .grid__col-md-8
       a(href=post._url): p.marginless= post.title
+      //- .post-excerpt= post.excerpt
       small by #{author.displayname}
