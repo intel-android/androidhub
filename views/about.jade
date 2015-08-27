@@ -17,9 +17,8 @@ block content
       for author in _.sortBy(data.authors, 'displayname').slice(0,4)
         +author(author)
 
-    .text-right
-      a.btn.blue(href=data.paths.authors) 
-        | See all our authors 
-        include includes/svg/_arrow
+    .text-right: a.btn.blue.clear(href=data.paths.authors) 
+      | See all our authors 
+      include includes/svg/_arrow
 
     .spacer.lg.hidden-ss
