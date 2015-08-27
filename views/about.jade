@@ -14,8 +14,9 @@ block content
 
     h2 Founding Contributors
     ul.grid.reverse-margin-md
-      for author in _.sortBy(data.authors, 'displayname').slice(0,4)
-        +author(author)
+      for author in data.authors
+        if author.founder
+          +author(author)
 
     .text-right: a.btn.blue.clear(href=data.paths.authors) 
       | See all our authors 
