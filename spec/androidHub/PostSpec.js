@@ -32,8 +32,11 @@ describe("Posts", function() {
     }
   });
 
-  afterAll(function() {
-    fs.unlink(root + '/tmp');
+  afterAll(function(done) {
+    fs.rmdir(root + '/tmp', function (err) {
+      if (err) throw err;
+      done();
+    });
   });
 
   for (var i = 0; i < posts.length; i++) {
@@ -195,6 +198,7 @@ function test_post(filename) {
           });
 
           it('is smaller than 5MB', function() {
+            image.filesize = image.filesize.replace('KBB', 'KB');
             expect(filesizeParser(image.filesize)).toBeLessThan(5*1024*1024);
           });
         });
