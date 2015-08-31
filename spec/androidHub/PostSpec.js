@@ -9,6 +9,7 @@ var path = require("path");
 var root = path.resolve(process.cwd());
 var imagemagick = require("imagemagick");
 var mime = require("mime");
+var filesizeParser = require('filesize-parser');
 
 describe("Posts", function() {
   var glob = require("glob");
@@ -163,10 +164,6 @@ function test_post(filename) {
           expect(['image/jpeg', 'image/png', 'image/svg']).toContain(response.headers['content-type']);
         });
 
-        it('is smaller than 5MB', function() {
-          expect(parseInt(response.headers['content-length'])).toBeLessThan(5*1024*1024);
-        });
-
         describe('heroimage dimensions', function() {
           var image = null;
           beforeAll(function (done) {
@@ -183,6 +180,10 @@ function test_post(filename) {
 
           it('has a width larger than 640px', function() {
             expect(image.width).toBeGreaterThan(639);
+          });
+
+          it('is smaller than 5MB', function() {
+            expect(filesizeParser(image.filesize)).toBeLessThan(5*1024*1024);
           });
         });
       });
