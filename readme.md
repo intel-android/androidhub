@@ -1,6 +1,6 @@
 # Intel Android Hub
 
-
+[![Travis CI Status](https://travis-ci.org/intel-android/androidhub.svg?branch=master)](https://travis-ci.org/intel-android/androidhub)
 
 ### Setup
 
@@ -14,7 +14,7 @@
 - `assets/`: You'll find the js and css in here, as well as images
 - `data/`: The .yaml files found in this folder and turned into json objects and passed to jade templates. Keeps the markup dry, and puts most of the data into 1 place to maintain.
 - `posts/`: Holds authors feed posts. Folder name must match `data/authors > .yaml` file name. Posts are rendered against the `_single.jade` layout and turned into static post pages.
-- `views/`: Jade files and actual html for the site is in here. 
+- `views/`: Jade files and actual html for the site is in here.
 
 
 ### Deploying
