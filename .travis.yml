@@ -3,3 +3,9 @@ before_script:
   - npm install -g roots
 node_js:
   - "0.12"
+
+notifications:
+  email:
+    recipients:
+      - aegaas@deloitte.com
+      - aargyle@deloitte.com
