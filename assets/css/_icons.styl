@@ -1,3 +1,7 @@
+facebook = #39569E
+twitter = #0FAAF5
+gplus = #D75B5B
+
 #hub-logo
   &:hover
     path:last-child
@@ -12,31 +16,32 @@
 #icon-arrow
   height:20px
   
-#tweet > #icon-twitter,
-#post > #icon-facebook,
-#plus > #icon-googleplus
+#tweet > svg,
+#post > svg,
+#plus > svg
   width:65px
   height:65px
   filter: drop-shadow(1px 1px 3px hsla(0,0%,0%,0.4))
   ellipse
     fill:white
-  > path
-    fill:#0FAAF5
-    
+  path
+    fill:twitter
+
+#tweet    
   &:hover
-    > path
-      fill:lighten(#0FAAF5,20%)
+    #icon-twitter path
+      fill:lighten(twitter, 40%)
     
-#post > #icon-facebook
-  > path
-    fill:#39569E
-  &:hover
-    > path
-      fill:lighten(#39569E,20%)
+#post
+  #icon-facebook path
+    fill:facebook
+  &:hover 
+    #icon-facebook path
+      fill:lighten(facebook, 40%)
     
-#plus > #icon-googleplus
-  > path
-    fill:#D75B5B
-  &:hover
-    > path
-      fill:lighten(#D75B5B,20%)
+#plus
+  #icon-googleplus path
+    fill:gplus
+  &:hover 
+    #icon-googleplus path
+      fill:lighten(gplus, 40%)

@@ -1,10 +1,18 @@
 footer
   background:white
+  
+  h2
+    +below(mobile)
+      font-size:1rem
+      
+  .link-nav-set
+    +below(mobile)
+      margin:1rem 0
 
 .site-map
-  padding:1rem 0 3rem
+  padding:2rem 0
   +below(laptop)
-    padding:1rem 1rem 3rem
+    padding:2rem
   +below(mobile)
     padding:1rem
     .grid--direction-column
@@ -18,6 +26,10 @@ footer
   text-align:center
   &:hover
     cursor:pointer
+    > .social-text
+      text-decoration:underline
+  +below(tablet)
+    margin:0 0.5rem
     
 .social-text
   position:relative
@@ -29,3 +41,6 @@ footer
   background-color:hsl(0,0%,25%)
   color:white
   padding:2rem 0
+  
+  +below(mobile)
+    padding:1rem 0 0

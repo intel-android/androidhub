@@ -10,3 +10,15 @@
       
   small
     display:block
+    
+.author-social
+  margin-top:5px
+  > a
+    text-decoration:none
+  path
+    fill:lighten(desaturate(blue, 100%), 50%)
+  svg
+    path
+      @extend .animate-fill
+    &:hover path
+      fill:blue

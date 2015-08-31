@@ -13,10 +13,12 @@
     "tests"
   ],
   "dependencies": {
-    "reflex": "leejordan/reflex#1.0.2",
-    "isotope": "~2.2.1",
+    "es6-promise": "~3.0.2",
+    "fastclick": "~1.0.6",
     "fontfaceobserver": "~1.5.1",
+    "isotope": "~2.2.1",
     "lazysizes": "~1.1.5",
-    "es6-promise": "~3.0.2"
+    "reflex": "leejordan/reflex#1.0.2",
+    "sweetalert": "~1.1.0"
   }
 }

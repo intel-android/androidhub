@@ -5,52 +5,25 @@ block content
     h3.marginless Commit
   main: section
     .card: form#nl-form.nl-form
-      | I am 
-      input(type='text', value='', placeholder='your name', data-subline='Tell us your name')
+      | I'm 
+      input#author-name(required, type='text', value='', placeholder='${name}', data-subline='Tell us your name')
       |  and I would love to be part of the Android on Intel Hub. You can contact me at 
-      input(type='text', value='', placeholder='my email', data-subline='For example: <em>foo@bar.com</em>')
+      input#author-email(required, type='email', value='', placeholder='${email}', data-subline='For example: <em>foo@bar.com</em>')
       | . My expertise is in  
-      select
-        option(value='1', selected) native app development
-        option(value='1') hybrid app development
-        option(value='2') web apps
-        option(value='3') app design
+      select#author-expertise(required)
+        option(value, default, selected) ${expertise}
+        option(value='native app development') native app development
+        option(value='hybrid app development') hybrid app development
+        option(value='web apps') web apps
+        option(value='app design') app design
       | . Learn more about me at my website/github here 
-      input(type='text', value='', placeholder='https://github.com/handle', data-subline='For example: <em>www.yoursite.com</em> or <em>https://github.com/your_handle</em>').
-      |  I also wanted to mention this 
+      input#author-site(required, type='url', value='', placeholder='${site}', data-subline='Example: <em>https://github.com/your_handle</em>').
+      | . I also wanted to mention this.. 
       br
-      textarea
+      textarea#author-message
 
       .nl-submit-wrap
         button.nl-submit(type='submit') Submit
       .nl-overlay 
-    
-    //- form#nl-form.nl-form
-    //-   | I am 
-    //-   select
-    //-     option(value='1', selected) any food
-    //-     option(value='2') Indian
-    //-     option(value='3') French
-    //-     option(value='4') Japanese
-    //-     option(value='2') Italian
-    //-   br
-    //-   | in a
-    //-   select
-    //-     option(value='1', selected) standard
-    //-     option(value='2') fancy
-    //-     option(value='3') hip
-    //-     option(value='4') traditional
-    //-     option(value='2') romantic
-    //-   |           restaurant
-    //-   br
-    //-   | at 
-    //-   select
-    //-     option(value='1', selected) anytime
-    //-     option(value='1') 7 p.m.
-    //-     option(value='2') 8 p.m.
-    //-     option(value='3') 9 p.m.
-    //-   |           in 
-    //-   input(type='text', value='', placeholder='any city', data-subline='For example: <em>Los Angeles</em> or <em>New York</em>')
-    //-   .nl-submit-wrap
-    //-     button.nl-submit(type='submit') Find a restaurant
-    //-   .nl-overlay 
+
+      .spacer.md.hidden-ss

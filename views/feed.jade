@@ -5,15 +5,16 @@ extends layouts/_general
 block content
   .section-title.feed-manipulators: section
     .grid.grid--align-center.grid--bleed
-      .grid__col-sm-2: h3.marginless Feed
-      .grid__col-xs-6.grid__col-sm-6: ul.filters
-        li(id='all') All
-        for cat in helpers.getCategories(site)
-          li(id=cat)= cat
+      .grid__col-sm-2: h3.marginless Feed / 
+      .grid__col-xs-6.grid__col-sm-6
+        select#feed-filter
+          option(selected, value='all') All
+          for cat in helpers.getCategories(site)
+            option(value=cat)= _.capitalize(cat)
 
       .grid__col-xs-6.grid__col-sm-4.hidden-ss.grid--justify-end: .search
         include includes/svg/_search
-        input#search(type='search', results=5, autocomplete, placeholder='Search', x-webkit-speech)
+        input#search(type='search', placeholder='Search')
   
   //- Articles
   main: section: .card: ul#feed-grid.grid.reverse-margin-md
