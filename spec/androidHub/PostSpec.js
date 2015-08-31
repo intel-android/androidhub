@@ -23,6 +23,19 @@ describe("Posts", function() {
     throw "no files found in " + posts[0];
   }
 
+  beforeAll(function() {
+    // mkdir tmp
+    try {
+      fs.mkdirSync(root + '/tmp');
+    } catch (e) {
+      console.error(e);
+    }
+  });
+
+  afterAll(function() {
+    fs.unlink(root + '/tmp');
+  });
+
   for (var i = 0; i < posts.length; i++) {
     test_post(posts[i]);
   }
@@ -142,7 +155,6 @@ function test_post(filename) {
         };
 
         beforeAll(function(done) {
-          jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
           filename = root + '/tmp/' + Math.random().toString().split('.').pop();
           download(data.heroimage, filename, function () {
             done();
