@@ -3,7 +3,7 @@
   "description": "",
   "scripts": {
     "test": "node jasmine-runner.js",
-    "posts-git-log": "./scripts/git-json.sh posts/*/*.jade > public/posts-git.json",
+    "posts-git-log": "mkdir -p public && touch public/posts-git.json && ./scripts/git-json.sh posts/*/*.jade > public/posts-git.json",
     "new": "node ./scripts/new-author.js",
     "post": "node ./scripts/new-post.js"
   },
