@@ -32,7 +32,8 @@ html
     != css('/')
 
   body
-    include ../includes/_nav
+    include ../mixins/_nav
+    +nav('feed')
 
     header.grid.lazyload(data-bg=hero)
       .grid__col-xs-10.grid__col-lg-8.grid--align-self-center.centered-title.grid--direction-column

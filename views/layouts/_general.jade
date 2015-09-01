@@ -15,7 +15,9 @@ html
     != css('/')
 
   body
-    include ../includes/_nav
+    block nav
+      include ../mixins/_nav
+      +nav()
     
     block content
 

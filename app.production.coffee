@@ -38,7 +38,6 @@ module.exports =
         # simple no deps
         'assets/js/app.coffee'
         'assets/js/fonts.coffee'
-        'assets/js/nav.coffee'
         'assets/js/share.coffee'
         'assets/js/natural-language-form.coffee'
         # classes

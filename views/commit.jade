@@ -1,5 +1,9 @@
 extends layouts/_general
+include mixins/_nav
 
+block nav
+  +nav('commit')
+  
 block content
   .section-title: section
     h3.marginless Commit

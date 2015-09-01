@@ -1,5 +1,9 @@
 extends layouts/_general
 include mixins/_feed-home-item
+include mixins/_nav
+
+block nav
+  +nav()
 
 block content
   .intro: section: .grid.grid--justify-center
