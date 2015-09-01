@@ -1,6 +1,8 @@
 language: node_js
 before_script:
   - npm install -g roots
+script:
+  - roots compile -e production
 node_js:
   - "0.12"
 
