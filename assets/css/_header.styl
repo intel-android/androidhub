@@ -16,7 +16,7 @@ header
 .centered-title
   margin:5vh auto auto
   +above(900px)
-    margin:15vh auto 5vh
+    margin:15vh auto auto
   
 .header-title
   margin-top:0
@@ -34,10 +34,13 @@ header
   margin-bottom:0
   
 .header-nameplate
+  position:relative
+  top:1.5rem
+  
   > a > .avatar
     float:left
-    width:80px
-    height:80px
+    width:90px
+    height:90px
   > .meta svg
     filter: drop-shadow(1px 1px 0 hsla(0,0%,0%,0.2))
     &:hover
