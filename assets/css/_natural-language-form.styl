@@ -55,6 +55,26 @@
     padding 0
     margin 0
     appearance none
+    
+  input
+    &::-webkit-input-placeholder
+      color lighten(blue, 90%)
+    &::-moz-placeholder
+      color lighten(blue, 90%)
+    &:-ms-input-placeholder
+      color lighten(blue, 90%)
+
+  input:active::-webkit-input-placeholder ,
+  input:focus::-webkit-input-placeholder
+    color lighten(blue, 10%)
+
+  input:active::-moz-placeholder,
+  input:focus::-moz-placeholder
+    color lighten(blue, 10%)
+
+  input:active::-ms-input-placeholder ,
+  input:focus::-ms-input-placeholder
+    color lighten(blue, 10%)
 
 .nl-field
   display inline-block
@@ -146,26 +166,6 @@
         
         em
           color #fff
-
-input
-  &::-webkit-input-placeholder
-    color lighten(blue, 90%)
-  &::-moz-placeholder
-    color lighten(blue, 90%)
-  &:-ms-input-placeholder
-    color lighten(blue, 90%)
-
-input:active::-webkit-input-placeholder ,
-input:focus::-webkit-input-placeholder
-  color lighten(blue, 10%)
-
-input:active::-moz-placeholder,
-input:focus::-moz-placeholder
-  color lighten(blue, 10%)
-
-input:active::-ms-input-placeholder ,
-input:focus::-ms-input-placeholder
-  color lighten(blue, 10%)
 
 .nl-submit-wrap
   margin-top 0.4em
