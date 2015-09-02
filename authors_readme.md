@@ -5,31 +5,17 @@ Hello authors! Ready to contribute to a website and skip Wordpress or whatever o
 &nbsp;
 
 
-##### Required Tools
-> These tools need to be installed on your machine, hopefully they're already there. We also expect you to have a Github account, and have used CLI tools a bit
-
-- [Node/NPM](https://nodejs.org/)
-- [Roots](http://roots.cx/) `npm i -g roots`
-- [Bower](http://bower.io/) `npm i -g bower`
-- Git
-
-
-&nbsp;
-&nbsp;
-
-
 ## Setup
-1. Fork
-2. Clone your fork
-3. Install project dependencies `npm i && bower i`
+1. Follow getting started instructions in the main project readme.md to get the basic project running
+2. Follow the rest of these instructions to create yourself as an author and begin writing posts
 
 &nbsp;
 
-#### Overview
+#### Quick Overview
 There's lot o stuff in the project folder, how about I point you to what's relevant for you? =)
 
 ```dir
-this_project/
+androidhub/
 └─── data/
     └─── authors/
     		your_github_handle.yaml
@@ -44,7 +30,7 @@ this_project/
 `your_github_handle.yaml` is a file dedicated to meta data about you, the author. This information is used around the site whenever we're talking about you. 
 `posts/your_github_handle` is your own folder to create your posts in.
 
-Not too bad right? Tell us about yourself as an author, then go write posts. 
+Not too bad right? Tell us about yourself as an author, then go write posts. Bam.
 
 
 &nbsp;
@@ -125,7 +111,7 @@ Just to remind ya, every time you save your post, the server will compile and up
 
 
 ## Tests
-`npm run test`
+`npm test`
 
 This project is equipped with a test suite to verify and validate your post entries. There are certain required fields, etc, and before you submit your pull request, it would behoove you to run the test suite on your work. This test will be run as a first step by the pull request approver. It's a really easy way to know if you've covered all your bases too.
 
