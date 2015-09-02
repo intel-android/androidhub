@@ -3,8 +3,9 @@
 ### Getting Started
 
 - ensure [node.js](http://nodejs.org) and [roots](http://roots.cx) are installed
-- clone this repo and `cd` into the folder
-- run `npm i` to kick off installation
+- The team at Roots prefers we use 3.1 and not their latest, use this install command `npm i roots@3.1.0 -g`
+- Then clone this repo and `cd` into the folder
+- run `npm i` to kick off installation of project deps
 - run `bower i` to install front end deps
 - run `roots watch` to begin dev development
 
