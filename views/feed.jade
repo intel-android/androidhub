@@ -16,7 +16,7 @@ block content
           for cat in helpers.getCategories(site)
             option(value=cat)= _.capitalize(cat)
 
-      .grid__col-xs-6.grid__col-sm-4.hidden-ss.grid--justify-end: .search
+      .grid__col-xs-6.grid__col-sm-4.hidden-xs.grid--justify-end: .search
         include includes/svg/_search
         input#search(type='search', placeholder='Search')
   
