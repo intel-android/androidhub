@@ -59,6 +59,16 @@ html
       .card: article
         block content
 
+        //- floating social
+        .social-sidebar.grid.grid--direction-column.grid--no-wrap.grid--bleed
+          small.text-center.grid__col-12.push-bottom Share this article
+          a#tweet.inline-social(href='')
+            include ../includes/svg/_twitter
+          a#post.inline-social(href='')
+            include ../includes/svg/_facebook
+          a#plus.inline-social(href='')
+            include ../includes/svg/_googleplus
+
       //- related posts
       - var relatedPosts = helpers.getRelatedPosts(post, site.posts.all())
       if relatedPosts.length

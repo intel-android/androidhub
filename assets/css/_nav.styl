@@ -69,3 +69,36 @@ nav
   
 .field-guide
   margin-left:1rem
+  
+.social-sidebar
+  position:absolute
+  top:5rem
+  left:0
+  padding:0.5rem 0.25rem
+  background:white
+  width:70px
+  box-shadow:0 2px 2px hsla(0,0%,0%,0.2)
+  
+  +below(desktop)
+    display:none
+  
+  > a
+    margin:auto
+  
+  #tweet > svg, #post > svg, #plus > svg
+    width:30px
+    height:30px
+    filter:none
+      
+    path
+      fill:white
+      
+  #tweet > svg
+    ellipse
+      fill:twitter
+  #post > svg
+    ellipse
+      fill:facebook
+  #plus > svg
+    ellipse
+      fill:gplus
