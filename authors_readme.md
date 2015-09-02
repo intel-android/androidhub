@@ -41,10 +41,12 @@ Not too bad right? Tell us about yourself as an author, then go write posts. Bam
 If this is your first time contributing to the hub, you'll need to create yourself by putting some data into some files. We've got a handy author kickoff script that does lots of the work for you, so let's start there.
 
 ##### Kick it off!
-In your terminal, type `npm run new-author`
+In your terminal, type `npm run new`
+
+![gif of terminal session](https://lh4.googleusercontent.com/fnJVXExnrIhJTnws7Hf1h1BvHCGk92T6RMmEPCpKwyLSQkH-Rxks_8mlTpwpqV0X5goY2YM96A9wZuM=w1256-h1202)
 
 ##### So what's gonna happen?
-Enter your github handle into the cli prompt, this creates a .yaml entry for you in `data/authors/`, which will look like this. 
+All the values you entered into the cli prompt, creates a .yaml entry for you in `data/authors/`, which will look like this. 
 
 ```yaml
 # Personal Info
