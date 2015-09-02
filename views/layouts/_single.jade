@@ -37,7 +37,7 @@ html
 
     header.grid.lazyload(data-bg=hero)
       .grid__col-xs-10.grid__col-lg-8.grid--align-self-center.centered-title.grid--direction-column
-        small.header-date(title=git.date)= moment(new Date(git.date)).format("MMM Do YYYY")
+        small.header-date(title=git.date)= moment(new Date(git.date)).format("ll")
         h1.header-title= post.title
 
         .header-nameplate
@@ -61,7 +61,7 @@ html
 
         //- floating social
         .social-sidebar.grid.grid--direction-column.grid--no-wrap.grid--bleed
-          small.text-center.grid__col-12.push-bottom Share this article
+          //- small.text-center.grid__col-12.push-bottom Share this article
           a#tweet.inline-social(href='')
             include ../includes/svg/_twitter
           a#post.inline-social(href='')
