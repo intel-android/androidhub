@@ -55,16 +55,22 @@
   display:block
 
 .feed-manipulators .grid
-  +below(tablet)
-    h3
-      display:none
+  // +below(tablet)
+  //   h3
+  //     display:none
   +below(mobile)
-    .grid__col-sm-6
+    .grid__col-sm-8
       align-items:center
 
 #feed-filter
   color:#333
   border:none
+  outline:none
+  background:none
+  color:white
+  font-size:1.17em
+  position:relative
+  top:0.03rem
       
 .related-posts
   > .related-post

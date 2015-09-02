@@ -9,8 +9,8 @@ block nav
 block content
   .section-title.feed-manipulators: section
     .grid.grid--align-center.grid--bleed
-      .grid__col-sm-2: h3.marginless Feed / 
-      .grid__col-xs-6.grid__col-sm-6
+      .grid__col-xs-6.grid__col-sm-8.grid--direction-row
+        h3.marginless Feed / 
         select#feed-filter
           option(selected, value='all') All
           for cat in helpers.getCategories(site)
