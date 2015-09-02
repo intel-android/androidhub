@@ -1,4 +1,5 @@
 field_guide:  'http://intel-android.ddhive.com/android-field-guide/'
+github:       'https://github.com/intel-android/androidhub'
 home:         '/'
 feed:         '/feed.html'
 authors:      '/authors.html'

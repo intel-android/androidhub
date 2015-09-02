@@ -16,6 +16,7 @@ main
   &.post
     padding-bottom:1rem
     overflow:hidden
+    position:relative
 
 section
   margin:0 auto
@@ -23,8 +24,6 @@ section
   
   +below(992px)
     padding:0 1rem
-    &.no-responsive-padding
-      padding:0
 
   img, svg
     max-width:100%
@@ -57,3 +56,9 @@ input[type='search']
   box-shadow:none
   border-radius:0
   border-bottom:1px solid white
+  &::-webkit-input-placeholder
+    color:hsla(0,0%,100%,0.5)
+  &::-moz-placeholder
+    color:hsla(0,0%,100%,0.5)
+  &:-ms-input-placeholder
+    color:hsla(0,0%,100%,0.5)
