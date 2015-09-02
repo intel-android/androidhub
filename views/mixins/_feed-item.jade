@@ -10,4 +10,4 @@ mixin feed-item(post, grid)
       small.post-excerpt= post.excerpt
       small.post-meta(title=post.git.date)
         address= author.displayname
-        span | #{moment(new Date(post.git.date)).format("MMM Do YYYY")}
+        span | #{moment(new Date(post.git.date)).format("ll")}
