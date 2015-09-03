@@ -1,7 +1,5 @@
 doctype html
 html
-  //- grab the post hero image or set a fallback
-  - var hero = post.heroimage ? post.heroimage : 'http://placehold.it/1400x577&text=_'
   - var author = helpers.getAuthor(post, data)
   - var git = helpers.getPostGitData(post, records)
 
@@ -35,7 +33,7 @@ html
     include ../mixins/_nav
     +nav('feed')
 
-    header.grid.lazyload(data-bg=hero)
+    header.grid.lazyload(data-bg=helpers.getHeroImage(post))
       .grid__col-xs-10.grid__col-lg-8.grid--align-self-center.centered-title.grid--direction-column
         small.header-date(title=git.date)= moment(new Date(git.date)).format("ll")
         h1.header-title= post.title

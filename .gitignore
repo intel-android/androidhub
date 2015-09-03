@@ -1,5 +1,6 @@
 .DS_Store
 node_modules
 public
+assets/library
 bower_components
 *.sublime-workspace

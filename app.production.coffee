@@ -7,6 +7,7 @@ dynamic         = require 'dynamic-content'
 roots_yaml      = require 'roots-yaml'
 records         = require 'roots-records'
 shell           = require 'shelljs'
+glob            = require 'glob'
 
 module.exports =
   ignores: [
@@ -20,7 +21,8 @@ module.exports =
     'bower.json'
     'app.sublime-project'
     'spec/**'
-    # 'data/**' 
+    'tmp'
+    # 'data/**'
   ]
 
   extensions: [
@@ -85,12 +87,23 @@ module.exports =
       getFeatured:      require './scripts/get-featured'
       getRelatedPosts:  require './scripts/get-related-posts'
       socialLink:       require './scripts/social-link'
+      getHeroImage:     require './scripts/get-hero-image'
 
   before: ->
     shell.exec 'npm run posts-git-log'
-    # shell.exec 'npm test'
+
+    shell.exec 'mkdir -p public/library'
+    authors = glob.sync "posts/*"
+    for path in authors
+      shell.exec "mkdir -p public/library/#{author}"
+      author = path.split('/').pop()
+      library = glob.sync "posts/" + author + '/library/*';
+      for asset in library
+        filename = asset.split('/').pop()
+        shell.exec "cp #{asset} public/library/#{author}/#{filename}"
     return true
 
   after: ->
     # shell.exec 'node_modules/purify-css/bin/purifycss public/css/app.css public/index.html public/feed.html public/about.html public/authors.html public/commit.html public/posts/template.html public/js/app.js --out public/css/app.css'
     shell.exec 'node_modules/csso/bin/csso public/css/app.css public/css/app.css'
+    shell.exec 'cp -R posts/* public/posts'
