@@ -59,7 +59,7 @@
   box-shadow:0 2px 4px hsla(0,0%,0%,0.4)
   transition:box-shadow 0.3s ease, transform 0.3s ease
   &:hover
-    transform:scale(1.1)
+    transform:scale3d(1.1, 1.1, 1)
     box-shadow:0 3px 6px hsla(0,0%,0%,0.4)
 
 .intro
@@ -85,7 +85,7 @@
 .icon-commit,
 .recent-icon-commit
   position:absolute
-  top:3px
+  top:6px
   left:-2rem
   
   &:before
@@ -96,6 +96,9 @@
     width:2px
     height:400px
     background:white
+  
+.recent-icon-commit
+  top:6px
 
 .icon-commit
   path
@@ -103,7 +106,7 @@
 
 .recent-icon-commit
   &:before
-    background:black
+    background:intel-grey
     bottom:25px
     top:auto
     height:40px
@@ -129,7 +132,7 @@
   
   .pop-out
     position:absolute
-    top:0
+    top:6px
     left:-40px
     +below(tablet)
       position:relative

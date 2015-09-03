@@ -5,15 +5,17 @@
   width:calc(100% + 8rem)
   margin:0 -4rem
   
+  +below(1120px)
+    margin:0
+    width:100%
+  
   +below(laptop)
-    padding-top:0
+    padding:1rem 2rem
   
   +below(mobile)
-    margin:0
     padding:0 1rem 1rem
-    width:100%
 
-.hidden-ss
+.hidden-xs
   +below(mobile)
     display:none
     
@@ -70,6 +72,6 @@
 .circle
   border-radius:50%
 
-.auto-width-ss
+.auto-width-xs
   +above(mobile)
     width:auto

@@ -38,6 +38,9 @@ nav
     cursor:pointer
     position:relative
     
+    +above(tablet)
+      font-size:0.9rem
+    
     &:hover, &.active
       color:blue
     
@@ -69,3 +72,38 @@ nav
   
 .field-guide
   margin-left:1rem
+  
+.social-sidebar
+  position:absolute
+  top:5rem
+  left:0
+  padding:0.5rem 0.8rem
+  background:white
+  width:auto
+  box-shadow:0 2px 2px hsla(0,0%,0%,0.2)
+  
+  +below(desktop)
+    display:none
+  
+  > a
+    width:30px
+    height:30px
+    margin:0.3rem auto
+  
+  #tweet > svg, #post > svg, #plus > svg
+    width:30px
+    height:30px
+    filter:none
+      
+    path
+      fill:white
+      
+  #tweet > svg
+    ellipse
+      fill:twitter
+  #post > svg
+    ellipse
+      fill:facebook
+  #plus > svg
+    ellipse
+      fill:gplus

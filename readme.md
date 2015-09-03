@@ -1,11 +1,17 @@
 [![Travis CI Status](https://travis-ci.org/intel-android/androidhub.svg?branch=master)](https://travis-ci.org/intel-android/androidhub)
 
-### Getting Started
+### Required Tools
+> These tools need to be installed on your machine, hopefully they're already there. We also expect you to have a Github account, and have used CLI tools a bit.
 
-- ensure [node.js](http://nodejs.org) and [roots](http://roots.cx) are installed
-- clone this repo and `cd` into the folder
-- run `npm i` to kick off installation
-- run `bower i` to install front end deps
+- [Node/NPM](https://nodejs.org/)
+- [Roots](http://roots.cx/) `npm i roots@3.1.0 -g`
+- [Bower](http://bower.io/) `npm i -g bower`
+- Git
+
+### Getting Started
+- Fork this repo
+- Clone your fork of this this repo and `cd` into the folder
+- run `npm i && bower i` to kick off installation of project and front end deps
 - run `roots watch` to begin dev development
 
 ### App Overview / Folder Architecture

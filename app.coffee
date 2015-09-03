@@ -41,6 +41,7 @@ module.exports =
         'assets/js/app.coffee'
         'assets/js/fonts.coffee'
         'assets/js/share.coffee'
+        'assets/js/disqus.coffee'
         'assets/js/natural-language-form.coffee'
         # classes
         'assets/js/grid.coffee'

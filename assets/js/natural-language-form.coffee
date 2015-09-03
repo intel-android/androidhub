@@ -127,6 +127,7 @@ do (window) ->
       @form.fldOpen = @pos
       self = this
       @fld.className += ' nl-field-open'
+      @fld.querySelector('input').focus()
 
     close: (opt, idx) ->
       if !@open

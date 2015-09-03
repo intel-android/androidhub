@@ -12,9 +12,9 @@ class App.Search
         query = e.target.value.toLowerCase()
         results = []
 
-        # query posts object
+        # query posts object: title, content, url
         for key, author of @posts when key isnt 'items'
-          for post in author.items when post.title.toLowerCase().indexOf(query) > -1 | post.content.indexOf(query) > -1
+          for post in author.items when post.title.toLowerCase().indexOf(query) > -1 | post.content.indexOf(query) > -1 | post._url.indexOf(query) > -1
             results.push post.title
         
         # filter grid items by matching titles

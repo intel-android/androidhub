@@ -22,7 +22,7 @@
     
   h6
     text-transform:capitalize
-    color:hsl(0,0%,40%)
+    color:hsl(214, 4%, 34%)
     margin-bottom:0.5rem
     
   img
@@ -35,40 +35,42 @@
 .post-title
   margin:0.5rem 0 0.25rem
   color:blue
-  // font-size:2vw
-  // +below(mobile)
-  //   font-size:4vw
-  // +above(1024px)
-  //   font-size:1.5vw
   
 .post-meta
-  color:hsl(0,0%,70%)
+  color:intel-grey
   margin:0.25rem 0
   > span
     margin:0 4px
+    color:hsl(0, 0%, 55%)
   > address
-    color:hsl(0,0%,40%)
+    color:intel-grey
     display:inline
     font-style:normal
   
 .post-excerpt
-  color:hsl(0,0%,20%)
+  color:hsl(0,0%,13%)
   
 .post-meta, .post-excerpt
-  font-size:0.6rem
+  font-size:0.7rem
   display:block
 
 .feed-manipulators .grid
-  +below(tablet)
-    h3
-      display:none
+  // +below(tablet)
+  //   h3
+  //     display:none
   +below(mobile)
-    .grid__col-sm-6
+    .grid__col-sm-8
       align-items:center
 
 #feed-filter
   color:#333
   border:none
+  outline:none
+  background:none
+  color:white
+  font-size:1.17em
+  position:relative
+  top:0.03rem
       
 .related-posts
   > .related-post
