@@ -2,6 +2,8 @@
   "name": "intel-android-hub",
   "description": "Intel Android Hub",
   "repository": "git@github.com:intel-android/androidhub.git",
+  "version": "0.0.1",
+  "license": "pending",
   "scripts": {
     "test": "node jasmine-runner.js",
     "posts-git-log": "mkdir -p public && touch public/posts-git.json && ./scripts/git-json.sh posts/*/*.jade > public/posts-git.json",
