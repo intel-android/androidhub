@@ -1,6 +1,7 @@
 {
-  "name": "-intel-android",
-  "description": "",
+  "name": "intel-android-hub",
+  "description": "Intel Android Hub",
+  "repository": "git@github.com:intel-android/androidhub.git",
   "scripts": {
     "test": "node jasmine-runner.js",
     "posts-git-log": "mkdir -p public && touch public/posts-git.json && ./scripts/git-json.sh posts/*/*.jade > public/posts-git.json",
@@ -15,7 +16,6 @@
     "csso": "^1.3.11",
     "dynamic-content": "^0.3.x",
     "filesize-parser": "^1.2.1",
-    "imagemagick": "^0.1.3",
     "inquirer": "^0.9.0",
     "jade": "1.x",
     "js-pipeline": "0.2.x",
@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "glob": "^5.0.14",
+    "imagemagick": "^0.1.3",
     "jasmine": "^2.3.2",
     "jasmine-expect": "^2.0.0-beta1",
     "jasmine-node": "^1.14.5",
