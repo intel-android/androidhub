@@ -1,11 +1,20 @@
 language: node_js
 before_script:
   - npm install -g roots
+  - npm install -g bower
 script:
   - npm test
+  - bower install
   - roots compile -e production
 node_js:
   - "0.12"
+
+sudo: false
+
+cache:
+  directories:
+    - node_modules
+    - bower_components
 
 notifications:
   email:

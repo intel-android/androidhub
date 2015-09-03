@@ -7,7 +7,7 @@ dynamic         = require 'dynamic-content'
 roots_yaml      = require 'roots-yaml'
 records         = require 'roots-records'
 shell           = require 'shelljs'
-glob            = require 'glob'
+copyLibrary   = require './scripts/copy-library.js'
 
 module.exports =
   ignores: [
@@ -91,17 +91,7 @@ module.exports =
 
   before: ->
     shell.exec 'npm run posts-git-log'
-
-    shell.exec 'mkdir -p public/library'
-    authors = glob.sync "posts/*"
-    for path in authors
-      shell.exec "mkdir -p public/library/#{author}"
-      author = path.split('/').pop()
-      library = glob.sync "posts/" + author + '/library/*';
-      for asset in library
-        filename = asset.split('/').pop()
-        shell.exec "cp #{asset} public/library/#{author}/#{filename}"
-    return true
+    copyLibrary();
 
   after: ->
     # shell.exec 'node_modules/purify-css/bin/purifycss public/css/app.css public/index.html public/feed.html public/about.html public/authors.html public/commit.html public/posts/template.html public/js/app.js --out public/css/app.css'
