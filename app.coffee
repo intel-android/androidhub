@@ -7,6 +7,7 @@ dynamic       = require 'dynamic-content'
 roots_yaml    = require 'roots-yaml'
 records       = require 'roots-records'
 shell         = require 'shelljs'
+glob          = require 'glob'
 
 module.exports =
   ignores: [
@@ -20,7 +21,8 @@ module.exports =
     'bower.json'
     'app.sublime-project'
     'spec/**'
-    # 'data/**' 
+    'tmp'
+    # 'data/**'
   ]
 
   extensions: [
@@ -47,7 +49,7 @@ module.exports =
         'assets/js/feed.coffee'
         'assets/js/commit.coffee'
       ]
-    css_pipeline 
+    css_pipeline
       files: [
         'bower_components/reflex/css/reflex.css'
         'bower_components/sweetalert/dist/sweetalert.css'
@@ -83,9 +85,19 @@ module.exports =
       getFeatured:      require './scripts/get-featured'
       getRelatedPosts:  require './scripts/get-related-posts'
       socialLink:       require './scripts/social-link'
+      getHeroImage:     require './scripts/get-hero-image'
 
   before: ->
     shell.exec 'npm run posts-git-log'
-    return true
+
+    shell.exec 'mkdir -p public/library'
+    authors = glob.sync "posts/*"
+    for path in authors
+      shell.exec "mkdir -p public/library/#{author}"
+      author = path.split('/').pop()
+      library = glob.sync "posts/" + author + '/library/*';
+      for asset in library
+        filename = asset.split('/').pop()
+        shell.exec "cp #{asset} public/library/#{author}/#{filename}"
 
   debug: true

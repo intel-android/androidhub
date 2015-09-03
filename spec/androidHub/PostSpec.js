@@ -6,13 +6,13 @@ var jade   = require("jade");
 var yaml   = require("js-yaml");
 var request = require("request");
 var path = require("path");
+var glob = require("glob");
 var root = path.resolve(process.cwd());
 var imagemagick = require("imagemagick");
 var mime = require("mime");
 var filesizeParser = require('filesize-parser');
 
 describe("Posts", function() {
-  var glob = require("glob");
   var posts = glob.sync("posts/*/*.jade");
 
   if (posts.length < 1) {
@@ -32,11 +32,8 @@ describe("Posts", function() {
     }
   });
 
-  afterAll(function(done) {
-    fs.rmdir(root + '/tmp', function (err) {
-      if (err) throw err;
-      done();
-    });
+  afterAll(function() {
+    fs.rmdirSync(root + '/tmp');
   });
 
   for (var i = 0; i < posts.length; i++) {
@@ -60,16 +57,16 @@ function test_post(filename) {
     var parts     = fileInput.split('---');
     var yamlInput = parts[1];
     var jadeInput = parts[2];
-    var data,template;
+    var data;
+    var author;
 
-    beforeEach(function() {
+    beforeAll(function() {
       data = yaml.safeLoad(yamlInput);
-      template = jade.compile(jadeInput, {filename: filename});
     });
 
     describe("author", function() {
       // author comes from the path
-      var author = filename.split('/')[1];
+      author = filename.split('/')[1];
 
       it('is required', function() {
         expect(author).toBeString();
@@ -143,82 +140,104 @@ function test_post(filename) {
         expect(data.heroimage).toBeString();
       });
 
-      describe("remote image", function() {
-        var response = null;
-        var filename = null;
-        var extension = null;
-
-        var download = function(uri, filename, callback){
-          request.head(uri, function(err, res, body){
-            response = res;
-            extension = mime.extension(res.headers['content-type']);
-
-            request(uri).pipe(fs.createWriteStream(filename + '.' + extension)).on('close', callback);
-          });
-        };
+      describe('local hero image', function () {
+        var filename, image;
 
         beforeAll(function(done) {
-          filename = root + '/tmp/' + Math.random().toString().split('.').pop();
-          download(data.heroimage, filename, function () {
+          filename = root + '/posts/' + author + '/library/' + data.heroimage;
+
+          imagemagick.identify(filename, function(err, features){
+            if (err) done.fail(filename + ': ' +err);
+            image = features;
             done();
           });
         });
 
-        afterAll(function(done) {
-          fs.unlink(filename + '.' + extension, function (err) {
-            if (err) throw err;
-            done();
-          });
-        });
+        xit('maps to a real local file');
 
-        it('resolves to 200', function() {
-          expect(response.statusCode).toBe(200);
-        });
+        xit('the file is an image type');
 
         it('has an image content-type', function() {
-          expect(['image/jpeg', 'image/png', 'image/svg']).toContain(response.headers['content-type']);
+          expect(['JPEG', 'SVG', 'WEBP']).toContain(image.format);
         });
 
-        describe('heroimage dimensions', function() {
-          var image = null;
-          beforeAll(function (done) {
-            imagemagick.identify(filename + '.' + extension, function(err, features){
-              if (err) throw err;
-              image = features;
-              done();
-            });
-          });
+        it('has a height larger than 100px', function() {
+          expect(image.height).toBeGreaterThan(99);
+        });
 
-          it('has a height larger than 100px', function() {
-            expect(image.height).toBeGreaterThan(99);
-          });
+        it('has a width larger than 640px', function() {
+          expect(image.width).toBeGreaterThan(639);
+        });
 
-          it('has a width larger than 640px', function() {
-            expect(image.width).toBeGreaterThan(639);
-          });
-
-          it('is smaller than 5MB', function() {
-            image.filesize = image.filesize.replace('KBB', 'KB');
-            expect(filesizeParser(image.filesize)).toBeLessThan(5*1024*1024);
-          });
+        it('is smaller than 5MB', function() {
+          image.filesize = image.filesize.replace('KBB', 'KB');
+          expect(filesizeParser(image.filesize)).toBeLessThan(5*1024*1024);
         });
       });
     });
 
-
     describe('jade', function () {
+      var template//, html;
+      beforeAll(function() {
+        template = jade.compile(jadeInput, {filename: filename});
+        // html = template(data);
+      });
+
       it('parses into a function', function() {
         expect(template).toBeFunction();
       });
 
-      xdescribe('external resources', function () {
-        xit('are local resources', function () {
+      xit('html is a string', function() {
+        expect(html).toBeString();
+      });
 
+      xdescribe('resources', function () {
+        var images = [];
+        var videos = [];
+        var author = filename.split('/')[1];
+        var assets = glob.sync('posts/' + author + '/assets/*');
+
+        beforeAll(function(done) {
+          images = html.match(/<img[^>]+src=\"([^"]+)/ig);
+          videos = html.match(/<video[^>]+src=\"([^"]+)/ig);
         });
 
-        xit('are referencing the local author\'s assets dir');
+        _.forEach(images, function(image) {
+          it('is a local path', function() {
+            expect(image).toStartWith('assets');
+          });
 
-        xit('resolve to a valid resource');
+          it('ends with a valid image type', function() {
+            validExtensions = ['jpg', 'jpeg', 'png', 'svg'];
+            expect(validExtensions).toContain(image.split('.')[-1]);
+          });
+
+          it('resolve to a valid resource', function(done) {
+            var path = root + 'posts/' + author + image;
+            fs.exists(path, function(exists) {
+              if (exists) {
+                done();
+              } else {
+                done.fail('404 file not found');
+              }
+            });
+          });
+        });
+
+        _.forEach(videos, function(video) {
+          it(video + 'is from an approved source', function() {
+            var approvedDomains = ['youtube.com', 'vimeo.com', 'youtu.be'];
+            var containsDomain = false;
+            _.forEach(approvedDomains, function(domain) {
+              if (video.indexOf(domain) > 0) {
+                containsDomain = true;
+                return false;
+              }
+            });
+
+            expect(containsDomain).toBe(true);
+          });
+        });
       });
     });
 

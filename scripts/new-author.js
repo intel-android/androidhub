@@ -127,6 +127,7 @@ inquirer.prompt(questions, function( answers ) {
 
   //create posts directory
   fs.mkdirSync(path.resolve(root + '/posts/' + user), 0755);
+  fs.mkdirSync(path.resolve(root + '/posts/' + user + '/library'), 0755);
 
   //copy in the template.jade into the directory
   var template = fs.readFileSync(path.resolve(root + '/posts/template.jade'), 'utf8');

@@ -15,7 +15,7 @@ block content
   - var feature = helpers.getFeatured(site)[0]
   - var author = helpers.getAuthor(feature, data)
   .hero
-    img.heroimage.cover.lazyload(data-src=feature.heroimage)
+    img.heroimage.cover.lazyload(data-src=helpers.getHeroImage(post))
     section
       .icon-commit.hidden-sm: include includes/svg/_commit
       h5.marginless.clearsans-thin Latest Commit
