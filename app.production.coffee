@@ -22,6 +22,7 @@ module.exports =
     'app.sublime-project'
     'spec/**'
     'tmp'
+    'jasmine-runner.js'
     # 'data/**'
   ]
 
