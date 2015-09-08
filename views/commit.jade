@@ -9,21 +9,25 @@ block content
     h3.marginless Commit
   main: section
     .card
+      p We believe our Android developers will shape the future of this technology. Get involved today to connect with the developer community and share your ideas.
+
+      .spacer.sm
+
       form#nl-form.nl-form
-        | I'm 
+        | My name is 
         input#author-name(required, type='text', value='', placeholder='${name}', data-subline='Tell us your name')
-        |  and I would love to be part of the Android on Intel Hub. You can contact me at 
-        input#author-email(required, type='email', value='', placeholder='${email}', data-subline='For example: <em>foo@bar.com</em>')
-        | . My expertise is in  
+        |  and I have lots of great information I would like to contribute to The Android Hub. You can see my work at 
+        input#author-site(required, type='url', value='', placeholder='${site}', data-subline='Example: <em>https://github.com/your_handle</em>').
+        | . My expertise are in  
         select#author-expertise(required)
           option(value, default, selected) ${expertise}
           option(value='native app development') native app development
           option(value='hybrid app development') hybrid app development
           option(value='web apps') web apps
           option(value='app design') app design
-        | . Learn more about me at my website/github here 
-        input#author-site(required, type='url', value='', placeholder='${site}', data-subline='Example: <em>https://github.com/your_handle</em>').
-        | . I also wanted to mention this.. 
+        | . I can be reached at 
+        input#author-email(required, type='email', value='', placeholder='${email}', data-subline='For example: <em>foo@bar.com</em>')
+        | . I also wanted to mention this: 
         br
         textarea#author-message
 
