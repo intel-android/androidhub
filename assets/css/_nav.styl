@@ -4,12 +4,12 @@ nav
   background-color:white
   position:relative
   z-index:2
-  +below(tablet)
-    padding-bottom:0.5rem
+  
+  > section
+    +below(mobile)
+      padding:0 0.5rem
   
   .link-nav-set 
-    +below(mobile)
-      padding:0 1rem !important
     > a
       color:hsl(0,0%,20%)
 
@@ -17,8 +17,9 @@ nav
         margin-left:0
       &:last-child
         margin-right:0
-  
-  +below(tablet)  
+        
+  +below(tablet) 
+    padding-bottom:0.5rem 
     .link-nav-set > a
       padding:0.5rem 0.25em
         
