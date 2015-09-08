@@ -60,7 +60,7 @@ module.exports =
         'assets/css/*.styl'
       ]
       out:    'css/app.css'
-      minify: false # minify is not working right now for some reason with roots
+      minify: true
       hash:   false
   ]
 
