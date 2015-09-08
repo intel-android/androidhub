@@ -69,9 +69,8 @@ html
       //- related posts
       - var relatedPosts = helpers.getRelatedPosts(post, site.posts.all())
       if relatedPosts.length
-        include ../mixins/_related-post
-
         aside.card: article
+          include ../mixins/_related-post
           h4 Related Articles
           .related-posts
             each post in relatedPosts
