@@ -43,7 +43,7 @@ If this is your first time contributing to the hub, you'll need to create yourse
 ##### Kick it off!
 In your terminal, type `npm run new`
 
-![gif of terminal session](https://lh4.googleusercontent.com/fnJVXExnrIhJTnws7Hf1h1BvHCGk92T6RMmEPCpKwyLSQkH-Rxks_8mlTpwpqV0X5goY2YM96A9wZuM=w1256-h1202)
+![gif of terminal session](https://drive.google.com/uc?id=0B6rG4e8CXFiGWFBtV3RBZFNldDA)
 
 ##### So what's gonna happen?
 All the values you entered into the cli prompt, creates a .yaml entry for you in `data/authors/`, which will look like this. 
