@@ -1,5 +1,4 @@
 mixin feed-home-item(post)
-  - var image = post.heroimage ? post.heroimage : 'http://placehold.it/350x150?text=#{post.author}'
   - var author = helpers.getAuthor(post, data)
 
   li.feed-item.grid__col-md-3.grid__col-sm-3.grid__col-xs-6
