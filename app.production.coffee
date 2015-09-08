@@ -62,6 +62,8 @@ module.exports =
       out:    'css/app.css'
       minify: true
       hash:   false
+      opts:
+        keepSpecialComments: 0
   ]
 
   stylus:
