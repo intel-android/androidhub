@@ -11,5 +11,5 @@ opengraph:
   url:          'http://intel-android.ddhive.com'
   image:        'https://pbs.twimg.com/profile_images/451797078142767104/LjIk-xW-.png'
   site:         'Intel Android Developer Hub'
-  description:  'please update the description for this site in meta.yaml'
+  description:  'Engage with Intel for all things software and join a worldwide community of software developers on the Intel Developer Zone.'
   author:       'Deloitte Digital'
