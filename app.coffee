@@ -52,7 +52,7 @@ module.exports =
       ]
     css_pipeline
       files: [
-        'bower_components/reflex/css/reflex.css'
+        'bower_components/reflex-grid/css/reflex.css'
         'bower_components/sweetalert/dist/sweetalert.css'
         'assets/css/*.styl'
       ]
