@@ -57,6 +57,21 @@ module.exports =
     css_pipeline
       files: [
         'bower_components/reflex-grid/css/reflex.css'
+        'assets/css/_utils.styl'
+        'assets/css/_colors.styl'
+        'assets/css/_footer.styl'
+        'assets/css/_header.styl'
+        'assets/css/_icons.styl'
+        'assets/css/_nav.styl'
+      ]
+      out:    'css/nav.css'
+      minify: true
+      hash:   false
+      opts:
+        keepSpecialComments: 0
+    css_pipeline
+      files: [
+        'bower_components/reflex-grid/css/reflex.css'
         'bower_components/sweetalert/dist/sweetalert.css'
         'assets/css/*.styl'
       ]
