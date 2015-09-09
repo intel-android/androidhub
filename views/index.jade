@@ -10,18 +10,18 @@ block content
     include includes/svg/_droid
     .text-overlay
       include includes/svg/_droid-hub
-      h5.fix-reflex-type.marginless Android tips, tuts and tricks from one developer to another.
+      h5.animate-prep.fix-reflex-type.marginless Android tips, tuts and tricks from one developer to another.
 
   - var feature = helpers.getFeatured(site)[0]
   - var author = helpers.getAuthor(feature, data)
   .hero
-    img.heroimage.cover.lazyload.lazyanimate(data-src=helpers.getHeroImage(feature))
+    img.heroimage.cover.lazyload.animate-prep(data-src=helpers.getHeroImage(feature))
     section
       .commit.hidden-sm: include includes/svg/_commit
       h4.marginless.clearsans-thin Latest Commit
       a.light(href=feature._url)
-        h1.hero-title= feature.title
-      .author-nameplate
+        h1.hero-title.animate-prep= feature.title
+      .author-nameplate.animate-prep
         img.avatar.circle.contain.lazyload.lazyanimate(src=helpers.getAuthorImage(author))
         h4.marginless by #{author.displayname}
         a.light(href=helpers.socialLink('twitter', author.twitter), target='_blank')

@@ -19,6 +19,7 @@
     "isotope": "~2.2.1",
     "lazysizes": "~1.1.5",
     "reflex-grid": "~1.0.4",
-    "sweetalert": "~1.1.0"
+    "sweetalert": "~1.1.0",
+    "velocity": "~1.2.2"
   }
 }
