@@ -38,6 +38,8 @@ module.exports =
         'bower_components/isotope/dist/isotope.pkgd.min.js'
         'bower_components/lazysizes/lazysizes.min.js'
         'bower_components/sweetalert/dist/sweetalert-dev.js'
+        'bower_components/velocity/velocity.js'
+        'bower_components/velocity/velocity.ui.js'
         # simple no deps
         'assets/js/app.coffee'
         'assets/js/fonts.coffee'
@@ -50,6 +52,7 @@ module.exports =
         # view controllers
         'assets/js/feed.coffee'
         'assets/js/commit.coffee'
+        'assets/js/animations.coffee'
       ]
       out:    'js/app.js'
       minify: true
