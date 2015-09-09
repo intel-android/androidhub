@@ -54,6 +54,7 @@ module.exports =
       out:    'js/app.js'
       minify: true
       hash:   false
+
     css_pipeline
       files: [
         'bower_components/reflex-grid/css/reflex.css'
@@ -69,7 +70,7 @@ module.exports =
       files: [
         'bower_components/reflex-grid/css/reflex.css'
         'bower_components/sweetalert/dist/sweetalert.css'
-        'assets/css/*.styl'
+        'assets/css/master.styl'
       ]
       out:    'css/app.css'
       minify: true
