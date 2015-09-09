@@ -1,13 +1,17 @@
 .lazyanimate
+  position:relative
+  will-change:top, opacity
   &.lazyload,
   &.lazyloading
     opacity:0
-    transform:translateY(5px)
+    // transform:translateY(5px)
+    top:5px
     
   &.lazyloaded
     opacity:1
-    transform:translateY(0)
-    transition:transform 0.3s ease, opacity 0.3s ease
+    // transform:translateY(0)
+    top:0
+    transition:top 0.3s ease, opacity 0.3s ease
   
 .droid-hero > path:first-child
   transform-origin:center center
