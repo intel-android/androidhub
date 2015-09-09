@@ -4,7 +4,7 @@ mixin feed-home-item(post)
   li.feed-item.grid__col-md-3.grid__col-sm-3.grid__col-xs-6
     h6.thin-type.marginless= post.categories[0]
     a(href=post._url, title="Git commit ID: #{post.git.commit}")
-      img.grid__cell-img.cover.lazyload(data-src=helpers.getHeroImage(post))
+      img.grid__cell-img.cover.lazyload.lazyanimate(data-src=helpers.getHeroImage(post))
       h4.post-title.thin-type= post.title
       small.post-meta(title=post.git.date) 
         | by #{author.displayname}

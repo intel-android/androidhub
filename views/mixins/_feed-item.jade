@@ -4,7 +4,7 @@ mixin feed-item(post, grid)
 
   li.feed-item(class=[post.categories, post.author, columns])
     a(href=post._url, title="Git commit ID: #{post.git.commit}")
-      img.grid__cell-img.cover.lazyload(data-src=helpers.getHeroImage(post))
+      img.grid__cell-img.cover.lazyload.lazyanimate(data-src=helpers.getHeroImage(post))
       h4.post-title.thin-type= post.title
       small.post-excerpt= post.excerpt
       small.post-meta(title=post.git.date)
