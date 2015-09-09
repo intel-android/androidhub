@@ -57,18 +57,14 @@ module.exports =
     css_pipeline
       files: [
         'bower_components/reflex-grid/css/reflex.css'
-        'assets/css/_utils.styl'
-        'assets/css/_colors.styl'
-        'assets/css/_footer.styl'
-        'assets/css/_header.styl'
-        'assets/css/_icons.styl'
-        'assets/css/_nav.styl'
+        'assets/css/guide.styl'
       ]
-      out:    'css/nav.css'
+      out:    'css/guide.css'
       minify: true
       hash:   false
       opts:
         keepSpecialComments: 0
+
     css_pipeline
       files: [
         'bower_components/reflex-grid/css/reflex.css'
@@ -83,6 +79,7 @@ module.exports =
   ]
 
   stylus:
+    "include-css": true
     use: [
       axis()
       rupture()
