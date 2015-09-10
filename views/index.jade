@@ -12,13 +12,16 @@ block content
       include includes/svg/_droid-hub
       h5.fix-reflex-type.marginless Android tips, tuts and tricks from one developer to another.
 
-  - var feature = helpers.getFeatured(site)[0]
+  - var mergedPosts = helpers.getMergedPosts(site, records)
+  - var feature = _.filter(mergedPosts, 'featured')[0]
   - var author = helpers.getAuthor(feature, data)
   .hero
     img.heroimage.cover.lazyload.animate-prep(data-src=helpers.getHeroImage(feature))
     section
       .commit.hidden-sm: include includes/svg/_commit
-      h4.marginless.clearsans-thin Latest Commit
+      h4.marginless.clearsans-thin 
+        | Latest Commit 
+        //- small: a.light(href='https://github.com/intel-android/androidhub/commit/#{feature.git.commit}')= feature.git.commit.substr(0,7)
       a.light(href=feature._url)
         h1.hero-title.animate-prep= feature.title
       .author-nameplate.animate-prep
@@ -31,7 +34,6 @@ block content
     .recent-commit.hidden-sm: include includes/svg/_commit
     h4.recent-title Recent Commits
     ul.grid.reverse-margin-md
-      - var mergedPosts = helpers.getMergedPosts(site, records)
       - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return post.git.date })
       - var count = 0
       
