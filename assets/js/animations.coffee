@@ -28,7 +28,7 @@ class Animations
 
   if els.hubTitle
     Velocity els.hubTitle, 'callout.tada',
-      delay:    1000
+      delay:    3000
       display:  ''
 
   if els.sectionTitle
