@@ -7,6 +7,8 @@ class Animations
     homeHero:       document.querySelector '.heroimage'
     sectionTitle:   document.querySelector '.section-title h3'
     homeFeedItems:  document.querySelectorAll '.recent .feed-item'
+    intelLogo:      document.querySelector '.intel-logo'
+    commitButton:   document.querySelector '.site-map .btn.blue'
 
   if els.socialNavIcons
     Velocity els.socialNavIcons, 'transition.expandIn',
@@ -23,13 +25,15 @@ class Animations
   if els.homeFeedItems
     for el in els.homeFeedItems
       el.querySelector('img').addEventListener 'load', (e) ->
-        Velocity e.target.parentNode.parentNode, 'transition.slideUpIn',
-          display: ''
+        Velocity e.target.parentNode.parentNode, 'transition.slideUpIn', display: ''
 
   if els.hubTitle
-    Velocity els.hubTitle, 'callout.tada',
+    Velocity els.hubTitle, 'callout.pulse',
       delay:    3000
       display:  ''
 
   if els.sectionTitle
     Velocity els.sectionTitle, 'transition.slideDownIn'
+
+  els.intelLogo.addEventListener 'load', ->
+    Velocity els.commitButton, 'callout.tada', delay: 1500
