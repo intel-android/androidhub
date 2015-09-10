@@ -7,7 +7,7 @@ dynamic         = require 'dynamic-content'
 roots_yaml      = require 'roots-yaml'
 records         = require 'roots-records'
 shell           = require 'shelljs'
-copyLibrary   = require './scripts/copy-library.js'
+copyLibrary     = require './scripts/copy-library.js'
 
 module.exports =
   ignores: [
