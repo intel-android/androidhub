@@ -42,9 +42,9 @@ html
           a(href=author.website)
             img.avatar.circle.contain.push-right.lazyload.lazyanimate(src=helpers.getAuthorImage(author))
           .meta
-            h3.header-author.thin-type.marginless= author.displayname
-            h4.header-subtitle.thin-type.marginless #{author.title} at #{author.company}
-            .header-social
+            h3.header-author.thin-type.marginless.animate-prep= author.displayname
+            h4.header-subtitle.thin-type.marginless.animate-prep #{author.title} at #{author.company}
+            .header-social.animate-prep
               a(href=helpers.socialLink('twitter', author.twitter), target='_blank')
                 include ../includes/svg/_twitter-bird
               a(href=helpers.socialLink('github', author.github), target='_blank')

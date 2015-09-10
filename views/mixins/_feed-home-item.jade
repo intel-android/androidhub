@@ -1,7 +1,7 @@
 mixin feed-home-item(post)
   - var author = helpers.getAuthor(post, data)
 
-  li.feed-item.grid__col-md-3.grid__col-sm-3.grid__col-xs-6
+  li.feed-item.grid__col-md-3.grid__col-sm-3.grid__col-xs-6.animate-prep
     h6.thin-type.marginless= post.categories[0]
     a(href=post._url, title="Git commit ID: #{post.git.commit}")
       img.grid__cell-img.cover.lazyload(data-src=helpers.getHeroImage(post))

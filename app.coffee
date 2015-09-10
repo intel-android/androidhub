@@ -1,13 +1,13 @@
-axis          = require 'axis'
-rupture       = require 'rupture'
-autoprefixer  = require 'autoprefixer-stylus'
-js_pipeline   = require 'js-pipeline'
-css_pipeline  = require 'css-pipeline'
-dynamic       = require 'dynamic-content'
-roots_yaml    = require 'roots-yaml'
-records       = require 'roots-records'
-shell         = require 'shelljs'
-copyLibrary   = require './scripts/copy-library.js'
+axis            = require 'axis'
+rupture         = require 'rupture'
+autoprefixer    = require 'autoprefixer-stylus'
+js_pipeline     = require 'js-pipeline'
+css_pipeline    = require 'css-pipeline'
+dynamic         = require 'dynamic-content'
+roots_yaml      = require 'roots-yaml'
+records         = require 'roots-records'
+shell           = require 'shelljs'
+copyLibrary     = require './scripts/copy-library.js'
 
 module.exports =
   ignores: [
