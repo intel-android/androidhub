@@ -23,12 +23,15 @@ androidhub/
     		...
 └─── posts/
     └─── your_github_handle/
+            └─── library/
+                image1.png
+                ...
     		your-post-file-name.jade
             ...
 ```
 
-`your_github_handle.yaml` is a file dedicated to meta data about you, the author. This information is used around the site whenever we're talking about you. 
-`posts/your_github_handle` is your own folder to create your posts in.
+`data/authors/your_github_handle.yaml` is a file dedicated to meta data about you, the author. This information is used around the site whenever we're talking about you. 
+`posts/your_github_handle/` is your own folder to create your posts in. The child `library/` folder is for all your assets (images, etc).
 
 Not too bad right? Tell us about yourself as an author, then go write posts. Bam.
 
@@ -38,7 +41,7 @@ Not too bad right? Tell us about yourself as an author, then go write posts. Bam
 
 
 ## Init
-If this is your first time contributing to the hub, you'll need to create yourself by putting some data into some files. We've got a handy author kickoff script that does lots of the work for you, so let's start there.
+If this is your first time contributing to the hub, you'll need to create yourself by putting some data into some files. We've got a handy author kickoff script that does lots of the work for you, so let's start there!
 
 ##### Kick it off!
 In your terminal, type `npm run new`
@@ -46,7 +49,7 @@ In your terminal, type `npm run new`
 ![gif of terminal session](https://drive.google.com/uc?id=0B6rG4e8CXFiGWFBtV3RBZFNldDA)
 
 ##### So what's gonna happen?
-All the values you entered into the cli prompt, creates a .yaml entry for you in `data/authors/`, which will look like this. 
+All the values you enter into the cli prompt, create a .yaml entry for you in `data/authors/`, which will look like this. Well, almost like this, it should be filled with information about you.
 
 ```yaml
 # Personal Info
@@ -61,7 +64,7 @@ github:       '{{github_handle}}'
 codepen:      ''
 ```
 
-It also creates a folder for you in `posts/{{your_handle}}/` which will hold onto your posts. We'll talk about that next.
+It also creates a folder for you in `posts/{{your_handle}}/` which will hold onto your posts and media. We'll talk about that next.
 
 
 &nbsp;
@@ -69,7 +72,7 @@ It also creates a folder for you in `posts/{{your_handle}}/` which will hold ont
 
 
 ## Write
-If you're familiar with blog engines like [Ghost](https://ghost.org/) or [Jekyll](http://jekyllrb.com/), then you'll be right at home with the Intel Android Hub's blog architecture. What's awesome about this architecture though, you're not limited to just Markdown, you can write [Jade](http://jade-lang.com/), [Coffeescript](http://coffeescript.org/), [etc](http://jade-lang.com/reference/filters/)! We felt that most authors would prefer markdown, so that's the style we'll talk about here. Plus, if you know Jade, then you're likely already familiar with it's ability to do markdown.
+If you're familiar with blog engines like [Ghost](https://ghost.org/) or [Jekyll](http://jekyllrb.com/), then you'll be right at home with the Intel Android Hub's blog architecture. What's awesome about this architecture is you're not limited to just Markdown, you can write [Jade](http://jade-lang.com/), [Coffeescript](http://coffeescript.org/), [etc](http://jade-lang.com/reference/filters/)! We felt that most authors would prefer markdown, so that's the style we'll talk about here. Plus, if you know Jade, then you're likely already familiar with it's ability to do markdown.
 
 ##### Example Post:
 

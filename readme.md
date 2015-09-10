@@ -24,8 +24,8 @@ Holds authors feed posts. Folder name must match `data/authors > .yaml` file nam
 - `views/`  
 Jade files and actual html for the site is in here.
 
-### Contributing
-Whether you want to write articles or help fix bugs, it's as easy as fork and pull request. For more information, see the [author readme](https://github.com/intel-android/androidhub/blob/master/authors_readme.md)
+### Contributing!?
+Whether you want to write articles or help fix bugs, it's as easy as fork and pull request. For more information, see the [author readme](https://github.com/intel-android/androidhub/blob/master/authors_readme.md).
 
 ### Testing
 `npm test`
