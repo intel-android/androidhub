@@ -9,6 +9,8 @@ class Animations
     homeFeedItems:  document.querySelectorAll '.recent .feed-item'
     intelLogo:      document.querySelector '.intel-logo'
     commitButton:   document.querySelector '.site-map .btn.blue'
+    articleAvatar:  document.querySelector '.header-nameplate .avatar'
+    nameplate:      document.querySelectorAll '.meta > *'
 
   if els.socialNavIcons
     Velocity els.socialNavIcons, 'transition.expandIn',
@@ -34,6 +36,14 @@ class Animations
 
   if els.sectionTitle
     Velocity els.sectionTitle, 'transition.slideDownIn'
+
+  if els.articleAvatar && els.nameplate
+    els.articleAvatar.addEventListener 'load', ->
+      Velocity els.nameplate, 'transition.slideLeftIn',
+        drag:     true
+        stagger:  250
+        display:  ''
+        delay:    500
 
   els.intelLogo.addEventListener 'load', ->
     Velocity els.commitButton, 'callout.tada', delay: 1500
