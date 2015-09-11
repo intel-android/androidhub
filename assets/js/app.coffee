@@ -3,6 +3,8 @@ class App
   FastClick.attach document.body
 
   lazySizesConfig.loadMode = 1
+  lazySizesConfig.expand = 100
+
   document.addEventListener 'lazybeforeunveil', (e) ->
     bg = e.target.getAttribute 'data-bg'
     if bg

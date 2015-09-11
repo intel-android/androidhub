@@ -53,6 +53,7 @@ module.exports =
         'assets/js/feed.coffee'
         'assets/js/commit.coffee'
         'assets/js/animations.coffee'
+        'assets/js/ga.coffee'
       ]
       out:    'js/app.js'
       minify: true
