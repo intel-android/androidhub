@@ -3,3 +3,4 @@
 script
   :coffee-script
     if !!localStorage['fonts-loaded'] then document.documentElement.className += 'fonts-loaded'
+    if navigator.userAgent.indexOf('Chrome') > -1 and navigator.userAgent.indexOf('Windows') > -1 then document.documentElement.className += ' chrome-on-windows'

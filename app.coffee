@@ -91,6 +91,7 @@ module.exports =
       getRelatedPosts:  require './scripts/get-related-posts'
       socialLink:       require './scripts/social-link'
       getHeroImage:     require './scripts/get-hero-image'
+      sortByLastName:   require './scripts/sort-by-last-name.js'
 
   before: ->
     shell.exec 'npm run posts-git-log'

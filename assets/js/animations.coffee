@@ -4,6 +4,7 @@ class Animations
     socialNavIcons: document.querySelectorAll 'nav .auto-width-xs > a' 
     hubTitle:       document.querySelector '.text-overlay > h5'
     homeHeader:     document.querySelectorAll '.heroimage, .hero-title, .author-nameplate'
+    heroNameplate:  document.querySelectorAll '.author-nameplate > h4, .author-nameplate > a'
     homeHero:       document.querySelector '.heroimage'
     sectionTitle:   document.querySelector '.section-title h3'
     homeFeedItems:  document.querySelectorAll '.recent .feed-item'
@@ -23,6 +24,11 @@ class Animations
         drag:     true
         stagger:  250
         display:  ''
+        complete: ->
+          Velocity els.heroNameplate, 'transition.slideLeftIn',
+            drag:     true
+            stagger:  250
+            display:  ''
 
   if els.homeFeedItems
     for el in els.homeFeedItems
