@@ -95,8 +95,7 @@ module.exports =
 
   before: ->
     shell.exec 'npm run posts-git-log'
-
-    copyLibrary();
-    return true;
+    copyLibrary()
+    return true
 
   debug: true
