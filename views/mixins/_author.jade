@@ -1,11 +1,11 @@
 mixin author(author)
   li.author.grid__col-xs-6.grid__col-sm-4.grid__col-md-3.grid__col-lg-3(class=post.categories)
     .grid__cell
-      if author.founder
-        .founder
       img.grid__cell-img.lazyload.lazyanimate.cover(data-src=helpers.getAuthorImage(author))
       .name.clearsans-bold= author.displayname
       small #{author.title} at #{author.company}
+      if author.founder
+        small.clearsans-bold Hub Founding Contributor
 
       .author-social
         if author.github
