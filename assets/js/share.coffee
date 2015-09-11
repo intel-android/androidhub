@@ -29,11 +29,13 @@ App.Share = (->
   [].forEach.call els, (el) ->
     el.addEventListener 'click', (e) ->
       e.preventDefault()
-      switch e.currentTarget.getAttribute('share-target')
+      target = e.currentTarget.getAttribute('share-target')
+
+      switch target
         when 'twitter' then shareToTwitter()
         when 'facebook' then shareToFacebook()
         when 'google' then shareToGoogle()
       
-      # ga 'send', 'event', 'button', 'click', 'twitter'
+      if ga then ga 'send', 'event', 'button', 'click', target
 
 )()
