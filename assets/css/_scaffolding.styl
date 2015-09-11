@@ -13,10 +13,15 @@ html, body
 
 main
   background-color:#eee
+  
   &.post
     padding-bottom:1rem
     overflow:hidden
     position:relative
+  
+  > section
+    +below(mobile)
+      padding:0
 
 section
   margin:0 auto
@@ -32,12 +37,24 @@ a[href]
   color:blue
   &:hover
     color:darken(blue,20%)
-  &.light
-    color:white
+    
+  &.light, &.dark, &.inherit-color
     text-decoration:none
     &:hover
-      color:white
       text-decoration:underline
+
+  &.light
+    color:white
+    &:hover
+      color:white
+  &.dark
+    color:#555
+    &:hover
+      color:#222
+  &.inherit-color
+    color:inherit
+    &:hover
+      color:inherit
 
 article
   max-width:768px

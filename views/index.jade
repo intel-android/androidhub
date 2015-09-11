@@ -19,20 +19,23 @@ block content
     img.heroimage.cover.lazyload.animate-prep(data-src=helpers.getHeroImage(feature))
     section
       .commit.hidden-sm: include includes/svg/_commit
-      h4.marginless.clearsans-thin 
-        | Latest Commit 
-        //- small: a.light(href='https://github.com/intel-android/androidhub/commit/#{feature.git.commit}')= feature.git.commit.substr(0,7)
+      h4.marginless.clearsans-thin
+        a.light(href='https://github.com/intel-android/androidhub/commit/#{feature.git.commit}', target='_blank', title=feature.git.commit)
+          | Latest Commit 
+          //- small= feature.git.commit.substr(0,7)
       a.light(href=feature._url)
         h1.hero-title.animate-prep= feature.title
       .author-nameplate.animate-prep
-        img.avatar.circle.contain.lazyload.lazyanimate(src=helpers.getAuthorImage(author))
-        h4.marginless by #{author.displayname}
-        a.light(href=helpers.socialLink('twitter', author.twitter), target='_blank')
+        img.avatar.circle.contain.lazyload(src=helpers.getAuthorImage(author))
+        h4.marginless.animate-prep by #{author.displayname}
+        a.light.animate-prep(href=helpers.socialLink('twitter', author.twitter), target='_blank')
           small @#{author.twitter}
 
   .recent: section
     .recent-commit.hidden-sm: include includes/svg/_commit
-    h4.recent-title Recent Commits
+    h4.recent-title
+      a.dark(href='https://github.com/intel-android/androidhub/commits/master', target='_blank', title='See commits to the master branch') 
+        | Recent Commits
     ul.grid.reverse-margin-md
       - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return post.git.date })
       - var count = 0
