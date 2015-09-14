@@ -4,7 +4,7 @@ App.Commit = (->
   return unless @form
   new NLForm @form
 
-  @requiredFormElements = 
+  @requiredFormElements =
     name:       document.getElementById 'author-name'
     email:      document.getElementById 'author-email'
     expertise:  document.getElementById 'author-expertise'
@@ -19,7 +19,7 @@ App.Commit = (->
       for k,v of @requiredFormElements
         complete = checkEl(v)
 
-      if complete then done() else notDone() 
+      if complete then done() else notDone()
 
   # @form.addEventListener 'change', (e) =>
   #   checkEl(e.target.parentNode.parentNode.parentNode.nextSibling)
@@ -29,12 +29,12 @@ App.Commit = (->
       complete = true
       el.previousSibling.classList.remove('error')
       # el.previousSibling.classList.add('complete')
-    else 
+    else
       complete = false
       # el.previousSibling.classList.remove('complete')
-      el.previousSibling.classList.add('error')  
+      el.previousSibling.classList.add('error')
 
-    return complete 
+    return complete
 
   notDone = () ->
     swal
@@ -43,16 +43,26 @@ App.Commit = (->
       type:   'error'
 
   done = () ->
-    swal
-      title:  'Nice!'
-      text:   'We will get back to your shortly.'
-      timer:  4000
-      type:   'success'
-
-    console.log 
+    data =
       name:       @requiredFormElements.name.value
       email:      @requiredFormElements.email.value
       expertise:  @requiredFormElements.expertise.value
       site:       @requiredFormElements.site.value
       message:    document.getElementById('author-message').value
+
+    console.log data
+
+    $.ajax
+      url: '/commit.php'
+      type: 'POST',
+      contentType: "application/json; charset=utf-8"
+      dataType: "json"
+      data: data
+      success: (xhr) ->
+        swal
+          title:  'Nice!'
+          text:   xhr.message
+          type:   'success'
+
+
 )()
