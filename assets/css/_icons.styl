@@ -35,12 +35,21 @@
     fill:gplus
     
   &:hover
-    .icon-twitter path
-      fill:lighten(twitter, 40%)
-    .icon-facebook path
-      fill:lighten(facebook, 40%)
-    .icon-googleplus path
-      fill:lighten(gplus, 40%)
+    .icon-twitter 
+      ellipse
+        fill:twitter
+      path
+        fill:white
+    .icon-facebook 
+      ellipse
+        fill:facebook
+      path
+        fill:white
+    .icon-googleplus 
+      ellipse
+        fill:gplus
+      path
+        fill:white
       
 a:hover
   .icon-twitter-bird path
