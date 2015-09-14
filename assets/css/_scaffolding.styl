@@ -79,3 +79,21 @@ input[type='search']
     color:hsla(0,0%,100%,0.5)
   &:-ms-input-placeholder
     color:hsla(0,0%,100%,0.5)
+    
+blockquote
+  position:relative
+  background:blue
+  color:white
+  font-size:1.6rem
+  padding:0.5rem 2rem 1.5rem
+  
+  &:after
+    content:" "
+    background-image:url(/img/tear.svg)
+    background-size:auto 100%
+    position:absolute
+    transform:rotate(180deg)
+    bottom:-17px
+    left:-8px
+    width:102%
+    height:39px
