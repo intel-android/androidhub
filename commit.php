@@ -43,10 +43,8 @@ function email($to, $subject, $body, $headers) {
     return TRUE;
   }
 
-  return mail($to, $subject, $body, $headers)
+  return mail($to, $subject, $body, $headers);
 }
-
-
 
 function detectRequestBody() {
     $rawInput = fopen('php://input', 'r');

@@ -52,17 +52,18 @@ App.Commit = (->
 
     console.log data
 
-    $.ajax
-      url: '/commit.php'
-      type: 'POST',
-      contentType: "application/json; charset=utf-8"
-      dataType: "json"
-      data: data
-      success: (xhr) ->
+    xobj = new XMLHttpRequest()
+    xobj.overrideMimeType "application/json"
+    xobj.open 'POST', 'commit.php'
+    xobj.onreadystatechange = () ->
+      if xobj.readyState == 4 and xobj.status == 200
+        json = JSON.parse(xobj.responseText)
         swal
           title:  'Nice!'
-          text:   xhr.message
+          text:   json.message
           type:   'success'
+    xobj.send JSON.stringify data
+
 
 
 )()
