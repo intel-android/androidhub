@@ -20,7 +20,7 @@ notifications:
     - aargyle@deloitte.com
 addons:
   ssh_known_hosts:
-  - $DEPLOY_IP
+  - ${DEPLOY_IP}
 deploy:
   provider: script
   script: scripts/deploy.sh
