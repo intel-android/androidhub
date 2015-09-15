@@ -4,3 +4,4 @@ public
 assets/library
 bower_components
 *.sublime-workspace
+deploy_key
