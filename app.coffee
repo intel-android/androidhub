@@ -38,6 +38,7 @@ module.exports =
         'bower_components/isotope/dist/isotope.pkgd.min.js'
         'bower_components/lazysizes/lazysizes.min.js'
         'bower_components/sweetalert/dist/sweetalert-dev.js'
+        'bower_components/prism/prism.js'
         'bower_components/velocity/velocity.js'
         'bower_components/velocity/velocity.ui.js'
         # simple no deps
@@ -58,6 +59,8 @@ module.exports =
       files: [
         'bower_components/reflex-grid/css/reflex.css'
         'bower_components/sweetalert/dist/sweetalert.css'
+        'bower_components/prism/themes/prism.css'
+        'bower_components/prism/themes/prism-coy.css'
         'assets/css/master.styl'
       ]
   ]
@@ -95,8 +98,7 @@ module.exports =
 
   before: ->
     shell.exec 'npm run posts-git-log'
-
-    copyLibrary();
-    return true;
+    copyLibrary()
+    return true
 
   debug: true

@@ -36,8 +36,8 @@ html
     header.grid.lazyload(data-bg=helpers.getHeroImage(post))
       .grid__col-xs-10.grid__col-lg-8.grid--align-self-center.centered-title.grid--direction-column
         small.header-date(title=git.date)
-          | #{moment(new Date(git.date)).format("ll")} // 
-          a.inherit-color(href='https://github.com/intel-android/androidhub/commit/#{git.commit}', target='_blank', 'See the commit for this article post')= git.commit.substr(0,7)
+          | #{moment(new Date(git.date)).format("ll")} 
+          a.inherit-color(href='https://github.com/intel-android/androidhub/commit/#{git.commit}', target='_blank', title='See the commit for this article post')  // #{git.commit.substr(0,7)}
         h1.header-title= post.title
 
         .header-nameplate
