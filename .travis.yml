@@ -1,23 +1,28 @@
 language: node_js
 before_script:
-  - npm install -g roots
-  - npm install -g bower
+- npm install -g roots
+- npm install -g bower
 script:
-  - npm test
-  - bower install
-  - roots compile -e production
+- npm test
+- bower install
+- roots compile -e production
 node_js:
-  - "0.12"
-
+- '0.12'
 sudo: false
-
 cache:
   directories:
-    - node_modules
-    - bower_components
-
+  - node_modules
+  - bower_components
 notifications:
   email:
     recipients:
-      - aegaas@deloitte.com
-      - aargyle@deloitte.com
+    - aegaas@deloitte.com
+    - aargyle@deloitte.com
+deploy:
+  script: scripts/deploy.sh
+  skip_cleanup: true
+  on:
+    branch: master
+before_install:
+- openssl aes-256-cbc -K $encrypted_fd017f77ecb3_key -iv $encrypted_fd017f77ecb3_iv
+  -in deploy_key.enc -out deploy_key -d
