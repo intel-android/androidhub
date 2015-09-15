@@ -19,6 +19,7 @@ notifications:
     - aegaas@deloitte.com
     - aargyle@deloitte.com
 deploy:
+  provider: script
   script: scripts/deploy.sh
   skip_cleanup: true
   on:
