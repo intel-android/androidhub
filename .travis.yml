@@ -20,7 +20,8 @@ notifications:
     - aargyle@deloitte.com
 addons:
   ssh_known_hosts:
-  - ${DEPLOY_IP}
+  - androidhub-int.wdg.infra-host.com
+  - androidhub.wdg.infra-host.com
 deploy:
   provider: script
   script: scripts/deploy.sh
