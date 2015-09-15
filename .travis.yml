@@ -18,6 +18,9 @@ notifications:
     recipients:
     - aegaas@deloitte.com
     - aargyle@deloitte.com
+addons:
+  ssh_known_hosts:
+  - $DEPLOY_IP
 deploy:
   provider: script
   script: scripts/deploy.sh
