@@ -53,8 +53,7 @@ module.exports =
         'assets/js/feed.coffee'
         'assets/js/commit.coffee'
         'assets/js/animations.coffee'
-        'assets/js/text-effect.coffee'
-        'assets/js/ga-prod.coffee'
+        'assets/js/ga-stage.coffee'
       ]
       out:    'js/app.js'
       minify: true
@@ -118,4 +117,5 @@ module.exports =
   after: ->
     shell.exec 'node_modules/purify-css/bin/purifycss public/css/app.css public/index.html public/feed.html public/about.html public/authors.html public/commit.html public/posts/template.html public/js/app.js --info --out public/css/app.css'
     shell.exec 'node_modules/csso/bin/csso public/css/app.css public/css/app.css'
+    shell.exec 'cp views/robots_disallow.txt public/robots.txt'
     shell.exec 'cp -R posts/* public/posts'

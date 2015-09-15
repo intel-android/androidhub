@@ -5,7 +5,7 @@ before_script:
 script:
 - npm test
 - bower install
-- roots compile -e production
+- roots compile -e staging
 node_js:
 - '0.12'
 sudo: false
