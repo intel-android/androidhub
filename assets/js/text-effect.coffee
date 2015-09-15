@@ -24,7 +24,7 @@ class TextEffect
     for num, i in random_num
       if parseInt(num.getAttribute('data-number')) > parseInt(num.getAttribute('data-change'))
         num.innerHTML = letters[i]
-        num.classList.remove 'nbr'
+        num.className = ''
 
     if data.length >= random_num.length * 2
       clearInterval it
