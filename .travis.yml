@@ -21,7 +21,7 @@ notifications:
 addons:
   ssh_known_hosts:
   - androidhub-int.wdg.infra-host.com
-  - androidhub.wdg.infra-host.com
+  - androidhub-prod.wdg.wdg.infra-host.com
 deploy:
   provider: script
   script: scripts/deploy.sh
