@@ -35,10 +35,10 @@ class Animations
       el.querySelector('img').addEventListener 'load', (e) ->
         Velocity e.target.parentNode.parentNode, 'transition.slideUpIn', display: ''
 
-  if els.hubTitle
-    Velocity els.hubTitle, 'callout.pulse',
-      delay:    3000
-      display:  ''
+  # if els.hubTitle
+  #   Velocity els.hubTitle, 'callout.pulse',
+  #     delay:    3000
+  #     display:  ''
 
   if els.sectionTitle
     Velocity els.sectionTitle, 'transition.slideDownIn'

@@ -10,7 +10,10 @@ block content
     include includes/svg/_droid
     .text-overlay
       include includes/svg/_droid-hub
-      h5.fix-reflex-type.marginless Android tips, tuts and tricks from one developer to another.
+      h5.fix-reflex-type.marginless
+        each val in "Android tips, tuts and tricks from one developer to another".split('')
+          span.nbr 0
+      //- h5.fix-reflex-type.marginless Android tips, tuts and tricks from one developer to another.
 
   - var mergedPosts = helpers.getMergedPosts(site, records)
   - var feature = _.filter(mergedPosts, 'featured')[0]
