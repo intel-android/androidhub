@@ -54,6 +54,7 @@ module.exports =
         'assets/js/feed.coffee'
         'assets/js/commit.coffee'
         'assets/js/animations.coffee'
+        'assets/js/text-effect.coffee'
       ]
     css_pipeline
       files: [

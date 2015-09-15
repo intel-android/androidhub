@@ -41,7 +41,7 @@ html
         h1.header-title= post.title
 
         .header-nameplate
-          a(href=author.website)
+          a.pop-forward-sm(href=author.website)
             img.avatar.circle.contain.push-right.lazyload.lazyanimate(src=helpers.getAuthorImage(author))
           .meta
             h3.header-author.thin-type.marginless.animate-prep= author.displayname
