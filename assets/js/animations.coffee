@@ -45,6 +45,9 @@ class Animations
 
   if els.articleAvatar && els.nameplate
     els.articleAvatar.addEventListener 'load', ->
+      # remove class so hover animation is proper
+      els.articleAvatar.classList.remove 'lazyanimate'
+      # animate in avatar name and social
       Velocity els.nameplate, 'transition.slideLeftIn',
         drag:     true
         stagger:  250
