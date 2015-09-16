@@ -3,10 +3,13 @@ title:      'My First Post! {{template}}'
 categories: [ideate, launch, design, build]
 heroimage:  ''
 excerpt:    'Short description of the article'
-_ignore:    true
+_ignore:    true 
 ---
+//- above _ignore flag should be removed so your post shows up
 
 extends ../views/layouts/_single
+//- above path is proper for it's location, but you'll be in a subdir, so use the following
+//- extends ../../views/layouts/_single
 
 block content
   :markdown
