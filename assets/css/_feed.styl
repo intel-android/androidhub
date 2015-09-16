@@ -13,17 +13,18 @@
 .feed-item 
   border-radius:2px
   will-change:transform, top, left
-  &:hover .post-title
-    text-decoration:underline
 
   > a
     text-decoration:none
     color:initial
+    &:hover .post-title
+      text-decoration:underline
     
-  h6
+  > .feed-item-category
     text-transform:capitalize
     color:hsl(214, 4%, 34%)
     margin-bottom:0.5rem
+    font-size:0.7rem
     
   img
     height:200px
