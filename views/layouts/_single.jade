@@ -28,6 +28,8 @@ html
 
     title= post.title
     != css('/')
+    link(rel='stylesheet', href='/bower_components/prism/themes/prism.css')
+    link(rel='stylesheet', href='/bower_components/prism/themes/prism-coy.css')
 
   body
     include ../mixins/_nav
@@ -84,3 +86,4 @@ html
 
     include ../includes/_footer 
     != js('/')
+    script(src='/bower_components/prism/prism.js')
