@@ -10,7 +10,7 @@ class App.Search
       .querySelector '#search'
       .addEventListener 'change', (e) =>
         query = e.target.value.toLowerCase()
-        if ga then ga 'send', 'event', 'input', 'search', query
+        if window.ga then ga 'send', 'event', 'input', 'search', query
         results = []
 
         # query posts object: title, content, url
