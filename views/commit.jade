@@ -17,9 +17,9 @@ block content
 
       form#nl-form.nl-form
         | My name is 
-        input#author-name(required, type='text', value='', placeholder='${name}', data-subline='Tell us your name')
+        input#author-name(required, type='text', value='', maxlength='75', placeholder='${name}', data-subline='Tell us your name')
         |  and I have lots of great information I would like to contribute to The Android Hub. You can see my work at 
-        input#author-site(required, type='url', value='', placeholder='${site}', data-subline='Example: <em>https://github.com/your_handle</em>').
+        input#author-site(required, type='url', value='', maxlength='100', placeholder='${site}', data-subline='Example: <em>https://github.com/your_handle</em>').
         | . My expertise are in  
         select#author-expertise(required)
           option(value, default, selected) ${expertise}
@@ -28,7 +28,7 @@ block content
           option(value='web apps') web apps
           option(value='app design') app design
         | . I can be reached at 
-        input#author-email(required, type='email', value='', placeholder='${email}', data-subline='For example: <em>foo@bar.com</em>')
+        input#author-email(required, type='email', value='', maxlength='75', placeholder='${email}', data-subline='For example: <em>foo@bar.com</em>')
         | . I also wanted to mention this: 
         br
         textarea#author-message
