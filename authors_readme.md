@@ -46,7 +46,7 @@ If this is your first time contributing to the hub, you'll need to create yourse
 ##### Kick it off!
 In your terminal, type `npm run new`
 
-![gif of terminal session](https://drive.google.com/uc?id=0B6rG4e8CXFiGWFBtV3RBZFNldDA)
+![gif of terminal session for a new author](https://drive.google.com/uc?id=0B6rG4e8CXFiGWFBtV3RBZFNldDA)
 
 ##### So what's gonna happen?
 All the values you enter into the cli prompt, create a .yaml entry for you in `data/authors/`, which will look like this. Well, almost like this, it should be filled with information about you.
@@ -73,6 +73,11 @@ It also creates a folder for you in `posts/{{your_handle}}/` which will hold ont
 
 ## Write
 If you're familiar with blog engines like [Ghost](https://ghost.org/) or [Jekyll](http://jekyllrb.com/), then you'll be right at home with the Intel Android Hub's blog architecture. What's awesome about this architecture is you're not limited to just Markdown, you can write [Jade](http://jade-lang.com/), [Coffeescript](http://coffeescript.org/), [etc](http://jade-lang.com/reference/filters/)! We felt that most authors would prefer markdown, so that's the style we'll talk about here. Plus, if you know Jade, then you're likely already familiar with it's ability to do markdown.
+
+##### Kick it off!
+In your terminal, type `npm run post`
+
+![gif of terminal session for a new post](https://drive.google.com/uc?id=0B6rG4e8CXFiGS1RPU1BfOU5vdGs)
 
 ##### Example Post:
 
