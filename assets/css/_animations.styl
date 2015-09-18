@@ -18,7 +18,7 @@
   
 .droid-hero > path:first-child
   transform-origin:center center
-  animation:rotateForever 10s linear infinite
+  animation:rotateForever 14s linear infinite
   animation-delay:1.5s
   will-change:transform
   
@@ -27,6 +27,17 @@
     transform:rotateZ(0)
   to
     transform:rotateZ(360deg)
+    
+.droid-hero > g > path
+  animation:superSaiyan 3s ease-in-out infinite
+  animation-delay:1.5s
+  will-change:transform
+  
+@keyframes superSaiyan
+  0%, 100%
+    transform:translateY(0)
+  50%
+    transform:translateY(-10px)
     
 .animate-fill
   transition:fill 0.3s ease

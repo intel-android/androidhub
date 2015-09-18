@@ -13,28 +13,25 @@
 .feed-item 
   border-radius:2px
   will-change:transform, top, left
-  &:hover .post-title
-    text-decoration:underline
 
   > a
     text-decoration:none
     color:initial
+    &:hover .post-title
+      text-decoration:underline
     
-  h6
+  > .feed-item-category
     text-transform:capitalize
     color:hsl(214, 4%, 34%)
     margin-bottom:0.5rem
+    font-size:0.7rem
     
   img
     height:200px
     overflow:hidden
     
     &.lazyloading
-      background-image:url(/img/placeholder.svg)
-      background-position:center center
-      background-repeat:no-repeat
-      background-color:#f2f2f2
-      background-size:60% auto
+      @extend .placeholder-background-image
     
     +above(desktop)
       height:150px

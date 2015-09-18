@@ -4,6 +4,7 @@ class App
 
   lazySizesConfig.loadMode = 1
   lazySizesConfig.expand = 100
+  lazySizesConfig.preloadAfterLoad = true
 
   document.addEventListener 'lazybeforeunveil', (e) ->
     bg = e.target.getAttribute 'data-bg'

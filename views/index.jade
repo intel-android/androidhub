@@ -24,7 +24,7 @@ block content
     img.heroimage.cover.lazyload.animate-prep(data-src=helpers.getHeroImage(feature))
     section
       .commit.hidden-sm: include includes/svg/_commit
-      h4.marginless.clearsans-thin
+      h4.marginless
         a.light(href='https://github.com/intel-android/androidhub/commit/#{feature.git.commit}', target='_blank', title=feature.git.commit)
           | Latest Commit 
           //- small= feature.git.commit.substr(0,7)
