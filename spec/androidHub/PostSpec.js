@@ -158,7 +158,7 @@ function test_post(filename) {
         xit('the file is an image type');
 
         it('has an image content-type', function() {
-          expect(['JPEG', 'SVG', 'WEBP']).toContain(image.format);
+          expect(['JPEG', 'SVG', 'WEBP', 'PNG', 'GIF']).toContain(image.format);
         });
 
         it('has a height larger than 100px', function() {
