@@ -18,17 +18,20 @@ class Animations
       drag:     true
       stagger:  200
 
+  animateHomeHero = ->
+    Velocity els.homeHeader, 'transition.slideUpIn',
+      drag:     true
+      stagger:  250
+      display:  ''
+      complete: ->
+        Velocity els.heroNameplate, 'transition.slideLeftIn',
+          drag:     true
+          stagger:  250
+          display:  ''
+
   if els.homeHero
-    els.homeHero.addEventListener 'load', ->
-      Velocity els.homeHeader, 'transition.slideUpIn',
-        drag:     true
-        stagger:  250
-        display:  ''
-        complete: ->
-          Velocity els.heroNameplate, 'transition.slideLeftIn',
-            drag:     true
-            stagger:  250
-            display:  ''
+    if els.homeHero.complete then animateHomeHero()
+    else els.homeHero.onload = animateHomeHero
 
   if els.homeFeedItems
     for el in els.homeFeedItems
