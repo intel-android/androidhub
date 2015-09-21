@@ -14,7 +14,8 @@ var inquirer = require("inquirer"),
     fs       = require("fs"),
     path     = require("path"),
     request  = require('request'),
-    yaml     = require("js-yaml");
+    yaml     = require("js-yaml"),
+    shell    = require("shelljs");
 
 var root = path.resolve(__dirname + '/../');
 
@@ -69,10 +70,14 @@ inquirer.prompt(questions, function( answers ) {
   var template = fs.readFileSync(path.resolve(root + '/posts/template.jade'), 'utf8');
   var templatePath = path.resolve(root + '/posts/' + user);
   template = template.replace("\n_ignore:    true", '');
-  template = template.replace("\ntitle:      'My First Post!'", "\ntitle:      '"+answers.title+"'");
+  template = template.replace("{{title}}", answers.title);
+  template = template.replace("../views/layouts/_single", "../../views/layouts/_single");
   var filename = answers.title.split(" ").slice(0, 4).join("_") + '.jade';
-  fs.writeFile(templatePath + '/' + filename, template, function (err) {
+  var filenameAndPath = templatePath + '/' + filename;
+  fs.writeFile(filenameAndPath, template, function (err) {
     if (err) throw err;
+    shell.exec('git add ' + filenameAndPath);
+    shell.exec('git commit '+ filenameAndPath +' -m "new post from "' + user);
     console.log(filename + ' was created and placed in ' + templatePath);
     console.log();
     console.log('Next steps:');
