@@ -2,5 +2,9 @@
 //- if it is, then add the class to the head. this will prevent FOUC, except on the first page load
 script
   :coffee-script
-    if !!localStorage['fonts-loaded'] then document.documentElement.className += 'fonts-loaded'
-    if navigator.userAgent.indexOf('Chrome') > -1 and navigator.userAgent.indexOf('Windows') > -1 then document.documentElement.className += ' chrome-on-windows'
+    if !!localStorage['fonts-loaded'] then document.documentElement.className += ' fonts-loaded'
+    ua = navigator.userAgent
+    if ua.indexOf('Windows') > -1
+      if ua.indexOf('Chrome') > -1 then document.documentElement.className += ' chrome-on-windows'
+      if ua.indexOf('MSIE 10') > -1 then document.documentElement.className += ' windows-ie-10'
+      if ua.indexOf('rv:11') > -1 then document.documentElement.className += ' windows-ie-11'
