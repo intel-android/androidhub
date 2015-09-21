@@ -1,25 +1,12 @@
 ---
-title:      'My First Post! {{template}}'
+title:      '{{title}}'
 categories: [ideate, launch, design, build]
-heroimage:  'example.jpg'
+heroimage:  ''
 excerpt:    'Short description of the article'
 _ignore:    true 
 ---
-// NOTES ON THE ABOVE
-   title:        The name of your post isn't your post title, this is. This will show up 
-                 in the header area and be the title of the HTML page
-
-   categories:   These help people sort and filter to find your article (Max 3)
-
-   heroimage:    Provide a nice landscape image for your article for thumbnails and previews of your post
-                 The path is relative to your personal posts directory, so just tell us the file name
-
-   _ignore:      flag should be false for you, so your post shows up. It's ignored here so this template
-                 doesn't render an HTML page. 
 
 extends ../views/layouts/_single
-//- extends ../../views/layouts/_single
-//- above path is proper for it's current location, but you'll be in a sub directory, so you'll need to update the path or the reference to the extends will fail. The path you'll want (if you copy this file), is the commented out path above the one in this template.jade
 
 block content
   :markdown
