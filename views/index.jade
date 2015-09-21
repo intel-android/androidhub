@@ -21,7 +21,7 @@ block content
   - var feature = _.filter(mergedPosts, 'featured')[0]
   - var author = helpers.getAuthor(feature, data)
   .hero
-    img.heroimage.cover.lazyload.animate-prep(data-src=helpers.getHeroImage(feature))
+    img.heroimage.cover.animate-prep(src=helpers.getHeroImage(feature))
     section
       .commit.hidden-sm: include includes/svg/_commit
       h4.marginless
@@ -51,7 +51,7 @@ block content
           - count++
 
   .testimonial.lazyload(data-bg='/img/fractal-blue.png')
-    section: .grid.grid--justify-center: .grid__col-xs-12.grid__col-sm-7.grid--direction-column
+    section: .grid.grid--justify-center: .grid__col-xs-12.grid__col-sm-7.grid--direction-column.text-left
       img.avatar.circle.contain.lazyload.lazyanimate.pop-out(src=helpers.getAuthorImage({
         twitter: 'deloittedigital',
         displayname: 'Deloitte Digital'

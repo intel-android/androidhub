@@ -35,7 +35,7 @@ html
     include ../mixins/_nav
     +nav('feed')
 
-    header.grid.lazyload(data-bg=helpers.getHeroImage(post))
+    header.grid(style="background-image:url(#{helpers.getHeroImage(post)})")
       .grid__col-xs-10.grid__col-lg-8.grid--align-self-center.centered-title.grid--direction-column
         small.header-date(title=git.date)
           | #{moment(new Date(git.date)).format("ll")} 

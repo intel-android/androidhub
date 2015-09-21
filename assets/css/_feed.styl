@@ -75,7 +75,7 @@
   position:relative
   top:0.03rem
   
-.chrome-on-windows
+.chrome-on-windows, .windows-ie-10, .windows-ie-11
   #feed-filter > option
     color:blue
     background:white
@@ -100,3 +100,10 @@
       padding-right:1rem
     +above(tablet)
       height:170px
+      
+.windows-ie-10, .windows-ie-11
+  .feed-item a, .related-post a
+    height:100%
+  .feed-item img, .related-post img
+    height:auto
+  
