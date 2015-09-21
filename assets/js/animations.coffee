@@ -13,11 +13,13 @@ class Animations
     articleAvatar:  document.querySelector '.header-nameplate .avatar'
     nameplate:      document.querySelectorAll '.meta > *'
 
+  # top nav social svg icons
   if els.socialNavIcons
     Velocity els.socialNavIcons, 'transition.expandIn',
       drag:     true
       stagger:  200
 
+  # home page hero image
   animateHomeHero = ->
     Velocity els.homeHeader, 'transition.slideUpIn',
       drag:     true
@@ -33,6 +35,7 @@ class Animations
     if els.homeHero.complete then animateHomeHero()
     else els.homeHero.onload = animateHomeHero
 
+  # home page recent posts items
   if els.homeFeedItems
     for el in els.homeFeedItems
       el.querySelector('img').addEventListener 'load', (e) ->
@@ -43,19 +46,25 @@ class Animations
   #     delay:    3000
   #     display:  ''
 
+  # each page title that's just under the nav
   if els.sectionTitle
     Velocity els.sectionTitle, 'transition.slideDownIn'
 
-  if els.articleAvatar && els.nameplate
-    els.articleAvatar.addEventListener 'load', ->
-      # remove class so hover animation is proper
-      els.articleAvatar.classList.remove 'lazyanimate'
-      # animate in avatar name and social
-      Velocity els.nameplate, 'transition.slideLeftIn',
-        drag:     true
-        stagger:  250
-        display:  ''
-        delay:    500
+  # article hero image
+  animateArticleHero = ->
+    # remove class so hover animation is proper
+    els.articleAvatar.classList.remove 'lazyanimate'
+    # animate in avatar name and social
+    Velocity els.nameplate, 'transition.slideLeftIn',
+      drag:     true
+      stagger:  250
+      display:  ''
+      delay:    500
 
+  if els.articleAvatar && els.nameplate
+    if els.articleAvatar.complete then animateArticleHero()
+    else els.articleAvatar.onload = animateArticleHero
+
+  # footer intel logo
   els.intelLogo.addEventListener 'load', ->
     Velocity els.commitButton, 'callout.tada', delay: 1500
