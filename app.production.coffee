@@ -56,6 +56,7 @@ module.exports =
         'assets/js/animations.coffee'
         'assets/js/text-effect.coffee'
         'assets/js/ga-prod.coffee'
+        'assets/js/elqQ.coffee'
       ]
       out:    'js/app.js'
       minify: true
