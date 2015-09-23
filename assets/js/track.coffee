@@ -9,6 +9,7 @@ App.Track = (->
     feedItem:         document.querySelectorAll '#feed-grid > .feed-item > a'
     feedFilter:       document.querySelector '#feed-filter'
     formSubmit:       document.querySelector '.nl-submit-wrap'
+    allLinks:         document.querySelectorAll 'a'
   
   if els.homeHero then els.homeHero.addEventListener 'click', -> track 'home-hero'
   if els.homeTestimonial then els.homeTestimonial.addEventListener 'click', -> track 'home-testimonial'
@@ -26,8 +27,14 @@ App.Track = (->
     for el in els.feedItem
       el.addEventListener 'click', -> track 'feed-item'
 
+  # GA Tracking
   track = (target) ->  
-    console.log 'tracking ' + target  
     if window.ga then ga 'send', 'event', 'button', 'click', target
+
+  # QQ Tracking
+  if window._elq
+    for el in els.allLinks
+      el.addEventListener 'click', -> 
+        _elq.trackEvent this
 
 )()
