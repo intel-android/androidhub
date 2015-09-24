@@ -9,10 +9,8 @@
 - Git
 
 ### Getting Started
-- Fork this repo
-- Clone your fork of this this repo and `cd` into the folder
 - run `npm i && bower i` to kick off installation of project and front end deps
-- run `roots watch` to begin dev development
+- run `roots watch` to begin dev development with live reload
 
 ### Author App Overview / Folder Architecture
 - `data/`  
