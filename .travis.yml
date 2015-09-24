@@ -23,11 +23,16 @@ addons:
   - androidhub-int.wdg.infra-host.com
   - androidhub-prod.wdg.wdg.infra-host.com
 deploy:
-  provider: script
-  script: scripts/deploy.sh
-  skip_cleanup: true
-  on:
-    branch: master
+  - provider: script
+    script: scripts/deploy.sh
+    skip_cleanup: true
+    on:
+      branch: master
+  - provider: script
+    script: scripts/deploy_production.sh
+    skip_cleanup: true
+    on:
+      tags: true
 before_install:
 - openssl aes-256-cbc -K $encrypted_fd017f77ecb3_key -iv $encrypted_fd017f77ecb3_iv
   -in deploy_key.enc -out deploy_key -d
