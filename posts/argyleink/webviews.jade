@@ -2,11 +2,48 @@
 title:      'High Performance Webviews'
 categories: [build, design]
 heroimage:  'bolt.jpg'
-excerpt:    'Tips n' tricks to keep your webviews snappy and optimized for Chrome'
+excerpt:    'Tips and tricks to keep your webviews snappy and optimized for Chrome'
 ---
 
 extends ../../views/layouts/_single
 
 block content
   :markdown
-    Here's my first post on this little blog. **How exciting!**
+    Ok, so really quick, if you don't know what a [webview][1] is, let me share just a small amount to add some context to this post. A webview is when a native app provides a window for HTML. The HTML can be local or remote, cached or pulled fresh, etc. Apps use these for allllll sorts of different utilities: login portals, external content, ads, etc. 
+
+    #### Ok cool, now what?
+
+    Webview's are awesome, well I think so. They make it so easy to get external, dynamic and open content into your native app. What's learned quickly is that it's hard to make those experiences as fluid as the native app. I've been dropping content into webviews and building web experiences for a while now, let me share some of my findings so you don't have to bang your head as many times as I have over the years. I'll also be pitching [Bolt][3], which I've been maintaining for 2 years. It's a web app build framework that includes all the optimizations needed to have lightning fast web experiences on mobile. 
+
+    > Now is one of the best times to jump into webview research, Android's webview is [evergreen][2]!
+
+    At a high level, **here's our topics**:
+    - Memory
+    - Compression
+    - Cache
+    - Headers
+    - Manifest
+
+    ## Memory
+    First thing to note, which if it wasn't obvious, a webview will never have the power and memory that the native browser has. It's a browser inside of another app! I couldn't find any documented statements about memory comparisons betwee native and webview, but I've heard a webview has anywhere from 40% on iOS to 70% on Android. Meaning 70% of the resources are available for a webview, compared to native Chrome. That's considerably less, especially if the user is on an older device already. This is why it's topic 1. 
+
+    #### Ok, so webviews are [nerfed][4], makes sense, now what?
+
+    Biggest thing is to be considerate of this fact. Have an expectation that getting 100% smooth performance from your webview will be tough. If your goal is 100% buttery delicious interaction, then keep reading and practice these optimizations. 
+
+    **Note:** Tools exist to help you investigate memory issues too, [vorlon.js][5] is a great tool for this, especially if the content is not local.
+
+    ## Compression (aka turbo crunch)
+    In a webview we're dealing with a tiny brain, that's kinda weak, so we need to compress all of our assets as small as we can. This doesn't just effect page load speed, it also effects the webview's ability to paint and layout. 
+
+    ## Cache
+    asdf
+
+    ## Headers
+    asdf
+
+    [1]: http://developer.android.com/reference/android/webkit/WebView.html
+    [2]: http://thenextweb.com/google/2013/11/12/google-says-working-automatically-updating-androids-chromium-based-webview-just-like-chrome/
+    [3]: http://argyleink.github.io/Bolt/
+    [4]: http://www.urbandictionary.com/define.php?term=nerfed
+    [5]: http://vorlonjs.com/
