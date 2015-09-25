@@ -40,6 +40,8 @@
     "jasmine-node": "^1.14.5",
     "jasmine-spec-reporter": "^2.4.0",
     "js-yaml": "^3.3.1",
+    "jstransformer-coffee-script": "^1.0.0",
+    "jstransformer-marked": "^1.0.1",
     "request": "^2.60.0"
   }
 }
