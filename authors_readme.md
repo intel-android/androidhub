@@ -6,8 +6,9 @@ Hello authors! Ready to contribute to a website and skip Wordpress or whatever o
 
 
 ## Setup
-1. Follow getting started instructions in the main project readme.md to get the basic project running
-2. Follow the rest of these instructions to create yourself as an author and begin writing posts
+1. Fork this repo and then clone your fork. This is to prepare for your future pull request
+2. Follow getting started instructions in the main project readme.md to get the basic project running
+3. Follow the rest of these instructions to create yourself as an author and begin writing posts
 
 &nbsp;
 
