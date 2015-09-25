@@ -40,16 +40,6 @@ function test_author(filename) {
         expect(data).toEqual(jasmine.any(Object));
       });
 
-      describe("nickname field", function () {
-        it('is required', function () {
-          expect(data.nickname).toEqual(jasmine.any(String));
-        });
-
-        it('is not too long (20 characters)', function () {
-          expect(data.nickname.length).toBeLessThan(20);
-        });
-      });
-
       describe("twitter key", function () {
         it('is required', function () {
           expect(data.twitter).toEqual(jasmine.any(String));
