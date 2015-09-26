@@ -22,8 +22,6 @@ addons:
   ssh_known_hosts:
   - androidhub-int.wdg.infra-host.com
   - androidhub-prod.wdg.wdg.infra-host.com
-after_success:
-- openssl aes-256-cbc -K $encrypted_fd017f77ecb3_key -iv $encrypted_fd017f77ecb3_iv -in deploy_key.enc -out deploy_key -d
 deploy:
   - provider: script
     script: scripts/deploy.sh
