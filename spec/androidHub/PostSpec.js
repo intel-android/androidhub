@@ -136,8 +136,8 @@ function test_post(filename) {
     });
 
     describe("heroimage key", function() {
-      it('is a url', function() {
-        expect(data.heroimage).toBeString();
+      it('is required', function() {
+        expect(data.heroimage).toBeNonEmptyString();
       });
 
       describe('local hero image', function () {
@@ -152,10 +152,6 @@ function test_post(filename) {
             done();
           });
         });
-
-        xit('maps to a real local file');
-
-        xit('the file is an image type');
 
         it('has an image content-type', function() {
           expect(['JPEG', 'SVG', 'WEBP', 'PNG', 'GIF']).toContain(image.format);
@@ -175,71 +171,5 @@ function test_post(filename) {
         });
       });
     });
-
-    describe('jade', function () {
-      var template//, html;
-      beforeAll(function() {
-        template = jade.compile(jadeInput, {filename: filename});
-        // html = template(data);
-      });
-
-      it('parses into a function', function() {
-        expect(template).toBeFunction();
-      });
-
-      xit('html is a string', function() {
-        expect(html).toBeString();
-      });
-
-      xdescribe('resources', function () {
-        var images = [];
-        var videos = [];
-        var author = filename.split('/')[1];
-        var assets = glob.sync('posts/' + author + '/assets/*');
-
-        beforeAll(function(done) {
-          images = html.match(/<img[^>]+src=\"([^"]+)/ig);
-          videos = html.match(/<video[^>]+src=\"([^"]+)/ig);
-        });
-
-        _.forEach(images, function(image) {
-          it('is a local path', function() {
-            expect(image).toStartWith('assets');
-          });
-
-          it('ends with a valid image type', function() {
-            validExtensions = ['jpg', 'jpeg', 'png', 'svg'];
-            expect(validExtensions).toContain(image.split('.')[-1]);
-          });
-
-          it('resolve to a valid resource', function(done) {
-            var path = root + 'posts/' + author + image;
-            fs.exists(path, function(exists) {
-              if (exists) {
-                done();
-              } else {
-                done.fail('404 file not found');
-              }
-            });
-          });
-        });
-
-        _.forEach(videos, function(video) {
-          it(video + 'is from an approved source', function() {
-            var approvedDomains = ['youtube.com', 'vimeo.com', 'youtu.be'];
-            var containsDomain = false;
-            _.forEach(approvedDomains, function(domain) {
-              if (video.indexOf(domain) > 0) {
-                containsDomain = true;
-                return false;
-              }
-            });
-
-            expect(containsDomain).toBe(true);
-          });
-        });
-      });
-    });
-
   });
 }
