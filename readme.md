@@ -1,6 +1,8 @@
 [![Travis CI Status](https://travis-ci.org/intel-android/androidhub.svg?branch=master)](https://travis-ci.org/intel-android/androidhub)
 
 ### Required Tools
+
+[![Join the chat at https://gitter.im/intel-android/androidhub](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/intel-android/androidhub?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 > These tools need to be installed on your machine, hopefully they're already there. We also expect you to have a Github account, and have used CLI tools a bit.
 
 - [Node/NPM](https://nodejs.org/)
