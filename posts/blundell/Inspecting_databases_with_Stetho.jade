@@ -30,7 +30,7 @@ block content
 
 	```groovy
 	dependencies { 
-	    debugCompile 'com.facebook.stetho:stetho:1.2.0' 
+	debugCompile 'com.facebook.stetho:stetho:1.2.0' 
 	}
 	``` 
 
@@ -48,11 +48,11 @@ block content
 	In your class that extends Application:
 
 	```java
-	    @Override
-	    public void onCreate() {
-	        // .. other code 
-	          new OptionalDependencies(this).initialize();
-	    }
+	@Override
+	public void onCreate() {
+	    // .. other code 
+	      new OptionalDependencies(this).initialize();
+	}
 	```
 
 	And under your two source sets you make two identically named files.
@@ -62,39 +62,39 @@ block content
 
 
 	```java        
-	    public class OptionalDependencies {
+	public class OptionalDependencies {
 
 
-	        private final Context context;
+	    private final Context context;
 
 
-	        public OptionalDependencies(Context context) {
-	            this.context = context;
-	        }
-
-
-	        public void initialize() {
-	            Stetho.initializeWithDefaults(context);
-	        }
+	    public OptionalDependencies(Context context) {
+	        this.context = context;
 	    }
+
+
+	    public void initialize() {
+	        Stetho.initializeWithDefaults(context);
+	    }
+	}
 	```
 
 	>/yourApp/mobile/src/release/com/whatever/your/app/
 
 
 	```java       
-	    public class OptionalDependencies {
+	public class OptionalDependencies {
 
 
-	        public OptionalDependencies(Context context) {
-	            // param not needed
-	        }
-
-
-	        public void initialize() {
-	            // no optional dependencies for release builds ... yet
-	        }
+	    public OptionalDependencies(Context context) {
+	        // param not needed
 	    }
+
+
+	    public void initialize() {
+	        // no optional dependencies for release builds ... yet
+	    }
+	}
 	```
 
 	As a side note, there are other ways you can initialise optional dependencies so if you have a particular favourite go for that. One other option is to have two classes that extend application and potentially two manifests. I feel the example outlined here is the least confusing solution and also gives you a more targeted class with a explicit name to highlight exactly your intention for having two classes (whereas the reason for having 2 x YourApplication.java is not so obvious). 
