@@ -8,130 +8,128 @@ excerpt:    'Have you ever been writing a database backed Android application, a
 extends ../../views/layouts/_single
 
 block content
-  :marked   
-  Have you ever been writing a database backed Android application and you quickly want to look at some of your SQL stored data? Maybe wondering why your query isn’t working or seeing if the database persistence is actually working?
+  :marked
+    Have you ever been writing a database backed Android application and you quickly want to look at some of your SQL stored data? Maybe wondering why your query isn’t working or seeing if the database persistence is actually working?
 
-  You could use an emulator or rooted device and the DDMS tools. This way you can browse the file system traversing `/data/data/com.your.app` .. etc until you find your database. Then you pull it off the device. Then you need a SQLite3 database viewing programme to open it up. Now you can view the tables and you see there is no data so you make some java changes, redeploy and have to do it all over again, browsing, pulling, viewing.
-
-
-  There is an easier way! 
-
-  Stetho is a tool written by the clever people at Facebook. Formally known as a ‘debug bridge’ it allows you to use the Chrome developer tools application natively.
-  Chrome developer tools? What are those? How does this help? Chrome developer tools are part of the open source Webkit project and are shipped with every version of Chrome and Safari. They allow a developer (usually a Web Developer) to query and manipulate their website applications, being able to view raw html elements, see the resources your application is taking, see the storage you’re using (more on this later :smiley_cat:), fire up a console for interactive debugging and intercept all http traffic. You can read more [here](https://developers.google.com/web/tools/chrome-devtools/).
+    You could use an emulator or rooted device and the DDMS tools. This way you can browse the file system traversing `/data/data/com.your.app` .. etc until you find your database. Then you pull it off the device. Then you need a SQLite3 database viewing programme to open it up. Now you can view the tables and you see there is no data so you make some java changes, redeploy and have to do it all over again, browsing, pulling, viewing.
 
 
-  Stetho creates a bridge between your application and the chrome developer tools. This allows you to take advantage of the integration to view your sqlite database. You have full read/ write capabilities to interact with your database and no need for a rooted device or those dahm slow emulators.
+    There is an easier way! 
+
+    Stetho is a tool written by the clever people at Facebook. Formally known as a ‘debug bridge’ it allows you to use the Chrome developer tools application natively.
+    Chrome developer tools? What are those? How does this help? Chrome developer tools are part of the open source Webkit project and are shipped with every version of Chrome and Safari. They allow a developer (usually a Web Developer) to query and manipulate their website applications, being able to view raw html elements, see the resources your application is taking, see the storage you’re using (more on this later :smiley_cat:), fire up a console for interactive debugging and intercept all http traffic. You can read more [here](https://developers.google.com/web/tools/chrome-devtools/).
 
 
-  ###Setting up Stetho
+    Stetho creates a bridge between your application and the chrome developer tools. This allows you to take advantage of the integration to view your sqlite database. You have full read/ write capabilities to interact with your database and no need for a rooted device or those dahm slow emulators.
 
 
-  Stetho can be added like any other gradle dependency. If you aren’t using Gradle yet; shame, shame, shame. Now remember, Stetho is a debugging tool and you won’t be wanting your end users to have access to it. Infact you don’t even want the Stetho code to be compiled into your release applications so that “hackers” have any opportunity to do something wicked. Let’s add Stetho as a debug compile dependency. (the below snippet may not be the latest version please check for the latest version, here’s a protip to check quickly.)
-
-  ```groovy
-  dependencies { 
-  debugCompile 'com.facebook.stetho:stetho:1.2.0' 
-  }
-  ``` 
-
-  Adding Stetho this way means it will only be available in the debug flavors of your application and you must now code for it under the /debug/ sourceset in your project. This means it has become an ‘optional dependency’ for only the debug build type(s).        
+    ### Setting up Stetho
 
 
-  Next we have to initialise Stetho in your class that extends Application:
+    Stetho can be added like any other gradle dependency. If you aren’t using Gradle yet; shame, shame, shame. Now remember, Stetho is a debugging tool and you won’t be wanting your end users to have access to it. Infact you don’t even want the Stetho code to be compiled into your release applications so that “hackers” have any opportunity to do something wicked. Let’s add Stetho as a debug compile dependency. (the below snippet may not be the latest version please check for the latest version, here’s a protip to check quickly.)
 
-  `Stetho.initializeWithDefaults(this);`
+    ```groovy
+    dependencies { 
+    debugCompile 'com.facebook.stetho:stetho:1.2.0' 
+    }
+    ``` 
 
-
-  However because we have made Stetho a debug only dependency, doing the above would create compilation issues when creating release builds. Meaning release builds won’t have Stetho as a dependency (which is good) and so we would get “missing class” or “unknown import” compilation errors when we switch to that flavor. You can combat this by creating the following.
-
-
-  In your class that extends Application:
-
-  ```java
-  @Override
-  public void onCreate() {
-      // .. other code 
-        new OptionalDependencies(this).initialize();
-  }
-  ```
-
-  And under your two source sets you make two identically named files.
+    Adding Stetho this way means it will only be available in the debug flavors of your application and you must now code for it under the /debug/ sourceset in your project. This means it has become an ‘optional dependency’ for only the debug build type(s).        
 
 
-  >/yourApp/mobile/src/debug/com/whatever/your/app/
+    Next we have to initialise Stetho in your class that extends Application:
+
+    `Stetho.initializeWithDefaults(this);`
 
 
-  ```java        
-  public class OptionalDependencies {
+    However because we have made Stetho a debug only dependency, doing the above would create compilation issues when creating release builds. Meaning release builds won’t have Stetho as a dependency (which is good) and so we would get “missing class” or “unknown import” compilation errors when we switch to that flavor. You can combat this by creating the following.
 
 
-      private final Context context;
+    In your class that extends Application:
+
+    ```java
+    @Override
+    public void onCreate() {
+        // .. other code 
+          new OptionalDependencies(this).initialize();
+    }
+    ```
+
+    And under your two source sets you make two identically named files.
 
 
-      public OptionalDependencies(Context context) {
-          this.context = context;
-      }
+    >/yourApp/mobile/src/debug/com/whatever/your/app/
 
 
-      public void initialize() {
-          Stetho.initializeWithDefaults(context);
-      }
-  }
-  ```
-
-  >/yourApp/mobile/src/release/com/whatever/your/app/
+    ```java        
+    public class OptionalDependencies {
 
 
-  ```java       
-  public class OptionalDependencies {
+        private final Context context;
 
 
-      public OptionalDependencies(Context context) {
-          // param not needed
-      }
+        public OptionalDependencies(Context context) {
+            this.context = context;
+        }
 
 
-      public void initialize() {
-          // no optional dependencies for release builds ... yet
-      }
-  }
-  ```
+        public void initialize() {
+            Stetho.initializeWithDefaults(context);
+        }
+    }
+    ```
 
-  As a side note, there are other ways you can initialise optional dependencies so if you have a particular favourite go for that. One other option is to have two classes that extend application and potentially two manifests. I feel the example outlined here is the least confusing solution and also gives you a more targeted class with a explicit name to highlight exactly your intention for having two classes (whereas the reason for having 2 x YourApplication.java is not so obvious). 
-
-
-  Enough setup, let’s do it! You can now use the dev tools from your chrome browser whenever your device is connected to your dev machine with adb. Open chrome and navigate to chrome://inspect. It should look something like this:
+    >/yourApp/mobile/src/release/com/whatever/your/app/
 
 
-  ![](library/stetho-device-selection.png)
+    ```java       
+    public class OptionalDependencies {
 
 
-  From here you can select your device by pressing the blue hyperlink inspect. This will get you to the main screen of chrome developer tools as we discussed previously with many options for poking and prodding at your application. 
-
-  Let’s talk databases. 
-
-
-  ###Browsing your database
+        public OptionalDependencies(Context context) {
+            // param not needed
+        }
 
 
-  Select the Resources tab from the top row and then from the left menu select Web SQL. Now you can see a list of all the databases created by your application. Expand the one you’re interested in and you’ll get a list of all the tables for that database. Click a table and you get to see all the data in that table. Awesome!
-  If you click on the database name you get an interactive console for you to run queries on your data. Yes! Type a query like `SELECT * FROM people WHERE name=’Bart’;` and watch in awe. 
+        public void initialize() {
+            // no optional dependencies for release builds ... yet
+        }
+    }
+    ```
 
-  ![](library/stetho-sql-commands.png)
-  ![](library/stetho-database-data.png)
-
-
-  Chrome developer tools has many more helpful features than just database viewing; Stetho makes these available to us Android developers. Now you have the tools running I recommend you look into enabling network inspections with Stetho to let you browse network requests, get image previews and control json responses.
-
-
-  After all that if you need a reference; an example project is [available here](https://github.com/blundell/Stetho-Example) that shows a simple application, using Stetho with a database setup ready to be inspected.
+    As a side note, there are other ways you can initialise optional dependencies so if you have a particular favourite go for that. One other option is to have two classes that extend application and potentially two manifests. I feel the example outlined here is the least confusing solution and also gives you a more targeted class with a explicit name to highlight exactly your intention for having two classes (whereas the reason for having 2 x YourApplication.java is not so obvious). 
 
 
-  ####References:
+    Enough setup, let’s do it! You can now use the dev tools from your chrome browser whenever your device is connected to your dev machine with adb. Open chrome and navigate to chrome://inspect. It should look something like this:
 
 
-  [https://developers.google.com/web/tools/chrome-devtools/](https://developers.google.com/web/tools/chrome-devtools/)
-  [https://facebook.github.io/stetho/](https://facebook.github.io/stetho/)
-  [https://github.com/facebook/stetho](https://github.com/facebook/stetho)
-  [https://blog.blundell-apps.com/use-the-latest-version-of-any-library-with-android-studio-gradle/](https://blog.blundell-apps.com/use-the-latest-version-of-any-library-with-android-studio-gradle/)
-  [https://github.com/blundell/Stetho-Example](https://github.com/blundell/Stetho-Example)
+    ![](library/stetho-device-selection.png)
+
+
+    From here you can select your device by pressing the blue hyperlink inspect. This will get you to the main screen of chrome developer tools as we discussed previously with many options for poking and prodding at your application. 
+
+    Let’s talk databases. 
+
+
+    ### Browsing your database
+
+
+    Select the Resources tab from the top row and then from the left menu select Web SQL. Now you can see a list of all the databases created by your application. Expand the one you’re interested in and you’ll get a list of all the tables for that database. Click a table and you get to see all the data in that table. Awesome!
+    If you click on the database name you get an interactive console for you to run queries on your data. Yes! Type a query like `SELECT * FROM people WHERE name=’Bart’;` and watch in awe. 
+
+    ![](library/stetho-sql-commands.png)
+    ![](library/stetho-database-data.png)
+
+
+    Chrome developer tools has many more helpful features than just database viewing; Stetho makes these available to us Android developers. Now you have the tools running I recommend you look into enabling network inspections with Stetho to let you browse network requests, get image previews and control json responses.
+
+
+    After all that if you need a reference; an example project is [available here](https://github.com/blundell/Stetho-Example) that shows a simple application, using Stetho with a database setup ready to be inspected.
+
+
+    #### References:
+    - [https://developers.google.com/web/tools/chrome-devtools/](https://developers.google.com/web/tools/chrome-devtools/)
+    - [https://facebook.github.io/stetho/](https://facebook.github.io/stetho/)
+    - [https://github.com/facebook/stetho](https://github.com/facebook/stetho)
+    - [https://blog.blundell-apps.com/use-the-latest-version-of-any-library-with-android-studio-gradle/](https://blog.blundell-apps.com/use-the-latest-version-of-any-library-with-android-studio-gradle/)
+    - [https://github.com/blundell/Stetho-Example](https://github.com/blundell/Stetho-Example)
