@@ -3,88 +3,89 @@ html
   - var author = helpers.getAuthor(post, data)
   - var git = helpers.getPostGitData(post, records)
 
-  head
-    include ../includes/_font-strategy
-    include ../includes/_site-meta
+  if git
+    head
+      include ../includes/_font-strategy
+      include ../includes/_site-meta
 
-    include ../mixins/_og-meta
-    +og-meta({
-      url:          data.meta.opengraph.url,
-      title:        post.title,
-      description:  post.excerpt,
-      site_name:    data.meta.opengraph.site,
-      image:        helpers.getHeroImage(post)
-    })
+      include ../mixins/_og-meta
+      +og-meta({
+        url:          data.meta.opengraph.url,
+        title:        post.title,
+        description:  post.excerpt,
+        site_name:    data.meta.opengraph.site,
+        image:        helpers.getHeroImage(post)
+      })
 
-    include ../mixins/_twitter-meta
-    +twitter-meta({
-      account:      author.twitter,
-      site:         author.website,
-      title:        post.title,
-      description:  post.excerpt,
-      creator:      author.displayname,
-      image:        helpers.getHeroImage(post)
-    })
+      include ../mixins/_twitter-meta
+      +twitter-meta({
+        account:      author.twitter,
+        site:         author.website,
+        title:        post.title,
+        description:  post.excerpt,
+        creator:      author.displayname,
+        image:        helpers.getHeroImage(post)
+      })
 
-    title= post.title
-    != css('/')
-    link(rel='stylesheet', href='/bower_components/prism/themes/prism.css')
-    link(rel='stylesheet', href='/bower_components/prism/themes/prism-coy.css')
+      title= post.title
+      != css('/')
+      link(rel='stylesheet', href='/bower_components/prism/themes/prism.css')
+      link(rel='stylesheet', href='/bower_components/prism/themes/prism-coy.css')
 
-  body
-    include ../mixins/_nav
-    +nav('feed')
+    body
+      include ../mixins/_nav
+      +nav('feed')
 
-    header.grid(style="background-image:url(#{helpers.getHeroImage(post)})")
-      .grid__col-xs-10.grid__col-lg-8.grid--align-self-center.centered-title.grid--direction-column
-        small.header-date(title=git.date)
-          | #{moment(new Date(git.date)).format("ll")} 
-          a.inherit-color(href='https://github.com/intel-android/androidhub/commit/#{git.commit}', target='_blank', title='See the commit for this article post')  // #{git.commit.substr(0,7)}
-        h1.header-title= post.title
+      header.grid(style="background-image:url(#{helpers.getHeroImage(post)})")
+        .grid__col-xs-10.grid__col-lg-8.grid--align-self-center.centered-title.grid--direction-column
+          small.header-date(title=git.date)
+            | #{moment(new Date(git.date)).format("ll")} 
+            a.inherit-color(href='https://github.com/intel-android/androidhub/commit/#{git.commit}', target='_blank', title='See the commit for this article post')  // #{git.commit.substr(0,7)}
+          h1.header-title= post.title
 
-        .header-nameplate
-          a.pop-forward-sm(href=author.website)
-            img.avatar.circle.contain.push-right.lazyload.lazyanimate(src=helpers.getAuthorImage(author))
-          .meta
-            h3.header-author.thin-type.marginless.animate-prep= author.displayname
-            h4.header-subtitle.thin-type.marginless.animate-prep #{author.title} at #{author.company}
-            .header-social.animate-prep
-              a(href=helpers.socialLink('twitter', author.twitter), target='_blank')
-                include ../includes/svg/_twitter-bird
-              a(href=helpers.socialLink('github', author.github), target='_blank')
-                include ../includes/svg/_github
-              if author.codepen
-                a(href=helpers.socialLink('codepen', author.codepen), target='_blank')
-                  include ../includes/svg/_codepen
-    
-    main.post: section
-      //- main article content
-      .card: article
-        block content
+          .header-nameplate
+            a.pop-forward-sm(href=author.website)
+              img.avatar.circle.contain.push-right.lazyload.lazyanimate(src=helpers.getAuthorImage(author))
+            .meta
+              h3.header-author.thin-type.marginless.animate-prep= author.displayname
+              h4.header-subtitle.thin-type.marginless.animate-prep #{author.title} at #{author.company}
+              .header-social.animate-prep
+                a(href=helpers.socialLink('twitter', author.twitter), target='_blank')
+                  include ../includes/svg/_twitter-bird
+                a(href=helpers.socialLink('github', author.github), target='_blank')
+                  include ../includes/svg/_github
+                if author.codepen
+                  a(href=helpers.socialLink('codepen', author.codepen), target='_blank')
+                    include ../includes/svg/_codepen
+      
+      main.post: section
+        //- main article content
+        .card: article
+          block content
 
-        //- floating social
-        .social-sidebar.grid.grid--direction-column.grid--no-wrap.grid--bleed
-          span.fix-reflex-type.text-center.push-bottom-sm Share this post
-          a.share.tweet.inline-social(share-target='twitter')
-            include ../includes/svg/_twitter
-          a.share.post.inline-social(share-target='facebook')
-            include ../includes/svg/_facebook
-          a.share.plus.inline-social(share-target='google')
-            include ../includes/svg/_googleplus
+          //- floating social
+          .social-sidebar.grid.grid--direction-column.grid--no-wrap.grid--bleed
+            span.fix-reflex-type.text-center.push-bottom-sm Share this post
+            a.share.tweet.inline-social(share-target='twitter')
+              include ../includes/svg/_twitter
+            a.share.post.inline-social(share-target='facebook')
+              include ../includes/svg/_facebook
+            a.share.plus.inline-social(share-target='google')
+              include ../includes/svg/_googleplus
 
-      //- related posts
-      - var relatedPosts = helpers.getRelatedPosts(post, site.posts.all())
-      if relatedPosts.length
-        aside.card: article
-          include ../mixins/_related-post
-          h4 Related Articles
-          .related-posts
-            each post in relatedPosts
-              +related-post(post)
-       
-    .full-width-white: section
-      #disqus_thread
+        //- related posts
+        - var relatedPosts = helpers.getRelatedPosts(post, site.posts.all())
+        if relatedPosts.length
+          aside.card: article
+            include ../mixins/_related-post
+            h4 Related Articles
+            .related-posts
+              each post in relatedPosts
+                +related-post(post)
+         
+      .full-width-white: section
+        #disqus_thread
 
-    include ../includes/_footer 
-    != js('/')
-    script(src='/bower_components/prism/prism.js')
+      include ../includes/_footer 
+      != js('/')
+      script(src='/bower_components/prism/prism.js')

@@ -84,11 +84,17 @@ input[type='search']
     color:hsla(0,0%,100%,0.5)
     
 blockquote
+  font-family: clearsans-thin
   position:relative
   background:blue
   color:white
   font-size:1.6rem
   padding:0.5rem 2rem 1.5rem
+  
+  a[href]
+    color:white
+    &:hover
+      color:white
   
   +below(tablet)
     margin:0

@@ -104,6 +104,9 @@ But, then we get into some Jade with the `extends` statement, and if you don't k
 
 Go markdown crazy. With just markdown alone you can make a very interesting and dynamic article. For the Jade fans or adventurous, you can write your whole post in Jade, include scripts, and basically make your post like you would an HTML page. So in terms of blog post capabilities, this is about as unfettered as it gets!
 
+#### Images
+Drop all of your images into your `posts/{your_github_handle}/library/`. For your article hero image, just tell us the image name, like `android.png`. For inline images inside of you post, reference them like `/library/{your_github_handle}/file.extension`.
+
 
 &nbsp;
 &nbsp;
