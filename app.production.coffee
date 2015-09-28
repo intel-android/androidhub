@@ -118,6 +118,6 @@ module.exports =
     copyLibrary();
 
   after: ->
-    shell.exec 'node_modules/purify-css/bin/purifycss public/css/app.css public/index.html public/feed.html public/about.html public/authors.html public/commit.html public/posts/admin/contribute.html public/js/app.js --info --out public/css/app.css'
+    shell.exec 'node_modules/purify-css/bin/purifycss public/css/app.css public/index.html public/feed.html public/about.html public/authors.html public/commit.html public/posts/argyleink/webviews.html public/js/app.js --info --out public/css/app.css'
     shell.exec 'node_modules/csso/bin/csso public/css/app.css public/css/app.css'
     shell.exec 'cp -R posts/* public/posts'
