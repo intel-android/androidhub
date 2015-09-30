@@ -5,19 +5,6 @@ So you've been chosen to review article submissions from Github for this funky f
 
 --------
 
-## Glossary
-
-- *Pull Requst (PR)* content submissions from other Github users, most commonly Android Hub Contributors.
-- *npm* is a javascript based package manager that installed the Android Hub's dependencies and libraries.
-- *bower* is another javascript based package manager focused on client side (browser) based code.
-- *Continuous Integration (CI)* is an automated process we've setup that looks at a github code update and runs pre-defined checks and tests. The results of the tests are linked into the Pull Request.
-- *[Semantic Versioning](http://semver.org/)* is an industry standard versioning system that separates "breaking" changes, from "compatible" changes, from "bugfix" changes. This is expressed as 3 numbers separated by a ".". For example, "3.1.4" is the 3rd major version, 1st minor update to the 3rd version, and the 4th patch version to the 1st minor update. We use it to version the site's releases so its clear that new content has been deployed to production.
-(note: add integration and production to this list.  move to bottom and reference the relevant terms)
---------
-
-## Setup
-  1. Don't know where to start? Reference our helpful Setup Guide.
-
 ## Process Overview
 
 ![process](https://drive.google.com/uc?id=0BwL_X3dS1kN_QVNwYXRydVR6VGs)
@@ -28,7 +15,9 @@ So you've been chosen to review article submissions from Github for this funky f
 
 Open the list of article submissions: https://github.com/intel-android/androidhub/pulls
 
-All submissions history is preserved and openly viewable. Clicking on a pull request (PR) will open that PR's details.
+![pull requests](https://drive.google.com/uc?id=0BwL_X3dS1kN_Q3hRRFVGS2VMWWc)
+
+All submissions history is preserved and openly viewable. Clicking on a pull request (PR) will open that PR's details. Also appearing next to the title of the pull request is either a green checkmark or a red X indicating whether tests have passed.
 
 The PR details show you the files changed by the author, the author's commentary, and the pass/fail result of the build test. Review the files changed and follow these simple guidelines:
 
@@ -53,9 +42,20 @@ Changes to these folders should be rejected immediately.
 --------
 
 ### Step 2: Preview submission
-(note - add image of open in github app button)
 
-If you are unsure about the code being merged, you can preview the site locally and click around to ensure everything still works.
+###### Setup
+
+Don't know where to start? Reference our helpful [Setup Guide](readme.md).
+
+###### Preview the submission
+
+1. Click "open this in GitHub Desktop" on the pull request page.
+2. Open a Terminal Window by using the menu: Repository > Open in Terminal.
+3. type in and run the following command: `roots watch`. This will build the site and open the site in a web browser.
+4. Find and Preview the new article and double check author's details.
+
+![open in github](https://drive.google.com/uc?id=0BwL_X3dS1kN_a2FUYUFKdHNZSGc)
+
 
 --------
 
@@ -94,8 +94,18 @@ The above url is the integration site. The username and password for it were giv
 
 ### Step 6: Release to Production
 
-![release](https://drive.google.com/uc?id=0BwL_X3dS1kN_aFRVeUNYQzMyRGs)
-
 We use [Github Releases](https://github.com/blog/1547-release-your-software) to power production deployments. Please click "Create new Release" and fill out the form. Set a semantic version number for the release, a new post should be a "minor" version, and fixes to posts should be a "patch" version increment.
 
 Upon submission, the git repo will be updated with a new tag. Travis CI will pick that up and deploy the result to the production site. The site is now updated on https://androidhub.intel.com
+
+![release](https://drive.google.com/uc?id=0BwL_X3dS1kN_aFRVeUNYQzMyRGs)
+
+--------
+
+## Glossary
+
+- *Pull Request (PR)* content submissions from other Github users, most commonly Android Hub Contributors.
+- *Continuous Integration (CI)* is an automated process we've setup that looks at a github code update and runs pre-defined checks and tests. The results of the tests are linked into the Pull Request.
+- *[Semantic Versioning](http://semver.org/)* is an industry standard versioning system that separates "breaking" changes, from "compatible" changes, from "bugfix" changes. This is expressed as 3 numbers separated by a ".". For example, "3.1.4" is the 3rd major version, 1st minor update to the 3rd version, and the 4th patch version to the 1st minor update. We use it to version the site's releases so its clear that new content has been deployed to production.
+- *Integration Environment* lives at https://int-androidhub.intel.com. After a pull request is merged into github repository, it will be deployed here. Look over the site before releasing to production.
+- *Production Environment* lives at https://androidhub.intel.com
