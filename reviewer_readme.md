@@ -73,14 +73,12 @@ The author's submission will automatically be tested by a product called Travis 
 
 ![ready to merge](https://drive.google.com/uc?id=0BwL_X3dS1kN_eFVlVktXVXlhUG8)
 
-Discuss the content with the author in the pull request. When you both agree that the content is ready, and Travis CI jobs are green, it is safe to merge. Click the button on the Pull Request page labeled "Merge pull request". This will merge the content into the `master` branch and tell Travis CI to automatically deploy the site to the private Integration envrionment.
+If a submission's content looks good and the Travis CI tests are green, it is safe to merge. Click the button on the Pull Request page labeled "Merge pull request". This will merge the content into the `master` branch and tell Travis CI to automatically deploy the site to the private Integration environment.
 
 ##### Deny
 ![pr comment](https://drive.google.com/uc?id=0BwL_X3dS1kN_cGJiaWRwb05Dbzg)
 
-To deny a pull request, click the "Close Pull Request" Button. The author will be notified via email, but we encourage you to also send a message as to why their contribution is not going to be merged into the site.
-
-###### Tip: When you deny (aka. close) a PR, leave a comment for the author explaining why.
+To deny a submission, click the "Close Pull Request" Button. The author will be notified via email. We encourage you to also send a message as to why the submission is not going to be merged into the site at this time.
 
 --------
 
@@ -90,7 +88,7 @@ To deny a pull request, click the "Close Pull Request" Button. The author will b
 
 https://int-androidhub.intel.com
 
-The above url is the integration site. The username and password for it were given to you by project staff directly. This site is automatically deployed upon a successful merge to the master branch on the github repository.
+The above url is the integration site. A successful merge to the master branch on github will automatically deploy the submission to the Integration environment. The username and password for it were given to you by project staff. 
 
 --------
 
