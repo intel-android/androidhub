@@ -20,23 +20,17 @@ So you've been chosen to review article submissions from Github for this funky f
 
 ## Process Overview
 
-![process](https://drive.google.com/a/deloitte.com/uc?id=0BwL_X3dS1kN_bHFuOGl4MU5rN0U)
-1. Review open pull requests
-2. Preview submission
-3. Review tests
-4. Accept or Deny
-5. Auto-Deployed to Integration
-6. Release to Production
+![process](https://drive.google.com/uc?id=0BwL_X3dS1kN_QVNwYXRydVR6VGs)
 
 --------
 
 ### Step 1: Review Open Pull Requests
 (brent to rewrite all this copy. Not today we can add "for more you can do .. [link to gh help])
-Direct Link: https://github.com/intel-android/androidhub/pulls
+Open the list of article submissions: https://github.com/intel-android/androidhub/pulls
 
-This page will have a list of article submissions. I suggest playing around here and learning what's going on. For example, you can view old submissions, rejected submissions, etc. All the history is preserved and openly viewable for anyone. By clicking on a pull request (PR), you'll find yourself at the PR detail.
+All submissions history is preserved and openly viewable here. Clicking on a pull request (PR) will open that PR's details.
 
-The PR detail will show you all the files changed by the author, with commentary, as well as whether or not the submission is passing the build test. Review the changed files within the Pull Request. Below are some guidelines to follow while reviewing pull requests.
+The PR details show you the files changed by the author, the author's commentary, and the pass/faile result of the build test. Review the files changed and follow these simple guidelines:
 
 #### Acceptable Changes:
 
@@ -46,8 +40,6 @@ The PR detail will show you all the files changed by the author, with commentary
 Changes to these folders should be considered for approval.
 
 #### Unacceptable Changes:
-
-the following files are core to the site experience and should not be changed by content authors.
 
 - `assets` - front end css, js, and images
 - `scripts` - support scripts and helpers for the site
