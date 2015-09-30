@@ -11,7 +11,7 @@ So you've been chosen to review article submissions from Github for this funky f
 - *npm* is a javascript based package manager that installed the Android Hub's dependencies and libraries.
 - *bower* is another javascript based package manager focused on client side (browser) based code.
 - *Continuous Integration (CI)* is an automated process we've setup that looks at a github code update and runs pre-defined checks and tests. The results of the tests are linked into the Pull Request.
-- *Semantic Versioning* is an industry standard versioning system that separates "breaking" changes, from "compatible" changes, from "bugfix" changes. This is typically express as 3 numbers separated by a ".". For example, "3.1.4" is the 3rd major version, 1st minor update to the 3rd version, and the 4th patch version to the 1st minor update.
+- *[Semantic Versioning](http://semver.org/)* is an industry standard versioning system that separates "breaking" changes, from "compatible" changes, from "bugfix" changes. This is typically expressed as 3 numbers separated by a ".". For example, "3.1.4" is the 3rd major version, 1st minor update to the 3rd version, and the 4th patch version to the 1st minor update. We use it to version the site's releases so its clear that new content has been deployed to production.
 
 --------
 
