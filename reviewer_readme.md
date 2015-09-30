@@ -25,12 +25,12 @@ So you've been chosen to review article submissions from Github for this funky f
 --------
 
 ### Step 1: Review Open Pull Requests
-(brent to rewrite all this copy. Not today we can add "for more you can do .. [link to gh help])
+
 Open the list of article submissions: https://github.com/intel-android/androidhub/pulls
 
-All submissions history is preserved and openly viewable here. Clicking on a pull request (PR) will open that PR's details.
+All submissions history is preserved and openly viewable. Clicking on a pull request (PR) will open that PR's details.
 
-The PR details show you the files changed by the author, the author's commentary, and the pass/faile result of the build test. Review the files changed and follow these simple guidelines:
+The PR details show you the files changed by the author, the author's commentary, and the pass/fail result of the build test. Review the files changed and follow these simple guidelines:
 
 #### Acceptable Changes:
 
@@ -47,6 +47,8 @@ Changes to these folders should be considered for approval.
 - `views` - templates for the site
 
 Changes to these folders should be rejected immediately.
+
+#### Tip: [Learn more about pull requests](https://help.github.com/articles/using-pull-requests/#reviewing-the-pull-request) from the masters.
 
 --------
 
