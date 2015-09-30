@@ -1,7 +1,8 @@
 # Introduction
 
 ## Reviewing the Intel Android Hub
-So you've been chosen to review article submissions from Github for this funky fresh blog. This guide will help you through the things you need to do, in order to accept the article with confidence.
+
+You've been chosen to review article submissions from Github for Intel's Android Hub. This guide will help you through the things you need to do, in order to accept the article with confidence.
 
 --------
 
@@ -88,7 +89,7 @@ To deny a submission, click the "Close Pull Request" Button. The author will be 
 
 https://int-androidhub.intel.com
 
-The above url is the integration site. A successful merge to the master branch on github will automatically deploy the submission to the Integration environment. The username and password for it were given to you by project staff. 
+The above url is the integration site. A successful merge to the master branch on github will automatically deploy the submission to the Integration environment. The username and password for it were given to you by project staff.
 
 --------
 
