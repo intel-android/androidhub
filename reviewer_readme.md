@@ -63,22 +63,24 @@ If you are unsure about the code being merged, you can preview the site locally 
 
 ![failed tests](https://drive.google.com/uc?id=0BwL_X3dS1kN_NmpXbDFZMGdIOTg)
 
-Travis CI will _automatically_ trigger jobs that verify that the author's content is sane enough and that the result of the merge will build into a "valid" site. Click on "Details" for more information. We recommend that this only be used as a guide line and not as a definitive solution. Automated test suites can always be better, and reviewers should look at the results of http://int-androidhub.intel.com before pushing that to production.
+The author's submission will automatically be tested by a product called Travis CI that will verify if the submission is valid. Submissions that fail these tests should be rejected (aka. closed). Just because a submission passes these tests does not mean you absolutely should accept (merge) it. Click on "Details" for more information. We recommend that automated tests be used only as a guideline and not as a definitive solution. Automated test suites can always be better, and reviewers should look at the results of http://int-androidhub.intel.com before releasing to production.
 
 --------
 
 ### Step 4: Accept or Deny
 
-#### Accept
+##### Accept
 
 ![ready to merge](https://drive.google.com/uc?id=0BwL_X3dS1kN_eFVlVktXVXlhUG8)
 
 Discuss the content with the author in the pull request. When you both agree that the content is ready, and Travis CI jobs are green, it is safe to merge. Click the button on the Pull Request page labeled "Merge pull request". This will merge the content into the `master` branch and tell Travis CI to automatically deploy the site to the private Integration envrionment.
 
-#### Deny
+##### Deny
 ![pr comment](https://drive.google.com/uc?id=0BwL_X3dS1kN_cGJiaWRwb05Dbzg)
 
 To deny a pull request, click the "Close Pull Request" Button. The author will be notified via email, but we encourage you to also send a message as to why their contribution is not going to be merged into the site.
+
+###### Tip: When you deny (aka. close) a PR, leave a comment for the author explaining why.
 
 --------
 
