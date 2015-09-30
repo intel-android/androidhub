@@ -95,9 +95,13 @@ The above url is the integration site. A successful merge to the master branch o
 
 ### Step 6: Release to Production
 
-We use [Github Releases](https://github.com/blog/1547-release-your-software) to power production deployments. Please click "Create new Release" and fill out the form. Set a semantic version number for the release, a new post should be a "minor" version, and fixes to posts should be a "patch" version increment.
+We use [Github Releases](https://github.com/blog/1547-release-your-software) to power production deployments.
 
-Upon submission, the git repo will be updated with a new tag. Travis CI will pick that up and deploy the result to the production site. The site is now updated on https://androidhub.intel.com
+1. Click "Releases" in the repository page
+2. Click "Create new Release"
+3. Fill out the form. Set a semantic version number for the release, a new post should be a "minor" version higher, and fixes to posts should be a "patch" version higher. We'll use new feature or layout changes to denote "major" versions.
+
+Upon submission, the git repo will be updated with a new tag. Travis CI will pick that up and deploy the result to the production site. When complete, the site will be updated on https://androidhub.intel.com
 
 ![release](https://drive.google.com/uc?id=0BwL_X3dS1kN_aFRVeUNYQzMyRGs)
 
