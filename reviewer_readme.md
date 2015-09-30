@@ -11,70 +11,61 @@ So you've been chosen to review article submissions from Github for this funky f
 - *npm* is a javascript based package manager that installed the Android Hub's dependencies and libraries.
 - *bower* is another javascript based package manager focused on client side (browser) based code.
 - *Continuous Integration (CI)* is an automated process we've setup that looks at a github code update and runs pre-defined checks and tests. The results of the tests are linked into the Pull Request.
-- *[Semantic Versioning](http://semver.org/)* is an industry standard versioning system that separates "breaking" changes, from "compatible" changes, from "bugfix" changes. This is typically expressed as 3 numbers separated by a ".". For example, "3.1.4" is the 3rd major version, 1st minor update to the 3rd version, and the 4th patch version to the 1st minor update. We use it to version the site's releases so its clear that new content has been deployed to production.
-
+- *[Semantic Versioning](http://semver.org/)* is an industry standard versioning system that separates "breaking" changes, from "compatible" changes, from "bugfix" changes. This is expressed as 3 numbers separated by a ".". For example, "3.1.4" is the 3rd major version, 1st minor update to the 3rd version, and the 4th patch version to the 1st minor update. We use it to version the site's releases so its clear that new content has been deployed to production.
+(note: add integration and production to this list.  move to bottom and reference the relevant terms)
 --------
 
 ## Setup
-1. We recommend downloading an use [GitHub Desktop](https://desktop.github.com/) for reviewers new to git.
+  1. Where to start? Reference our helpful Setup Guide.
 
-1. Follow getting started instructions in the main project readme.md
-    1. `git clone https://github.com/intel-android/androidhub.git` or click  'Clone in Desktop' button on the github repo https://github.com/intel-android/androidhub
-
-    This downloads the site to your computer.
-
-    2. Open up a terminal window at the project directory. Run `npm install && bower install`
-
-    This installs project dependencies
-
-    3. `roots watch`
-
-    This will generate the site, host it, and open it in a browser.
-
-    This process will stay open and watch for changes to the code and update the site int the browser for you. <ctrl>+C cancels this process.
-
-2. Now you are running locally to be able to preview a pull request and determine if it should be merged into the site.
-
---------
-
-## Goal
+## Process Overview
 
 ![process](https://drive.google.com/a/deloitte.com/uc?id=0BwL_X3dS1kN_bHFuOGl4MU5rN0U)
-- View open pull requests
-- Preview a submission
-- Run tests
-- Accept or Deny Pull Request
-- Deploy to Integration site
-- Deploy to Production site
+1. Review open pull requests
+2. Preview submission
+3. Review tests
+4. Accept or Deny
+5. Auto-Deployed to Integration
+6. Release to Production
 
 --------
 
-### View Open Pull Requests
-![preview](https://drive.google.com/uc?id=0B6rG4e8CXFiGWmcwMHNhdUFOdk0)
+### Step 1: Review Open Pull Requests
+(brent to rewrite all this copy. Not today we can add "for more you can do .. [link to gh help])
 Direct Link: https://github.com/intel-android/androidhub/pulls
 
 This page will have a list of article submissions. I suggest playing around here and learning what's going on. For example, you can view old submissions, rejected submissions, etc. All the history is preserved and openly viewable for anyone. By clicking on a pull request (PR), you'll find yourself at the PR detail.
 
 The PR detail will show you all the files changed by the author, with commentary, as well as whether or not the submission is passing the build test. Review the changed files within the Pull Request. Below are some guidelines to follow while reviewing pull requests.
 
-#### Authors Can Change:
+#### Acceptable Changes:
 
 - `~/data/authors/<author>.yaml`
 - anything in their posts folder inside `~/posts/<author>`
 
-#### Authors Can Not Change:
+Changes to these folders should be considered for approval.
 
-- the following files are core to the site experience and should not be changed by content authors.
-  - `assets` - front end css, js, and images
-  - `scripts` - support scripts and helpers for the site
-  - `spec` - testing suite for the site
-  - `views` - templates for the site
+#### Unacceptable Changes:
+
+the following files are core to the site experience and should not be changed by content authors.
+
+- `assets` - front end css, js, and images
+- `scripts` - support scripts and helpers for the site
+- `spec` - testing suite for the site
+- `views` - templates for the site
+
+Changes to these folders should be rejected immediately.
+
+--------
+
+### Step 2: Preview submission
+(note - add image of open in github app button)
 
 If you are unsure about the code being merged, you can preview the site locally and click around to ensure everything still works.
 
 --------
 
-### Automated Testing
+### Step 3: Review tests
 
 ![failed tests](https://drive.google.com/uc?id=0BwL_X3dS1kN_NmpXbDFZMGdIOTg)
 
@@ -82,23 +73,22 @@ Travis CI will _automatically_ trigger jobs that verify that the author's conten
 
 --------
 
-### Denying Content
+### Step 4: Accept or Deny
 
+#### Accept
+
+![ready to merge](https://drive.google.com/uc?id=0BwL_X3dS1kN_eFVlVktXVXlhUG8)
+
+Discuss the content with the author in the pull request. When you both agree that the content is ready, and Travis CI jobs are green, it is safe to merge. Click the button on the Pull Request page labeled "Merge pull request". This will merge the content into the `master` branch and tell Travis CI to automatically deploy the site to the private Integration envrionment.
+
+#### Deny
 ![pr comment](https://drive.google.com/uc?id=0BwL_X3dS1kN_cGJiaWRwb05Dbzg)
 
 To deny a pull request, click the "Close Pull Request" Button. The author will be notified via email, but we encourage you to also send a message as to why their contribution is not going to be merged into the site.
 
 --------
 
-### Merging Content
-
-![ready to merge](https://drive.google.com/uc?id=0BwL_X3dS1kN_eFVlVktXVXlhUG8)
-
-Discuss the content with the author in the pull request. When you both agree that the content is ready, and Travis CI jobs are green, it is safe to merge. Click the button on the Pull Request page labeled "Merge pull request". This will merge the content into the `master` branch and tell Travis CI to automatically deploy the site to the private Integration envrionment.
-
---------
-
-### View on Integration site
+### Step 5: Auto-Deploy to Integration
 
 ![integration site](https://drive.google.com/uc?id=0BwL_X3dS1kN_a2I1VU5tUHdMc2c)
 
@@ -108,7 +98,7 @@ The above url is the integration site. The username and password for it were giv
 
 --------
 
-### Deploy to Production
+### Step 6: Release to Production
 
 ![release](https://drive.google.com/uc?id=0BwL_X3dS1kN_aFRVeUNYQzMyRGs)
 
