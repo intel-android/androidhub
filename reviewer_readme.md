@@ -16,7 +16,7 @@ So you've been chosen to review article submissions from Github for this funky f
 --------
 
 ## Setup
-  1. Where to start? Reference our helpful Setup Guide.
+  1. Don't know where to start? Reference our helpful Setup Guide.
 
 ## Process Overview
 
@@ -32,14 +32,14 @@ All submissions history is preserved and openly viewable. Clicking on a pull req
 
 The PR details show you the files changed by the author, the author's commentary, and the pass/fail result of the build test. Review the files changed and follow these simple guidelines:
 
-#### Acceptable Changes:
+##### Acceptable Changes:
 
 - `~/data/authors/<author>.yaml`
 - anything in their posts folder inside `~/posts/<author>`
 
 Changes to these folders should be considered for approval.
 
-#### Unacceptable Changes:
+##### Unacceptable Changes:
 
 - `assets` - front end css, js, and images
 - `scripts` - support scripts and helpers for the site
@@ -48,7 +48,7 @@ Changes to these folders should be considered for approval.
 
 Changes to these folders should be rejected immediately.
 
-#### Tip: [Learn more about pull requests](https://help.github.com/articles/using-pull-requests/#reviewing-the-pull-request) from the masters.
+###### Tip: [Learn more about pull requests](https://help.github.com/articles/using-pull-requests/#reviewing-the-pull-request) from the masters.
 
 --------
 
