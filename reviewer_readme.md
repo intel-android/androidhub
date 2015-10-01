@@ -116,7 +116,7 @@ To deny a submission, click the "Close Pull Request" Button. The author will be 
 
 https://int-androidhub.intel.com
 
-The above url is the integration site. A successful merge of a pull request to the master branch will automatically deploy the submission to the Integration environment. The username and password for it were given to you separately by project staff. This site is not available to the general public. In order to move this content to production, please see **Step 6: Release to Production**.
+The purpose of this environment is for reviewers like you to look at the merged content in a staging environment before releasing to production. A successful merge of a pull request to the master branch will automatically deploy the submission to the integration environment. The username and password credentials were given to you separately by project staff. This site is not available to the general public. Review the content here before Releasing to Production. When you feel the content added is ready to be public, please see **Step 6: Release to Production**.
 
 --------
 
