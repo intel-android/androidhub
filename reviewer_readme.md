@@ -101,7 +101,7 @@ The author's submission will automatically be tested by a product called Travis 
 
 ![ready to merge](https://drive.google.com/uc?id=0BwL_X3dS1kN_eFVlVktXVXlhUG8)
 
-If a submission's content looks good and the Travis CI tests are green, it is safe to merge. Click the button on the Pull Request page labeled "Merge pull request". This will merge the content into the `master` branch and tell Travis CI to automatically deploy the site to the private Integration environment. Use the integration site to review content one last time before they're pushed live for the general public to see. Please see **Step 5: Auto-Deploy to Integration** for your next steps.
+If a submission's content looks good and the Travis CI tests are green, it is safe to merge. Click the button on the Pull Request page labeled "Merge pull request". Only click this button if its green. This will merge the content into the `master` branch and tell Travis CI to automatically deploy the site to the private Integration environment. Use the integration site to review content one last time before they're pushed live for the general public to see. Please see **Step 5: Auto-Deploy to Integration** for your next steps.
 
 ##### Deny pull request to be worked on more by author
 ![pr comment](https://drive.google.com/uc?id=0BwL_X3dS1kN_cGJiaWRwb05Dbzg)
