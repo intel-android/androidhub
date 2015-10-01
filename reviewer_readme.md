@@ -58,22 +58,22 @@ NOTE: this step is required only when the author changes files that you do not f
 
     2. Now we need to run some command line tools that install dependencies. Open up a Terminal window by using GitHub's menu: "Repository" > "Open in Terminal".
 
-    3. You need to make sure that nodejs is installed on your system. Type in `node -v`, press <enter> and look at the output. If nodejs is installed, it will report a version number. The version should be higher than v0.10.32. If it is not, please download it at [nodejs.org](https://nodejs.org/en/). After installing nodejs, restart your computer and then re-run the command above to verify that nodejs is now installed.
+    3. You need to make sure that nodejs is installed on your system. Type in `node -v`, press enter and look at the output. If nodejs is installed, it will report a version number. The version should be higher than v0.10.32. If it is not, please download it at [nodejs.org](https://nodejs.org/en/). After installing nodejs, restart your computer and then re-run the command above to verify that nodejs is now installed.
 
     4. There are several nodejs dependencies you need to have installed before the site can successfully generate. Type the following commands into the Terminal window.
 
-        - [Roots](http://roots.cx/) `npm i roots -g` <enter>
-        - [Bower](http://bower.io/) `npm i bower -g` <enter>
+        - [Roots](http://roots.cx/) `npm i roots -g`
+        - [Bower](http://bower.io/) `npm i bower -g`
 
-    5. Type `npm install && bower install` into the terminal window and press <enter>
+    5. Type `npm install && bower install` into the terminal window and press enter
 
     This installs the remaining dependencies and you're now ready to generate the site.
 
-    6. To generate the site, type `roots watch` into the Terminal window, and press <enter>
+    6. To generate the site, type `roots watch` into the Terminal window, and press enter
 
     This will generate the site, host it, and open it in a browser.
 
-    The 'roots watch' process will stay open and watch for changes to the code and update the site in the browser for you. <ctrl>+C cancels this process.
+    The 'roots watch' process will stay open and watch for changes to the code and update the site in the browser for you. ctrl+C cancels this process.
 
 ###### Preview the submission
 
