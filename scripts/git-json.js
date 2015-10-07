@@ -1,6 +1,7 @@
 //    "posts-git-log": "mkdir -p public && touch public/posts-git.json && ./scripts/git-json.sh posts/*/*.jade > public/posts-git.json",
 require('shelljs/global');
 var glob = require('glob');
+var path = require('path');
 
 if (!which('git')) {
   echo('Sorry, this script requires git');
@@ -9,7 +10,7 @@ if (!which('git')) {
 
 mkdir('-p', 'public');
 var json = [];
-var files = glob.sync('posts/*/*.jade');
+var files = glob.sync(path.normalize('posts/*/*.jade'));
 
 var object = {};
 for(var i=0; i<files.length; i++) {
