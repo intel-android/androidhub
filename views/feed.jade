@@ -23,7 +23,7 @@ block content
   //- Articles
   main: section: .card: ul#feed-grid.grid.reverse-margin-md
     - var mergedPosts = helpers.getMergedPosts(site, records)
-    - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return post.git.date })
+    - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return new Date(post.git.date) }).reverse()
 
     for post in postsSortedByDate
       +feed-item(post)
