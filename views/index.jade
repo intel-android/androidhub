@@ -42,7 +42,7 @@ block content
       a.dark(href='https://github.com/intel-android/androidhub/commits/master', target='_blank', title='See commits to the master branch') 
         | Recent Commits
     ul.grid.reverse-margin-md
-      - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return post.git.date })
+      - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return new Date(post.git.date) }).reverse()
       - var count = 0
       
       for post in postsSortedByDate
