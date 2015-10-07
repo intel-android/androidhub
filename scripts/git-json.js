@@ -16,6 +16,7 @@ for(var i=0; i<files.length; i++) {
   var file = files[i];
   var formatter = '"{%n  \\"commit\\": \\"%H\\",%n  \\"author\\": \\"%an <%ae>\\",%n  \\"date\\": \\"%ad\\",%n  \\"message\\": \\"%s\\"%n}"';
   var command = 'git --no-pager log -1 --pretty=format:' + formatter + ' ' + file;
+  console.log(command);
   var git = exec(command, {async: false, silent: true});
   object[file] = JSON.parse(git.output);
 }
