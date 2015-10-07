@@ -35,15 +35,21 @@ mkdir('-p', 'public');
 var json = [];
 var files = glob.sync('posts/*/*.jade');
 
-for(var file in files) {
-  console.log(file);
+var object = {};
+for(var i=0; i<files.length; i++) {
+  var file = files[i];
+  echo(file);
 
-  var formatter = '"\"$f\": {%n  \"commit\": \"%H\",%n  \"author\": \"%an <%ae>\",%n  \"date\": \"%ad\",%n  \"message\": \"%s\"%n}"';
-  var output = exec('git --no-pager log -1 --pretty=format:' + formatter + ' ' + file, {async: false});
-  json.push(output);
+  var formatter = '"{%n  \\"commit\\": \\"%H\\",%n  \\"author\\": \\"%an <%ae>\\",%n  \\"date\\": \\"%ad\\",%n  \\"message\\": \\"%s\\"%n}"';
+  var command = 'git --no-pager log -1 --pretty=format:' + formatter + ' ' + file;
+  echo(command);
+  var git = exec(command, {async: false, silent: true});
+  object[file] = JSON.parse(git.output);
 }
 
-console.log(json);
+var content = JSON.stringify(object);
 
-json.join(',').to('public/posts-git.json');
+echo(content);
+
+content.to('public/posts-git.json');
 exit(0);
