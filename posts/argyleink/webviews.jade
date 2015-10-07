@@ -9,40 +9,55 @@ extends ../../views/layouts/_single
 
 block content
   :marked
+    ## What's A Webview? (you might ask)
     Ok, so really quick, if you don't know what a [webview][1] is, let me share just a small amount to add some context to this post. A webview is when a native app provides a window for HTML. The HTML can be local or remote, cached or pulled fresh, etc. Apps use these for allllll sorts of different utilities: login portals, external content, ads, etc. 
 
     #### Ok cool, now what?
 
-    Webview's are awesome, well I think so. They make it so easy to get external, dynamic and open content into your native app. What's learned quickly is that it's hard to make those experiences as fluid as the native app. I've been dropping content into webviews and building web experiences for a while now, let me share some of my findings so you don't have to bang your head as many times as I have over the years. I'll also be pitching [Bolt][3], which I've been maintaining for 2 years. It's a web app build framework that includes all the optimizations needed to have lightning fast web experiences on mobile. 
+    Webview's are awesome, well I think so. They make it so easy to get external, dynamic and open content into your native app. What's learned quickly is that it's hard to make those experiences as fluid as the native app, and especially hard to make it as good as your desktop browser experience. I've been dropping content into webviews and building web experiences for a while now, let me share some of my findings. so you don't have to bang your head as many times as I have. I'll also be pitching [Bolt][3], which I've been maintaining for 2 years. It's a web app build framework that includes all the optimizations needed to have lightning fast web experiences on mobile. 
 
     > Now is one of the best times to jump into webview research, Android's webview is [evergreen][2]!
 
+    &nbsp;
+    &nbsp;
+
     At a high level, **here's our topics**:
     - Memory
-    - Compression
+    - Turbo Crunch
     - Cache
-    - Headers
-    - Manifest
+    - Header Meta Data
+    - AppCache Manifest
+
+    &nbsp;
+    &nbsp;
 
     ## Memory
-    First thing to note, which if it wasn't obvious, a webview will never have the power and memory that the native browser has. It's a browser inside of another app! I couldn't find any documented statements about memory comparisons betwee native and webview, but I've heard a webview has anywhere from 40% on iOS to 70% on Android. Meaning 70% of the resources are available for a webview, compared to native Chrome. That's considerably less, especially if the user is on an older device already. This is why it's topic 1. 
+    First thing to note, a webview will never have the power and memory that the native browser has. It's a browser inside of another app, in a way. Naturally limited since it's sharing memory with it's host. I couldn't find any documented statements about memory comparisons between our devices native browser and in-app webview's performance, but I've heard a webview has anywhere from 40% (iOS) to 40-70% (Android) of resources available. That's considerably less, especially if the user is on an older device already. Bummer right! This is why it's topic 1. 
 
     #### Ok, so webviews are [nerfed][4], makes sense, now what?
 
-    Biggest thing is to be considerate of this fact. Have an expectation that getting 100% smooth performance from your webview will be tough. If your goal is 100% buttery delicious interaction, then keep reading and practice these optimizations. 
+    Biggest thing is to be considerate of memory. You'll be building in a smaller, less capable browser tab, running inside another app which already needs it's own resources. If your goal is 100% buttery delicious interaction, then keep reading and practice these optimizations. We can still get butter!
 
-    **Note:** Tools exist to help you investigate memory issues too, [vorlon.js][5] is a great tool for this, especially if the content is not local.
+    **Note:** Tools exist to help you investigate memory issues, [vorlon.js][5] is a great tool for this, especially if the content is not local. You also have Chrome's incredible [dev tools][13] to use as well.
+
+    Sorry, I won't be going over how to use these tools to inspect your HTML content's performance. It's a super fun topic though, I highly encourage anyone to look it up. It's super interesting stuff.
+
+    &nbsp;
+    &nbsp;
 
     ## Compression (aka turbo crunch)
-    In a webview we're dealing with a tiny brain, that's kinda weak, so we need to compress all of our assets as small as we can. This doesn't just effect page load speed, it also effects the webview's ability to paint and layout. Therefore, we crunch all the things!
+    In a webview we're dealing with a tiny brain, so we need to compress all of our assets as small as we can. This doesn't just effect page load speed, it also effects the webview's ability to paint and layout. Less memory is used because there is literally less to read. Therefore, we crunch all the things!
 
     #### Images
-    Png's, crunch em. Jpg's, crunch em. SVG's, CRUNCH EM! Do this either with tools like [Smaller][6] or from the CLI with [Imagemin][7] and [SVGmin][8].
+    Png's, crunch em. Jpg's, crunch em. SVG's, **CRUNCH EM!** Do this either with tools like [Smaller][6] or from the CLI with [Imagemin][7] and [SVGmin][8]. 
 
     #### Javascript
     With Javascript, it's all about obfuscation, minification, and concatenation. Luckily, you generally don't need 3 tools to accomplish. I like [Uglify][9], which is a one stop shop for all your JS crunching needs. A really cool thing about this crunch task, is that you'll have noticely faster application performance for crunching your scripts. Less for the compiler to read and parse, less memory consumed.
 
     ![Uglify Stats](/library/argyleink/uglify.png)
+
+    #### HTML
+    Yes, you read that right, compress your HTML. There's more gains than just removing white space, trust me.
 
     #### CSS
     Just like with Javascript, you'll  want to minify and concatenate your style files. All the same benefits apply. But there is another way to optimize CSS, removing all the unused styles from your CSS, so the file is as tiny as it can be and has no waste. I like [Purify][10], it seems the most robust and least harmful. 
@@ -54,8 +69,11 @@ block content
 
     [Bolt][3] has all of these super crunching tools setup for you =)
 
+    &nbsp;
+    &nbsp;
+
     ## Cache
-    Without diving into the deep waters of browser cache systems, I'm going to tell you about my preferred techniques for super cache. Let me present, [HTML5 AppCache][11] via the AppCache Manifest. I like to generate these dynamically, but there are simple to manually manage as well. What they do is powerful, almost so powerful it's hard to get rid of the files from cache (but that's not the case). 
+    Without diving into the deep waters of browser cache systems, I'm going to tell you about my preferred techniques for super cache. Let me present, [HTML5 AppCache][11] via the AppCache Manifest. I like to generate this file dynamically, but it is simple to manually manage as well (especially if your production code wraps your site into a nice little package). What it does is powerful, almost so powerful it's hard to get rid of the files from cache (but that's not the case). 
 
     ```html
     <html manifest="manifest.appcache">
@@ -69,6 +87,7 @@ block content
     # Time: Mon Jun 29 2015 12:02:29 GMT-0700 (PDT)
 
     CACHE:
+    index.html
     js/app.min.js
     styles/app.css
     assets/icons/apple-touch-icon.png
@@ -81,9 +100,12 @@ block content
     *
     ```
 
-    There's the manifest file in all it's glory. Simple paths to files and media. The browser will download these to the users device, and load straight from those files on subsequent requests. This even enables offline view ability! Talk about fast, there's no wait time anymore. 
+    There's the manifest file in all it's glory. Simple paths to files and media. The browser will download these to the users device, and load straight from those files on subsequent requests. This even enables offline view ability! Talk about fast, there's no wait time. 
 
-    ## Headers
+    &nbsp;
+    &nbsp;
+
+    ## Header Meta Data
     In your HTML, you can help tell the browser about the content you're providing. Telling the browser that the content is mobile friendly, will enable a few really nice features that increase the percieved speed of your app. 
 
     ```html
@@ -94,6 +116,10 @@ block content
 
     The most important thing that these headers do for you, is remove the [300ms click delay][12] that's in browsers by default. Trust me when I say that this may be the most important piece for you to take away from this article. That tap/click delay alone will make your webview feel sluggish. 
 
+    &nbsp;
+    &nbsp;
+
+    ## The End
     We could go deeper, crazy I know, but follow the tips in this article for a very noticeable boost to the responsiveness of your UI in a webview. Hope this helps you, and be sure to check out Bolt if you are in control of the webview architecture, it set's you up for success.
 
     [1]: http://developer.android.com/reference/android/webkit/WebView.html
@@ -108,3 +134,4 @@ block content
     [10]: https://github.com/purifycss/purifycss
     [11]: http://caniuse.com/#search=appcache
     [12]: https://developers.google.com/web/updates/2013/12/300ms-tap-delay-gone-away?hl=en
+    [13]: https://developer.chrome.com/devtools/docs/javascript-memory-profiling
