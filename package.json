@@ -6,7 +6,7 @@
   "license": "pending",
   "scripts": {
     "test": "node jasmine-runner.js",
-    "posts-git-log": "mkdir -p public && touch public/posts-git.json && ./scripts/git-json.sh posts/*/*.jade > public/posts-git.json",
+    "posts-git-log": "node ./scripts/git-json.js",
     "new": "node ./scripts/new-author.js",
     "post": "node ./scripts/new-post.js"
   },
