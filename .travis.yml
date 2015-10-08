@@ -5,7 +5,7 @@ before_script:
 script:
 - npm test
 - bower install
-- if [$TRAVIS_TAG -ne ""]; then export env='production'; else export env='staging'; fi;
+- if [$TRAVIS_TAG -ne ""]; then export env='production'; else export env='staging'; fi; echo $env;
 - roots compile -e $env
 node_js:
 - '0.12'
