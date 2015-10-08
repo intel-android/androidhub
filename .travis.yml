@@ -5,7 +5,8 @@ before_script:
 script:
 - npm test
 - bower install
-- roots compile -e staging
+- if [$TRAVIS_TAG -ne ""]; then $env='production'; else $env='staging'; fi;
+- roots compile -e $env
 node_js:
 - '0.12'
 sudo: false
