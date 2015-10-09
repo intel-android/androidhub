@@ -1,6 +1,4 @@
 extends layouts/_general
-include mixins/_feed-home-item
-include mixins/_nav
 
 block nav
   +nav()
@@ -63,3 +61,6 @@ block content
       a.btn.clear(href=data.paths.field_guide) 
         | Learn more in our Developer Field Guide
         include includes/svg/_arrow
+
+block trackers
+  +tracking-pixel('ntg3e')

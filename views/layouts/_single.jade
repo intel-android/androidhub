@@ -1,3 +1,9 @@
+include ../mixins/_og-meta
+include ../mixins/_twitter-meta
+include ../mixins/_nav
+include ../mixins/_related-post
+include ../mixins/_tracking-pixel
+
 doctype html
 html
   - var author = helpers.getAuthor(post, data)
@@ -7,8 +13,7 @@ html
     head
       include ../includes/_font-strategy
       include ../includes/_site-meta
-
-      include ../mixins/_og-meta
+      
       +og-meta({
         url:          data.meta.opengraph.url,
         title:        post.title,
@@ -16,8 +21,7 @@ html
         site_name:    data.meta.opengraph.site,
         image:        helpers.getHeroImage(post)
       })
-
-      include ../mixins/_twitter-meta
+      
       +twitter-meta({
         account:      author.twitter,
         site:         author.website,
@@ -33,7 +37,6 @@ html
       link(rel='stylesheet', href='/bower_components/prism/themes/prism-coy.css')
 
     body
-      include ../mixins/_nav
       +nav('feed')
 
       header.grid(style="background-image:url(#{helpers.getHeroImage(post)})")
@@ -79,7 +82,6 @@ html
         - var relatedPosts = helpers.getRelatedPosts(post, site.posts.all())
         if relatedPosts.length
           aside.card: article
-            include ../mixins/_related-post
             h4 Related Articles
             .related-posts
               each post in relatedPosts
@@ -91,3 +93,4 @@ html
       include ../includes/_footer 
       != js('/')
       script(src='/bower_components/prism/prism.js')
+      +tracking-pixel('nth41')
