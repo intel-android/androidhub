@@ -48,4 +48,5 @@ block content
       .spacer.md.hidden-xs
 
 block trackers
-  +tracking-pixel('ntjol')
+  if env == 'prod'
+    +tracking-pixel('ntjol')

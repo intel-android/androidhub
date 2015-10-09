@@ -29,4 +29,5 @@ block content
       +feed-item(post)
 
 block trackers
-  +tracking-pixel('nth42')
+  if env == 'prod'
+    +tracking-pixel('nth42')

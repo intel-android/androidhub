@@ -93,4 +93,6 @@ html
       include ../includes/_footer 
       != js('/')
       script(src='/bower_components/prism/prism.js')
-      +tracking-pixel('nth41')
+      
+      if env == 'prod'
+        +tracking-pixel('nth41')

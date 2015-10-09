@@ -97,7 +97,7 @@ module.exports =
     bare: true
 
   locals:
-    dev:    false
+    env:    'staging'
     _:      require 'lodash'
     moment: require 'moment'
     helpers:

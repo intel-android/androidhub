@@ -63,4 +63,5 @@ block content
         include includes/svg/_arrow
 
 block trackers
-  +tracking-pixel('ntg3e')
+  if env == 'prod'
+    +tracking-pixel('ntg3e')
