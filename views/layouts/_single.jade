@@ -53,7 +53,7 @@ html
               h3.header-author.thin-type.marginless.animate-prep= author.displayname
               h4.header-subtitle.thin-type.marginless.animate-prep 
                 | #{author.title} at 
-                a.light(href=author.company, target='_blank')= author.company
+                a.light(href=author.website, target='_blank')= author.company
               .header-social.animate-prep
                 a(href=helpers.socialLink('twitter', author.twitter), target='_blank')
                   include ../includes/svg/_twitter-bird
