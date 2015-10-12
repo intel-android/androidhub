@@ -1,18 +1,21 @@
-var shell         = require('shelljs');
+require('shelljs/global');
+
 var glob          = require('glob');
+var path          = require('path');
 
 module.exports = function() {
-  shell.exec('mkdir -p public/library');
-  var authors = glob.sync("posts/*/");
+  mkdir('-p', path.join('public', 'library'));
+
+  var authors = glob.sync(path.join("posts", "*"));
   for (var i = 0; i < authors.length; i++) {
-    var path = authors[i];
-    var author = path.split('/')[1];
-    shell.exec("mkdir -p public/library/" + author);
-    library = glob.sync("posts/" + author + '/library/*');
+    var author_path = authors[i];
+    var author = author_path.split(path.sep)[1];
+    mkdir('-p', path.join('public', 'library', author));
+    library = glob.sync(path.join("posts", author, 'library', '*'));
     for (var j = 0; j < library.length; j++) {
       var asset = library[j];
-      var filename = asset.split('/').pop();
-      shell.exec("cp " + asset + " public/library/" + author + "/" + filename);
+      var filename = asset.split(path.sep).pop();
+      cp(asset, path.join('public', 'library', author, filename));
     }
   }
   return true;

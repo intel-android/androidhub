@@ -12,7 +12,8 @@ if (!which('git')) {
 
 mkdir('-p', 'public');
 var json = [];
-var files = glob.sync(path.join('posts', '*', '*', '.jade'));
+var files_path = path.join('posts', '*', '*.jade');
+var files = glob.sync(files_path);
 
 var object = {};
 var formatter = "";
