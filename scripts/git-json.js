@@ -16,14 +16,12 @@ var files = glob.sync(path.normalize(files_path));
 
 var object = {};
 var formatter = "";
-// var isWindows = /^win/.test(process.platform);
-// if (isWindows) {
-//   formatter = '"{%n  ^"commit^": ^"%H^",%n  ^"author^": ^"%an <%ae>^",%n  ^"date^": ^"%ad^",%n  ^"message^": ^"%s^"%n}"';
-// } else {
-// }
-
-formatter = '\'{%n  "commit": "%H",%n  "author": "%an <%ae>",%n  "date": "%ad",%n  "message": "%s"%n}\'';
-
+var isWindows = /^win/.test(process.platform);
+if (isWindows) {
+  formatter = '\'{%n  \"commit\": \"%H\",%n  \"author\": \"%an <%ae>\",%n  \"date^\": \"%ad\",%n  \"message\": \"%s\"%n}\'';
+} else {
+  formatter = '\'{%n  "commit": "%H",%n  "author": "%an <%ae>",%n  "date": "%ad",%n  "message": "%s"%n}\'';
+}
 
 for(var i=0; i<files.length; i++) {
   var file = path.normalize(files[i]);
