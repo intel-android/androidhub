@@ -23,7 +23,7 @@ var formatter = "";
 // }
 
 formatter = '{%n  ^@^commit^@^: ^@^%H^@^,%n  ^@^author^@^: ^@^%an <%ae>^@^,%n  ^@^date^@^: ^@^%ad^@^,%n  ^@^message^@^: ^@^%s^@^%n}';
-formatter = 'The author of %h was %an, %ar%nThe title was >>%s<<%n';
+formatter = 'The author of %h was %an, %ar%nThe title was %s%n';
 
 for(var i=0; i<files.length; i++) {
   var file = path.normalize(files[i]);
