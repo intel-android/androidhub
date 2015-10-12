@@ -29,7 +29,7 @@ for(var i=0; i<files.length; i++) {
 
   console.log(file);
 
-  var command = 'git --no-pager log -1 --pretty=format:\'' + formatter + '\' -- ' + file;
+  var command = 'git --no-pager log -1 --pretty=format:\'' + formatter + '\' -- .' + path.sep + file;
   console.log(command);
   var git = exec(command, {async: false, silent: true});
   var output = git.output;
