@@ -16,22 +16,25 @@ var files = glob.sync(path.normalize(files_path));
 
 var object = {};
 var formatter = "";
-var isWindows = /^win/.test(process.platform);
-if (isWindows) {
-  formatter = '\'{%n  \"commit\": \"%H\",%n  \"author\": \"%an <%ae>\",%n  \"date^\": \"%ad\",%n  \"message\": \"%s\"%n}\'';
-} else {
-  formatter = '\'{%n  "commit": "%H",%n  "author": "%an <%ae>",%n  "date": "%ad",%n  "message": "%s"%n}\'';
-}
+// var isWindows = /^win/.test(process.platform);
+// if (isWindows) {
+//   formatter = '\'{%n  \"commit\": \"%H\",%n  \"author\": \"%an <%ae>\",%n  \"date\": \"%ad\",%n  \"message\": \"%s\"%n}\'';
+// } else {
+// }
+
+formatter = '{%n  ^@^commit^@^: ^@^%H^@^,%n  ^@^author^@^: ^@^%an <%ae>^@^,%n  ^@^date^@^: ^@^%ad^@^,%n  ^@^message^@^: ^@^%s^@^%n}';
 
 for(var i=0; i<files.length; i++) {
   var file = path.normalize(files[i]);
 
   console.log(file);
 
-  var command = 'git --no-pager log -1 --pretty=format:' + formatter + ' -- ' + file;
+  var command = 'git --no-pager log -1 --pretty=format:\'' + formatter + '\' -- ' + file;
   console.log(command);
   var git = exec(command, {async: false, silent: true});
-  object[file] = JSON.parse(git.output);
+  var output = git.output;
+  var out = ("" + output).replace(/"/gm, '\\"').replace(/\^@\^/gm, '"');
+  object[file] = JSON.parse(out);
 }
 
 var content = JSON.stringify(object);
