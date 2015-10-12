@@ -24,7 +24,7 @@ if (isWindows) {
 }
 
 for(var i=0; i<files.length; i++) {
-  var file = files[i];
+  var file = path.normalize(files[i]);
 
   console.log(file);
 
