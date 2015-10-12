@@ -25,6 +25,7 @@ if (isWindows) {
 for(var i=0; i<files.length; i++) {
   var file = files[i];
 
+  console.log(file);
 
   var command = 'git --no-pager log -1 --pretty=format:' + formatter + ' ' + file;
   var git = exec(command, {async: false, silent: true});
