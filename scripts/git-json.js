@@ -8,11 +8,10 @@ if (!which('git')) {
   exit(1);
 }
 
-
-
 mkdir('-p', 'public');
 var json = [];
 var files_path = path.join('posts', '*', '*.jade');
+console.log(files_path);
 var files = glob.sync(path.normalize(files_path));
 
 var object = {};
