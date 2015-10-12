@@ -34,6 +34,7 @@ for(var i=0; i<files.length; i++) {
   var git = exec(command, {async: false, silent: true});
   var output = git.output;
   var out = ("" + output).replace(/"/gm, '\\"').replace(/\^@\^/gm, '"');
+  console.log(out);
   object[file] = JSON.parse(out);
 }
 
