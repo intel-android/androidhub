@@ -80,7 +80,7 @@ module.exports =
     pretty: true
 
   locals:
-    dev:    true
+    env:    'dev'
     _:      require 'lodash'
     moment: require 'moment'
     helpers:

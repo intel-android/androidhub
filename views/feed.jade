@@ -27,3 +27,7 @@ block content
 
     for post in postsSortedByDate
       +feed-item(post)
+
+block trackers
+  if env == 'prod'
+    +tracking-pixel('nth42')

@@ -46,3 +46,7 @@ block content
           a.btn.blue.small.bordered(href=data.paths.github, target='_blank') Fork us on Github
 
       .spacer.md.hidden-xs
+
+block trackers
+  if env == 'prod'
+    +tracking-pixel('ntjol')
