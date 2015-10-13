@@ -18,13 +18,13 @@ App.Share = (->
     if location.href.indexOf('posts/') >= 0 then return location.href else return share.url
 
   shareToTwitter = ->
-    window.open "http://twitter.com/share?url=#{grabUrl()}&text=#{share.twitter}&hashtags=#{share.tags}&url=#{grabUrl()}&', 'twitterwindow', 'height=450, width=550, top=#{dialogTop()}, left=#{dialogLeft()}, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"
+    window.open "http://twitter.com/share?url=#{grabUrl()}&text=#{share.twitter}&hashtags=#{share.tags}&url=#{grabUrl()}&", "twitterwindow", "height=450, width=550, top=#{dialogTop()}, left=#{dialogLeft()}, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"
 
   shareToFacebook = ->
-    window.open "https://facebook.com/sharer/sharer.php?u=#{escape(grabUrl())}, 'facebookwindow', 'height=450, width=550, top=#{dialogTop()}, left=#{dialogLeft()}, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"
+    window.open "https://facebook.com/sharer/sharer.php?u=#{escape(grabUrl())}", "facebookwindow", "height=450, width=550, top=#{dialogTop()}, left=#{dialogLeft()}, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"
 
   shareToGoogle = ->
-    window.open "https://plus.google.com/share?url=#{escape(grabUrl())}, 'googlepluswindow', 'height=600, width=600, toolbar=0, location=0, menubar=0, directories=0, scrollbars=yes"
+    window.open "https://plus.google.com/share?url=#{escape(grabUrl())}", "googlepluswindow", "height=600, width=600, toolbar=0, location=0, menubar=0, directories=0, scrollbars=yes"
 
   [].forEach.call els, (el) ->
     el.addEventListener 'click', (e) ->
