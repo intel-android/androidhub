@@ -3,7 +3,7 @@ App.Share = (->
   els           = document.querySelectorAll '.share'
   share         = 
     url:        'http://androidhub.intel.com'
-    tags:       'intelandroidhub'
+    tags:       'AndroidDevs'
     twitter:    'The Android Developer Hub, by developers, for developers, find tips, tuts, and tricks here.'
     facebook:   'The Android Developer Hub, a community where developers can talk to, share with, and learn from other like-minded developers, whether you’re getting ready to develop your first app or an experienced dev with specific questions about the Android development process. Find tips, tuts, and tricks here.'
     googleplus: 'The Android Developer Hub, a community where developers can talk to, share with, and learn from other like-minded developers, whether you’re getting ready to develop your first app or an experienced dev with specific questions about the Android development process. Find tips, tuts, and tricks here.'
