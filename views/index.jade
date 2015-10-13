@@ -65,3 +65,8 @@ block content
 block trackers
   if env == 'prod'
     +tracking-pixel('ntg3e')
+  script.
+    var OB_ADV_ID=27123;
+    var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+    var str = '<script src="'+scheme+'widgets.outbrain.com/obtp.js" type="text/javascript"><\/script>';
+      document.write(str);
