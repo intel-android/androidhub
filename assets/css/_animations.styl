@@ -9,35 +9,39 @@
     opacity:0
     // transform:translateY(5px)
     top:5px
-    
+
   &.lazyloaded
     opacity:1
     // transform:translateY(0)
     top:0
     transition:top 0.3s ease, opacity 0.3s ease
-  
+
 .droid-hero > path:first-child
   transform-origin:center center
   animation:rotateForever 14s linear infinite
   animation-delay:1.5s
   will-change:transform
-  
+
 @keyframes rotateForever
   from
     transform:rotateZ(0)
   to
     transform:rotateZ(360deg)
-    
+
+@-moz-document url-prefix()
+  .droid-hero > path:first-child
+    transform-origin:175px 175px
+
 .droid-hero > g > path
   animation:superSaiyan 3s ease-in-out infinite
   animation-delay:1.5s
   will-change:transform
-  
+
 @keyframes superSaiyan
   0%, 100%
     transform:translateY(0)
   50%
     transform:translateY(-10px)
-    
+
 .animate-fill
   transition:fill 0.3s ease
