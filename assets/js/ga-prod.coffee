@@ -3,6 +3,7 @@ _gaq.push [
   '_setAccount'
   'UA-17890616-1'
 ]
+_gaq.push ['_setDomainName', 'androidhub.intel.com']
 _gaq.push [ '_trackPageview' ]
 do ->
   ga = document.createElement('script')
