@@ -3,9 +3,9 @@ class App.Search
     @Grid = FeedGrid
     @gridNode = document.querySelector '#feed-grid'
     @listen()
-    @loadPostsJSON (posts) => 
+    @loadPostsJSON (posts) =>
       @posts = @matchPostsWithAuthors posts.posts
- 
+
 
   listen: ->
     document
@@ -19,18 +19,18 @@ class App.Search
         for key, author of @posts when key isnt 'items'
           for post in author.items when post.title.toLowerCase().indexOf(query) > -1 | post.content.indexOf(query) > -1 | post._url.indexOf(query) > -1 | post.authorName.indexOf(query) > -1
             results.push post.title
-        
+
         # filter grid items by matching titles
         # @Grid.setState query
         @Grid.filter (el) ->
           # el is returned by isotope, for each of them, and this determines visibility
-          title = el.querySelector('.post-title').innerText
+          title = el.querySelector('.post-title').textContent or el.querySelector('.post-title').innerText
           results.indexOf(title) > -1
 
         # show empty results message
         if !results.length
           @gridNode.setAttribute 'data-empty', true
-        else 
+        else
           @gridNode.removeAttribute 'data-empty'
 
   loadPostsJSON: (cb) ->
@@ -48,5 +48,6 @@ class App.Search
       for key, author of posts when key isnt 'items'
         for post in author.items
           if (window.location.origin + post._url) == node.querySelector('a').href
-            post.authorName = node.querySelector('address').innerText.toLowerCase()
+            name = node.querySelector('address').textContent or node.querySelector('address').innerText
+            post.authorName = name.toLowerCase()
     return posts
