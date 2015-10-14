@@ -13,7 +13,7 @@ html
     head
       include ../includes/_font-strategy
       include ../includes/_site-meta
-      
+
       +og-meta({
         url:          data.meta.opengraph.url,
         title:        post.title,
@@ -21,7 +21,7 @@ html
         site_name:    data.meta.opengraph.site,
         image:        helpers.getHeroImage(post)
       })
-      
+
       +twitter-meta({
         account:      author.twitter,
         site:         author.website,
@@ -33,8 +33,7 @@ html
 
       title= post.title
       != css('/')
-      link(rel='stylesheet', href='/bower_components/prism/themes/prism.css')
-      link(rel='stylesheet', href='/bower_components/prism/themes/prism-coy.css')
+      link(rel='stylesheet', href='/css/prism.css')
 
     body
       +nav('feed')
@@ -42,7 +41,7 @@ html
       header.grid(style="background-image:url(#{helpers.getHeroImage(post)})")
         .grid__col-xs-10.grid__col-lg-8.grid--align-self-center.centered-title.grid--direction-column
           small.header-date(title=git.date)
-            | #{moment(new Date(git.date)).format("ll")} 
+            | #{moment(new Date(git.date)).format("ll")}
             a.inherit-color(href='https://github.com/intel-android/androidhub/commit/#{git.commit}', target='_blank', title='See the commit for this article post')  // #{git.commit.substr(0,7)}
           h1.header-title= post.title
 
@@ -51,8 +50,8 @@ html
               img.avatar.circle.contain.push-right.lazyload.lazyanimate(src=helpers.getAuthorImage(author))
             .meta
               h3.header-author.thin-type.marginless.animate-prep= author.displayname
-              h4.header-subtitle.thin-type.marginless.animate-prep 
-                | #{author.title} at 
+              h4.header-subtitle.thin-type.marginless.animate-prep
+                | #{author.title} at
                 a.light(href=author.website, target='_blank')= author.company
               .header-social.animate-prep
                 a(href=helpers.socialLink('twitter', author.twitter), target='_blank')
@@ -62,7 +61,7 @@ html
                 if author.codepen
                   a(href=helpers.socialLink('codepen', author.codepen), target='_blank')
                     include ../includes/svg/_codepen
-      
+
       main.post: section
         //- main article content
         .card: article
@@ -86,13 +85,13 @@ html
             .related-posts
               each post in relatedPosts
                 +related-post(post)
-         
+
       .full-width-white: section
         #disqus_thread
 
-      include ../includes/_footer 
+      include ../includes/_footer
       != js('/')
-      script(src='/bower_components/prism/prism.js')
-      
+      script(src='/js/prism.js')
+
       if env == 'prod'
         +tracking-pixel('nth41')
