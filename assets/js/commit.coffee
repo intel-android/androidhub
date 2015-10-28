@@ -62,6 +62,7 @@ App.Commit = (->
           title:  'Nice!'
           text:   json.message
           type:   'success'
+        @form.style.display = 'none'
     xobj.send JSON.stringify data
 
 
