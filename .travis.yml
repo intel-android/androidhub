@@ -19,6 +19,9 @@ notifications:
     recipients:
     - aegaas@deloitte.com
     - aargyle@deloitte.com
+  webhooks:
+    urls:
+      - http://hubot.ddhive.com/hubot/travis?room=intel-android
 addons:
   ssh_known_hosts:
   - androidhub-int.wdg.infra-host.com
