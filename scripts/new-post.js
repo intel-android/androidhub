@@ -66,6 +66,11 @@ inquirer.prompt(questions, function( answers ) {
     fs.mkdirSync(postsDir, 0755);
   }
 
+  if (!fs.existsSync(postsDir + '/library')) {
+    console.log('creating ' + postsDir + '/library');
+    fs.mkdirSync(postsDir + '/library', 0755);
+  }
+
   //copy in the template.jade into the directory
   var template = fs.readFileSync(path.resolve(root + '/posts/template.jade'), 'utf8');
   var templatePath = path.resolve(root + '/posts/' + user);
