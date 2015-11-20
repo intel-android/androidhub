@@ -166,7 +166,7 @@ function test_post(filename) {
         });
 
         it('is smaller than 5MB', function() {
-          image.filesize = image.filesize.replace('KBB', 'KB');
+          image.filesize = image.filesize.replace('KBB', 'KB').replace('MBB', 'MB');
           expect(filesizeParser(image.filesize)).toBeLessThan(5*1024*1024);
         });
       });
