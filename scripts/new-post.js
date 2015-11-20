@@ -43,7 +43,7 @@ var checkIfAuthor = function(input) {
 var questions = [
   {
     type    : 'input',
-    message : 'username? *',
+    message : 'Github username? *',
     name    : 'user',
     validate: required && checkIfAuthor
   },

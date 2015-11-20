@@ -121,6 +121,9 @@ inquirer.prompt(questions, function( answers ) {
   var user = answers.github;
   var authorYamlPath = path.resolve(root + '/data/authors/' + user + '.yaml');
 
+  // create a folder for the new author in the posts directory
+  shell.exec('mkdir posts/' + user);
+  shell.exec('mkdir posts/' + user + '/library');
 
   //write to yaml file
   fs.writeFile(authorYamlPath, yamlString, function(err) {
