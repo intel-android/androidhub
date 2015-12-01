@@ -1,0 +1,46 @@
+---
+title:      'Reducing build time on Android by adopting Buck'
+categories: [build]
+heroimage:  'buck.png'
+excerpt:    'Hate pixel pushing with gradle but wants all the functionalities of it? Use Buck for debug builds.'
+---
+
+extends ../../views/layouts/_single
+
+block content
+	:marked
+		Note: I was asked to do a topic discussion at NY Mobile Forum the past weekend at Facebook and I decided to do one on developer productivity hacks, the content of this article was used to ignite the conversation. 
+
+		[This is part of Vine 's Engineering Blog series. ](http://engineering.vine.co/post/117873038742/reducing-build-times-by-adopting-buck)
+
+		Since we started working on Vine for Android, we have used the following tools for development:
+
+		- Android Studio (Intellij before Android Studio 0.1.0 was released)
+		- Gradle build system
+		- Crashlytics and other third party plugins
+		- Jenkins for CI
+
+		In this post, we’ll talk about how we reduced our iteration time during Android development by adopting Buck along side of our current Gradle structure.
+
+		We like Gradle because it supports different configuration targets well, and it’s very easy to config and have everything merged for you. For example, currently we have to support multiple apks that are compiled from twenty different library modules that work on different platform versions, different remote targets, different app stores, and different test scenarios. Gradle scales well and makes all these configurations easy to build and test. It also works well with Maven and has native support within Android Studio. On top of that, we also have several custom build steps and plugins during different phases of the build process for some of our builds.
+
+		Since we first released Vine for Android, two things have happened: (a) the app has gotten much bigger as we add more assets and (b) build time has increased as more build steps are added.
+
+		Currently a clean build takes about four to five minutes, and a one-line change on the end of the dependency chain takes about one minute to build and install. That’s with “–parallel –daemon –offline” enabled. It takes even more time without that flag. Across our small (and growing) Android team, we spend  a few hours of dev time every day on build and install.
+
+		We tried to figure out why it was so slow by using “–profile” on Gradle, and it turns out that for a one-line change, “dex” (the merge of all the pre-dex-ed modules into “.dex”) and “install” (sending the apk to a device via USB and install the app) takes about 90% of that minute. And if we can fix that, we should be good.
+
+		Turns out, Facebook’s Buck build system has an “ExoPackage” mode that does the exact thing. Buck does many tricks, such as smart-compiling dependents only when the method signature has changed, which results in fewer files needing to be compiled and a faster dex that is O(nlogn) instead of O(n^2). The thing that makes it really fast, though, is the multi-dex trick: it will only “dex” the module that have changed (not merging all existing ones), and it transfers only that modified dex file (instead of the entire APK) to the device when you make a single line of change, which is what usually happens during development.
+
+		Knowing this, we wanted to move to Buck. It was intimidating because we depend on Gradle for many things, so we decided to make Buck live along Gradle and see how things go. With that approach, the task would not be as intimidating and could easily be broken down into a few steps:   
+
+		- Grab all the remote jars and aars and make them local
+		- Change assumed final R values to be assigned during runtime
+		- Create a merged AndroidManifest.xml file for Buck
+		- Create Buck config for our debug config
+
+		The whole process took about three dev days, and the results are amazing. Our clean builds now take about 40 seconds, and our one-line changes take about three to ten seconds, depending on the module you’re changing.  
+
+		Doing it this way we are able to use Buck for development of features, not break Gradle for Android Studio and still use Gradle for release builds to different stores or manufacturers. The con is, of course, every time we lose maven for dynamic dependency upgrades, and the changes for manifest files for Gradle modules need to get merged to the respected Buck config files. We opted to do it this way because we think that chances that we will be modifying our AndroidManifest now is rare, and we rarely update our dependencies.
+
+		The next step is to make the sync process between Gradle and Buck more automated.  We are quite happy with the current flow, and we think you should consider doing same if you also have a slow Gradle configuration that is slowing down your iteration cycles.

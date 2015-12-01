@@ -1,7 +1,15 @@
 displayname: Peach Pellen
 github: peachpellen
 company: Platino
+<<<<<<< HEAD
 title: CTO
 website: http://platino.io
 twitter: peachpellen
 codepen: ''
+=======
+title: Chief Technology Officer
+website: 'http://platino.io/'
+twitter: peachpellen
+codepen: ''
+founder: true
+>>>>>>> intel-android/master

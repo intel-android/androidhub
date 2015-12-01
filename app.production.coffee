@@ -8,6 +8,7 @@ roots_yaml      = require 'roots-yaml'
 records         = require 'roots-records'
 shell           = require 'shelljs'
 copyLibrary     = require './scripts/copy-library.js'
+hash            = (new Date()).valueOf().toString()
 
 module.exports =
   ignores: [
@@ -58,7 +59,7 @@ module.exports =
         'assets/js/ga-prod.coffee'
         'assets/js/elqQ.coffee'
       ]
-      out:    'js/app.js'
+      out:    "js/app_#{hash}.js"
       minify: true
       hash:   false
 
@@ -79,7 +80,7 @@ module.exports =
         'bower_components/sweetalert/dist/sweetalert.css'
         'assets/css/master.styl'
       ]
-      out:    'css/app.css'
+      out:    "css/app_#{hash}.css"
       minify: true
       hash:   false
       opts:
@@ -98,7 +99,7 @@ module.exports =
     bare: true
 
   locals:
-    dev:    false
+    env:    'prod'
     _:      require 'lodash'
     moment: require 'moment'
     helpers:
@@ -118,6 +119,6 @@ module.exports =
     copyLibrary();
 
   after: ->
-    shell.exec 'node_modules/purify-css/bin/purifycss public/css/app.css public/index.html public/feed.html public/about.html public/authors.html public/commit.html public/posts/argyleink/webviews.html public/js/app.js --info --out public/css/app.css'
-    shell.exec 'node_modules/csso/bin/csso public/css/app.css public/css/app.css'
+    shell.exec "node_modules/purify-css/bin/purifycss public/css/app_#{hash}.css public/index.html public/feed.html public/about.html public/authors.html public/commit.html public/posts/argyleink/webviews.html public/js/app_#{hash}.js --info --out public/css/app_#{hash}.css"
+    shell.exec "node_modules/csso/bin/csso public/css/app_#{hash}.css public/css/app_#{hash}.css"
     shell.exec 'cp -R posts/* public/posts'

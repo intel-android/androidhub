@@ -5,7 +5,8 @@ before_script:
 script:
 - npm test
 - bower install
-- roots compile -e staging
+- echo $TRAVIS_TAG; if [ "$TRAVIS_TAG" != "" ]; then export env='production'; else export env='staging'; fi; echo $env;
+- roots compile -e $env
 node_js:
 - '0.12'
 sudo: false
@@ -18,6 +19,9 @@ notifications:
     recipients:
     - aegaas@deloitte.com
     - aargyle@deloitte.com
+  webhooks:
+    urls:
+      - http://hubot.ddhive.com/hubot/travis?room=intel-android
 addons:
   ssh_known_hosts:
   - androidhub-int.wdg.infra-host.com

@@ -1,6 +1,4 @@
 extends layouts/_general
-include mixins/_feed-home-item
-include mixins/_nav
 
 block nav
   +nav()
@@ -42,7 +40,7 @@ block content
       a.dark(href='https://github.com/intel-android/androidhub/commits/master', target='_blank', title='See commits to the master branch') 
         | Recent Commits
     ul.grid.reverse-margin-md
-      - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return post.git.date })
+      - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return new Date(post.git.date) }).reverse()
       - var count = 0
       
       for post in postsSortedByDate
@@ -52,14 +50,23 @@ block content
 
   .testimonial.lazyload(data-bg='/img/fractal-blue.png')
     section: .grid.grid--justify-center: .grid__col-xs-12.grid__col-sm-7.grid--direction-column.text-left
-      img.avatar.circle.contain.lazyload.lazyanimate.pop-out(src=helpers.getAuthorImage({
-        twitter: 'deloittedigital',
-        displayname: 'Deloitte Digital'
-      }))
-      h4.marginless.thin-type 
-        | Deloitte Digital | 
-        a.light(href=helpers.socialLink('twitter', 'deloittedigital'), target='_blank') @deloittedigital
-      h2 Art is subjective. You like it or you don't like it. But design is the science of art. it's art with purpose. Design is about intent.
+      //- img.avatar.circle.contain.lazyload.lazyanimate.pop-out(src=helpers.getAuthorImage({
+      //-   twitter: 'deloittedigital',
+      //-   displayname: 'Deloitte Digital'
+      //- }))
+      //- h4.marginless.thin-type 
+      //-   | Deloitte Digital | 
+      //-   a.light(href=helpers.socialLink('twitter', 'deloittedigital'), target='_blank') @deloittedigital
+      h2 Art is subjective. You like it or you don't like it. But design is the science of art, it's art with purpose. Design is about intent.
       a.btn.clear(href=data.paths.field_guide) 
         | Learn more in our Developer Field Guide
         include includes/svg/_arrow
+
+block trackers
+  if env == 'prod'
+    +tracking-pixel('ntg3e')
+  script.
+    var OB_ADV_ID=27123;
+    var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+    var str = '<script src="'+scheme+'widgets.outbrain.com/obtp.js" type="text/javascript"><\/script>';
+      document.write(str);

@@ -20,7 +20,7 @@ block content
         input#author-name(required, type='text', value='', maxlength='75', placeholder='${name}', data-subline='Tell us your name')
         |  and I have lots of great information I would like to contribute to The Android Hub. You can see my work at 
         input#author-site(required, type='url', value='', maxlength='100', placeholder='${site}', data-subline='Example: <em>https://github.com/your_handle</em>').
-        | . My expertise are in  
+        | . My expertise is in  
         select#author-expertise(required)
           option(value, default, selected) ${expertise}
           option(value='native app development') native app development
@@ -46,3 +46,7 @@ block content
           a.btn.blue.small.bordered(href=data.paths.github, target='_blank') Fork us on Github
 
       .spacer.md.hidden-xs
+
+block trackers
+  if env == 'prod'
+    +tracking-pixel('ntjol')
