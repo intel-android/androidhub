@@ -1,0 +1,12 @@
+mixin feed-item(post, grid)
+  - var author = helpers.getAuthor(post, data)
+  - var columns = grid || 'grid__col-xs-6 grid__col-sm-4 grid__col-md-4 grid__col-lg-3'
+
+  li.feed-item(class=[post.categories, post.author, columns])
+    a(href=post._url, title="Git commit ID: #{post.git.commit}")
+      img.grid__cell-img.cover.lazyload(data-src=helpers.getHeroImage(post))
+      h4.post-title.thin-type= post.title
+      small.post-excerpt= post.excerpt
+      small.post-meta(title=post.git.date)
+        address= author.displayname
+        span | #{moment(new Date(post.git.date)).format("ll")}

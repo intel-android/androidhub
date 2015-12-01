@@ -1,0 +1,10 @@
+mixin related-post(post)
+  - var author = helpers.getAuthor(post, data)
+
+  .related-post.grid.grid--bleed
+    .grid__col-xs-4
+      a(href=post._url): img.grid__cell-img.cover.lazyload(data-src=helpers.getHeroImage(post))
+    .grid__col-xs-8
+      a(href=post._url): p.marginless= post.title
+      //- .post-excerpt= post.excerpt
+      small by #{author.displayname}

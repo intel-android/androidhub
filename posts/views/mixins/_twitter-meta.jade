@@ -1,0 +1,7 @@
+mixin twitter-meta(data)
+  meta(name='twitter:card', content='summary_large_image')
+  meta(name='twitter:site', content='@intelsoftware')
+  meta(name='twitter:creator', content='@'+data.account)
+  meta(name='twitter:title', content=data.title)
+  meta(name='twitter:description', content=data.description)
+  meta(name='twitter:image', content=data.image)

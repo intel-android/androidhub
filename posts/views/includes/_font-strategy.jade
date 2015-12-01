@@ -1,0 +1,10 @@
+//- font loading strategy here, block page rendering and check if the font is in cache
+//- if it is, then add the class to the head. this will prevent FOUC, except on the first page load
+script
+  :coffee-script
+    if !!localStorage['fonts-loaded'] then document.documentElement.className += ' fonts-loaded'
+    ua = navigator.userAgent
+    if ua.indexOf('Windows') > -1
+      if ua.indexOf('Chrome') > -1 then document.documentElement.className += ' chrome-on-windows'
+      if ua.indexOf('MSIE 10') > -1 then document.documentElement.className += ' windows-ie-10'
+      if ua.indexOf('rv:11') > -1 then document.documentElement.className += ' windows-ie-11'
