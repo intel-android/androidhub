@@ -105,7 +105,7 @@ block content
     `requires android.permission.READ_CONTACTS` Yes I have that exact `READ_CONTACTS` permission in the AndroidManifest!
     `at android.app.ActivityManagerProxy.getContentProvider(ActivityManagerNative.java:3550)` The content provider I am trying to use doesn't think I have the permission
     `at android.provider.ContactsContract$Contacts.getLookupUri(ContactsContract.java:1500)` Yes I call getLookupUri from my code
-    `at com.blundell.contactscrash.MainActivity.onCreate(MainActivity.java:13)` Well at least its not a system/library doing something wrong because it links back to my MainActivity line 13 where I do all of the above.
+    `at com.blundell.contactscrash.MainActivity.onCreate(MainActivity.java:13)` Well at least it's not a system/library doing something wrong because it links back to my MainActivity line 13 where I do all of the above.
 
     Hmm the stacktrace seems legit.. and yet my code also seems legit. As we said before what is the only thing to have changed between the two runs, its the level of Android - this must be the issue.  
 
