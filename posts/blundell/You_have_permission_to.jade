@@ -101,7 +101,7 @@ block content
     `12-02 07:36:13.467` Yep this is the correct crash, I ran the app at 7:36am this morning ... _I know right_.
     `Process: com.blundell.contactscrash, PID: 19360` Yep it's my app that is crashing.
     `java.lang.RuntimeException: Unable to start activity ComponentInfo{com.blundell.contactscrash/com.blundell.contactscrash.MainActivity}` Ok so we crashed on start up (MainActivity: onCreate failed to complete)
-    `java.lang.SecurityException: Permission Denial: opening provider com.android.providers.contacts.ContactsProvider2` Permission denial?? But I have the permission right _thur_ in my AndroidManifest
+    `java.lang.SecurityException: Permission Denial: opening provider com.android.providers.contacts.ContactsProvider2` Permission denial?? But I have the permission right _therrrrrre_ in my AndroidManifest
     `requires android.permission.READ_CONTACTS` Yes I have that exact `READ_CONTACTS` permission in the AndroidManifest!
     `at android.app.ActivityManagerProxy.getContentProvider(ActivityManagerNative.java:3550)` The content provider I am trying to use doesn't think I have the permission
     `at android.provider.ContactsContract$Contacts.getLookupUri(ContactsContract.java:1500)` Yes I call getLookupUri from my code
