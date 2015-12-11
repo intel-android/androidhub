@@ -4,6 +4,7 @@
 ### Required Tools
 > These tools need to be installed on your machine, hopefully they're already there. We also expect you to have a Github account, and have used CLI tools a bit.
 
+- [ImageMagick](http://www.imagemagick.org/script/binary-releases.php)
 - [Node/NPM](https://nodejs.org/)
 - [Roots](http://roots.cx/) `npm i roots -g`
 - [Bower](http://bower.io/) `npm i bower -g`

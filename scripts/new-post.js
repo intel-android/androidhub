@@ -43,7 +43,7 @@ var checkIfAuthor = function(input) {
 var questions = [
   {
     type    : 'input',
-    message : 'username? *',
+    message : 'Github username? *',
     name    : 'user',
     validate: required && checkIfAuthor
   },
@@ -64,6 +64,11 @@ inquirer.prompt(questions, function( answers ) {
   if (!fs.existsSync(postsDir)) {
     console.log('creating ' + postsDir);
     fs.mkdirSync(postsDir, 0755);
+  }
+
+  if (!fs.existsSync(postsDir + '/library')) {
+    console.log('creating ' + postsDir + '/library');
+    fs.mkdirSync(postsDir + '/library', 0755);
   }
 
   //copy in the template.jade into the directory

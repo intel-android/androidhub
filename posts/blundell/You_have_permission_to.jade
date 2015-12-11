@@ -1,0 +1,205 @@
+---
+title:      'You have permission to crash'
+categories: [build]
+heroimage:  'crash-hero.png'
+excerpt:    'With targetting Marshmallow, 6.0, API 23, the latest version of Android, strange things can happen if you dont get your permission flow correct.'
+featured:   true 
+---
+
+extends ../../views/layouts/_single
+
+block content
+  :marked
+    ### You have permission to crash
+
+    With targetting Marshmallow, 6.0, API 23, the latest version of Android, strange things can happen if you don't get your permission flow correct. The code seems legit and yet it crashes every time. You have all the correct permissions in your AndroidManifest, you call the correct API to get your data. It runs perfectly well on your other emulator (_pre-Marshmallow without realising_). Let's debug together.
+
+    Permissions are split into two categories: _dangerous_ and _normal_. The rest of this article is implicitly talking about _dangerous_ permissions.
+    You can read more about the [difference here.](http://developer.android.com/guide/topics/security/permissions.html#normal-dangerous) 
+
+    > "Once you eliminate the impossible, whatever remains, no matter how improbable, must be the truth."
+    >                                                           - Arthur Conan Doyle
+
+    As a good developer you've rechecked the code thrice, you've rebooted the emulator, hell you even closed Android Studio and re-opened it, _did you try Eclipse ... I hope you're not that desperate_! What else has changed?... Of course, you're running against a new version of Android. 
+
+    Here is the simplest example to reproduce the discrepency between Lollipop and Marshmallow: 
+
+    MainActivity.java
+
+    ```java
+    import android.os.Bundle;
+    import android.provider.ContactsContract.Contacts;
+    import android.support.v7.app.AppCompatActivity;
+
+    public class MainActivity extends AppCompatActivity {
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+
+            Contacts.getLookupUri(getContentResolver(), Contacts.CONTENT_URI);
+        }
+    }
+    ```
+
+    AndroidManifest.xml
+
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.blundell.contactscrash">
+
+      <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+      <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+          <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+          </intent-filter>
+        </activity>
+      </application>
+
+    </manifest>
+    ```
+
+    Although this code will not do much, it still requires the system `READ_CONTACTS` permission to run, and on Lollipop it will run and your application will just sit there twiddling its thumbs. However on Marshmallow it will crash violently and your world will implode. What the hell, what happened to backward compatibility??* Let's debug the stacktrace after that horrendous crash:
+
+    ```bash
+    12-02 07:36:13.467 19360-19360/com.blundell.contactscrash E/AndroidRuntime: FATAL EXCEPTION: main
+        Process: com.blundell.contactscrash, PID: 19360
+        java.lang.RuntimeException: Unable to start activity ComponentInfo{com.blundell.contactscrash/com.blundell.contactscrash.MainActivity}: java.lang.SecurityException: Permission Denial: opening provider com.android.providers.contacts.ContactsProvider2 from ProcessRecord{cbb85e8 19360:com.blundell.contactscrash/u0a143} (pid=19360, uid=10143) requires android.permission.READ_CONTACTS or android.permission.WRITE_CONTACTS
+                at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2416)
+                at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2476)
+                at android.app.ActivityThread.-wrap11(ActivityThread.java)
+                at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1344)
+                at android.os.Handler.dispatchMessage(Handler.java:102)
+                at android.os.Looper.loop(Looper.java:148)
+                at android.app.ActivityThread.main(ActivityThread.java:5417)
+                at java.lang.reflect.Method.invoke(Native Method)
+                at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+                at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+        Caused by: java.lang.SecurityException: Permission Denial: opening provider com.android.providers.contacts.ContactsProvider2 from ProcessRecord{cbb85e8 19360:com.blundell.contactscrash/u0a143} (pid=19360, uid=10143) requires android.permission.READ_CONTACTS or android.permission.WRITE_CONTACTS
+                at android.os.Parcel.readException(Parcel.java:1599)
+                at android.os.Parcel.readException(Parcel.java:1552)
+                at android.app.ActivityManagerProxy.getContentProvider(ActivityManagerNative.java:3550)
+                at android.app.ActivityThread.acquireProvider(ActivityThread.java:4778)
+                at android.app.ContextImpl$ApplicationContentResolver.acquireUnstableProvider(ContextImpl.java:2018)
+                at android.content.ContentResolver.acquireUnstableProvider(ContentResolver.java:1468)
+                at android.content.ContentResolver.query(ContentResolver.java:475)
+                at android.content.ContentResolver.query(ContentResolver.java:434)
+                at android.provider.ContactsContract$Contacts.getLookupUri(ContactsContract.java:1500)
+                at com.blundell.contactscrash.MainActivity.onCreate(MainActivity.java:13)
+    ```
+
+    Ok ok this seems to be telling us what we want to hear, this is how I'd go about reading and thinking through this stacktrace:
+
+    `12-02 07:36:13.467` Yep this is the correct crash, I ran the app at 7:36am this morning ... _I know right_.
+    `Process: com.blundell.contactscrash, PID: 19360` Yep it's my app that is crashing.
+    `java.lang.RuntimeException: Unable to start activity ComponentInfo{com.blundell.contactscrash/com.blundell.contactscrash.MainActivity}` Ok so we crashed on start up (MainActivity: onCreate failed to complete)
+    `java.lang.SecurityException: Permission Denial: opening provider com.android.providers.contacts.ContactsProvider2` Permission denial?? But I have the permission right _therrrrrre_ in my AndroidManifest
+    `requires android.permission.READ_CONTACTS` Yes I have that exact `READ_CONTACTS` permission in the AndroidManifest!
+    `at android.app.ActivityManagerProxy.getContentProvider(ActivityManagerNative.java:3550)` The content provider I am trying to use doesn't think I have the permission
+    `at android.provider.ContactsContract$Contacts.getLookupUri(ContactsContract.java:1500)` Yes I call getLookupUri from my code
+    `at com.blundell.contactscrash.MainActivity.onCreate(MainActivity.java:13)` Well at least it's not a system/library doing something wrong because it links back to my MainActivity line 13 where I do all of the above.
+
+    Hmm the stacktrace seems legit.. and yet my code also seems legit. As we said before what is the only thing to have changed between the two runs, it's the level of Android - this must be the issue.  
+
+    Now that I know I have a permissions issue and it's API 23 related, I go read the 6.0 changelog. From the docs:
+
+    > Beginning in Android 6.0 (API level 23), users grant permissions to apps while the app is running, not when they install the app. This approach streamlines the app install process, since the user does not need to grant permissions when they install or update the app. It also gives the user more control over the app's functionality; for example, a user could choose to give a camera app access to the camera but not to the device location. The user can revoke the permissions at any time, by going to the app's Settings screen.
+
+    > user can revoke the permissions at any time
+
+    Ah ha this means even though we declare the permission in our manifest, with Marshmallow this doesn't give us the permission explicitly. We have to ask the user for permission to use that feature at the time of use, and apparently we have to ask (or at least check we still have it) everytime because the user can get mad and remove our access!
+
+    ### Alternative Solution
+
+    There is a simple way out, but it's a dark rocky road and I am not guaranteeing you light at the end of the tunnel. _Simply_ DON'T target API 23, yeah I said it, `targetSdkVersion 22` this puts your app into a compatability state and the system tries to do the best it can for you .. which isn't very good to be frank. 
+
+    > If the device is running Android 5.1 or lower, or your app's target SDK is 22 or lower: If you list a dangerous permission in your manifest, the user has to grant the permission when they install the app; if they do not grant the permission, the system does not install the app at all. 
+
+    However we don't want to do that, let's implement the runtime permissions code.
+
+    ### The Code Solution
+
+    ```java
+    import android.Manifest;
+    import android.content.pm.PackageManager;
+    import android.os.Bundle;
+    import android.provider.ContactsContract.Contacts;
+    import android.support.v4.app.ActivityCompat;
+    import android.support.v4.content.ContextCompat;
+    import android.support.v7.app.AppCompatActivity;
+    import android.widget.Toast;
+
+    public class MainActivity extends AppCompatActivity {
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+
+            if (weHavePermissionToReadContacts()) {
+                readTheContacts();
+            } else {
+                requestReadContactsPermissionFirst();
+            }
+        }
+
+        private boolean weHavePermissionToReadContacts() {
+            return ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED;
+        }
+
+        private void readTheContacts() {
+            Contacts.getLookupUri(getContentResolver(), Contacts.CONTENT_URI);
+        }
+
+        private void requestReadContactsPermissionFirst() {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_CONTACTS)) {
+                Toast.makeText(this, "We need permission so you can text your friends.", Toast.LENGTH_LONG).show();
+                requestForResultContactsPermission();
+            } else {
+                requestForResultContactsPermission();
+            }
+        }
+
+        private void requestForResultContactsPermission() {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS}, 123);
+        }
+
+        @Override
+        public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+            if (requestCode == 123
+                    && grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                readTheContacts();
+            } else {
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+    ```
+
+    `AndroidManfest.xml` stays the same.
+
+    I have extracted methods in this code to try and make it as self explanatory as possible. Notice the use of the support v4 and v7 Google libraries. These allow this code to run on a Lollipop (or lower) device and act just the same as before.
+
+    ### Conclusion
+
+    Granted we now have to write more code for our apps when it comes to permissions on Marshmallow, but I think you can also see the benefits. Users will be much happier granting permissions, they are much more likely to install your application without a wall of permissions at the start. You, as a developer, can degrade your app gracefully so that when users deny permissions your app still works. (Not granted the Camera permission? See if the user wants to select a photo from Facebook.)
+
+    Although this article was about explaining the strange case of Marshmallow crashes, once you know about runtime permissions I think you can see the benefit they bring. They also open up a whole new world of _feature toggles_ which is a powerful pattern that you should extend across your application, not just for permissions. Each one of your features could be toggled on and off, allowing you to ship code at the drop of a hat (just toggle off those unfinished features), run on devices without all the hardware needed (just toggle off bluetooth sharing), give free or demo versions of your app (just toggle off your core features), test what users think of a new feature (have the feature toggled on for 50% of users and watch the analytics).
+
+    For further discussion or feedback I'd love to chat in person at the next developer conference you're at (_just tell me where!_) or talk to me online [@blundell_apps](http://www.twitter.com/blundell_apps) 
+
+    ______
+
+    * _Backwards compatability is still there, just you cut the cord by targetting API 23. (See section on alternative solution)_

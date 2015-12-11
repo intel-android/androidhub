@@ -1,9 +1,10 @@
 <?php
 
 error_reporting(E_ALL);
+// $emailaddress = 'androidhub@intel.com';
 $emailaddress = 'androidhub@intel.com';
 
-define(DEBUG_MODE, TRUE);
+define("DEBUG_MODE", FALSE);
 
 if (!$_SERVER || $_SERVER['REQUEST_METHOD'] != "POST") {
   die ("go away\n\n");
@@ -12,11 +13,14 @@ if (!$_SERVER || $_SERVER['REQUEST_METHOD'] != "POST") {
 $json = stream_get_contents(detectRequestBody());
 $body = formatData(json_decode($json));
 
-$headers = 'From: androidhub@intel.com' . "\r\n" .
-    'Reply-To: androidhub@intel.com' . "\r\n" .
+$headers =
+    'From: ' . $emailaddress . "\r\n" .
+    'Reply-To: ' . $emailaddress . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
-if (!email($emailaddress, "Someone wants to commit to the Android Hub!", $body, $headers)) {
+$args = '-f' . $emailaddress;
+
+if (!email($emailaddress, "Someone wants to commit to the Android Hub!", $body, $headers, $args)) {
   header('HTTP/1.1 400 Internal Server Error');
   echo json_encode(array(
     'message' => "An error occured sending email. Try again later."
@@ -38,12 +42,12 @@ function formatData($data) {
   return implode("\r\n", $emailBody);
 }
 
-function email($to, $subject, $body, $headers) {
+function email($to, $subject, $body, $headers, $args) {
   if (DEBUG_MODE) {
     return TRUE;
   }
 
-  return mail($to, $subject, $body, $headers);
+  return mail($to, $subject, $body, $headers, $args);
 }
 
 function detectRequestBody() {
