@@ -70,3 +70,13 @@ block trackers
     var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
     var str = '<script src="'+scheme+'widgets.outbrain.com/obtp.js" type="text/javascript"><\/script>';
       document.write(str);
+      
+    var wapLocalCode = 'us-en'; //dynamically set per localized site
+
+    //load analytics
+    (function() {
+      var host = (window.document.location.protocol == 'http:') ? "http://www.intel.com" : "https://www-ssl.intel.com";
+      var url = host+"/content/dam/www/global/wap/wap-android-hub.js"; //wap file url
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;  po.src = url;
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
