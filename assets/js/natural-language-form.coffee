@@ -47,6 +47,9 @@ do (window) ->
       else if @type == 'input'
         @_createInput()
 
+    _escape: (str) ->
+      String(str).replace(/<\/?[^>]+(>|$)/g, "")
+
     _createDropDown: ->
       self = this
       @fld = document.createElement('div')
@@ -145,11 +148,11 @@ do (window) ->
           # update selected index value
           @selectedIdx = idx
           # update original select element´s value
-          @elOriginal.value = @elOriginal.children[@selectedIdx].value
+          @elOriginal.value = @_escape(@elOriginal.children[@selectedIdx].value)
       else if @type == 'input'
         @getinput.blur()
-        @toggle.innerHTML = if @getinput.value.trim() != '' then @getinput.value else @getinput.getAttribute('placeholder')
-        @elOriginal.value = @getinput.value
+        @toggle.innerHTML = if @getinput.value.trim() != '' then @_escape(@getinput.value) else @getinput.getAttribute('placeholder')
+        @elOriginal.value = @_escape(@getinput.value)
 
   # add to global namespace
   window.NLForm = NLForm
