@@ -18,7 +18,10 @@ App.Share = (->
     if location.href.indexOf('posts/') >= 0 then return location.href else return share.url
 
   shareToTwitter = ->
-    window.open "http://twitter.com/share?url=#{grabUrl()}&text=#{share.twitter}&hashtags=#{share.tags}&url=#{grabUrl()}&", "twitterwindow", "height=450, width=550, top=#{dialogTop()}, left=#{dialogLeft()}, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"
+    attribute = if document.querySelector 'main.post' then document.getElementsByTagName('meta')['twitter:creator'].content else ''
+    attribute = attribute.substr 1, attribute.length
+    console.log attribute
+    window.open "http://twitter.com/share?url=#{grabUrl()}&text=#{share.twitter}&hashtags=#{share.tags}&url=#{grabUrl()}&via=#{attribute}", "twitterwindow", "height=450, width=550, top=#{dialogTop()}, left=#{dialogLeft()}, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"
 
   shareToFacebook = ->
     window.open "https://facebook.com/sharer/sharer.php?u=#{escape(grabUrl())}", "facebookwindow", "height=450, width=550, top=#{dialogTop()}, left=#{dialogLeft()}, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"
