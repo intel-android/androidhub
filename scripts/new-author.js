@@ -14,7 +14,8 @@ var inquirer = require("inquirer"),
     fs       = require("fs"),
     path     = require("path"),
     request  = require('request'),
-    yaml     = require("js-yaml");
+    yaml     = require("js-yaml"),
+    shell    = require("shelljs");
 
 var root = path.resolve(__dirname + '/../');
 
