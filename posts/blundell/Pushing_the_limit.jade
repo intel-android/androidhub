@@ -70,8 +70,8 @@ block content
 
     On the back of custom class loading comes Google's build time solution. The `MultiDexApplication`, extend this with your `Application` class and low and behold no more limit, _downsides being sloooower build times, slower app startup time, min sdk 14.. & more_ ... and one more thing, you also need to enable `multiDexEnabled = true` in your build.gradle.
 
-    [extends MultiDexApplication](http://developer.android.com/reference/android/support/multidex/MultiDexApplication.html)
-    [Building Apps over 65k Methods](http://developer.android.com/tools/building/multidex.html)
+    - [extends MultiDexApplication](http://developer.android.com/reference/android/support/multidex/MultiDexApplication.html)
+    - [Building Apps over 65k Methods](http://developer.android.com/tools/building/multidex.html)
 
     JW strikes again with another script / micro-library. Dex-method-list will output you all of the method references in a dex file. The idea being you can see the innards making up a library (or your app) and use this information to take further action to avoid code bloat.
 
@@ -85,6 +85,6 @@ block content
 
     [ClassyShark](https://github.com/google/android-classyshark)
 
-    If you haven't read any of this post and are scrolling in a neutral swedish haze READ THIS. There are many tools out their to help you see what's going on in your app, and there are also solutions to allow you to go over the 65k method limit. 2016 being the year of the method count, my one sage piece of advise is - do not wake the beast. Try to stay below the 65k method limit, once you start having to use multidex support I pray for you.
+    If you haven't read any of this post and are scrolling in a neutral swedish haze READ THIS. There are many tools out there to help you see what's going on in your app, and there are also solutions to allow you to go over the 65k method limit. 2016 being the year of the method count, my one sage piece of advise is - do not wake the beast. Try to stay below the 65k method limit, once you start having to use multidex support I pray for you.
 
     Know your dependencies. Know your code. Know your methods. Live and learn. 
