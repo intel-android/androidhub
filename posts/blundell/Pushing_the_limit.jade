@@ -1,0 +1,90 @@
+---
+title:      'Battling the limit'
+categories: [build]
+heroimage:  'limit-hero.jpeg'
+excerpt:    '2016 is the year of the method limit. Here I show you tools the community have written to combat, diagnose, thwart and laugh in the face of the 65k barrier.'
+featured: true
+---
+
+extends ../../views/layouts/_single
+
+block content
+  :marked
+    ### Battling the 65k method limit
+
+    2016 is the year of the method limit. Many hardened Android developer will already know this and will have been fighting the holy war for many years, but this year is when the pain, misery and violence spreads to the masses.
+
+    Dalvik error:
+    ```bash
+    Unable to execute dex: method ID not in [0, 0xffff]: 65536
+    Conversion to Dalvik format failed: Unable to execute dex: method ID not in [0, 0xffff]: 65536
+    ```
+
+    ART error:
+    ```bash
+    trouble writing output:
+    Too many field references: 131000; max is 65536.
+    You may try using --multi-dex option.
+    ```
+
+    A quick refresher on what the 65k method limit is from the official docs.
+
+    > Android application (APK) files contain executable bytecode files in the form of Dalvik Executable (DEX) files, which contain the compiled code used to run your app. The Dalvik Executable specification limits the total number of methods that can be referenced within a single DEX file to 65,536, including Android framework methods, library methods, and methods in your own code. Getting past this limit requires that you configure your app build process to generate more than one DEX file, known as a multidex configuration.
+
+    I'm not here to show you how to fix this error many a great dev has already written up on this topic and a pick of these are here:
+
+    [developer.android Multidex](http://developer.android.com/tools/building/multidex.html)
+    [Tom Reznik Dex methods limit](https://www.contentful.com/blog/2014/10/30/android-and-the-dex-64k-methods-limit/)
+    [Sebastiano Gottardo skys the _65k_ limit](https://medium.com/@rotxed/dex-skys-the-limit-no-65k-methods-is-28e6cb40cf71)
+
+    Here I want to show you tools the community have written to combat, diagnose, thwart and laugh in the face of the 65k method limit.
+
+    The growth of Android has never been faster and with this comes a growth in Android developers. With more Android developers comes a lot more knowledge and with more knowledge comes; more libraries! Libraries are great for reusing code, having code that is tried and tested, not reinventing the wheel, somebody else has already sweated blood so that you can reap the benefits of that builder pattern.
+    
+    However _public_ libraries are general purpose, they weren't written by you and they don't always have only your specific use case in mind. With that a library can come with a plethora of unused features, unused methods, unused code. We now have code bloat, next step up from code bloat? 65k method limit!
+
+    Using libraries is not the only way to hit the method limit but I would say it is the most frequent and I have a feeling 2016 is the year that the scales will tip with more apps having to contend with it than ignore it. 
+
+    With that, what have we got in our armory ready to fend off the beast.
+
+    First up, library makers are becoming aware of your plight. Google Play Services (6.1.11) that used to be a library of 29,000, yes you read that right twenty nine thousand methods. Has now been split into smaller modular libraries that you can pick and choose from.
+
+    [Google Play Services & DEX method limits](http://android-developers.blogspot.co.uk/2014/12/google-play-services-and-dex-method.html)
+
+    Old but gold although PlayServices fixed their gigantasaur library issues, JW did a write up and provided two scripts you can use to determine the method count for a jar or an aar. Further he showed the dependency graphs of these libraries. You can use this method of investigation to be able to determine if the library you are using can be easily split up.
+
+    [Scripting method count & dependency graphs](http://jakewharton.com/play-services-is-a-monolith/) 
+
+    You can also strip down libraries that you're using. This will remove classes and methods that you aren't using to make your own customised version of a library, therefore it will have just the methods you need (no more bloat). Here are two examples one for guava and one for Google play services.
+
+    [Strip down Guava](https://gist.github.com/devisnik/e54ea0a629adc82bcfa0)
+    [Strip down GPS](https://gist.github.com/dextorer/a32cad7819b7f272239b)
+
+    Scripting not for you? Here Dario Marcato has made a Gradle task that will do the stripping for you, automate all the things right!
+
+    [Gradle - Strip down GPS](https://gist.github.com/dmarcato/d7c91b94214acd936e42)
+
+    From back in the day, 2011 this guy saw the future. He wrote about custom class loading in Dalvik. You can load extra files from the filesystem instead of just the single dex file. Now this is the hardcore approach, it's probably not relevant for your app, but it's a great read.
+
+    [Custom class loading in Dalvik](http://android-developers.blogspot.co.uk/2011/07/custom-class-loading-in-dalvik.html)
+
+    On the back of custom class loading comes Google's build time solution. The `MultiDexApplication`, extend this with your `Application` class and low and behold no more limit, _downsides being sloooower build times, slower app startup time, min sdk 14.. & more_ ... and one more thing, you also need to enable `multiDexEnabled = true` in your build.gradle.
+
+    [extends MultiDexApplication](http://developer.android.com/reference/android/support/multidex/MultiDexApplication.html)
+    [Building Apps over 65k Methods](http://developer.android.com/tools/building/multidex.html)
+
+    JW strikes again with another script / micro-library. Dex-method-list will output you all of the method references in a dex file. The idea being you can see the innards making up a library (or your app) and use this information to take further action to avoid code bloat.
+
+    [dex-method-list](https://github.com/JakeWharton/dex-method-list)
+
+    A great new website from Sebastian Gottardo (the [GDE](https://developers.google.com/experts/people/sebastiano-gottardo) who strikes fear into the heart of the 65k beast)) can analyse any dependency telling you how many methods that library has, also what dependencies your library dependency has and the method count there! The idea being you can avoid big libraries or look for alternatives or at least be aware of what you are including.
+
+    [www.methodscount.com](http://www.methodscount.com/)
+
+    Lastly although not written specifically to combat the 65k limit. ClassyShark is an apk analysis tool from Boris Farber a developer advocate at Google this will allow you to browse APK executables. It supports Multidex'd applications, allowing you to see the dex files that make up an app and the method counts within these. As well as the method count for any jar.
+
+    [ClassyShark](https://github.com/google/android-classyshark)
+
+    If you haven't read any of this post and are scrolling in a neutral swedish haze READ THIS. There are many tools out their to help you see what's going on in your app, and there are also solutions to allow you to go over the 65k method limit. 2016 being the year of the method count, my one sage piece of advise is - do not wake the beast. Try to stay below the 65k method limit, once you start having to use multidex support I pray for you.
+
+    Know your dependencies. Know your code. Know your methods. Live and learn. 
