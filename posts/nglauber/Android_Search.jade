@@ -68,7 +68,8 @@ block content
     Inside `onCreateOptionsMenu()` we are loading the menu resource file using `inflate()`. Through the `Menu` object we finding the `MenuItem` that contains the `SearchView` widget.
     Setting a `OnQueryTextListener` object to the `SearchView` our app can detect two events: 
     * `onQueryTextChange` is called when the user type each character in the text field;
-    * `onQueryTextSubmitand` is triggered when the search is pressed.
+    * `onQueryTextSubmited` is triggered when the search is pressed.
+    
     So, you could implement whatever you want in these methods to perform a search (access a SQLite database or a web service, for example).
     That's it! This is the easiest way to implement a search functionality in your app.
 
@@ -306,4 +307,4 @@ block content
     ### Conclusion
     In this post, we implemented a search feature in an Android app and saw how easy is that. These are just the first steps, for much more details check [Android Search training tutorial](https://developer.android.com/guide/topics/search/index.html).
     
-    The source code of this sample is available at [my GitHub](https://github.com/nglauber/).
+    The source code of this sample is available at [my GitHub](https://github.com/nglauber/playground/tree/master/android/DemoSearch).
