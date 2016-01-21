@@ -47,7 +47,8 @@ If this is your first time contributing to the hub, you'll need to create yourse
 ##### Kick it off!
 In your terminal, type `npm run new`
 
-![gif of terminal session for a new author](https://drive.google.com/uc?id=0B6rG4e8CXFiGSVcwUHdaVnpReWM)
+![gif of terminal session for a new author](https://drive.google.com/uc?id=0B2h_bEaIcpeyTUxJYlBrMUtUSnc)
+
 
 ##### So what's gonna happen?
 All the values you enter into the cli prompt, create a .yaml entry for you in `data/authors/`, which will look like this. Well, almost like this, it should be filled with information about you.
@@ -78,7 +79,7 @@ If you're familiar with blog engines like [Ghost](https://ghost.org/) or [Jekyll
 ##### Kick it off!
 In your terminal, type `npm run post`
 
-![gif of terminal session for a new post](https://drive.google.com/uc?id=0B6rG4e8CXFiGS1RPU1BfOU5vdGs)
+![gif of terminal session for a new post](https://drive.google.com/uc?id=0B2h_bEaIcpeyMDNPYjVfbGV5aE0)
 
 ##### Example Post:
 
