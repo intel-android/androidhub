@@ -11,47 +11,47 @@ block content
   :marked
     A look at how Android developers can better deal with fragmentation
 
-	As this [Android infographic](https://androidhub.intel.com/posts/peachpellen/Infographic:_Android_in_2015.html) shows, there are now more than 24,000 unique Android devices developers can support, with more than 5,000 being released in 2015 alone. The level of fragmentation app developers now have to deal with is simply massive, and it continues to grow exponentially.
-	This post is about the ways mobile developers can handle fragmentation to cut down on time and frustration while building their apps, along with a few simple tips.
+    As this [Android infographic](https://androidhub.intel.com/posts/peachpellen/Infographic:_Android_in_2015.html) shows, there are now more than 24,000 unique Android devices developers can support, with more than 5,000 being released in 2015 alone. The level of fragmentation app developers now have to deal with is simply massive, and it continues to grow exponentially.
+    This post is about the ways mobile developers can handle fragmentation to cut down on time and frustration while building their apps, along with a few simple tips.
 
-	###Cross Platform Tools 
-	One of the biggest hurdles fragmentation throws at app developers is screen ratio. Cross platform tools such as [Platino](http://platino.io/) (2D) and [Unity](http://unity3d.com/) (3D) have automatic scaling built in, already enabled with default settings. In addition, you as a developer can tweak the settings to suit your app, for example, ensuring that rather than seeing black bars or an extra-wide device, you’ll see decorative graphics while maintaining the aspect ratio you intended for the app itself.
+    ###Cross Platform Tools 
+    One of the biggest hurdles fragmentation throws at app developers is screen ratio. Cross platform tools such as [Platino](http://platino.io/) (2D) and [Unity](http://unity3d.com/) (3D) have automatic scaling built in, already enabled with default settings. In addition, you as a developer can tweak the settings to suit your app, for example, ensuring that rather than seeing black bars or an extra-wide device, you’ll see decorative graphics while maintaining the aspect ratio you intended for the app itself.
 
-	###Don't Hard-code
-	Although engines like those mentioned above are very forgiving about hardcoding object positions (e.g. obj.x = 100, obj.y = 250) or sizes, it is still a terrible practice to get into, and one I was very guilty of myself when I made my first app. Using relative positioning/sizing from the start will save countless hours of fine tuning later on. 
-	###Image Re-sizers 
-	Another annoyance for developers can be PPI (pixels per inch), or retina devices. Retina devices themselves aren’t an issue in terms of fragmentation, but rather trying to support retina, non-retina and “mid-retina”, the devices that fall somewhere between the two. Using an image re-sizer, such as [Android Asset Studio](http://romannurik.github.io/AndroidAssetStudio/), will save you a lot of time by creating appropriately sized images using standard naming conventions for each.
+    ###Don't Hard-code
+    Although engines like those mentioned above are very forgiving about hardcoding object positions (e.g. obj.x = 100, obj.y = 250) or sizes, it is still a terrible practice to get into, and one I was very guilty of myself when I made my first app. Using relative positioning/sizing from the start will save countless hours of fine tuning later on. 
+    ###Image Re-sizers 
+    Another annoyance for developers can be PPI (pixels per inch), or retina devices. Retina devices themselves aren’t an issue in terms of fragmentation, but rather trying to support retina, non-retina and “mid-retina”, the devices that fall somewhere between the two. Using an image re-sizer, such as [Android Asset Studio](http://romannurik.github.io/AndroidAssetStudio/), will save you a lot of time by creating appropriately sized images using standard naming conventions for each.
 
-	###Large Graphics
-	This tip will be obvious to most of you, but a common pitfall for new app developers, especially those creating their own graphics or being asked for dimensions by a designer, is to grossly underestimate how large an image needs to be to look perfect on a large retina display. Looking at a tablet, you might think "OK, 500 x 500 pixels seems like a good size!" - you need to quadruple that for true retina, making 2000 x 2000.
-	Personally, I believe in adding a "buffer" just in case, normally an additional 50% or, in this example, 3000 x 3000. 
-	###Under the Hood
-	Beyond what we can see in terms of fragmentation, there's also what we don't see; the drastically different variety of what's powering the device. Memory, storage, power- there are Android devices on sale today that have comparable stats to the earliest smartphones from almost a decade ago, while others, albeit a select few, (like the Intel powered Asus [ZenFone 2](https://www.asus.com/us/Phone/ZenFone_2_ZE551ML/),) are closer to what we'd expect in a laptop than a phone.  This is something developers must account for; either go all out on particles, physics, hundreds of sprites and high quality audio playing on several channels at once, limiting the number of devices you can support, or find the highest "reasonable" level of quality you can, while retaining support for the majority of devices. This will take testing to get right.
+    ###Large Graphics
+    This tip will be obvious to most of you, but a common pitfall for new app developers, especially those creating their own graphics or being asked for dimensions by a designer, is to grossly underestimate how large an image needs to be to look perfect on a large retina display. Looking at a tablet, you might think "OK, 500 x 500 pixels seems like a good size!" - you need to quadruple that for true retina, making 2000 x 2000.
+    Personally, I believe in adding a "buffer" just in case, normally an additional 50% or, in this example, 3000 x 3000. 
+    ###Under the Hood
+    Beyond what we can see in terms of fragmentation, there's also what we don't see; the drastically different variety of what's powering the device. Memory, storage, power- there are Android devices on sale today that have comparable stats to the earliest smartphones from almost a decade ago, while others, albeit a select few, (like the Intel powered Asus [ZenFone 2](https://www.asus.com/us/Phone/ZenFone_2_ZE551ML/),) are closer to what we'd expect in a laptop than a phone.  This is something developers must account for; either go all out on particles, physics, hundreds of sprites and high quality audio playing on several channels at once, limiting the number of devices you can support, or find the highest "reasonable" level of quality you can, while retaining support for the majority of devices. This will take testing to get right.
 
-	###Good Emulators
-	You'll end up doing more than half of your testing on emulators. Unfortunately, the official Android emulator is so slow to launch that it makes even those of us who've used it a thousand times wonder whether or not something went wrong. [Genymotion](https://www.genymotion.com/#!/) solves that problem. It's free for basic testing, with some premium options if you need them, and it allows you to see a very reliable simulation of what you'll see on a device; including less than desirable performance, depending on your settings. (I've found it especially useful for positioning and sizing images before I'm ready to test on devices.) 
-	###Testing Environment
-	I once worked with a company that catered mostly to hobbyists, kids and people without any development experience, in other words people who hadn't yet learned the importance of testing on device. One of the main complaints I'd hear once anyone had published was "I'm getting bad reviews because my app just crashes on startup, but it worked *fine* in the emulator!" - setting up your test environment is crucial.
+    ###Good Emulators
+    You'll end up doing more than half of your testing on emulators. Unfortunately, the official Android emulator is so slow to launch that it makes even those of us who've used it a thousand times wonder whether or not something went wrong. [Genymotion](https://www.genymotion.com/#!/) solves that problem. It's free for basic testing, with some premium options if you need them, and it allows you to see a very reliable simulation of what you'll see on a device; including less than desirable performance, depending on your settings. (I've found it especially useful for positioning and sizing images before I'm ready to test on devices.) 
+    ###Testing Environment
+    I once worked with a company that catered mostly to hobbyists, kids and people without any development experience, in other words people who hadn't yet learned the importance of testing on device. One of the main complaints I'd hear once anyone had published was "I'm getting bad reviews because my app just crashes on startup, but it worked *fine* in the emulator!" - setting up your test environment is crucial.
 
-	My setup looks like this:
-	
-	![Wall Mounted Devices](library/peach_devices.jpg)
-
-
-	I'm using this powered/data 7-port [usb hub](http://amzn.to/1ZK5not) which is hooked up to my computer and power. *(Normally I'd have the devices hooked up to the hub, of course!)* The phones are held up with regular [PadTabs](http://amzn.to/1JfxynZ), and the tablets with [Tablet PadTabs](http://amzn.to/1QbwIb6) - in the past I've had a long table set up with devices as well, but this saves me space and looks cool ;-)
-
-	**Note: I've previously tried using the regular padtabs on an iPad Mini and a kindle of the same size, they didn't work well, so if you're planning on using them make sure you get the right kind as it's a pain to swap them around later on.*
+    My setup looks like this:
+    
+    ![Wall Mounted Devices](library/peach_devices.jpg)
 
 
-	###Automation
-	Automating as much of your build process as possible can be really useful. In my case, I test on 4 or 5 Android devices each time I rebuild an app, or, when doing Platino QA, I run 5 different apps on each device. You can get really fancy with truly automated, complex tests, but just learning how to write a simple script to build and install these to your usual set of devices saves a lot of frustration and can be an interesting project if it's not something you've tried before. (The first time I did this I'd never used AppleScript before and it took me about an hour and a half to get 12 demoes building and installing on both Android and iOS; it's probably saved me about 70* hours since then.)
+    I'm using this powered/data 7-port [usb hub](http://amzn.to/1ZK5not) which is hooked up to my computer and power. *(Normally I'd have the devices hooked up to the hub, of course!)* The phones are held up with regular [PadTabs](http://amzn.to/1JfxynZ), and the tablets with [Tablet PadTabs](http://amzn.to/1QbwIb6) - in the past I've had a long table set up with devices as well, but this saves me space and looks cool ;-)
 
-	**Admittedly, this is because there are times I'm testing on over a dozen devices, often several times for minor changes; still, I would expect the average Android dev to save a few days of work over the course of the year.*
+    **Note: I've previously tried using the regular padtabs on an iPad Mini and a kindle of the same size, they didn't work well, so if you're planning on using them make sure you get the right kind as it's a pain to swap them around later on.*
 
-	###Thoughts?
 
-	If anyone has a testing environment set up that they've found makes testing on a number of devices easier or more enjoyable, I'd really like to hear about it.
+    ###Automation
+    Automating as much of your build process as possible can be really useful. In my case, I test on 4 or 5 Android devices each time I rebuild an app, or, when doing Platino QA, I run 5 different apps on each device. You can get really fancy with truly automated, complex tests, but just learning how to write a simple script to build and install these to your usual set of devices saves a lot of frustration and can be an interesting project if it's not something you've tried before. (The first time I did this I'd never used AppleScript before and it took me about an hour and a half to get 12 demoes building and installing on both Android and iOS; it's probably saved me about 70* hours since then.)
 
-	I'd also love to hear if anyone has any tips on dealing with fragmentation that haven't been mentioned here, as I'd love to include them in a future post.
+    **Admittedly, this is because there are times I'm testing on over a dozen devices, often several times for minor changes; still, I would expect the average Android dev to save a few days of work over the course of the year.*
 
-	Please [share them with me](http://twitter.com/peachpellen) :-)
+    ###Thoughts?
+
+    If anyone has a testing environment set up that they've found makes testing on a number of devices easier or more enjoyable, I'd really like to hear about it.
+
+    I'd also love to hear if anyone has any tips on dealing with fragmentation that haven't been mentioned here, as I'd love to include them in a future post.
+
+    Please [share them with me](http://twitter.com/peachpellen) :-)
