@@ -1,5 +1,5 @@
 ---
-title:      'Creating a searching interface in your Android app'
+title:      'Creating a search field in your Android app'
 categories: [build]
 heroimage:  'AndroidSearch_Hero.jpg'
 excerpt:    '' 
@@ -72,7 +72,8 @@ block content
     Inside `onCreateOptionsMenu()` we are loading the menu resource file using `inflate()`. Through the `Menu` object we are finding the `MenuItem` that contains the `SearchView` widget.
     Setting an `OnQueryTextListener` object to the `SearchView` our app can detect two events: 
     * `onQueryTextChange` is called when the user types each character in the text field;
-    * `onQueryTextSubmitand` is triggered when the search is pressed.
+    * `onQueryTextSubmit` is triggered when the search is pressed.
+    
     So, you could implement whatever you want in these methods to perform a search (access a SQLite database or a web service, for example).
     That's it! This is the easiest way to implement a search functionality in your app.
 
@@ -98,7 +99,7 @@ block content
     * `android:searchSuggestIntentData` complements the previous property because it defines a `Uri` pattern for the Intent triggered when the user clicks in a suggestion.
     
     As we know, content providers usually accesses a SQLite database to store and retrieve data, but we can use it to access the web too, as the Android documentation says clearly:
-    > "may be called from many threads at once, and must be thread-safe".
+    > Content providers "may be called from many threads at once, and must be thread-safe".
     
     In this example, the suggestions will be retrieved from a JSON file stored in a web server. Create a new content provider naming it `CitySuggestionProvider` and just implement `query()` (the others are empty):
 
@@ -321,4 +322,4 @@ block content
     ### Conclusion
     In this post, we implemented a search feature in an Android app and saw how easy it is. These are just the first steps, for more details check [Android Search training tutorial](https://developer.android.com/guide/topics/search/index.html).
     
-    The source code of this sample is available at [my GitHub](https://github.com/nglauber/).
+    The source code of this sample is available at [my GitHub](https://github.com/nglauber/playground/tree/master/android/DemoSearch).
