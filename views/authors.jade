@@ -12,7 +12,8 @@ block content
   main: section: .card 
     ul.grid.reverse-margin-md
       for author in helpers.sortByLastName(data.authors)
-        +author(author)
+        if author.nickname != 'admin'
+          +author(author)
 
     .spacer.lg.hidden-xs
 

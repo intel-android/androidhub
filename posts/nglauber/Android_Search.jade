@@ -9,11 +9,13 @@ extends ../../views/layouts/_single
 
 block content
   :marked
-    Search is a feature existing in a large number of Android applications. Provide a way to search content inside your app is very important once helps users to find the content that they want.    
-    However, this search must be fast and efficient, once getting information may be the main reason the user opened your app.
-    The Android SDK provides a set of APIs to implement this pattern in your app, and in this post we'll see how to give the first steps to implement it in your application.
+    Search is a feature existing in a large number of Android applications. Providing a way to search content inside your app is very important as it helps users to find the content that they want.    
+    However, this search must be fast and efficient as getting information may be the main reason the user opened your app.
+    The Android SDK provides a set of APIs to implement this pattern in your app, and in this post we'll review the first steps needed to implement it into your application.
+
     ### Hands on!
-    Let's get start! Create a new project in Android Studio using "Empty activity" template. Once the project is created, add a new menu file and name it as `res/menu/menu_search.xml`. 
+    Let's get started! Create a new project in Android Studio using the "Empty activity" template. Once the project is created, add a new menu file and name it as `res/menu/menu_search.xml`: 
+
     ```xml
     <menu xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -24,12 +26,13 @@ block content
                 app:actionViewClass="android.support.v7.widget.SearchView" />
     </menu>
     ```
-    Our menu file contains just one item that will be responsible to display a search button. When the user press this button, it expands and shows a text field allowing enter the term to be searched. 
+    
+    Our menu file contains just one item responsible to display a search button. When the user presses this button, it expands and shows a text field allowing the use to enter the term to be searched. 
     The widget responsible for this task is the `SearchView` as we can see in the `app:actionViewClass` attribute. 
-    Defining `app:showAsAction` with the value `collapseActionView` allows `SearchView` expand itself when the button is tapped.
+    Defining `app:showAsAction` with the value `collapseActionView` allows `SearchView` to expand itself when the button is tapped.
     > Notice we are using the support library here to keep compatibility across Android versions.
     
-    Once we create a menu file, we're going to load it in the `MainActivity` like described below.
+    Once we create a menu file, we're going to load it in the `MainActivity` like described below:
     
     ```java
     public class MainActivity extends AppCompatActivity 
@@ -65,18 +68,27 @@ block content
         }
     }
     ```
+<<<<<<< HEAD
     Inside `onCreateOptionsMenu()` we are loading the menu resource file using `inflate()`. Through the `Menu` object we finding the `MenuItem` that contains the `SearchView` widget.
     Setting a `OnQueryTextListener` object to the `SearchView` our app can detect two events: 
     * `onQueryTextChange` is called when the user type each character in the text field;
     * `onQueryTextSubmited` is triggered when the search is pressed.
     
+=======
+    
+    Inside `onCreateOptionsMenu()` we are loading the menu resource file using `inflate()`. Through the `Menu` object we are finding the `MenuItem` that contains the `SearchView` widget.
+    Setting an `OnQueryTextListener` object to the `SearchView` our app can detect two events: 
+    * `onQueryTextChange` is called when the user types each character in the text field;
+    * `onQueryTextSubmitand` is triggered when the search is pressed.
+>>>>>>> 10dac83a2e44ec2159acc759dca23d5ac49eb2cf
     So, you could implement whatever you want in these methods to perform a search (access a SQLite database or a web service, for example).
     That's it! This is the easiest way to implement a search functionality in your app.
 
     ### Improving searching experience
-    The previous approach works fine, but in general a search operation need to help users to find what they want. A good way to do this is showing some suggestions while the user is typing.
-    To demonstrate this approach, we will display a list of cities while the user types the city's name in the `SearchView`. The list of is stored in a server.
-    The first thing we have to do is create a searchable configuration. So, add a new file to the project at `res/xml/searchable.xml`.
+    The previous approach works fine, but in general a search operation is needed to help users find what they want. A good way to do this is showing some suggestions while the user is typing.
+    To demonstrate this approach, we will display a list of cities while the user types the city's name in the `SearchView`. This list is stored in a server.
+    The first thing we have to do is create a searchable configuration. So, add a new file to the project at `res/xml/searchable.xml`:
+
     ```xml
     <searchable xmlns:android="http://schemas.android.com/apk/res/android"
                 android:hint="@string/hint_search"
@@ -86,16 +98,18 @@ block content
                 android:searchSuggestIntentAction="android.intent.action.VIEW"
                 android:searchSuggestIntentData="content://ngvl.android.demosearch.city"/>
     ```
+    
     Let's understand the properties defined in this file:
     * Voice search button was enabled using `android:voiceSearchMode` property.
     * While the user is typing, the `query()` method will be called in a content provider that responds to `android:searchSuggestAuthority` (we'll see this provider just later).
     * When the user selects a suggestion in the list, a new activity will be called using the action described in `android:searchSuggestIntentAction` property.
     * `android:searchSuggestIntentData` complements the previous property because it defines a `Uri` pattern for the Intent triggered when the user clicks in a suggestion.
     
-    As we know, content providers usually accesses a SQLite database to store and retrieve data, but we can use it to access the web too, once as the Android documentation says clearly:
+    As we know, content providers usually accesses a SQLite database to store and retrieve data, but we can use it to access the web too, as the Android documentation says clearly:
     > "may be called from many threads at once, and must be thread-safe".
     
-    In this example, the suggestions will be retrieved from a JSON file stored in a web server. Create a new content provider naming it `CitySuggestionProvider` and we just implement teh `query()` (the others are empty).
+    In this example, the suggestions will be retrieved from a JSON file stored in a web server. Create a new content provider naming it `CitySuggestionProvider` and just implement `query()` (the others are empty):
+
     ```java
     public class CitySuggestionProvider extends ContentProvider {
 
@@ -159,17 +173,19 @@ block content
           Other methods are empty...
     }
     ```
+    
     When the user starts to type the text, our provider is called using an uri like below.
     `content://ngvl.android.demosearch.citysuggestion/search_suggest_query/santos?limit=50`
 
     The system calls our provider adding `search_suggest_query/<text>` in the end of the uri. A limit of results is set to 50 by default, and it is passed as a query parameter.
-    It's important to say that the search operation is done outside the UI thread, so we can perform a HTTP request like we did. In this example we are storing the city's list in memory, but in practice we can use a table in our SQLite database.
+    It's important to note that the search operation is done outside the UI thread so we can perform a HTTP request like we did. In this example we are storing the city's list in memory, but in practice we can use a table in our SQLite database.
     
     Using the `Uri` object, we've got the text parameter using `getLastPathSegment()` and max number of suggestions to be returned using `getQueryParameter()`.
-    After read the content from the web, a MatrixCursor was built to represents the suggested cities list. One important detail in here is column names. 
+    After reading the content from the web, a MatrixCursor was built to represent the suggested cities list. One important detail in here is column names. 
     The columns "_id" and "suggest_text_1" are obligatory. You can use more columns or create a subclass of cursor adapter to customize your suggestions list.
 
-    As I said before, our suggestions are stored in a JSON file on a web server. So here, we are performing the request to retrieve the cities' list and reading it as a JSON file using OkHttp library. So, don't forget to add this dependency in the `build.gradle` file.
+    As I said before, our suggestions are stored in a JSON file on a web server. So here, we are performing the request to retrieve the cities' list and reading it as a JSON file using OkHttp library. So, don't forget to add this dependency in the `build.gradle` file:
+
     ```json
     dependencies {
         ...
@@ -188,9 +204,9 @@ block content
                 android:enabled="true"
                 android:exported="true"/>
     ```
-    Be sure of the `android:authorities` is the same of declared in searchable configuration file.
+    Be sure the `android:authorities` is the same as declared in the searchable configuration file.
     
-    After that, we also need to connect the activity with the searchable configuration. Change the activity declaration in `AndroidManifest.xml`.    
+    After that, we also need to connect the activity with the searchable configuration. Change the activity declaration in `AndroidManifest.xml`:    
     ```xml
     <activity android:name=".MainActivity">
         <intent-filter>
@@ -206,7 +222,7 @@ block content
     </activity>
     ```
     Using the value `android.app.searchable` for the `<meta-data>` tag, we are defining the activity has a searchable configuration. 
-    Now we have set this information to the `SearchView` widget. Modify the `onCreateOptionsMenu()` to looks like below.
+    Now we have set this information to the `SearchView` widget. Modify the `onCreateOptionsMenu()` to look like below:
     ```java
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -225,15 +241,16 @@ block content
     }
     ```
 
-    Run the application and if typing some text inside the SearchView. You'll see that some suggestions are displayed.
+    Run the application and start typing some text inside the SearchView. You'll see that some suggestions are displayed:
     
     ![Android search](library/AndroidSearch_1.png)
 
     Nice! Our suggestions feature is working. But what happens when a suggestion is chosen? Or if I pressed the search button in the keyboard?
 
     ### Handling suggestions and search action
-    At this moment, when the user press the search button or selects a suggestion in the list, the a new instance of the MainActivity is created and displayed.
-    To avoid this, we can set our activity's launch mode as `singleTop` in `AndroidManifest.xml` and implement `onNewIntentMethod()`.
+    At this moment, when the user presses the search button or selects a suggestion in the list, a new instance of the MainActivity is created and displayed.
+    To avoid this, we can set our activity's launch mode as `singleTop` in `AndroidManifest.xml` and implement `onNewIntentMethod()`:
+
     ```xml
     <activity android:name=".MainActivity"
         android:launchMode="singleTop">
@@ -252,13 +269,15 @@ block content
         }
     }    
     ```
-    When the user clicks on search button, the activity is called using ACTION_SEARCH, but on select a suggestion, the ACTION_VIEW is used (as we defined in searchable configuration file).
-    If you run the application now and perform a search, the same instance of `MainActivity` is used instead of create a new one.
     
-    You can use this approach without problem, but you could need (or prefer) perform the search in another activity.
-    To do that, we are going to create a new searchable activity that will be called when the user presses the search button or select a suggestion.
+    When the user clicks on the search button, the activity is called using ACTION_SEARCH, but when selecting a suggestion, the ACTION_VIEW is used (as we defined in searchable configuration file).
+    If you run the application now and perform a search, the same instance of `MainActivity` is used instead of creating a new one.
+    
+    You can use this approach without problem, but you could need (or prefer) to perform the search in another activity.
+    To do that, we are going to create a new searchable activity that will be called when the user presses the search button or selects a suggestion.
 
-    Its declaration in `AndroidManifest.xml` must be like this.
+    Its declaration in `AndroidManifest.xml` must be like this:
+
     ```xml
     <activity android:name=".SearchableActivity">
         <intent-filter>
@@ -280,8 +299,10 @@ block content
     }
     // Remove onNewIntent method too
     ```
-    With this implementation, when the user press the return/search button, a new activity is started using the action "`android.intent.action.SEARCH`" and one parameter called "`query`".
-    This parameter represents the text typed by the user in the `SearchView`. The code below show how to handle a search in the `SearchableActivity`.
+    
+    With this implementation, when the user presses the return/search button, a new activity is started using the action "`android.intent.action.SEARCH`" and one parameter called "`query`".
+    This parameter represents the text typed by the user in the `SearchView`. The code below shows how to handle a search in the `SearchableActivity`:
+
     ```java
     public class SearchableActivity extends AppCompatActivity {
         @Override
@@ -302,9 +323,10 @@ block content
         }
     }
     ```
-    Once you have a query parameter you can search whatever you want. For example, in a local database/content provider or in a web service.
+    
+    Once you have a query parameter you can search whatever you want. For example, a local database/content provider or in a web service.
     
     ### Conclusion
-    In this post, we implemented a search feature in an Android app and saw how easy is that. These are just the first steps, for much more details check [Android Search training tutorial](https://developer.android.com/guide/topics/search/index.html).
+    In this post, we implemented a search feature in an Android app and saw how easy it is. These are just the first steps, for more details check [Android Search training tutorial](https://developer.android.com/guide/topics/search/index.html).
     
     The source code of this sample is available at [my GitHub](https://github.com/nglauber/playground/tree/master/android/DemoSearch).
