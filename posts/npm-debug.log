@@ -1,0 +1,45 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/5.1.0/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'bower' ]
+2 info using npm@1.4.29
+3 info using node@v5.1.0
+4 warn deprecated This version of npm lacks support for important features,
+5 warn deprecated such as scoped packages, offered by the primary npm
+6 warn deprecated registry. Consider upgrading to at least npm@2, if not the
+7 warn deprecated latest stable version. To upgrade to npm@2, run:
+8 warn deprecated npm -g install npm@latest-2
+9 warn deprecated To upgrade to the latest stable version, run:
+10 warn deprecated npm -g install npm@latest
+11 warn deprecated (Depending on how Node.js was installed on your system, you
+12 warn deprecated may need to prefix the preceding commands with `sudo`, or if
+13 warn deprecated on Windows, run them from an Administrator prompt.)
+14 warn deprecated If you're running the version of npm bundled with
+15 warn deprecated Node.js 0.10 LTS, be aware that the next version of 0.10 LTS
+16 warn deprecated will be bundled with a version of npm@2, which has some small
+17 warn deprecated backwards-incompatible changes made to `npm run-script` and
+18 warn deprecated semver behavior.
+19 error Error: Cannot find module 'sha'
+19 error     at Function.Module._resolveFilename (module.js:338:15)
+19 error     at Function.Module._load (module.js:289:25)
+19 error     at Module.require (module.js:366:17)
+19 error     at require (module.js:385:17)
+19 error     at Object.<anonymous> (/usr/local/lib/node_modules/npm/lib/cache/add-local-tarball.js:7:11)
+19 error     at Module._compile (module.js:425:26)
+19 error     at Object.Module._extensions..js (module.js:432:10)
+19 error     at Module.load (module.js:356:32)
+19 error     at Function.Module._load (module.js:313:12)
+19 error     at Module.require (module.js:366:17)
+19 error     at require (module.js:385:17)
+20 error If you need help, you may report this *entire* log,
+20 error including the npm and node versions, at:
+20 error     <http://github.com/npm/npm/issues>
+21 error System Darwin 14.4.0
+22 error command "/usr/local/Cellar/node/5.1.0/bin/node" "/usr/local/bin/npm" "install" "-g" "bower"
+23 error cwd /Users/peachpellen/androidhub/posts
+24 error node -v v5.1.0
+25 error npm -v 1.4.29
+26 error code MODULE_NOT_FOUND
+27 verbose exit [ 1, true ]
