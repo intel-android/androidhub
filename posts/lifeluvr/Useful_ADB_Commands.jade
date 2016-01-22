@@ -1,59 +1,87 @@
 ---
 title:      'Useful ADB Commands'
-categories: [ideate, launch, design, build]
-heroimage:  'https://lh4.googleusercontent.com/-vwzrwPRPXzY/Vp6-JJHxo3I/AAAAAAAAAFI/ctNdfb1pNbE/w897-h172-no/heroImage.jpg'
+categories: [launch, build]
+heroimage:  'ericpost1.jpg'
 excerpt:    'What they do and how to use them!' 
 ---
 
+extends ../../views/layouts/_single
 
-For this tutorial you will need to have _ADB_ installed on your computer, your Android's _USB Debugging_ set to _ON_ and your device plugged into your computer! Ready?  
+block content
+	:marked
+		For this tutorial you will need to have _ADB_ installed on your computer, your Android's _USB Debugging_ set to _ON_ and your device plugged into your computer! Ready?  
 
-Here's the #1 _ADB_ command!  
-In your computer's terminal, type:
+		Here's the #1 _ADB_ command!  
+		In your computer's terminal, type:
 
- * ~$ _adb devices_
-    * Basically, this is a system check. It tells if you have good connection and if your settings are correct!
+		```
+		~$ adb devices
+		```
 
-![Successful _ADB_ Connection](http://i.kinja-img.com/gawker-media/image/upload/delsoa5w5hhpzgru7vrc.png)
+		Basically, this is a system check. It tells if you have good connection and if your settings are correct!
 
-These next two commands are pretty easy to understand.  
-They're used to start and stop the _ADB_ server!
+		![Successful _ADB_ Connection](http://i.kinja-img.com/gawker-media/image/upload/delsoa5w5hhpzgru7vrc.png)
 
-* ~$ _adb start-server_  
-* ~$ _adb kill-server_ 
+		These next two commands are pretty easy to understand.  
+		They're used to start and stop the _ADB_ server!
 
-The next command (my favorite) is: 
+		```
+		~$ adb start-server
+		~$ adb kill-server
+		``` 
 
- * ~$ _adb install /path/to/.apk_  
-    * The way I like to use this command is to type, "adb install " (space after install). Then, _drag n' drop_ any .apk file from anywhere onto the terminal and press _Enter_ for super fast app installs from your computer!  
+		The next command (my favorite) is: 
 
-![ADBinstall](https://lh4.googleusercontent.com/-bFeWpu-wpJI/Vp6-N25uXdI/AAAAAAAAAFQ/5IU2Q1q7fX0/w803-h502-no/DroppingAPK.png)
+		```
+		~$ adb install /path/to/.apk
+		```
 
-Now, we'll look at the reboot commands:
+		The way I like to use this command is to type, "adb install " (space after install). Then, _drag n' drop_ any .apk file from anywhere onto the terminal and press _Enter_ for super fast app installs from your computer!  
 
- * ~$ _adb reboot_
- * ~$ _adb reboot-recovery_
- * ~$ _adb reboot-bootloader_
-    * That's right! You can reboot your devices into 3 different modes without touching it! That's pretty awesome if you ask me!
+		![ADBinstall](https://lh4.googleusercontent.com/-bFeWpu-wpJI/Vp6-N25uXdI/AAAAAAAAAFQ/5IU2Q1q7fX0/w803-h502-no/DroppingAPK.png)
 
-The next two commands are kind of the same but opposite:
+		Now, we'll look at the reboot commands:
 
- * ~$ _adb push /file/to/push /where/to/push it_  
-    * To understand this better we'll use the old _drag n' drop_ trick! Type, "adb push " (space after push). Then, _drag n' drop_ the file you want to push to your Android. Lastly, tell the file where to go!
-* Example:~$ _adb push /home/Downloads/awesome.mp3 /sdcard/Music/_
- 
-Now for the other one:
+		```
+		~$ adb reboot
+		~$ adb reboot-recovery
+		~$ adb reboot-bootloader
+		```
+		
+		That's right! You can reboot your devices into 3 different modes without touching it! That's pretty awesome if you ask me!
 
-* ~$ _adb pull /file/to/pull /where/to/put it_
-    * Let's use _adb push_'s example but, switched around a little bit. This is because we're pulling from the Android device instead!
-* Example:~$ _adb pull /sdcard/Music/awesome.mp3 /home/Downloads/_ 
+		The next two commands are kind of the same but opposite:
 
-![ADBpush&pull](https://lh6.googleusercontent.com/-XuODZ0wElv8/Vp6-b9cOEyI/AAAAAAAAAFg/4t5CVBI-FJw/w803-h502-no/ADBpush%2526pull.png)
+		``` 
+		~$ adb push /file/to/push /where/to/push it
+		```
+
+		To understand this better we'll use the old _drag n' drop_ trick! Type, "adb push " (space after push). Then, _drag n' drop_ the file you want to push to your Android. Lastly, tell the file where to go!
+		Example:
+
+		```
+		~$ adb push /home/Downloads/awesome.mp3 /sdcard/Music/
+		```
+
+		Now for the other one:
+
+		```
+		~$ adb pull /file/to/pull /where/to/put it
+		```
+
+		Let's use _adb push_'s example but, switched around a little bit. This is because we're pulling from the Android device instead!
+		Example:
+
+		```
+		~$ adb pull /sdcard/Music/awesome.mp3 /home/Downloads/
+		``` 
+
+		![ADBpush&pull](https://lh6.googleusercontent.com/-XuODZ0wElv8/Vp6-b9cOEyI/AAAAAAAAAFg/4t5CVBI-FJw/w803-h502-no/ADBpush%2526pull.png)
 
 
- 
-Starting to get the hang of using _ADB_ ?  
-Stay Tuned!  
 
-Up next:  
-#### Useful _ADB_ Commands II
+		Starting to get the hang of using _ADB_ ?  
+		Stay Tuned!  
+
+		Up next:  
+		#### Useful _ADB_ Commands II
