@@ -1,0 +1,138 @@
+---
+title:      'Android IoT BigData Sketch Ideas'
+categories: [ideate, design]
+heroimage:  'android-iot-big-data.jpeg'
+excerpt:    'Android + IoT and Big Data is a very wide range field to investigate. Let’s briefly describe what we have' 
+---
+
+extends ../../views/layouts/_single
+
+block content
+  :marked
+    Android & IoT & BigData
+    =======================
+
+    Android
+    -------
+
+    Android + IoT and Big Data is a very wide range field to investigate.
+
+    Let’s briefly describe what is the Android operating system is.
+
+    It’s an open source OS platform based on Dalvik Java Virtual Machine (JVM) where all app is like a containers, similar to Java OSGi containers concept.
+
+    As we know Dalvik soon will migrate from Java to OpenJDK
+
+    When we “open” or better to say “running” Android Application (container) we lunching Android Activity. Each of activity has own UI layout, or run as background process. All activities is assigned to Application Container that has spawn them.
+
+    If user close the application, some processes and activities will be destroyed. But some types of processes can survive and run in background, until user not force stop them on demand.
+
+    Activity can has a View of fully functional application and fit full screen or take a part of the screen like widget or don’t have visually View and notify the user through notification bar.
+
+    All activities have defined lifecycle state and phase events.
+
+    http://developer.android.com/reference/android/app/Activity.html
+
+    onCreate – function that invoked when activity has been created
+
+    onDestroy – function that invoked when activity has been destroyed
+
+    So we can control how application will behave when the phases is changing
+
+    When activity is running it could serve any logic and start the different types of Intentions to let other Application do their part of the job
+
+    Android Applications is able to send different types of intentions for example: edit graphic picture, send email, sharing something, also we can create a custom intensions too.
+
+    This way other application is subscribing to listen intensions the other application can spawn. Example is Photoshop, Picasa, Instagram is subscribing somewhere in theirs Activities to listen intension of the user to edit picture and provides a mechanism to get this picture from the App who send intension and can provide result back to that App
+
+    Android has a lot of sensors and detectors and different kind of tech sweets and extras such as camera, mic, barometer, gyroscope, accelerometer, health care detectors, light sensors, GPS, GSM, CDMA, Wi-Fi, Bluetooth…
+
+    And in near future smartphones hardware can also became customizable, we can see Google attempts in Ara Project
+
+    To get familiar with Android developing first, try to install Code Editor (IDE) based on Intellij IDEA <http://developer.android.com/sdk/index.html> and create basic predefined projects to investigate where is locating source files, and other resources. Or as alternative you would like to use Eclipse ide you can install plugin <http://developer.android.com/tools/sdk/eclipse-adt.html>
+
+    Than next step will be lunch Android Virtual Device or connect the real device to the PC where IDE is installed. And try to trace and debug. <http://developer.android.com/tools/debugging/debugging-tracing.html>
+
+    To move forward closer to the IoT field you need to investigate following Android Libraries
+
+    -   android.util - The core utility package contains low-level classes like specialized containers, string formatters, and XML parsing utilities.
+
+    -   android.os - The operating system package provides access to basic operating system services like message passing, interprocess communication, clock functions, and debugging.
+
+    -   android.graphics - The graphics API provides the low-level graphics classes that support canvases, colors, and drawing primitives and lets you draw on canvases.
+
+    -   android.text - The text processing tools for displaying and parsing texts.
+
+    -   android.database - Supplies the low-level classes required for handling cursors when working with databases.
+
+    -   android.content - The content API is used to manage data access and publishing by providing services for dealing with resources, content providers, and packages.
+
+    -   android.view - Views are the core user interface class. All user interface elements are constructed using a series of views to provide the user interaction components.
+
+    -   android.widget - Built on the View package, the widget classes are the “here is one we created earlier” user-interface element for you to use in your applications. They include lists, buttons, and layouts.
+
+    -   com.google.android.maps - A high leel API that provides access to native map controls that you can use within your application. Includes the MapView control as well as the Overlay and MapController classes used to annotate and control your embedded maps.
+
+    -   android.app - A high-level package that provides access to the application model. The application package includes the Activity and Service APIs that form the basis for all your Android applications.
+
+    -   android.provider - To ease developer access to certain standard Content Providers( such as the contacts database), the Provider package offers classes to provide access to standard databases included in all Android distributions.
+
+    -   android.telephony - The telephony APIs give you the ability to directly interact with the device’s phone stack, letting you make, receive, and monitor phone calls, phone status and SMS messages.
+
+    -   android.webkit - The webkit package features APIs for working with Web-based content, including a WebView control for embedding browsers in your activities and a cookie manager.
+
+    -   android.location - The location-based services API gives your applications access to the device’s current physical location. Location-based services provide generic access to location information using whatever position-fixing hardware or technology is available on the device.
+
+        -   The media APIs provide support for playback and recording of audio and video media files, including streamed media.
+
+    -   android.opengl - Android offers a powerful 3D rendering engine using the OpenGL ES API that you can use to create dynamic 3D user interfaces for your applications.
+
+    -   android.hardware - Where available, the hardware API exposes sensor hardware including the camera, accelerometer. and compass sensors.
+
+    -   android.bluetooth, android.net.wifi, android.telephony - Android also provides low-level access to the hardware platform, including Bluetooth, Wi-Fi, and telephony hardware.
+
+    So android can be lunched on any devices. Coffee Machine, Refrigerator, Home security station or other. And because it has built in libraries and functionality (GSM, WIFI, etc.) to help us achieve result
+
+    IoT
+    ---
+
+    Let’s dive in and start to investigate how we can implement a power of Android OS on different type of devices
+
+    Let’s first define two types’ wearables
+
+    1.  Controller based devices: <https://www.arduino.cc/en/Main/GenuinoProducts>
+
+    2.  PC types devices: Intel Edison, RaspberryPI, Smartphones.
+
+    The first one is Controller based system that not using HDD file system, or any of popular OS. That gives flexibility to Controller Board, from the first seconds after plugged in it starts working without dependency of HDD, or OS boot loading time the algorithm that control sensors, detectors, motors is uploading on the board chip and as we say earlier start working immediately after plugged
+
+    In original Arduino IDE we working with kind of C language (<https://www.arduino.cc/en/Reference/HomePage>). Basically we can divide all program in to two blocks of code first one is all custom function and logic that developer can write and second block is void loop() function that looping in defined by developer sequence I would recommend basic Arduino Starter Kit <http://bit.ly/1Su4Pv2>
+
+    Next is PC type’s devices is fully functional pc computes that has installed OS, and supported by OS file system on HDD (EXT4, FAT32, NTFS…)
+
+    Witch type of following devices should we use depends on goals what we want to create.
+
+    BigData
+    -------
+
+    Let’s very briefly think about Big Data. It’s a way to find correlation between some behaviors and results. But some say it is human evolution that will impact every business and life on this planet.
+
+    Big Data is first of all taking large data sets that may be analyzed to reveal patterns, trends, and associations, especially relating to human behavior and interactions.
+
+    Big Data trends expert’s expectations for 2016: <https://www.import.io/post/22-data-experts-share-their-predictions-for-2016/>
+
+    I am now while driving a car listen Chapter 7. Of VIKTOR MAYER-SCHONBERGER AND KENNETH CUKIER audio book from Amazon Audible and here is nice formulas to understand BigData.
+
+    Image its an single instance of data sample and present a simple Picture, but if we add variable TIME and change the images it would be a movie, and just notice how the meaning changed from a Picture to a Movie but underneath same Image just have sampled in time.
+
+    Same with data in a digital era it growing while I am typing now producing new data.
+
+    So just a meter of peoples view what we can get from data getting interesting correlation, like VIKTOR mention 'BigData mind set' is a state of a mind when person can see new oportunities, from different point of view;  
+
+    Or just analyze of Terabytes of someone experience
+
+    Now days peoples start looking smart on Infinity Data can predict future, optimize their lives, and help others)) so if you want be a super hero now days u just can analyze something in Infinity Data and help humanity to reach the stars =)
+
+    And big companies already notice that have enough Data to predict peoples shopping, traveling, chilling e.t.c as a result BigData Food Chain appears where companies start selling data as an operators, and government take his own place.
+
+    So in the next articles we will look on how we can combine all together and lunch some sort of Server. Locally Docker container, or AWS EC container on preview 1 year free membership subscription to compute correlation of data from sensors and detectors. Or something else…
