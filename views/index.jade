@@ -16,7 +16,9 @@ block content
             span.nbr= Math.random() > 0.5 ? 0 : 1
 
   - var mergedPosts = helpers.getMergedPosts(site, records)
-  - var feature = _.filter(mergedPosts, 'featured')[0]
+  - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return new Date(post.git.date) }).reverse()
+  //- - var feature = _.filter(mergedPosts, 'featured')[0]
+  - var feature = postsSortedByDate[0]
   - var author = helpers.getAuthor(feature, data)
   .hero
     img.heroimage.cover.animate-prep(src=helpers.getHeroImage(feature))
@@ -40,23 +42,14 @@ block content
       a.dark(href='https://github.com/intel-android/androidhub/commits/master', target='_blank', title='See commits to the master branch') 
         | Recent Commits
     ul.grid.reverse-margin-md
-      - var postsSortedByDate = _.sortBy(mergedPosts, function(post){ return new Date(post.git.date) }).reverse()
       - var count = 0
-      
       for post in postsSortedByDate
-        if count < 4 && !post.featured
+        if count < 4 && !post.featured && post.git.commit != feature.git.commit
           +feed-home-item(post)
           - count++
 
   .testimonial.lazyload(data-bg='/img/fractal-blue.png')
     section: .grid.grid--justify-center: .grid__col-xs-12.grid__col-sm-7.grid--direction-column.text-left
-      //- img.avatar.circle.contain.lazyload.lazyanimate.pop-out(src=helpers.getAuthorImage({
-      //-   twitter: 'deloittedigital',
-      //-   displayname: 'Deloitte Digital'
-      //- }))
-      //- h4.marginless.thin-type 
-      //-   | Deloitte Digital | 
-      //-   a.light(href=helpers.socialLink('twitter', 'deloittedigital'), target='_blank') @deloittedigital
       h2 Art is subjective. You like it or you don't like it. But design is the science of art, it's art with purpose. Design is about intent.
       a.btn.clear(href=data.paths.field_guide) 
         | Learn more in our Developer Field Guide
@@ -65,10 +58,11 @@ block content
 block trackers
   if env == 'prod'
     +tracking-pixel('ntg3e')
-  script.
-    var OB_ADV_ID=27123;
-    var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
-    var str = '<script src="'+scheme+'widgets.outbrain.com/obtp.js" type="text/javascript"><\/script>';
-      document.write(str);
+    include includes/_facebook_tracking
+    script.
+      var OB_ADV_ID=27123;
+      var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+      var str = '<script src="'+scheme+'widgets.outbrain.com/obtp.js" type="text/javascript"><\/script>';
+        document.write(str);
       
   include includes/_intel_tracking
