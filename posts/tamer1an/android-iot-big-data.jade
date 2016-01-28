@@ -2,7 +2,8 @@
 title:      'Android IoT BigData Sketch Ideas'
 categories: [ideate, design]
 heroimage:  'android-iot-big-data.jpeg'
-excerpt:    'Android + IoT and Big Data is a very wide range field to investigate. Let’s briefly describe what we have' 
+excerpt:    'Android + IoT and Big Data is a very wide range field to investigate. Let’s briefly describe what we have.'
+ 
 ---
 
 extends ../../views/layouts/_single
@@ -15,45 +16,27 @@ block content
     Android
     -------
 
-    Android + IoT and Big Data is a very wide range field to investigate.
+    Android + IoT and Big Data is a very wide range field to investigate. Let’s briefly describe what the Android operating system is.
 
-    Let’s briefly describe what is the Android operating system is.
+    It’s an open source "OS" platform based on Dalvik Java Virtual Machine (JVM) where all apps are like a containers, similar to the Java OSGi containers concept. _Note that we know that Dalvik will soon migrate from Java to OpenJDK._
 
-    It’s an open source OS platform based on Dalvik Java Virtual Machine (JVM) where all app is like a containers, similar to Java OSGi containers concept.
+    When we “open” or are “running” Android Applications (container) we are launching Android Activity. Each activity has its own UI layout, or run as the background process. All activities are assigned to the Application Container that has spawned them. If a user closes the application, some processes and activities will be destroyed. But some types of processes can survive and run in the background, until the user forces them to stop on demand. Activities can be a fully functional application view and fit full screen or take a part of the screen, like a widget. Or the activity may not have a View and notify the user through the notification bar.
 
-    As we know Dalvik soon will migrate from Java to OpenJDK
-
-    When we “open” or better to say “running” Android Application (container) we lunching Android Activity. Each of activity has own UI layout, or run as background process. All activities is assigned to Application Container that has spawn them.
-
-    If user close the application, some processes and activities will be destroyed. But some types of processes can survive and run in background, until user not force stop them on demand.
-
-    Activity can has a View of fully functional application and fit full screen or take a part of the screen like widget or don’t have visually View and notify the user through notification bar.
-
-    All activities have defined lifecycle state and phase events.
+    All activities have defined lifecycle states and phase events so we can control how applications will behave when the phase is changing.
 
     http://developer.android.com/reference/android/app/Activity.html
 
-    onCreate – function that invoked when activity has been created
+    onCreate – function that is invoked when an activity has been created
 
-    onDestroy – function that invoked when activity has been destroyed
+    onDestroy – function that is invoked when an activity has been destroyed
 
-    So we can control how application will behave when the phases is changing
+    When an activity is running, it could serve any logic and start the different types of intentions to let other Applications do their part of the job. Android Applications are able to send different types of intentions (for example: edit graphic picture, send email, sharing something, and custom intentions as well). In this instance, another application is subscribing to listen to intentions so the other application can spawn. An example is where Photoshop/Picasa/Instagram is subscribing somewhere in their Activities to listen to intentions of a user to edit a picture and provides a mechanism to get this picture from the App to send intentions and can then provide a result back to that App. Android has a lot of sensors, detectors, and different kinds of tech sweets and extras such as camera, mic, barometer, gyroscope, accelerometer, health care detectors, light sensors, GPS, GSM, CDMA, Wi-Fi, Bluetooth… And in near future smartphone hardware can also became customizable (As we can see Google attemps with in the Ara Project). 
 
-    When activity is running it could serve any logic and start the different types of Intentions to let other Application do their part of the job
+    To get familiar with Android developing first, try to install Code Editor (IDE) based on Intellij IDEA <http://developer.android.com/sdk/index.html> and create basic predefined projects to investigate where you are locating source files, and other resources. Or, as an alternative, you can use Eclipse ide and install the plugin <http://developer.android.com/tools/sdk/eclipse-adt.html>.
 
-    Android Applications is able to send different types of intentions for example: edit graphic picture, send email, sharing something, also we can create a custom intensions too.
+    The next step is to launch the Android Virtual Device or connect the real device to the PC where IDE is installed. Then try to trace and debug. <http://developer.android.com/tools/debugging/debugging-tracing.html>
 
-    This way other application is subscribing to listen intensions the other application can spawn. Example is Photoshop, Picasa, Instagram is subscribing somewhere in theirs Activities to listen intension of the user to edit picture and provides a mechanism to get this picture from the App who send intension and can provide result back to that App
-
-    Android has a lot of sensors and detectors and different kind of tech sweets and extras such as camera, mic, barometer, gyroscope, accelerometer, health care detectors, light sensors, GPS, GSM, CDMA, Wi-Fi, Bluetooth…
-
-    And in near future smartphones hardware can also became customizable, we can see Google attempts in Ara Project
-
-    To get familiar with Android developing first, try to install Code Editor (IDE) based on Intellij IDEA <http://developer.android.com/sdk/index.html> and create basic predefined projects to investigate where is locating source files, and other resources. Or as alternative you would like to use Eclipse ide you can install plugin <http://developer.android.com/tools/sdk/eclipse-adt.html>
-
-    Than next step will be lunch Android Virtual Device or connect the real device to the PC where IDE is installed. And try to trace and debug. <http://developer.android.com/tools/debugging/debugging-tracing.html>
-
-    To move forward closer to the IoT field you need to investigate following Android Libraries
+    To move closer to the IoT field you need to investigate the following Android Libraries:
 
     -   android.util - The core utility package contains low-level classes like specialized containers, string formatters, and XML parsing utilities.
 
@@ -89,50 +72,39 @@ block content
 
     -   android.hardware - Where available, the hardware API exposes sensor hardware including the camera, accelerometer. and compass sensors.
 
-    -   android.bluetooth, android.net.wifi, android.telephony - Android also provides low-level access to the hardware platform, including Bluetooth, Wi-Fi, and telephony hardware.
-
-    So android can be lunched on any devices. Coffee Machine, Refrigerator, Home security station or other. And because it has built in libraries and functionality (GSM, WIFI, etc.) to help us achieve result
+    -   android.bluetooth, android.net.wifi, android.telephony - Android also provides low-level access to the hardware platform, including Bluetooth, Wi-Fi, and telephony hardware. This allows android to be launched on any device (coffee machine, refrigerator, home security station or other) and has built in libraries and functionality (GSM, WIFI, etc.) to help us achieve results.
 
     IoT
     ---
 
-    Let’s dive in and start to investigate how we can implement a power of Android OS on different type of devices
+    Let’s dive in and start to investigate how we can implement the power of Android OS on different types of devices.
 
-    Let’s first define two types’ wearables
+    Let’s first define two types’ of wearables:
 
     1.  Controller based devices: <https://www.arduino.cc/en/Main/GenuinoProducts>
 
     2.  PC types devices: Intel Edison, RaspberryPI, Smartphones.
 
-    The first one is Controller based system that not using HDD file system, or any of popular OS. That gives flexibility to Controller Board, from the first seconds after plugged in it starts working without dependency of HDD, or OS boot loading time the algorithm that control sensors, detectors, motors is uploading on the board chip and as we say earlier start working immediately after plugged
+    The first one is a controller based system that is not using a HDD file system or any popular OS, allowing flexibility to the Controller Board. From the first second after it is plugged in, it starts working without the dependency of a HDD, or having to wait for boot loading time from an OS, and the algorithm that controls the sensors, detectors, and motors is uploading on the board chip immediately.
 
-    In original Arduino IDE we working with kind of C language (<https://www.arduino.cc/en/Reference/HomePage>). Basically we can divide all program in to two blocks of code first one is all custom function and logic that developer can write and second block is void loop() function that looping in defined by developer sequence I would recommend basic Arduino Starter Kit <http://bit.ly/1Su4Pv2>
+    In the original Arduino IDE, we are working with a kind of C language (<https://www.arduino.cc/en/Reference/HomePage>). Basically, we can divide all programs into two blocks of code. First, one is all custom functions and logics that a developer can write. The second block is a void loop() function where the looping is defined by developer sequence. _Note: I would recommend basic Arduino Starter Kit <http://bit.ly/1Su4Pv2>._ 
 
-    Next is PC type’s devices is fully functional pc computes that has installed OS, and supported by OS file system on HDD (EXT4, FAT32, NTFS…)
+    Next is a PC type device that is a fully functional pc that computes and has installed an OS. It is also supported by an OS file system on HDD (EXT4, FAT32, NTFS…).
 
-    Witch type of following devices should we use depends on goals what we want to create.
+    The type of device that should be used depends on your goals and what you want to create.
 
     BigData
     -------
 
-    Let’s very briefly think about Big Data. It’s a way to find correlation between some behaviors and results. But some say it is human evolution that will impact every business and life on this planet.
+    Let’s very briefly think about Big Data. It’s a way to find correlations between some behaviors and results. But some say it is human evolution that will impact every business and life on this planet.
 
-    Big Data is first of all taking large data sets that may be analyzed to reveal patterns, trends, and associations, especially relating to human behavior and interactions.
+    We can also think about Big Data as taking large data sets that may be analyzed to reveal patterns, trends, and associations, especially relating to human behavior and interactions. Check out this link to see what expert's on Big Data expect for 2016:
+    <https://www.import.io/post/22-data-experts-share-their-predictions-for-2016/>
 
-    Big Data trends expert’s expectations for 2016: <https://www.import.io/post/22-data-experts-share-their-predictions-for-2016/>
+    I am now driving a car while listening to  Chapter 7. Of VIKTOR MAYER-SCHONBERGER AND KENNETH CUKIER audio book from Amazon Audible and and they give a nice formula to understand Big Data:
 
-    I am now while driving a car listen Chapter 7. Of VIKTOR MAYER-SCHONBERGER AND KENNETH CUKIER audio book from Amazon Audible and here is nice formulas to understand BigData.
+    An image is a single instance of a data sample and presents a simple picture. But, if we add the variable TIME, it could be a movie. This helps us understand the meaning of an image differently; we now see a movie as a collection of images ordered in time, and each frame of that movie is correlated to a unique time variable. This same concept can be applied to the current digital era as it is growing while I am typing and producing new data. So just a matter of how we view the data, can give us an interest correlation. Like VIKTOR mentions in 'BigData mind set,' a certain state of a mind can help a person see new oportunities, from a different point of view; or, just analyze Terabytes of someone's experience.  
 
-    Image its an single instance of data sample and present a simple Picture, but if we add variable TIME and change the images it would be a movie, and just notice how the meaning changed from a Picture to a Movie but underneath same Image just have sampled in time.
+    Big companies already have enough data to predict peoples shopping, traveling, chilling etc. and as a result BigData Food Chains have appeared where companies start selling data as operators and government take his own place. These days, people have started looking at how Infinity Data can predict future, optimize their lives, and help others. So if you want be a super hero now days you can just analyze something in Infinity Data and help humanity to reach the stars =)
 
-    Same with data in a digital era it growing while I am typing now producing new data.
-
-    So just a meter of peoples view what we can get from data getting interesting correlation, like VIKTOR mention 'BigData mind set' is a state of a mind when person can see new oportunities, from different point of view;  
-
-    Or just analyze of Terabytes of someone experience
-
-    Now days peoples start looking smart on Infinity Data can predict future, optimize their lives, and help others)) so if you want be a super hero now days u just can analyze something in Infinity Data and help humanity to reach the stars =)
-
-    And big companies already notice that have enough Data to predict peoples shopping, traveling, chilling e.t.c as a result BigData Food Chain appears where companies start selling data as an operators, and government take his own place.
-
-    So in the next articles we will look on how we can combine all together and lunch some sort of Server. Locally Docker container, or AWS EC container on preview 1 year free membership subscription to compute correlation of data from sensors and detectors. Or something else…
+    So in the next articles we will look at how we can combine everything together and launch some sort of Server, locally docker container, or AWS EC container (on preview 1 year free membership subscription) to compute correlation of data from sensors and detectors. Or something else…
