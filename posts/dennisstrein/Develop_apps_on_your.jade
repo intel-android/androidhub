@@ -1,7 +1,7 @@
 ---
 title:      'Develop apps on your Android device with AIDE'
 categories: [ideate, launch, design, build]
-heroimage:  ''
+heroimage:  'aide.png'
 excerpt:    'Short description of the article' 
 ---
 
@@ -10,19 +10,47 @@ extends ../../views/layouts/_single
 block content
   :marked
     [AIDE](https://play.google.com/store/apps/details?id=com.aide.ui) is an Android app to develop apps using only your device. This article explains how to get started with expert level app development with AIDE. AIDE support both, building Android Apps using the Android SDK with Java/Xml, as well as building native Android Apps using the Android NDK with C/C++ targeting ARM and Intel devices. To get started first install AIDE from the Google Play store:
+
+![](library/image1.png)
  
     ## Intel sponsorship
 
     Intel sponsors a generous number of free premium keys which unlock the full power expert app development with AIDE. In order to get a sponsored license just close your project, exit AIDE and choose “Expert” after restarting it. You have to select a Google account to which your license will be tied. Feedback if you have been selected for a sponsored license will be given immediately. Every feature covered in this article is actually covered by the sponsorship.
+
+![](library/image2.png)
  
     ## Building Android Apps using the Android SDK with Java/Xml
 
-    AIDE supports developing Java/Xml based Android apps using the Android SDK. The AIDE app comes bundled with a mobile version of the Android SDK, so there is no need to install anything else. When you start AIDE for the first time in expert mode you will see the "Create new Project" dialog. If you have already opened a project the dialog will not show, but you can invoke it from AIDE's integrated file browser by choosing "Create new Project here...". In the create app dialog you first choose the type of project you want to create. For your first app choose "Android App / Hello World" here. A dialog will popup where you can define the basic information about your new app: First, choose a name for your app. Second, choose a package name of your app. Your package name must be unique across all packages installed on the Android system. For this reason, it's generally best if you use a name that begins with the reverse domain name of your organization or publisher entity. Finally, tap "Create" to make AIDE generate your new app project. An app project contains all the files that comprise the source code for your Android app. AIDE will generate these files on your SD card. AIDE will also open two important files of your new app for editing: main.xml and MainActivity.java. You can immediately start coding in these files. 
+    AIDE supports developing Java/Xml based Android apps using the Android SDK. The AIDE app comes bundled with a mobile version of the Android SDK, so there is no need to install anything else. When you start AIDE for the first time in expert mode you will see the "Create new Project" dialog. If you have already opened a project the dialog will not show, but you can invoke it from AIDE's integrated file browser by choosing "Create new Project here...". In the create app dialog you first choose the type of project you want to create. For your first app choose "Android App / Hello World" here:
 
-    To run and test your app, just select "Run" from the menu. AIDE will first build an Android application package file (APK) for your app. An APK file is used to distribute and install application software onto the Android operating system. The APK file contains all of your program's code, resources, assets, certificates, and manifest file. You will see a popup showing the progress of the build. Once the build is finished, AIDE will install the APK and run the app. On a non-rooted device you, in order to allow Android to install your app you must have the "Unknown sources" option enabled in the Android settings. If this is not the case Android will show a dialog stating that the installation has been blocked. The dialog gives you the option to go to the settings and enable "Unknown sources". Once you have done this run the app again.
+![](library/image3.png)
+
+    A dialog will popup where you can define the basic information about your new app: 
+
+![](library/image4.png)
+
+   First, choose a name for your app. Second, choose a package name of your app. Your package name must be unique across all packages installed on the Android system. For this reason, it's generally best if you use a name that begins with the reverse domain name of your organization or publisher entity. Finally, tap "Create" to make AIDE generate your new app project. An app project contains all the files that comprise the source code for your Android app. AIDE will generate these files on your SD card. AIDE will also open two important files of your new app for editing: main.xml and MainActivity.java. You can immediately start coding in these files:
+
+![](library/image5.png)
+
+    To run and test your app, just select "Run" from the menu:
+
+![](library/image6.png)
+
+    AIDE will first build an Android application package file (APK) for your app. An APK file is used to distribute and install application software onto the Android operating system. The APK file contains all of your program's code, resources, assets, certificates, and manifest file. You will see a popup showing the progress of the build. Once the build is finished, AIDE will install the APK and run the app. On a non-rooted device you, in order to allow Android to install your app you must have the "Unknown sources" option enabled in the Android settings. If this is not the case Android will show a dialog stating that the installation has been blocked. The dialog gives you the option to go to the settings and enable "Unknown sources". Once you have done this run the app again.
 
     ## Building Android Apps using the Android NDK with C/C++
 
-    The NDK is a toolset that allows you to implement parts of your app using native-code languages such as C and C++. AIDE supports developing of apps using the NDK on ARM and Intel devices. To create an NDK app choose “New Native Android App” from the "Create new Project" dialog. Once the app is created AIDE will automatically download a mobile version of the NDK. You will see some C files inside the created projects, which contain the native code. You can now use AIDE to work on the C code as well. You will see errors in C/C++ code once you run the app and the code is compiled.
+    The NDK is a toolset that allows you to implement parts of your app using native-code languages such as C and C++. AIDE supports developing of apps using the NDK on ARM and Intel devices. To create an NDK app choose “New Native Android App” from the "Create new Project" dialog:
+
+![](library/image7.png)
+
+    Once the app is created AIDE will automatically download a mobile version of the NDK:
+
+![](library/image8.png)
+
+    You will see some C files inside the created projects, which contain the native code. You can now use AIDE to work on the C code as well. You will see errors in C/C++ code once you run the app and the code is compiled.
+
+![](library/image9.png)
     
     Running an NDK app project works as normal by selecting "Run" from the menu. AIDE will use the installed NDK to compile the C/C++ code of your app and run the app afterwards. The NDK downloaded by AIDE produces dedicated so files for both the ARM and Intel devices, to max out the capabilities of each architecture.
