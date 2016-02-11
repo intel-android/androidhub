@@ -7,7 +7,8 @@ dynamic         = require 'dynamic-content'
 roots_yaml      = require 'roots-yaml'
 records         = require 'roots-records'
 shell           = require 'shelljs'
-copyLibrary     = require './scripts/copy-library.js'
+copyLibrary     = require './scripts/copy-library'
+createThumbs    = require './scripts/create-thumbs'
 
 module.exports =
   ignores: [
@@ -98,6 +99,7 @@ module.exports =
   before: ->
     shell.exec 'npm run posts-git-log'
     copyLibrary()
+    # createThumbs()
     return true
 
   debug: true
