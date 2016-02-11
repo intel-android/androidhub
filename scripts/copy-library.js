@@ -2,6 +2,7 @@ var shell         = require('shelljs');
 var glob          = require('glob');
 
 module.exports = function() {
+  console.log('copying library items...')
   shell.exec('mkdir -p public/library');
   var authors = glob.sync("posts/*/");
   for (var i = 0; i < authors.length; i++) {
