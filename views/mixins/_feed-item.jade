@@ -5,7 +5,7 @@ mixin feed-item(post, grid)
   li.feed-item(class=[post.categories, post.author, columns])
     a(href=post._url, title="Git commit ID: #{post.git.commit}")
       - var img = helpers.getHeroImage(post)
-      if env == 'prod'
+      if env == 'prod' || env == 'staging'
         //- splice in -thumb into the name
         - var img = [img.slice(0, img.indexOf('.')), '-thumb', img.slice(img.indexOf('.'))].join('')
       img.grid__cell-img.cover.lazyload(data-src=img)
