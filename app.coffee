@@ -9,6 +9,7 @@ records         = require 'roots-records'
 shell           = require 'shelljs'
 copyLibrary     = require './scripts/copy-library'
 createThumbs    = require './scripts/create-thumbs'
+hasRunOnce      = false
 
 module.exports =
   ignores: [
@@ -98,7 +99,9 @@ module.exports =
 
   before: ->
     shell.exec 'npm run posts-git-log'
-    copyLibrary()
+    if not hasRunOnce
+      copyLibrary()
+      hasRunOnce = true
     # createThumbs()
     return true
 
