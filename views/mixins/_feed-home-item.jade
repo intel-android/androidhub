@@ -6,7 +6,7 @@ mixin feed-home-item(post)
       a.inherit-color(href=data.paths.feed+ '#' +post.categories[0])= post.categories[0]
     a(href=post._url, title="Git commit ID: #{post.git.commit}")
       - var img = helpers.getHeroImage(post)
-      if env == 'prod'
+      if env == 'prod' || env == 'staging'
         //- splice in -thumb into the name
         - var img = [img.slice(0, img.indexOf('.')), '-thumb', img.slice(img.indexOf('.'))].join('')
       img.grid__cell-img.cover.lazyload(data-src=img)
