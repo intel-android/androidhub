@@ -5,7 +5,11 @@ mixin feed-home-item(post)
     h6.thin-type.marginless.feed-item-category
       a.inherit-color(href=data.paths.feed+ '#' +post.categories[0])= post.categories[0]
     a(href=post._url, title="Git commit ID: #{post.git.commit}")
-      img.grid__cell-img.cover.lazyload(data-src=helpers.getHeroImage(post))
+      - var img = helpers.getHeroImage(post)
+      if env == 'prod' || env == 'staging'
+        //- splice in -thumb into the name
+        - var img = [img.slice(0, img.indexOf('.')), '-thumb', img.slice(img.indexOf('.'))].join('')
+      img.grid__cell-img.cover.lazyload(data-src=img)
       h4.post-title.thin-type= post.title
       //- small: a(href=post.git.commit)= post.git.commit.substr(0,7)
       small.post-meta(title=post.git.date) 
