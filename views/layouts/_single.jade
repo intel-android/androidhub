@@ -40,9 +40,10 @@ html
 
       header.grid(style="background-image:url(#{helpers.getHeroImage(post)})")
         .grid__col-xs-10.grid__col-lg-8.grid--align-self-center.centered-title.grid--direction-column
-          small.header-date(title=git.date)
-            | #{moment(new Date(git.date)).format("ll")}
-            a.inherit-color(href='https://github.com/intel-android/androidhub/commit/#{git.commit}', target='_blank', title='See the commit for this article post')  // #{git.commit.substr(0,7)}
+          small.header-date.row.middle-xs(title=git.date)
+            //- | #{moment(new Date(git.date)).format("ll")}
+            | Latest Commit 
+            a.inherit-color.push-left(href='https://github.com/intel-android/androidhub/commit/#{git.commit}', target='_blank', title='See the commit for this article post')  // #{git.commit.substr(0,7)}
           h1.header-title= post.title
 
           .header-nameplate
