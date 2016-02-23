@@ -98,8 +98,8 @@ module.exports =
       sortByLastName:   require './scripts/sort-by-last-name.js'
 
   before: ->
-    shell.exec 'npm run posts-git-log'
     if not hasRunOnce
+      shell.exec 'npm run posts-git-log'
       copyLibrary()
       hasRunOnce = true
     # createThumbs()
