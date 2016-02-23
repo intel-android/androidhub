@@ -1,0 +1,69 @@
+---
+title:      'Penn Station'
+categories: [launch, design, build]
+heroimage:  'edisonpost2.jpeg'
+excerpt:    '' 
+---
+
+extends ../../views/layouts/_single
+
+block content
+  :marked
+    ## Penn Station
+    It's fun and easy to build an app and launch it, but then it comes maintaining it, and you keep adding features, events, and business logics. You have added teammates and now it's hard to keep track of what's happening, and you need a good way to keep your code sane. Tests are great a great way to start. You keep adding states into your FSM, but eventually decided it’s impossible to keep track, so you add Otto, EventBus, Dagger, Rx, and other frameworks, but it's so hard to find a sweet spot between writing too much boilerplate code: interfaces to ensure contracts and sane debugging when you do any refactoring. 
+
+    Here comes [Penn Station](https://github.com/edisonw/PennStation) [^1], an Android Service pattern with [EventBus](https://github.com/greenrobot/EventBus/): 
+    [^1]: Inspired by Grand Central from iOS, think of the events on your app as people, are trying to go from places to places (requesters/listeners), so they gather here at Penn Station, where they have access to NJT/LIRR/NYC Metro/etc (the different processes). 
+
+
+    |                                     | Penn Station     | EventBus   | Otto       |
+    |-------------------------------------|------------------|------------|------------|
+    | Declare Events                      | Annotation       | Annotation | Annotation |
+    | Event Listener Interface (2)        | Annotation       | No         | No         |
+    | Event Request Factory               | Annotation       | No         | No         |
+    | Event Result Factory                | Annotation       | No         | No         |
+    | IPC via Parcelable if needed        | Yes              | No         | No         |
+    | Event Producers                     | Annotation       | No         | Yes        |
+    | Require Implementations             | Yes              | No         | No         |
+    | Asynchronous Delivery               | Yes              | Yes        | No         |
+    | Event Delivery on Posting Thread    | Yes              | Default    | No         |
+    | Event Delivery On Main Thread       | Default          | Yes        | No         |
+    | Event Delivery on Background Thread | Yes              | Yes        | No         |
+    | Request Process                     | Service Executor | Background | Background |
+    | Easy Access to Context              | Android Service  | No         | No         |
+    
+
+    Using Penn Station, your workflow of implementing a long running task becomes easy because you don’t have to worry about anything other than what the task needs to do and when it’s done, what events should be emitted. 
+
+    Imagine you are writing a way to login the user: 
+
+    First, create a LoginAction that implements BaseAction:
+    1.  Annotate the class via @RequestFactory
+    2.  Annotate the class via @RequestFactoryWithVariables
+      a.  @ClassField(“username”, String.class)
+      b.  @ClassField(“password”, String.class) 
+    3.  Annotate the class via @EventProducer
+      a.  @ResultClassWithVariables(“Failed”)
+      b.  @ResultClassWithVariables(“Success”)
+    4.  Implement the logic inside processRequest.
+    5.  Implement onError by return the Failed event.
+
+    Now you can use this LoginAction anywhere, simply declare any class you need to LoginAction as @EventListener for LoginAction.class: 
+
+    1.  Implement onEventMainThread(LoginActionEventFailed)
+    2.  Implement onEventMainThread(LoginActionEventSuccess)
+    3.  Call the action whenever needed via PsLoginActionAction that were generated.
+
+    This is good because:
+    1.  Encapsulation: LoginAction has all the logic and declarations.
+    2.  States Decoupling: 
+      a.  No worrying about life cycle: LoginAction lives with the Service, not Activity.
+      b.  Listeners live with its own lifecycle, if it’s gone, it’s gone. 
+    3.  Compiler assisted refactoring:
+      a.  If you are adding a new result type, say “Expired”, all your listeners will not compile until you implement “LoginActionEventExpired”
+      b.  If you are changing the request, say adding a “birthday” field as required parameter to do a login, just add it and everywhere you call LoginAction will require to supply that variable. 
+
+    I hope with this library anyone can write efficient, scalable, and foolproof code that will make their user experience better. 
+
+    Please let me know if you have any comments or suggestions! :) 
+
