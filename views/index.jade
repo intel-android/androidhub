@@ -31,7 +31,7 @@ block content
       a.light(href=feature._url)
         h1.hero-title.animate-prep= feature.title
       .author-nameplate.animate-prep
-        img.avatar.circle.contain.lazyload(src=helpers.getAuthorImage(author))
+        img.avatar.circle.cover.lazyload(src=helpers.getAuthorImage(author))
         h4.marginless.animate-prep by #{author.displayname}
         a.light.animate-prep(href=helpers.socialLink('twitter', author.twitter), target='_blank')
           small @#{author.twitter}
