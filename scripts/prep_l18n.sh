@@ -6,6 +6,7 @@ rm -rf public/en/*.html
 
 # Create an /en/ folder in the root 
 mkdir -p public/en/posts
+mkdir -p public/en/android-field-guide
 
 # clean out all images in posts
 rm -rf public/posts/**/library
@@ -22,6 +23,7 @@ rm -rf public/posts/**/library
 
 cp -R public/*.html public/en
 cp -R public/posts/* public/en/posts
+cp -R public/android-field-guide public/en
 
 # For links in the HTML files to work for all languages without any changes after translation:
 # use root-relative paths for links to assets.
