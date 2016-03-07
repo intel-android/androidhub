@@ -25,6 +25,17 @@ cp -R public/*.html public/en
 cp -R public/posts/* public/en/posts
 cp -R public/android-field-guide/*.html public/en/android-field-guide
 
+# Something may have gone wrong, as the “public” folder contains another “public” folder, therefore the entire site is included twice.
+rm -rf public/public
+rm -rf public/en/public
+
+# Can we move file reviewer_readme.html out of the /en/ folder since it will not be localized? If not, we will ignore it.
+rm -f public/en/reviewer_readme.html
+
+# File redirector.html should not be in the /en/ folder.
+rm -f public/en/redirector.html
+
+
 # For links in the HTML files to work for all languages without any changes after translation:
 # use root-relative paths for links to assets.
 # use relative (not root-relative) paths to link to other HTML files.
