@@ -23,7 +23,10 @@ module.exports =
     'app.sublime-project'
     'spec/**'
     'tmp'
-    'jasmine-runner.js'
+    'jasmine-runner.js',
+    '.travis.yml',
+    'deploy_key*',
+    '*.zip'
     # 'data/**'
   ]
 
