@@ -1,0 +1,51 @@
+---
+title:      'How do I get started with my first Android app? 1/3'
+categories: [launch, build]
+heroimage:  'hero_image.png'
+excerpt:    'This is a short introduction to the apps development in Android' 
+---
+
+extends ../../views/layouts/_single
+
+block content
+	:marked
+		This is one of three posts where we will cover how you can develop your first app. This first post covers an introduction to Android OS, a little bit of history, IDEs and the life cycle of an Android application. At the end of these three posts, you should have enough skills to create your first app by yourself.
+
+
+		## 1.	What is Android?
+
+		This operation system belongs to Google. Android was born in 2003, was founded by Andy Rubin, and bought by Google 22 months later. Until 2007, Android didn´t appear in markets. The first Nexus device was made by HTC followed by trades like Motorola, Samsung, and LG introducing the next generations of Nexus devices. Nowadays Android is one of the most important OSs and is used by a billlion people making it a great idea to develop an application in this OS - maybe your app will be the next Flappy Bird!! If you want to know more information about Android history you can check these links:
+
+		*	[The History of Android](http://www.androidcentral.com/android-history)
+
+		*	[Android](https://www.android.com/history/)
+
+
+		## 2.	Android IDE´s
+
+		As Android IDE runs in multiple environments, people that start to develop usually ask _"What IDE should I choose?"_ At first, Eclipse IDE was the most used, but in March of 2013, Android Studio was launched. After a few years, the IDE became more stable, making it the main choice for most developers. At the time, Android didn´t support Android Developer Tools(ADT), so developers would have to migrate their projects to Android Studio([+info](http://developer.android.com/intl/es/tools/help/adt.html)). Today, you don´t have to choose between Eclipse or Android Studio because Google has done this for you. While it is necessary to speak about the crossplatform platforms that allow you to write in javascript and c++ for Android, iOS and Windows Phone apps, we are going to focus first on what IDE I will choose to start developing an Android app. In my opinion, you should choose a native language and understand the basics of the development in Android and the IDE that I suggest using is Android Studio. The main feature is the integration with gradle which is fantastic!!! One of the biggest problems in Android is the dependencies between libraries and gradle helps solve this problem. Furthermore, the layout edition for Android Studio allows you to edit them, see results in real time, and you don't need to save and change between tabs. 
+
+		![image](library/evsas.png)
+
+
+		##	3.	Android Activity Lifecycle
+
+		The applications in Android run into an activity. An Activity is an application component that provides a screen with which users can interact in order to do something such as dial the phone, take a photo, send an email, or view a map. Each activity is given a window in which to draw its user interface. The window typically fills the screen, but may be smaller than the screen and float on top of other windows. This activity has a lifecycle of states and they are[^1]:
+
+		1.	OnCreate():  Called when the activity is to first create. This is where you should do all of your normal static set up — create views, bind data to lists, and so on.
+		2.	Onrestart():	Called after the activity has been stopped, just prior to it being started again.
+		3.	OnStart():	Called just before the activity becomes visible to the user.
+		4.	OnResume():	Called just before the activity starts interacting with the user. At this point, the activity is at the top of the activity stack with user input going to it.
+		5.	OnPause():	Called when the system is about to start resuming another activity. This method is typically used to commit unsaved changes to persistent data, stop animations and other things that may be consuming CPU, and so on. It should do whatever it does very quickly, because the next activity will not be resumed until it returns.
+		6.	OnStop():	Called when the activity is no longer visible to the user. This may happen because it is being destroyed, or because another activity (either an existing one or a new one) has been resumed and is covering it.
+		7.	OnDestroy():	Called before the activity is destroyed. This is the final call that the activity will receive. It could be called either because the activity is finishing (someone called finish() on it) or because the system is temporarily destroying this instance of the activity to save space.
+
+		![image](library/activity_lifecycle.png)
+
+
+		On the other hand, exiting the activity is associated with an User Inteface file - this is called Layout. In the layouts we are going to design the interface and put the text fields and other elements we want to use. Layouts have a lot of parammeters, and we will dive more into the details in the next post.
+
+
+		[^1]:Text and image provide by [Android](http://developer.android.com/intl/es/reference/android/app/Activity.html) 
+
+
