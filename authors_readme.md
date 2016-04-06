@@ -109,6 +109,13 @@ Go markdown crazy. With just markdown alone you can make a very interesting and 
 Drop all of your images into your `posts/{your_github_handle}/library/`. For your article hero image, just tell us the image name, like `android.png`. For inline images inside of you post, reference them like `/library/{your_github_handle}/file.extension`.
 
 
+#### Quick Tips
+- Recommended size for your hero image is 2000X1338
+- You should pick 1 or 2 categories that your article falls under. No more than 3 can be tied to a post.
+- Make sure your file names are correctly named and don't include any spaces.
+- Run `npm test` and `roots watch` prior to submitting a pull request. This will help you catch errors first so your PR passes.
+
+
 &nbsp;
 &nbsp;
 
