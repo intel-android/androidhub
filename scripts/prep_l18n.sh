@@ -23,7 +23,10 @@ rm -rf public/posts/**/library
 
 cp -R public/*.html public/en
 cp -R public/posts/* public/en/posts
-cp -R public/android-field-guide/*.html public/en/android-field-guide
+
+if [[ -d public/android-field-guid ]]; then
+  cp -R public/android-field-guide/*.html public/en/android-field-guide
+fi
 
 # Something may have gone wrong, as the “public” folder contains another “public” folder, therefore the entire site is included twice.
 rm -rf public/public
@@ -40,8 +43,8 @@ rm -f public/en/redirector.html
 # use root-relative paths for links to assets.
 # use relative (not root-relative) paths to link to other HTML files.
 
-find -X public/en -name '*.html' | xargs sed -i -e 's/\<a href=\"\//\<a href=\"\/en\//g'
-find -X public/en -name '*.html-e' | xargs rm -f
+find public/en -name '*.html' | xargs sed -i -e 's/\<a href=\"\//\<a href=\"\/en\//g'
+find public/en -name '*.html-e' | xargs rm -f
 
 # replace index with one that redirects to the local version
 cp public/redirector.html public/index.html
