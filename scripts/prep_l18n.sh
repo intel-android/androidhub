@@ -21,10 +21,14 @@ rm -rf public/posts/**/library
 # commit.html
 # feed.html
 
+if [[ -f public/old-index.html ]]; then
+  cp public/old-index.html public/index.html
+fi
+
 cp -R public/*.html public/en
 cp -R public/posts/* public/en/posts
 
-if [[ -d public/android-field-guid ]]; then
+if [[ -d public/android-field-guide ]]; then
   cp -R public/android-field-guide/*.html public/en/android-field-guide
 fi
 
@@ -47,4 +51,5 @@ find public/en -name '*.html' | xargs sed -i -e 's/\<a href=\"\//\<a href=\"\/en
 find public/en -name '*.html-e' | xargs rm -f
 
 # replace index with one that redirects to the local version
+cp public/index.html public/old-index.html
 cp public/redirector.html public/index.html
