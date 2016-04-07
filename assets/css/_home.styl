@@ -6,15 +6,15 @@
   text-shadow:0 2px 4px hsla(0,0%,0%,0.15)
   color:white
   background:hsl(0,0%,70%)
-  
+
   +above(laptop)
     padding:5rem 0
     padding:10vh 0
-    
+
   +above(desktop)
     padding:10rem 0
     padding:15vh 0
-  
+
   .heroimage
     position:absolute
     top:0
@@ -29,7 +29,7 @@
   section
     position:relative
     z-index:2
-    
+
   &:after
     content:" "
     display:block
@@ -43,7 +43,6 @@
 
 .hero-title
   margin:0.25rem 0 2rem
-  text-transform:capitalize
   +below(mobile)
     font-size:1.5em
 
@@ -66,14 +65,14 @@
 
 .intro
   background-color:#eee
-  
+
   .text-overlay
     position:absolute
     top:3rem
     left:0
     width:100%
     margin:0 auto
-  
+
   // &:hover .droid-hero > path:first-child
   //   animation-duration:7s
 
@@ -92,7 +91,7 @@
   position:absolute
   top:6px
   left:-2rem
-  
+
   &:before
     content:" "
     position:absolute
@@ -101,7 +100,7 @@
     width:2px
     height:400px
     background:white
-  
+
 .recent-commit
   top:6px
 
@@ -123,7 +122,7 @@
   padding:4rem 0 3rem
   position:relative
   overflow:hidden
-  
+
   &:before
     content:" "
     background-image:url(/img/tear.svg)
@@ -134,7 +133,7 @@
     width:102%
     height:39px
     filter: drop-shadow(0 1px 2px hsla(0,0%,0%,0.3))
-  
+
   .pop-out
     position:absolute
     top:6px
@@ -143,6 +142,6 @@
       position:relative
       top:-1rem
       left:0
-    
+
   .btn.clear:hover
     color:white

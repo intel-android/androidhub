@@ -1,16 +1,16 @@
 #feed-grid
   margin-bottom:2rem
   will-change:height
-  
+
   +below(mobile)
     margin-bottom:0
-  
+
   &[data-empty]:after
     content:"No results"
     width:100%
     text-align:center
 
-.feed-item 
+.feed-item
   border-radius:2px
   will-change:transform, top, left
 
@@ -19,27 +19,26 @@
     color:initial
     &:hover .post-title
       text-decoration:underline
-    
+
   > .feed-item-category
-    text-transform:capitalize
     color:hsl(214, 4%, 34%)
     margin-bottom:0.5rem
     font-size:0.7rem
-    
+
   img
     height:200px
     overflow:hidden
-    
+
     &.lazyloading
       @extend .placeholder-background-image
-    
+
     +above(desktop)
       height:150px
-    
+
 .post-title
   margin:0.5rem 0 0.25rem
   color:blue
-  
+
 .post-meta
   color:intel-grey
   margin:0.25rem 0
@@ -50,10 +49,10 @@
     color:intel-grey
     display:inline
     font-style:normal
-  
+
 .post-excerpt
   color:hsl(0,0%,13%)
-  
+
 .post-meta, .post-excerpt
   font-size:0.7rem
   display:block
@@ -74,12 +73,12 @@
   font-size:1.17em
   position:relative
   top:0.03rem
-  
+
 .chrome-on-windows, .windows-ie-10, .windows-ie-11
   #feed-filter > option
     color:blue
     background:white
-      
+
 .related-posts
   > .related-post
     &:first-child
@@ -91,7 +90,7 @@
   border-top:1px solid #eee
   margin-top:2rem
   padding-top:2rem
-  
+
   img
     height:100px
     padding-bottom:1rem
@@ -100,10 +99,9 @@
       padding-right:1rem
     +above(tablet)
       height:170px
-      
+
 .windows-ie-10, .windows-ie-11
   .feed-item a, .related-post a
     height:100%
   .feed-item img, .related-post img
     height:auto
-  
