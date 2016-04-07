@@ -47,7 +47,7 @@ rm -f public/en/redirector.html
 # use root-relative paths for links to assets.
 # use relative (not root-relative) paths to link to other HTML files.
 
-find public/en -name '*.html' | xargs sed -i -e 's/\<a href=\"\//\<a href=\"\/en\//g'
+find public/en -name '*.html' | xargs sed -i -e 's/a href=\"\//a href=\"\/en\//g'
 find public/en -name '*.html-e' | xargs rm -f
 
 # replace index with one that redirects to the local version
