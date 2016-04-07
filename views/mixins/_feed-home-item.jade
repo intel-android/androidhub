@@ -3,7 +3,7 @@ mixin feed-home-item(post)
 
   li.feed-item.grid__col-md-3.grid__col-sm-3.grid__col-xs-6.animate-prep
     h6.thin-type.marginless.feed-item-category
-      a.inherit-color(href=data.paths.feed+ '#' +post.categories[0])= post.categories[0]
+      a.inherit-color(href=data.paths.feed+ '#' +post.categories[0])= _.capitalize(post.categories[0])
     a(href=post._url, title="Git commit ID: #{post.git.commit}")
       - var img = helpers.getHeroImage(post)
       if env == 'prod' || env == 'staging'
