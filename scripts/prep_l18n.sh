@@ -53,3 +53,12 @@ find public/en -name '*.html-e' | xargs rm -f
 # replace index with one that redirects to the local version
 cp public/index.html public/old-index.html
 cp public/redirector.html public/index.html
+
+
+# delete original .html files
+rm -rf public/posts
+rm -f public/authors.html
+rm -f public/about.html
+rm -f public/commit.html
+rm -f public/feed.html
+rm -f public/reviewer_readme.html
