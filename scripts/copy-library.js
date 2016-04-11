@@ -4,9 +4,10 @@ var glob          = require('glob');
 var path          = require('path');
 
 module.exports = function() {
+  console.log('copying library items...')
   mkdir('-p', path.normalize(path.join('public', 'library')));
-
   var authors = glob.sync(path.normalize(path.join("posts", "*")));
+
   for (var i = 0; i < authors.length; i++) {
     var author_path = authors[i];
     var author = author_path.split(path.sep)[1];

@@ -55,15 +55,14 @@ App.Commit = (->
     xobj = new XMLHttpRequest()
     xobj.overrideMimeType "application/json"
     xobj.open 'POST', 'commit.php'
-    xobj.onreadystatechange = () ->
+    xobj.onreadystatechange = () =>
       if xobj.readyState == 4 and xobj.status == 200
         json = JSON.parse(xobj.responseText)
         swal
           title:  'Nice!'
           text:   json.message
           type:   'success'
+        @form.style.display = 'none'
     xobj.send JSON.stringify data
-
-
 
 )()

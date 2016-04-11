@@ -45,9 +45,13 @@ function test_post(filename) {
   it("filename is a string", function() {
     expect(filename).toBeString();
   });
-
+  
   var fileInput = fs.readFileSync(filename, "utf8");
   var post = filename.match(/\/.*\/(.*)$/)[1];
+  
+  it('has no invalid characters', function() {
+    expect(post).toMatch(/^[A-Za-z0-9\_\-]+\.jade$/)
+  });
 
   it(post + " read the file in as a string", function() {
     expect(fileInput).toBeString();
@@ -139,6 +143,10 @@ function test_post(filename) {
       it('is required', function() {
         expect(data.heroimage).toBeNonEmptyString();
       });
+      
+      it('has no invalid characters', function() {
+        expect(data.heroimage).toMatch(/^[A-Za-z0-9\_\-]+\.(png|jpg|jpeg|svg|webp)/)
+      });
 
       describe('local hero image', function () {
         var filename, image;
@@ -166,7 +174,7 @@ function test_post(filename) {
         });
 
         it('is smaller than 5MB', function() {
-          image.filesize = image.filesize.replace('KBB', 'KB');
+          image.filesize = image.filesize.replace('KBB', 'KB').replace('MBB', 'MB');
           expect(filesizeParser(image.filesize)).toBeLessThan(5*1024*1024);
         });
       });

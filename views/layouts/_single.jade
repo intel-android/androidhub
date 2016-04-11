@@ -13,7 +13,7 @@ html
     head
       include ../includes/_font-strategy
       include ../includes/_site-meta
-      
+
       +og-meta({
         url:          data.meta.opengraph.url,
         title:        post.title,
@@ -21,7 +21,7 @@ html
         site_name:    data.meta.opengraph.site,
         image:        helpers.getHeroImage(post)
       })
-      
+
       +twitter-meta({
         account:      author.twitter,
         site:         author.website,
@@ -33,25 +33,25 @@ html
 
       title= post.title
       != css('/')
-      link(rel='stylesheet', href='/bower_components/prism/themes/prism.css')
-      link(rel='stylesheet', href='/bower_components/prism/themes/prism-coy.css')
+      link(rel='stylesheet', href='/css/prism.css')
 
     body
       +nav('feed')
 
       header.grid(style="background-image:url(#{helpers.getHeroImage(post)})")
         .grid__col-xs-10.grid__col-lg-8.grid--align-self-center.centered-title.grid--direction-column
-          small.header-date(title=git.date)
-            | #{moment(new Date(git.date)).format("ll")} 
-            a.inherit-color(href='https://github.com/intel-android/androidhub/commit/#{git.commit}', target='_blank', title='See the commit for this article post')  // #{git.commit.substr(0,7)}
+          small.header-date.row.middle-xs(title=git.date)
+            //- | #{moment(new Date(git.date)).format("ll")}
+            | Latest Commit 
+            a.inherit-color.push-left(href='https://github.com/intel-android/androidhub/commit/#{git.commit}', target='_blank', title='See the commit for this article post')  // #{git.commit.substr(0,7)}
           h1.header-title= post.title
 
           .header-nameplate
             a.pop-forward-sm(href=author.website)
-              img.avatar.circle.contain.push-right.lazyload.lazyanimate(src=helpers.getAuthorImage(author))
+              img.avatar.circle.cover.push-right.lazyload.lazyanimate(src=helpers.getAuthorImage(author))
             .meta
               h3.header-author.thin-type.marginless.animate-prep= author.displayname
-              h4.header-subtitle.thin-type.marginless.animate-prep 
+              h4.header-subtitle.thin-type.marginless.animate-prep
                 | #{author.title} at 
                 a.light(href=author.website, target='_blank')= author.company
               .header-social.animate-prep
@@ -62,7 +62,7 @@ html
                 if author.codepen
                   a(href=helpers.socialLink('codepen', author.codepen), target='_blank')
                     include ../includes/svg/_codepen
-      
+
       main.post: section
         //- main article content
         .card: article
@@ -86,13 +86,21 @@ html
             .related-posts
               each post in relatedPosts
                 +related-post(post)
-         
+
       .full-width-white: section
         #disqus_thread
 
-      include ../includes/_footer 
+      include ../includes/_footer
       != js('/')
-      script(src='/bower_components/prism/prism.js')
-      
+      script(src='/js/prism.js')
+
+      //- trackers
       if env == 'prod'
         +tracking-pixel('nth41')
+        include ../includes/_facebook_tracking
+        img(src="//trc.taboola.com/ironhorseinteractive-intel/log/3/mark?marking-type=visitor_android&item-url=https://androidhub.intel.com#{post._url}", width="0", height="0")
+        img(src="http://amplifypixel.outbrain.com/pixel?mid=0019f45704a34a8b96b6855cb1af74f1f1")
+        
+      include ../includes/_intel_tracking
+      
+      block trackers

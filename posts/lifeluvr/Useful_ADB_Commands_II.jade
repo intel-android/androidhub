@@ -1,0 +1,58 @@
+---
+title:      'Useful ADB Commands II'
+categories: [launch, build]
+heroimage:  'EricPost2.jpeg'
+excerpt:    'Continuation of Useful ADB Commands I' 
+---
+
+extends ../../views/layouts/_single
+
+block content
+	:marked
+		For this tutorial you will need to have _ADB_ installed on your computer, your Android's _USB Debugging_ set to _ON_ and your device plugged into your computer! Ready?
+
+		Today, we're going to make a full backup of your Android device. This backup doesn't take up any space on your Android and, you can restore your backup just by plugging your device into your computer!
+
+		First, on your computer, let's make a new folder somewhere handy (mine's on my Desktop) and, name it "Android Backup". Next, open your new folder and right-click on an empty space and select "Open in terminal" (for Windows, press and hold 'Shift' when you right-click).
+
+		![adbAction1](https://lh5.googleusercontent.com/-ZmYQa_0CwOg/VqraCB6uEVI/AAAAAAAACnA/ZO7Lu-Lq49Q/w550-h344-no/adbAction1.png) 
+		 
+		The first command we're going to look at is:
+
+		```
+		~$ adb backup -all
+		```
+
+		After you press 'Enter', you will be asked to confirm this on your Android device. Set a password if you want your backup to be encrypted or, just leave it blank and tap "Back up my data". 
+
+		![adbAction3](https://lh6.googleusercontent.com/-wcFkR1mHq_8/VqraAOQNoWI/AAAAAAAACnA/JY_tD18ZOG0/w254-h423-no/adbAction3.png) 
+
+		Backups can take awhile, so, be patient! Your terminal will show you when it's completed. Do not close the terminal before it completes or your backup wont work!
+
+		When it's done, you'll have a new file in your Android Backup folder called "backup.ab". However, technically, you've only backed up the device data and the app data, not any of your .apk files! To do this we add the "-apk" attribute. Example:
+
+		```
+		~$ adb backup -all -apk
+		```
+
+		* Add " -system" or " -no system" if you want to backup just system apps or exclude system apps. 
+
+		There are more attributes you can add but, now, it's time for the second half of the tutorial.
+
+		Here is how to restore your Android device with the backup we just made:
+
+		```
+		~$ adb restore /file/you want/to restore
+		```
+
+		Here is where I like to use the _drag n' drop_ trick. Type, "adb restore " (space after restore). Then _drag n' drop_ the backup.ab file onto the terminal and press 'Enter'.
+
+		![adbAction2](https://lh5.googleusercontent.com/-gzbgSBfsD74/VqraBz4I31I/AAAAAAAACnA/lw6Bn6z0jb8/w550-h344-no/adbAction2.png) 
+
+		That's it! Now you know how to backup and restore your Android device using _ADB_!
+
+		Stay tuned for the next edition:
+
+		### Useful _ADB_ commands III
+
+		For more information about _ADB_ backup please go [here.](http://forum.xda-developers.com/galaxy-nexus/general/guide-phone-backup-unlock-root-t1420351)

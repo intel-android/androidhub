@@ -7,7 +7,8 @@ dynamic         = require 'dynamic-content'
 roots_yaml      = require 'roots-yaml'
 records         = require 'roots-records'
 shell           = require 'shelljs'
-copyLibrary     = require './scripts/copy-library.js'
+copyLibrary     = require './scripts/copy-library'
+createThumbs    = require './scripts/create-thumbs'
 
 module.exports =
   ignores: [
@@ -22,7 +23,10 @@ module.exports =
     'app.sublime-project'
     'spec/**'
     'tmp'
-    'jasmine-runner.js'
+    'jasmine-runner.js',
+    '.travis.yml',
+    'deploy_key*',
+    '*.zip'
     # 'data/**'
   ]
 
@@ -114,10 +118,12 @@ module.exports =
 
   before: ->
     shell.exec 'npm run posts-git-log'
-    copyLibrary();
+    copyLibrary()
+    createThumbs()
 
   after: ->
     shell.exec 'node_modules/purify-css/bin/purifycss public/css/app.css public/index.html public/feed.html public/about.html public/authors.html public/commit.html public/posts/argyleink/webviews.html public/js/app.js --info --out public/css/app.css'
     shell.exec 'node_modules/csso/bin/csso public/css/app.css public/css/app.css'
     shell.exec 'cp views/robots_disallow.txt public/robots.txt'
     shell.exec 'cp -R posts/* public/posts'
+    shell.exec './scripts/prep_l18n.sh'
