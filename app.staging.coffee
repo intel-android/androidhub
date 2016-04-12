@@ -126,4 +126,3 @@ module.exports =
     shell.exec 'node_modules/csso/bin/csso public/css/app.css public/css/app.css'
     shell.exec 'cp views/robots_disallow.txt public/robots.txt'
     shell.exec 'cp -R posts/* public/posts'
-    shell.exec './scripts/prep_l18n.sh'

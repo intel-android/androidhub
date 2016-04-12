@@ -48,10 +48,10 @@ rm -f public/en/redirector.html
 # use relative (not root-relative) paths to link to other HTML files.
 
 if [ "$(uname)" == "Darwin" ]; then
-  find -X public/en -name '*.html' | xargs sed -i -e 's/a href=\"\//a href=\"\/en\//g'
+  find -X public/en -name '*.html' | xargs --verbose sed -i -e 's/a href=\"\//a href=\"\/en\//g'
   find -X public/en -name '*.html-e' | xargs rm -f    
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  find public/en -name '*.html' | xargs sed -i -e 's/a href=\"\//a href=\"\/en\//g'
+  find public/en -name '*.html' | xargs --verbose sed -i -e 's/a href=\"\//a href=\"\/en\//g'
   find public/en -name '*.html-e' | xargs rm -f
 fi
 
