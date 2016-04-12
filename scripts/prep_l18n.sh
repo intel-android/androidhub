@@ -47,16 +47,25 @@ rm -f public/en/redirector.html
 # use root-relative paths for links to assets.
 # use relative (not root-relative) paths to link to other HTML files.
 
-find public/en -name '*.html' | xargs sed -i -e 's/a href=\"\//a href=\"\/en\//g'
-find public/en -name '*.html-e' | xargs rm -f
+if [ "$(uname)" == "Darwin" ]; then
+  find -X public/en -name '*.html' | xargs sed -i -e 's/a href=\"\//a href=\"\/en\//g'
+  find -X public/en -name '*.html-e' | xargs rm -f    
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  find public/en -name '*.html' | xargs sed -i -e 's/a href=\"\//a href=\"\/en\//g'
+  find public/en -name '*.html-e' | xargs rm -f
+fi
 
 # replace index with one that redirects to the local version
 cp public/index.html public/old-index.html
 cp public/redirector.html public/index.html
 
+echo "waiting for xargs..."
+sleep 10
+echo "done"
+
 
 # delete original .html files
-rm -rf public/posts
+rm -rf public/posts/**/*.html
 rm -f public/authors.html
 rm -f public/about.html
 rm -f public/commit.html
