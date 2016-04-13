@@ -127,4 +127,3 @@ module.exports =
     shell.exec "node_modules/purify-css/bin/purifycss public/css/app_#{hash}.css public/index.html public/feed.html public/about.html public/authors.html public/commit.html public/posts/argyleink/webviews.html public/js/app_#{hash}.js --info --out public/css/app_#{hash}.css"
     shell.exec "node_modules/csso/bin/csso public/css/app_#{hash}.css public/css/app_#{hash}.css"
     shell.exec 'cp -R posts/* public/posts'
-    shell.exec './scripts/prep_l18n.sh'
