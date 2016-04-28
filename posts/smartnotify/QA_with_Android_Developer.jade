@@ -1,0 +1,75 @@
+---
+title:      'Q&A with Android Developer Paul Blundell'
+categories: [ideate]
+heroimage:  'gregpost1.jpg'
+excerpt:    'In this post, I interviewed developer Paul Blundell to gain some insight on his experience with Android and discuss how he manages his apps.' 
+---
+
+extends ../../views/layouts/_single
+
+block content
+  :marked
+    In this post, I interviewed developer Paul Blundell to gain some insight on his experience with Android and discuss how he manages his apps.   
+
+    ## Gregory: How did you get started with Android.  Why did you go with this platform rather than Ios or even hybrid?
+
+    *Paul:* The concept of hybrid did not exist when I started, this was back in roughly 2009, I remember at the time there was a big barrier to doing iOS apps in that I needed a mac and didn't have one. 
+
+    I had heard rumors of Android in 2008 when I was at my first job doing Nokia J2ME apps and the allure of a mobile operating system that had a permissions system that allowed apps to have more freedom but also be more secure was a real treat. 
+
+    I experimented a bit in my own time but it didn't go anywhere. Then in 2009 when I was working on the UK National Rail website they also wanted an Android app and so I was selected to do it. Sometimes being in the right place at the right time helps. 
+ 
+    ## Gregory: Can we talk about your work with Udacity, given the numerous lines of code you review all the time, what would you say is the most common mistake developers make as they learn the new environment?
+
+    **Paul:** That’s a really good question. One of the most common mistakes I see a lot when reviewing code is misuse of the static keyword. This usually happens in two places:
+
+    1.  First an instance field is made static when it should not be, this means the reference to that field is longer lived than the class it is in and can lead to memory leaks which are never good but are even more important to avoid on a mobile constrained environment. An example of this would be in an activity having a static reference to one of your Views. 
+    2.  Then the other not so obvious 'mistake' is not making classes static when they should be. Inner classes for example, you shoul  d always consider making them static so that they don't hold a reference to the outer class, which also leads to memory leaks. Most people when starting out don't realize this and it’s an easy mistake to make, but if you default to always making your inner classes static it will help you and your apps in the long term. An example here would be a class extending ASyncTask inside of an Activity.
+
+    ## Gregory: Where do you see Android fitting in the IoT world?
+
+    **Paul:** Android itself fits in in the app world and to configure IoT devices and check up on them its always nice to use an app. So this is the sweet spot for Android. 
+
+    Secondly Google is bringing out Brillo and Weave which is a protocol and a platform to build IoT devices, so they have a smaller coding footprint than Android for embedded devices. However, the interesting thing is that Google has SDK's for Brillo devices via Weave to talk to Android devices, and therefore this makes connecting and configuration like I first talked about really easy.
+ 
+    ## Gregory: Some of your apps have been downloaded millions of time. At which point did you feel that you had to do more customer support vs. app development (i.e responding to requests, feedback...) 
+
+    **Paul:** I never feel like this :-) being organized is really important in the software industry. Keeping a list of tasks that you wish to do and time-boxing areas of work helps you keep on top of everything. This includes making time for customer support, but also balancing that with the amount of development work you wish to do. If I had one piece of advise for people around this it would be this. 
+
+    Have a master to-do list that encompasses life goals and major events. Each morning decide your work for the day by reading these and figuring out what is the smallest next step you need to do to accomplish this, and write this down for a daily to-do list. 
+
+    For example:
+    -   [  ]Life goal _"Write my zombie apocalypse game"_ 
+    -   [  ] Todays task _ "Write main menu with new game option and quit option"_
+    Combine this with using a calendar/diary to schedule meeting other peoples time constraints and you should always find time to do everything you want. 
+
+    ## Gregory: While the issue has moved from legal to tech at the moment, what was your take on the DOJ vs Apple case in the US?
+    
+    **Paul:** I sided with apple, whilst yes the FBI needs the information. Apple cannot create software backdoors because, yes, it lets the FBI in but then it easily lets anyone else in with more evil intentions. 
+
+    I don't know why the FBI took it to court because like we have found out now someone has managed to hack into it anyway (which I always thought was possible) and whilst still bad, its less bad than making a precedence of publicly accessible non secure software.
+
+    ## Gregory: What would be your recommendations for people who need to produce an app that will be working in remote locations with little connectivity?
+
+    **Paul:** Consider offline mode from the start. If you have a server side component use http caching, etags and gzip content. This then allows the phone to still produce content (if it has been seen before when offline). 
+
+    You can also have more aggressive prefetching algorithms, meaning when the app gets a network connection, it assumes the pages the user is going to visit and pulls down that data when it can for later consumption. The inverse of this is that usually when people are in an environment with little connectivity they are also on small data plans and therefore don't want to be downloading too much. 
+
+    You can use something like Googles JobScheduler which allows you to control when your tasks are run, i.e. when the user is on a WiFi network to save data or is plugged in to a charger to save battery. 
+
+    ## Gregory: How do you find the time to publish so much on GitHub !?
+
+    **Paul:** I think going back to my last answer, it’s all about organization. I like to think to myself I will spend two hours on Sunday just working on some nice open source idea I've had. These two-hour slots quickly add up. I also make the most of travelling if I am getting a train or flying somewhere I use this time like a hackathon and set myself a task that I want to complete. The trick is to always have my laptop and a charger in my backpack, the great thing about Git is that I don't need an internet connection to save my work.
+
+    ## Gregory: Can you tell us about the one app you really love on your phone?
+
+    **Paul:** I really like BUX. This is share-dealing application but the good thing is that you can play for fun. It really gamifies share-dealing and you can add your friends and create tournaments. The UX of the app is quite interesting, I've found it intuitive from the start but it doesn't follow many of the Android design guidelines (although these guidelines change all the time) and I'd argue the BUX app understands them and has great reasons for breaking them.
+
+    ## Gregory: And the one app you removed the most recently? Why?
+
+    **Paul:** Ooh I don't really like shaming any apps. However, since you asked, I just uninstalled Famous, this is an app where you become someone on Twitter’s biggest fan. I was in the beta so I'm not sure if it's been generally released yet, but yeah the fun was that you could make 'hearts' by being someone’s biggest fan over time, and other people could out bid you and steal them from you. 
+
+    Whilst I found it fun for a bit, after a while it didn't keep my interest as it didn't go to any next level. The UX of this app was also interesting in that you can swipe any direction on the screen and navigate to another activity. This was more of a steep learning curve and I'm not convinced its the best way to do it. Uninstalled now! Sorry! 
+
+    To learn more about Paul, check out his posts on the Android Hub and view his personal site here: www.blundell-apps.com
+
