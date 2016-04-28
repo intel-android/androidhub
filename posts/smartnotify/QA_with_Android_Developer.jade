@@ -24,7 +24,7 @@ block content
     **Paul:** That’s a really good question. One of the most common mistakes I see a lot when reviewing code is misuse of the static keyword. This usually happens in two places:
 
     1.  First an instance field is made static when it should not be, this means the reference to that field is longer lived than the class it is in and can lead to memory leaks which are never good but are even more important to avoid on a mobile constrained environment. An example of this would be in an activity having a static reference to one of your Views. 
-    2.  Then the other not so obvious 'mistake' is not making classes static when they should be. Inner classes for example, you shoul  d always consider making them static so that they don't hold a reference to the outer class, which also leads to memory leaks. Most people when starting out don't realize this and it’s an easy mistake to make, but if you default to always making your inner classes static it will help you and your apps in the long term. An example here would be a class extending ASyncTask inside of an Activity.
+    2.  Then the other not so obvious 'mistake' is not making classes static when they should be. Inner classes, for example, you should always consider making them static so that they don't hold a reference to the outer class, which also leads to memory leaks. Most people when starting out don't realize this and it’s an easy mistake to make, but if you default to always making your inner classes static it will help you and your apps in the long term. An example here would be a class extending ASyncTask inside of an Activity.
 
     ## Gregory: Where do you see Android fitting in the IoT world?
 
