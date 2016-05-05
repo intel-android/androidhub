@@ -1,12 +1,132 @@
 ---
 title:      'Unity and Android Build for Intel Architecture'
-categories: [ideate, launch, design, build]
-heroimage:  ''
-excerpt:    'Short description of the article' 
+categories: [launch, build]
+heroimage:  '3.png'
+excerpt:    'Intermediate tutorial for creating a Unity project targeted for Intel Architecture.' 
 ---
 
 extends ../../views/layouts/_single
 
 block content
   :marked
-    Here's my first post on this little blog. **How exciting!**
+    # Unity and Android Build for Intel Architecture
+    In this article I will try to cover Unity with steps for Android build for Intel Architecture.
+
+    **Please note that an intermediate level and familiarity with C# and Unity is expected to be able to follow along with this tutorial.**
+    
+    ## Let's get started
+    Why Unity?
+    * Unity as a game engine is easy to learn and work upon to bring your ideas to action
+    * It supports c#, Javascript, and boo
+    * It allows you to develop once and deploy to multiple targets 
+
+    #### Unity and Intel
+
+    At Unite 2014 there came a big occasion when there was a pact between Intel and Unity to support x86 build for Unity. Starting at Unity 4.6, there is now built-in support for the x86 platform.
+
+    #### Getting the resources
+
+    Unity - link to download:
+
+    https://unity3d.com/get-unity/download (target the latest build)
+
+    Resources Unity and Intel - link for resources to refer to for this tutorial:
+
+    https://software.intel.com/en-us/articles/unity 
+
+    #### Get going at IDZ
+
+    What are the advantages of IDZ?
+    There are multiple advantages to IDZ most importantly that there are more open source tools, code resources to help you get started, and a separate game dev track. 
+
+    To get going with IDZ, we will need to do two things: 
+    1. Register yourself with IDZ
+    2. Get going at Game Dev Track (see screenshot below)
+    https://software.intel.com/en-us/gamedev 
+
+    ![](/library/abhilegend/1.png)
+
+    ## Let's get going in Unity
+
+    ![](/library/abhilegend/2.png)
+    ![](/library/abhilegend/Picture3a.png)
+
+    #### Importing Assets:
+    ![](/library/abhilegend/3.png)
+
+    #### Walkthrough:
+    Below we have added the balls in the scene:
+    ![](/library/abhilegend/4.png)
+
+    I have used Touch Script (https://www.assetstore.unity3d.com/en/#!/content/7394).
+
+    Then we add the characteristic script to the balls. Below is the script needed for splitting the cubes or balls:
+
+    ```c#
+
+    using TouchScript.Gestures;
+
+    public class Breaker : MonoBehaviour
+    {
+        public Transform CubePrefab;
+        public float Power = 10.0f;
+
+        private Vector3[] directions = {
+                                           new Vector3(1, -1, 1),
+                                           new Vector3(-1, -1, 1),
+                                           new Vector3(-1, -1, -1),
+                                           new Vector3(1, -1, -1),
+                                           new Vector3(1, 1, 1),
+                                           new Vector3(-1, 1, 1),
+                                           new Vector3(-1, 1, -1),
+                                           new Vector3(1, 1, -1)
+                                       };
+
+        private void Start()
+        {
+            GetComponent<tapgesture>().StateChanged += HandleStateChanged;
+        }
+
+        private void HandleStateChanged(object sender, TouchScript.Events.GestureStateChangeEventArgs e)
+        {
+            if (e.State == Gesture.GestureState.Recognized)
+            {
+                if (transform.localScale.x > 0.05f)
+                {
+                    Color color = new Color(Random.value, Random.value, Random.value);
+                    for (int i = 0; i < 8; i++)
+                    {
+                        var c = Instantiate(CubePrefab) as Transform;
+                        c.parent = transform.parent;
+                        c.name = "Cube";
+                        c.localScale = 0.5f*transform.localScale;
+                        c.position = transform.TransformPoint(c.localScale.x/10.0f*directions[i]);
+                        c.rigidbody.velocity = Power*Random.insideUnitSphere;
+                        c.renderer.material.color = color;
+                    }
+                }
+                Destroy(gameObject);
+            }
+        }
+    }
+    ```
+
+    ![](/library/abhilegend/5.png)
+
+    #### Saving the Scene
+
+    ![](/library/abhilegend/6.png) 
+
+    #### Building the Project
+
+    ![](/library/abhilegend/7.png) 
+
+    Now we will check the target build for Intel x86. If we target this option, it will get created for all Android targets.
+    ![](/library/abhilegend/8.png) 
+
+    And finally, let's show how we create the APK:
+    ![](/library/abhilegend/9.png) 
+
+    ## Conclusion
+    Following the above specified steps should have set you up to create a Unity project that has been targeted for Intel Architecture. 
+
