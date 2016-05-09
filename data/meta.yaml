@@ -1,6 +1,6 @@
 twitter:
   account:      'intelsoftware'
-  site:         'http://intel-android.ddhive.com'
+  site:         'http://androidhub.intel.com'
   title:        'Intel / Android Developer Hub'
   description:  'Engage with Intel for all things software and join a worldwide community of software developers on the Intel Developer Zone.'
   creator:      'intelsoftware'
@@ -8,8 +8,8 @@ twitter:
 
 opengraph:
   title:        'Intel / Android Developer Hub'
-  url:          'http://intel-android.ddhive.com'
+  url:          'http://androidhub.intel.com'
   image:        'https://pbs.twimg.com/profile_images/451797078142767104/LjIk-xW-.png'
   site:         'Intel / Android Developer Hub'
   description:  'Engage with Intel for all things software and join a worldwide community of software developers on the Intel Developer Zone.'
-  author:       'Deloitte Digital'
+  author:       'Intel'
