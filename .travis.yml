@@ -1,12 +1,13 @@
 language: node_js
 before_script:
-- npm install -g roots
-- npm install -g bower
+- travis_retry npm install -g roots
+- travis_retry npm install -g bower
 script:
 - npm test
-- bower install
+- travis_retry bower install
 - echo $TRAVIS_TAG; if [ "$TRAVIS_TAG" != "" ]; then export env='production'; else export env='staging'; fi; echo $env;
-- roots compile -e $env
+- travis_retry roots compile -e $env
+- scripts/prep_l18n.sh
 node_js:
 - '0.12'
 sudo: false

@@ -31,7 +31,7 @@ block content
       a.light(href=feature._url)
         h1.hero-title.animate-prep= feature.title
       .author-nameplate.animate-prep
-        img.avatar.circle.contain.lazyload(src=helpers.getAuthorImage(author))
+        img.avatar.circle.cover.lazyload(src=helpers.getAuthorImage(author))
         h4.marginless.animate-prep by #{author.displayname}
         a.light.animate-prep(href=helpers.socialLink('twitter', author.twitter), target='_blank')
           small @#{author.twitter}
@@ -50,7 +50,7 @@ block content
 
   .testimonial.lazyload(data-bg='/img/fractal-blue.png')
     section: .grid.grid--justify-center: .grid__col-xs-12.grid__col-sm-7.grid--direction-column.text-left
-      h2 Art is subjective. You like it or you don't like it. But design is the science of art, it's art with purpose. Design is about intent.
+      h2 Art is subjective. You like it or you don't like it. But design is the science of art. It's art with purpose. Design is about intent.
       a.btn.clear(href=data.paths.field_guide) 
         | Learn more in our Developer Field Guide
         include includes/svg/_arrow
@@ -63,6 +63,12 @@ block trackers
       var OB_ADV_ID=27123;
       var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
       var str = '<script src="'+scheme+'widgets.outbrain.com/obtp.js" type="text/javascript"><\/script>';
-        document.write(str);
+      document.write(str);
       
+    script.
+      //- floodlight tracking
+      var axel = Math.random() + "";
+      var a = axel * 10000000000000;
+      document.write('<iframe src="https://2236808.fls.doubleclick.net/activityi;src=2236808;type=andro001;cat=andro0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+
   include includes/_intel_tracking

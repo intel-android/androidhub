@@ -54,7 +54,7 @@ App.Commit = (->
 
     xobj = new XMLHttpRequest()
     xobj.overrideMimeType "application/json"
-    xobj.open 'POST', 'commit.php'
+    xobj.open 'POST', '/commit.php'
     xobj.onreadystatechange = () =>
       if xobj.readyState == 4 and xobj.status == 200
         json = JSON.parse(xobj.responseText)

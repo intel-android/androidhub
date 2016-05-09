@@ -7,7 +7,9 @@ dynamic         = require 'dynamic-content'
 roots_yaml      = require 'roots-yaml'
 records         = require 'roots-records'
 shell           = require 'shelljs'
-copyLibrary     = require './scripts/copy-library.js'
+copyLibrary     = require './scripts/copy-library'
+createThumbs    = require './scripts/create-thumbs'
+hasRunOnce      = false
 
 module.exports =
   ignores: [
@@ -22,7 +24,10 @@ module.exports =
     'app.sublime-project'
     'spec/**'
     'tmp'
-    'jasmine-runner.js'
+    'jasmine-runner.js',
+    '.travis.yml',
+    'deploy_key*',
+    '*.zip'
     # 'data/**'
   ]
 
@@ -96,8 +101,11 @@ module.exports =
       sortByLastName:   require './scripts/sort-by-last-name.js'
 
   before: ->
-    shell.exec 'npm run posts-git-log'
-    copyLibrary()
+    if not hasRunOnce
+      shell.exec 'npm run posts-git-log'
+      copyLibrary()
+      hasRunOnce = true
+    # createThumbs()
     return true
 
   debug: true
