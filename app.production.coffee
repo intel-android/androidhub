@@ -9,7 +9,7 @@ records         = require 'roots-records'
 shell           = require 'shelljs'
 copyLibrary     = require './scripts/copy-library'
 createThumbs    = require './scripts/create-thumbs'
-hash            = (new Date()).valueOf().toString()
+# hash            = (new Date()).valueOf().toString()
 
 module.exports =
   ignores: [
@@ -24,7 +24,10 @@ module.exports =
     'app.sublime-project'
     'spec/**'
     'tmp'
-    'jasmine-runner.js'
+    'jasmine-runner.js',
+    '.travis.yml',
+    'deploy_key*',
+    '*.zip'
     # 'data/**'
   ]
 
@@ -60,7 +63,7 @@ module.exports =
         'assets/js/ga-prod.coffee'
         'assets/js/elqQ.coffee'
       ]
-      out:    "js/app_#{hash}.js"
+      out:    "js/app.js"
       minify: true
       hash:   false
 
@@ -81,7 +84,7 @@ module.exports =
         'bower_components/sweetalert/dist/sweetalert.css'
         'assets/css/master.styl'
       ]
-      out:    "css/app_#{hash}.css"
+      out:    "css/app.css"
       minify: true
       hash:   false
       opts:
@@ -121,6 +124,6 @@ module.exports =
     createThumbs()
 
   after: ->
-    shell.exec "node_modules/purify-css/bin/purifycss public/css/app_#{hash}.css public/index.html public/feed.html public/about.html public/authors.html public/commit.html public/posts/argyleink/webviews.html public/js/app_#{hash}.js --info --out public/css/app_#{hash}.css"
-    shell.exec "node_modules/csso/bin/csso public/css/app_#{hash}.css public/css/app_#{hash}.css"
+    shell.exec "node_modules/purify-css/bin/purifycss public/css/app.css public/index.html public/feed.html public/about.html public/authors.html public/commit.html public/posts/argyleink/webviews.html public/js/app.js --info --out public/css/app.css"
+    shell.exec "node_modules/csso/bin/csso public/css/app.css public/css/app.css"
     shell.exec 'cp -R posts/* public/posts'

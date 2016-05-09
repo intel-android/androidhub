@@ -6,4 +6,4 @@ eval "$(ssh-agent -s)" #start the ssh agent
 chmod 600 deploy_key
 ssh-add deploy_key
 
-rsync -i deploy_key --delete --exclude android-field-guide -r public/* ${DEPLOY_USER}@${DEPLOY_IP}:${DEPLOY_PATH_PROD}
+rsync -i deploy_key --delete --exclude android-field-guide --exclude en/android-field-guide --exclude es --exclude ru --exclude --pt --exclude --zh=hans -r public/* ${DEPLOY_USER}@${DEPLOY_IP}:${DEPLOY_PATH_PROD}
