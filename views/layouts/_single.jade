@@ -15,7 +15,7 @@ html
       include ../includes/_site-meta
 
       +og-meta({
-        url:          data.meta.opengraph.url,
+        url:          data.meta.opengraph.url + post._url,
         title:        post.title,
         description:  post.excerpt,
         site_name:    data.meta.opengraph.site,
