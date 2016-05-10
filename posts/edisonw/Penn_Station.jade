@@ -1,5 +1,5 @@
 ---
-title:      'Penn Station'
+title:      'Penn Station: An Annotation Based Publish Subscribe Service that Will Scale with Feature Counts'
 categories: [launch, design, build]
 heroimage:  'edisonpost2.jpeg'
 excerpt:    '' 
@@ -16,21 +16,21 @@ block content
     [^1]: Inspired by Grand Central from iOS, think of the events on your app as people, are trying to go from places to places (requesters/listeners), so they gather here at Penn Station, where they have access to NJT/LIRR/NYC Metro/etc (the different processes). 
 
 
-    |                                     | Penn Station     | EventBus   | Otto       |
-    |-------------------------------------|------------------|------------|------------|
-    | Declare Events                      | Annotation       | Annotation | Annotation |
-    | Event Listener Interface (2)        | Annotation       | No         | No         |
-    | Event Request Factory               | Annotation       | No         | No         |
-    | Event Result Factory                | Annotation       | No         | No         |
-    | IPC via Parcelable if needed        | Yes              | No         | No         |
-    | Event Producers                     | Annotation       | No         | Yes        |
-    | Require Implementations             | Yes              | No         | No         |
-    | Asynchronous Delivery               | Yes              | Yes        | No         |
-    | Event Delivery on Posting Thread    | Yes              | Default    | No         |
-    | Event Delivery On Main Thread       | Default          | Yes        | No         |
-    | Event Delivery on Background Thread | Yes              | Yes        | No         |
-    | Request Process                     | Service Executor | Background | Background |
-    | Easy Access to Context              | Android Service  | No         | No         |
+    |                                            |      Penn Station        |    EventBus        |      Otto          |
+    |---------------------------------------------|:------------------------------:|:-----------------------:|:-------------------:|
+    | Declare Events                         |      Annotation          |   Annotation &nbsp; &nbsp;     |    Annotation      |
+    | Event Listener Interface (2)           |      Annotation          |     No             |      No            |
+    | Event Request Factory                  |      Annotation          |     No             |      No            |
+    | Event Result Factory                   |      Annotation          |     No             |      No            |
+    | IPC via Parcelable if needed           |      Yes                 |     No             |      No            |
+    | Event Producers                        |      Annotation          |     Now            |      Yes           |
+    | Require Implementations                |      Yes                 |     No             |      No            |
+    | Asynchronous Delivery                  |      Yes                 |     Yes            |      No            |
+    | Event Delivery on Posting Thread       |      Yes                 |     Default        |      No            |
+    | Event Delivery On Main Thread          |      Default             |     Yes            |      No            |
+    | Event Delivery on Background Thread &nbsp;    |      Yes                 |     Yes            |      No            |
+    | Request Process                        |   &nbsp; &nbsp;   Service Executor &nbsp; &nbsp;   |     Background &nbsp; &nbsp;   |      Background    |
+    | Easy Access to Context                 |      Android Service     |      No            |      No            |
     
 
     Using Penn Station, your workflow of implementing a long running task becomes easy because you don’t have to worry about anything other than what the task needs to do and when it’s done, what events should be emitted. 
@@ -66,4 +66,3 @@ block content
     I hope with this library anyone can write efficient, scalable, and foolproof code that will make their user experience better. 
 
     Please let me know if you have any comments or suggestions! :) 
-

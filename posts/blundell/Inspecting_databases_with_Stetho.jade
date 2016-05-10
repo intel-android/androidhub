@@ -1,5 +1,5 @@
 ---
-title:      'Inspecting databases with Stetho'
+title:      'Inspecting Databases with Stetho'
 categories: [build]
 heroimage:  'android-hero.png'
 excerpt:    'Have you ever been writing a database backed Android application, and you quickly want to look at some of your SQL stored data. Maybe wondering why your query isnt working or seeing if the database persistence is actually working?' 
@@ -103,7 +103,7 @@ block content
     Enough setup, let’s do it! You can now use the dev tools from your chrome browser whenever your device is connected to your dev machine with adb. Open chrome and navigate to chrome://inspect. It should look something like this:
 
 
-    ![](library/stetho-device-selection.png)
+    ![](/library/blundell/stetho-device-selection.png)
 
 
     From here you can select your device by pressing the blue hyperlink inspect. This will get you to the main screen of chrome developer tools as we discussed previously with many options for poking and prodding at your application. 
@@ -117,8 +117,8 @@ block content
     Select the Resources tab from the top row and then from the left menu select Web SQL. Now you can see a list of all the databases created by your application. Expand the one you’re interested in and you’ll get a list of all the tables for that database. Click a table and you get to see all the data in that table. Awesome!
     If you click on the database name you get an interactive console for you to run queries on your data. Yes! Type a query like `SELECT * FROM people WHERE name=’Bart’;` and watch in awe. 
 
-    ![](library/stetho-sql-commands.png)
-    ![](library/stetho-database-data.png)
+    ![](/library/blundell/stetho-sql-commands.png)
+    ![](/library/blundell/stetho-database-data.png)
 
 
     Chrome developer tools has many more helpful features than just database viewing; Stetho makes these available to us Android developers. Now you have the tools running I recommend you look into enabling network inspections with Stetho to let you browse network requests, get image previews and control json responses.
