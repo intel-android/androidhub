@@ -36,7 +36,7 @@ class App.Search
   loadPostsJSON: (cb) ->
     xobj = new XMLHttpRequest()
     xobj.overrideMimeType "application/json"
-    xobj.open 'GET', 'content.json', true
+    xobj.open 'GET', '/content.json', true
     xobj.onreadystatechange = () ->
       if xobj.readyState == 4 and xobj.status == 200
         cb JSON.parse(xobj.responseText)
