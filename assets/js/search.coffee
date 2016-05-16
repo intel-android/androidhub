@@ -17,7 +17,7 @@ class App.Search
 
         # query posts object: title, content, url
         for key, author of @posts when key isnt 'items'
-          for post in author.items when post.title.toLowerCase().indexOf(query) > -1 | post.content.indexOf(query) > -1 | post._url.indexOf(query) > -1 | post.authorName.indexOf(query) > -1
+          for post in author.items when post.title.toLowerCase().indexOf(query) > -1 or post.content.indexOf(query) > -1 or post._url.indexOf(query) > -1 or (post.authorName && post.authorName.indexOf(query) > -1)
             results.push post.title
 
         # filter grid items by matching titles
@@ -36,7 +36,7 @@ class App.Search
   loadPostsJSON: (cb) ->
     xobj = new XMLHttpRequest()
     xobj.overrideMimeType "application/json"
-    xobj.open 'GET', 'content.json', true
+    xobj.open 'GET', '/content.json', true
     xobj.onreadystatechange = () ->
       if xobj.readyState == 4 and xobj.status == 200
         cb JSON.parse(xobj.responseText)
