@@ -49,10 +49,18 @@ rm -f public/en/redirector.html
 
 if [ "$(uname)" == "Darwin" ]; then
   find -X public/en -name '*.html' | xargs sed -i -e 's/a href=\"\//a href=\"\/en\//g'
+  find -X public/en -name '*.html-e' | xargs rm -f   
+  
+  # handle references to full urls
+  find -X public/en -name '*.html' | xargs sed -i -e 's/https:\/\/androidhub.intel.com\//https:\/\/androidhub.intel.com\/en\//g'
   find -X public/en -name '*.html-e' | xargs rm -f    
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   find public/en -name '*.html' | xargs sed -i -e 's/a href=\"\//a href=\"\/en\//g'
   find public/en -name '*.html-e' | xargs rm -f
+  
+  # handle references to full urls
+  find public/en -name '*.html' | xargs sed -i -e 's/https:\/\/androidhub.intel.com\//https:\/\/androidhub.intel.com\/en\//g'
+  find public/en -name '*.html-e' | xargs rm -f    
 fi
 
 # replace index with one that redirects to the local version
