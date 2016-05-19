@@ -2,7 +2,7 @@
 title:      'Dealing with Android Fragmentation'
 categories: [launch, build]
 heroimage:  'devices-hero.jpg'
-excerpt:    'A look at how Android developers can better deal with fragmentation' 
+excerpt:    'A look at how Android developers can better deal with fragmentation'
 ---
 
 extends ../../views/layouts/_single
@@ -12,6 +12,7 @@ block content
     A look at how Android developers can better deal with fragmentation
 
     As this [Android infographic](https://androidhub.intel.com/posts/peachpellen/Infographic_Android_in_2015.html) shows, there are now more than 24,000 unique Android devices developers can support, with more than 5,000 being released in 2015 alone. The level of fragmentation app developers now have to deal with is simply massive, and it continues to grow exponentially.
+
     This post is about the ways mobile developers can handle fragmentation to cut down on time and frustration while building their apps, along with a few simple tips.
 
     ### Cross Platform Tools 
@@ -29,6 +30,7 @@ block content
     ### Large Graphics
 
     This tip will be obvious to most of you, but a common pitfall for new app developers, especially those creating their own graphics or being asked for dimensions by a designer, is to grossly underestimate how large an image needs to be to look perfect on a large retina display. Looking at a tablet, you might think "OK, 500 x 500 pixels seems like a good size!" - you need to quadruple that for true retina, making 2000 x 2000.
+
     Personally, I believe in adding a "buffer" just in case, normally an additional 50% or, in this example, 3000 x 3000. 
 
     ### Under the Hood
@@ -44,14 +46,12 @@ block content
     I once worked with a company that catered mostly to hobbyists, kids and people without any development experience, in other words people who hadn't yet learned the importance of testing on device. One of the main complaints I'd hear once anyone had published was "I'm getting bad reviews because my app just crashes on startup, but it worked *fine* in the emulator!" - setting up your test environment is crucial.
 
     My setup looks like this:
-    
-    ![Wall Mounted Devices](/library/peachpellen/peach_devices.jpg)
 
+    ![Wall Mounted Devices](/library/peachpellen/peach_devices.jpg)
 
     I'm using this powered/data 7-port [usb hub](http://amzn.to/1ZK5not) which is hooked up to my computer and power. *(Normally I'd have the devices hooked up to the hub, of course!)* The phones are held up with regular [PadTabs](http://amzn.to/1JfxynZ), and the tablets with [Tablet PadTabs](http://amzn.to/1QbwIb6) - in the past I've had a long table set up with devices as well, but this saves me space and looks cool ;-)
 
     **Note: I've previously tried using the regular padtabs on an iPad Mini and a kindle of the same size, they didn't work well, so if you're planning on using them make sure you get the right kind as it's a pain to swap them around later on.*
-
 
     ### Automation
 
