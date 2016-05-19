@@ -34,6 +34,9 @@ html(lang='en')
       title= post.title
       != css('/')
       link(rel='stylesheet', href='/css/prism.css')
+        
+      script.
+        var disqus_config = function () { this.language = "en"; };  
 
     body
       +nav('feed')
