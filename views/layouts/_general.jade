@@ -1,4 +1,5 @@
 include ../mixins/_nav
+include ../mixins/_language-selector
 include ../mixins/_author
 include ../mixins/_og-meta
 include ../mixins/_twitter-meta
@@ -20,6 +21,9 @@ html(lang='en')
     != css('/')
 
   body
+    block language-selector
+      +language-selector()
+      
     block nav
       +nav()
     
