@@ -1,32 +1,32 @@
 do (window) ->
 
-  @languages = ['en', 'zh-hans', 'pt', 'ru', 'es']
-  @defaultLanguage = 'en'
-  @languageSelector = document.getElementById 'language-selector'
-  @urlParts
+  languages = ['en', 'zh-hans', 'pt', 'ru', 'es']
+  defaultLanguage = 'en'
+  languageSelector = document.getElementById 'language-selector'
+  urlParts = []
 
   _getUrl = ->
     window.location.href
 
   _urlParts = ->
-    @urlParts = _getUrl().split '/'
+    urlParts = _getUrl().split '/'
 
   _getCurrentLanguage = ->
-    currentLanguage = @urlParts[3]
-    if @languages.indexOf(currentLanguage) isnt -1
+    currentLanguage = urlParts[3]
+    if languages.indexOf(currentLanguage) isnt -1
       currentLanguage
     else
-      @defaultLanguage
+      defaultLanguage
 
   _setCurrentLanguage = ->
-    @languageSelector.value = _getCurrentLanguage()
+    languageSelector.value = _getCurrentLanguage()
 
   _changeLanguage = (language) ->
-    @urlParts[3] = language
-    window.location.href =  @urlParts.join '/'
+    urlParts[3] = language
+    window.location.href =  urlParts.join '/'
 
   _watchSelector = ->
-    @languageSelector.addEventListener 'change', (ev) ->
+    languageSelector.addEventListener 'change', (ev) ->
       _changeLanguage ev.target.value
 
   Init = ->
