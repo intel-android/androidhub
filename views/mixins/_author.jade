@@ -4,8 +4,10 @@ mixin author(author)
       img.grid__cell-img.lazyload.lazyanimate.cover(data-src=helpers.getAuthorImage(author))
       .name.clearsans-bold= author.displayname
       small 
-        | #{author.title} at 
-        a.dark(href=author.website, target='_blank')= author.company
+        | #{author.title} 
+        if author.company 
+          | at 
+          a.dark(href=author.website, target='_blank')= author.company
       if author.founder
         small.clearsans-bold Hub Founding Contributor
 
