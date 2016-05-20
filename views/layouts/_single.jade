@@ -1,6 +1,7 @@
 include ../mixins/_og-meta
 include ../mixins/_twitter-meta
 include ../mixins/_nav
+include ../mixins/_language-selector
 include ../mixins/_related-post
 include ../mixins/_tracking-pixel
 
@@ -39,6 +40,8 @@ html(lang='en')
         var disqus_config = function () { this.language = "en"; };  
 
     body
+      +language-selector()
+      
       +nav('feed')
 
       header.grid(style="background-image:url(#{helpers.getHeroImage(post)})")

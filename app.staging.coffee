@@ -51,6 +51,7 @@ module.exports =
         'assets/js/track.coffee'
         'assets/js/disqus.coffee'
         'assets/js/natural-language-form.coffee'
+        'assets/js/language-selector.coffee'
         # classes
         'assets/js/grid.coffee'
         'assets/js/search.coffee'
