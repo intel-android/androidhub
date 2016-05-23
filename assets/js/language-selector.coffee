@@ -1,5 +1,7 @@
 do (window) ->
 
+  return unless document.getElementById 'language-selector'
+
   languages = ['en', 'zh-hans', 'pt', 'ru', 'es']
   defaultLanguage = 'en'
   languageSelector = document.getElementById 'language-selector'
