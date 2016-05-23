@@ -1,0 +1,117 @@
+---
+title:      'Easy Android Maps Part 1'
+categories: [launch, build]
+heroimage:  'map1.png'
+excerpt:    'Short description of the article' 
+---
+
+extends ../../views/layouts/_single
+
+block content
+  :marked
+    Nowadays with more and more Android apps using a location based and mapping technology, it’s become a must have feature in your Android app. For example, to display nearest gas stations and then draw a route from your location to the gas station, it will become much easier to user if we display it on a map. Fortunately, with Google Maps Android API and Android Studio, we can easily create a map-based feature and then embed it to our app. In this post we try to display a simple map in our application using Google Maps Android SDK and Android Studio.
+    
+    # Create Google Maps Android API Key
+    First, to use the Google Maps Android API SDK, we need an API key. That key can be obtained free from the Google Developer Console. You can click this [link](https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&reusekey=true), and the choose > _Create a new Project_. Then a new page will open which enable you to create credentials, in the pop up choose _API key_ like example below:
+
+    ![](/library/twoh/cred1.png)
+
+    Once done, you will be prompted to enter a name in your Android API key, like below example:
+
+    ![](/library/twoh/cred2.jpg)
+
+    You can also specify package name and fingerprint so the API key only can be used on your own specific app. But for this tutorial we will use an universal key. Once you’re done with the API key name, click > _Create_ button. And voila ! here’s your Android API Key:
+
+    ![](/library/twoh/cred3.png)
+
+    You can copy that and save it to a note because we will use the key later.
+    
+    # Creating Map-based application using Android Studio
+    Android Studio is arguably the most favorite IDE for Android developers, so I am sure most of you are already familiar with it. We will be using Android Studio to create our first map app.
+
+    Firstly, open _Android Studio_, and from the top menu bar choose > _File_ > _New_ > _New Project_ and then choose the Google Maps Activity template.
+
+    ![](/library/twoh/app1.png)
+
+    After that, click > _Next_ and a new page will open which will let you enter your Maps Activity name, Layout name and the Activity Title (we will leave that to default). The next page is where you can fill your app name and package name. If you’re done, click Finish and you will go to your application page.
+
+    We will use our previously generated API key for this app On your application project page, open the _google_maps_api.xml_ in the /res/values folder. Replace the value YOUR_KEY_HERE with your actual API key like example below.
+
+    ```
+    <resources>  
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIza************0c</string>
+    </resources>
+    ```
+
+    After that, lets open the MapsActivity.java file where it contains all the logic for creating our map app. The code inside the file will look like below:
+
+    ```java
+    package id.web.twoh.mymapapp;
+
+    import android.support.v4.app.FragmentActivity;
+    import android.os.Bundle;
+
+    import com.google.android.gms.maps.CameraUpdateFactory;
+    import com.google.android.gms.maps.GoogleMap;
+    import com.google.android.gms.maps.OnMapReadyCallback;
+    import com.google.android.gms.maps.SupportMapFragment;
+    import com.google.android.gms.maps.model.LatLng;
+    import com.google.android.gms.maps.model.MarkerOptions;
+
+    public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+
+        private GoogleMap mMap;
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_maps);
+            // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.map);
+            mapFragment.getMapAsync(this);
+        }
+
+
+        /**
+         * Manipulates the map once available.
+         * This callback is triggered when the map is ready to be used.
+         * This is where we can add markers or lines, add listeners or move the camera. In this case,
+         * we just add a marker near Sydney, Australia.
+         * If Google Play services is not installed on the device, the user will be prompted to install
+         * it inside the SupportMapFragment. This method will only be triggered once the user has
+         * installed Google Play services and returned to the app.
+         */
+        @Override
+        public void onMapReady(GoogleMap googleMap) {
+            mMap = googleMap;
+
+            // Add a marker in Sydney and move the camera
+            LatLng sydney = new LatLng(-34, 151);
+            mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        }
+    }
+    ```
+    That’s a quite simple code, but let’s review that code together. First, it will create an instance of `GoogleMap` which represents the map in our app. Then it will create a new _Marker_ to be placed on top of the map. And the marker uses the location from _LatLng_ variable, which is given its coordinate (-34, 151). Finally `moveCamera()` method will be called so when we first open the app it will move the map to a specific coordinate, which in this example will bring us to Sydney.
+
+    Okay, maybe you will ask, **“What if I want the map pointing to my location?”** No worries, we already have a method to handle that. For that purpose, let’s modify the code a little bit! Just add this line:
+
+    ```
+    mMap.setMyLocationEnabled(true);
+    ```
+
+    Right below the `moveCamera()` method. It will enable the map to display a little “my location” button on top right of the map screen. Then when we click that button, the map will animate and move directly to our location. But remember to use this feature you must enable _Location Services_ in your Android device.
+
+    Let’s run our app. And it will open a nice map like below, looks how easy it is!
+
+    ![](/library/twoh/map1.png)
+
+    This is just first step for Android maps; in the next tutorial we will learn more about customizing the maps. For more details you can check, [Google Maps API Android documentation](https://developers.google.com/maps/documentation/android-api/). You also can find the sample source code at my [GitHub](https://github.com/twoh/androidhub-mapsv2).
+
+
+
+
+
+
+
