@@ -1,6 +1,7 @@
 include ../mixins/_og-meta
 include ../mixins/_twitter-meta
 include ../mixins/_nav
+include ../mixins/_language-selector
 include ../mixins/_related-post
 include ../mixins/_tracking-pixel
 
@@ -32,10 +33,19 @@ html(lang='en')
       })
 
       title= post.title
-      != css('/')
+      if env == 'dev'
+        != css('/')
+      else
+        link(rel='stylesheet', href="/css/app.css?v=#{timestamp}")
+
       link(rel='stylesheet', href='/css/prism.css')
+        
+      script.
+        var disqus_config = function () { this.language = "en"; };  
 
     body
+      +language-selector()
+      
       +nav('feed')
 
       header.grid(style="background-image:url(#{helpers.getHeroImage(post)})")
@@ -91,15 +101,21 @@ html(lang='en')
         #disqus_thread
 
       include ../includes/_footer
-      != js('/')
-      script(src='/js/prism.js')
+      
+      if env == 'dev'
+        != js('/')
+      else
+        script(src="/js/app.js?v=#{timestamp}")
 
       //- trackers
       if env == 'prod'
+        
         +tracking-pixel('nth41')
         include ../includes/_facebook_tracking
         img(src="//trc.taboola.com/ironhorseinteractive-intel/log/3/mark?marking-type=visitor_android&item-url=https://androidhub.intel.com#{post._url}", width="0", height="0")
         img(src="http://amplifypixel.outbrain.com/pixel?mid=0019f45704a34a8b96b6855cb1af74f1f1")
+      
+      script(src='/js/prism.js')
         
       include ../includes/_intel_tracking
       

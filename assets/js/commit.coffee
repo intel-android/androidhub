@@ -38,8 +38,8 @@ App.Commit = (->
 
   notDone = () ->
     swal
-      title:  'Doh!'
-      text:   'You missed a spot.'
+      title:  @form.dataset.errorTitle
+      text:   @form.dataset.errorText
       type:   'error'
 
   done = () ->
@@ -59,8 +59,8 @@ App.Commit = (->
       if xobj.readyState == 4 and xobj.status == 200
         json = JSON.parse(xobj.responseText)
         swal
-          title:  'Nice!'
-          text:   json.message
+          title:  @form.dataset.successTitle
+          text:   @form.dataset.successText
           type:   'success'
         @form.style.display = 'none'
     xobj.send JSON.stringify data

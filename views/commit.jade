@@ -15,7 +15,7 @@ block content
 
       .spacer.xs
 
-      form#nl-form.nl-form
+      form#nl-form.nl-form(data-error-title="Doh!", data-error-text="You missed a spot.", data-success-title="Nice!", data-success-text="Successfully sent email. We look forward to working with you!")
         | My name is 
         input#author-name(required, type='text', value='', maxlength='75', placeholder='${name}', data-subline='Tell us your name')
         |  and I have lots of great information I would like to contribute to The Android Hub. You can see my work at 

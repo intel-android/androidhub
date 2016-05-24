@@ -1,11 +1,19 @@
 footer
   background:white
-  
+
   h2
     +below(mobile)
       font-size:1rem
-      
+
   .link-nav-set
+    a
+      margin-right: 1em
+      text-align: left
+      text-align-last: left
+
+      &:last-child
+        margin-right: 0
+
     +below(mobile)
       margin:1rem 0
 
@@ -19,28 +27,38 @@ footer
       align-items:center
     .grid--justify-end
       justify-content:center
-  
+
 .inline-social
   margin-right:1rem
   text-decoration:none
-  text-align:center
+  text-align:left
+  display: table
+
   &:hover
     cursor:pointer
     > .social-text
       text-decoration:underline
   +below(tablet)
     margin:0 0.5rem
-    
+
+.social-icon-wrap, .social-text
+  display: table-cell
+  vertical-align: middle
+
+.social-icon-wrap
+  min-width: 65px
+
 .social-text
-  position:relative
-  top:-1.75em
-  margin-left:0.5rem
   color:white
+  padding-left: 5px
+
+  +below(tablet)
+    display: none
 
 .dark-grey-bg
   background-color:hsl(0,0%,22%)
   color:white
   padding:2rem 0
-  
+
   +below(mobile)
     padding:1rem 0 0

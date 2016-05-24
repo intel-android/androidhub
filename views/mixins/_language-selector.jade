@@ -1,0 +1,12 @@
+mixin language-selector(cur)
+  div.language-selector: section
+    .grid.reverse-margin-md
+      .grid__col-12
+        .text-right
+          label(for="language-selector") Language /
+          select(id="language-selector")
+            option(value="en") English
+            option(value="zh-hans") 简体中文
+            option(value="pt") Português
+            option(value="ru") Русский
+            option(value="es") Español
