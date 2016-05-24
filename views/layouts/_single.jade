@@ -33,7 +33,12 @@ html(lang='en')
       })
 
       title= post.title
-      != css('/')
+      if env == 'dev'
+        != css('/')
+
+      if env == 'prod'
+        link(rel='stylesheet', href="/css/app.css?v=#{timestamp}")
+
       link(rel='stylesheet', href='/css/prism.css')
         
       script.
@@ -97,15 +102,19 @@ html(lang='en')
         #disqus_thread
 
       include ../includes/_footer
-      != js('/')
-      script(src='/js/prism.js')
-
+      
+      if env == 'dev'
+        != js('/')
+      
       //- trackers
       if env == 'prod'
+        script(src="/js/app.js?v=#{timestamp}")
         +tracking-pixel('nth41')
         include ../includes/_facebook_tracking
         img(src="//trc.taboola.com/ironhorseinteractive-intel/log/3/mark?marking-type=visitor_android&item-url=https://androidhub.intel.com#{post._url}", width="0", height="0")
         img(src="http://amplifypixel.outbrain.com/pixel?mid=0019f45704a34a8b96b6855cb1af74f1f1")
+      
+      script(src='/js/prism.js')
         
       include ../includes/_intel_tracking
       

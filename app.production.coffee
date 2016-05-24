@@ -105,6 +105,7 @@ module.exports =
 
   locals:
     env:    'prod'
+    timestamp: Math.round(new Date().getTime()/1000) 
     _:      require 'lodash'
     moment: require 'moment'
     helpers:
