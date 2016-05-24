@@ -18,7 +18,12 @@ html(lang='en')
     +twitter-meta(data.meta.twitter)
 
     title= data.meta.opengraph.title
-    != css('/')
+    if env == 'dev'
+      != css('/')
+  
+    if env == 'prod'
+      link(rel='stylesheet', href="/css/app.css?v=#{timestamp}")
+    
 
   body
     +language-selector()
@@ -29,6 +34,9 @@ html(lang='en')
     block content
 
     include ../includes/_footer
-    != js('/')
+    if env == 'dev'
+      != js('/')
+    if env == 'prod'
+      script(src="/js/app.js?v=#{timestamp}")
     
     block trackers
