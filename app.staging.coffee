@@ -103,6 +103,7 @@ module.exports =
 
   locals:
     env:    'staging'
+    timestamp: Math.round(new Date().getTime()/1000) 
     _:      require 'lodash'
     moment: require 'moment'
     helpers:

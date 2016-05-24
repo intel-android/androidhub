@@ -20,8 +20,7 @@ html(lang='en')
     title= data.meta.opengraph.title
     if env == 'dev'
       != css('/')
-  
-    if env == 'prod'
+    else
       link(rel='stylesheet', href="/css/app.css?v=#{timestamp}")
     
 
@@ -36,7 +35,7 @@ html(lang='en')
     include ../includes/_footer
     if env == 'dev'
       != js('/')
-    if env == 'prod'
+    else
       script(src="/js/app.js?v=#{timestamp}")
     
     block trackers

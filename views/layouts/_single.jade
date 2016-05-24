@@ -35,8 +35,7 @@ html(lang='en')
       title= post.title
       if env == 'dev'
         != css('/')
-
-      if env == 'prod'
+      else
         link(rel='stylesheet', href="/css/app.css?v=#{timestamp}")
 
       link(rel='stylesheet', href='/css/prism.css')
@@ -105,10 +104,12 @@ html(lang='en')
       
       if env == 'dev'
         != js('/')
-      
+      else
+        script(src="/js/app.js?v=#{timestamp}")
+
       //- trackers
       if env == 'prod'
-        script(src="/js/app.js?v=#{timestamp}")
+        
         +tracking-pixel('nth41')
         include ../includes/_facebook_tracking
         img(src="//trc.taboola.com/ironhorseinteractive-intel/log/3/mark?marking-type=visitor_android&item-url=https://androidhub.intel.com#{post._url}", width="0", height="0")
