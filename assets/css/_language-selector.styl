@@ -1,2 +1,29 @@
 .language-selector
+  font-size: 16px // Sets the proper font size for the field guide
   background-color: #383838
+
+  section
+    font-size: 0.875em
+
+  .grid__col-12
+    padding-top: .5em
+    padding-bottom: .5em
+
+  +below(tablet)
+    font-size: .75em
+
+  select
+    border:none
+    outline:none
+    background:#383838
+    color:white
+    position:relative
+
+    .chrome-on-windows, .windows-ie-10, .windows-ie-11
+      & > option
+        color: white
+        background: #383838
+
+  label
+    color: white
+    font-weight: bold

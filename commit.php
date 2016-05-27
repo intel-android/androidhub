@@ -23,12 +23,12 @@ $args = '-f' . $emailaddress;
 if (!email($emailaddress, "Someone wants to commit to the Android Hub!", $body, $headers, $args)) {
   header('HTTP/1.1 400 Internal Server Error');
   echo json_encode(array(
-    'message' => "An error occured sending email. Try again later."
+    'success' => false
   ));
 } else {
   header('HTTP/1.1 200 OK');
   echo json_encode(array(
-    'message' => "Successfully sent email. We look forward to working with you!"
+    'success' => true
   ));
 }
 

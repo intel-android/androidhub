@@ -1,15 +1,16 @@
 nav
   box-shadow:0 2px 5px hsla(0,0%,0%,0.13)
-  padding:1rem 0
+  padding:1em 0
   background-color:white
   position:relative
   z-index:2
-  
+  font-size: 16px // This sets the proper size for the field guide
+
   > section
     +below(mobile)
-      padding:0 0.5rem
-  
-  .link-nav-set 
+      padding:0 0.5em
+
+  .link-nav-set
     > a
       color:hsl(0,0%,20%)
 
@@ -17,46 +18,46 @@ nav
         margin-left:0
       &:last-child
         margin-right:0
-        
-  +below(tablet) 
-    padding-bottom:0.5rem 
+
+  +below(tablet)
+    padding-bottom:0.5em
     .link-nav-set > a
-      padding:0.5rem 0.25em
-        
+      padding:0.5em 0.25em
+
     .grid > div:not(.link-nav-set)
       justify-content:center
       > a
         text-align:center
         align-self:center
-    
 
-.link-nav-set  
+
+.link-nav-set
   > a
     text-decoration:none
     color:hsl(0,0%,50%)
-    font-size:0.8rem
+    font-size:0.8em
     margin:0 0.25em
     cursor:pointer
     position:relative
-    
+
     +above(tablet)
-      font-size:0.9rem
-    
+      font-size:0.9em
+
     &:hover, &.active
       color:blue
-    
-.social-icon 
+
+.social-icon
   @extend .flex-child-image-fix
   margin:0 2px
   height:25px
   width:25px
   &:last-child
     margin-right:0
-  &:hover 
-    > svg 
+  &:hover
+    > svg
       ellipse
         fill:default-color
-      
+
     .icon-youtube > ellipse
       fill:youtube
     .icon-instagram > ellipse
@@ -67,40 +68,40 @@ nav
       fill:facebook
     .icon-googleplus > ellipse
       fill:gplus
-    
+
 .logo
-  margin-right:2rem
-  
+  margin-right:2em
+
 .field-guide
-  margin-left:1rem
-  
+  margin-left:1em
+
 .social-sidebar
   position:fixed
   // @extend .sticky
   top:50%
   left:0
-  padding:0.5rem 0.8rem
+  padding:0.5em 0.8em
   background:white
   width:60px
   box-shadow:0 2px 2px hsla(0,0%,0%,0.2)
-  font-size:0.8rem
-  
+  font-size:0.8em
+
   +below(desktop)
     display:none
-  
+
   > a
     width:30px
     height:30px
-    margin:0.3rem auto
-  
+    margin:0.3em auto
+
   .tweet > svg, .post > svg, .plus > svg
     width:30px
     height:30px
     filter:none
-      
+
     path
       fill:white
-      
+
   .tweet > svg
     ellipse
       fill:twitter

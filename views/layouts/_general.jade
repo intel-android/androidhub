@@ -18,15 +18,24 @@ html(lang='en')
     +twitter-meta(data.meta.twitter)
 
     title= data.meta.opengraph.title
-    != css('/')
+    if env == 'dev'
+      != css('/')
+    else
+      link(rel='stylesheet', href="/css/app.css?v=#{timestamp}")
+    
 
   body
+    +language-selector()
+    
     block nav
       +nav()
     
     block content
 
     include ../includes/_footer
-    != js('/')
+    if env == 'dev'
+      != js('/')
+    else
+      script(src="/js/app.js?v=#{timestamp}")
     
     block trackers
